@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		258C43AA17AE644EA77D0B83 /* Pods_OverTheRainbow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0306C05ACD039E0A7DFC5789 /* Pods_OverTheRainbow.framework */; };
 		27C8AC23288542CD000D2374 /* LetterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C8AC22288542CD000D2374 /* LetterListViewController.swift */; };
 		27C8AC25288542DC000D2374 /* TempFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C8AC24288542DC000D2374 /* TempFile.swift */; };
 		C56CDAC4287EE41E00C1F5F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CDAC3287EE41E00C1F5F9 /* AppDelegate.swift */; };
@@ -18,8 +19,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0306C05ACD039E0A7DFC5789 /* Pods_OverTheRainbow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OverTheRainbow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C8AC22288542CD000D2374 /* LetterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterListViewController.swift; sourceTree = "<group>"; };
 		27C8AC24288542DC000D2374 /* TempFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempFile.swift; sourceTree = "<group>"; };
+		7E25BB3D133FB640732CCAA6 /* Pods-OverTheRainbow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OverTheRainbow.release.xcconfig"; path = "Target Support Files/Pods-OverTheRainbow/Pods-OverTheRainbow.release.xcconfig"; sourceTree = "<group>"; };
+		BE1AAD714EC6C1AF11C4C79B /* Pods-OverTheRainbow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OverTheRainbow.debug.xcconfig"; path = "Target Support Files/Pods-OverTheRainbow/Pods-OverTheRainbow.debug.xcconfig"; sourceTree = "<group>"; };
 		C56CDAC0287EE41E00C1F5F9 /* OverTheRainbow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OverTheRainbow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56CDAC3287EE41E00C1F5F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C56CDAC5287EE41E00C1F5F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,12 +39,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				258C43AA17AE644EA77D0B83 /* Pods_OverTheRainbow.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06D4E3D82D213F98EEDA41D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0306C05ACD039E0A7DFC5789 /* Pods_OverTheRainbow.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1684BD5086103FB9D6A3B3E7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BE1AAD714EC6C1AF11C4C79B /* Pods-OverTheRainbow.debug.xcconfig */,
+				7E25BB3D133FB640732CCAA6 /* Pods-OverTheRainbow.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		27C8AC1E2885406A000D2374 /* Global */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +100,8 @@
 			children = (
 				C56CDAC2287EE41E00C1F5F9 /* OverTheRainbow */,
 				C56CDAC1287EE41E00C1F5F9 /* Products */,
+				1684BD5086103FB9D6A3B3E7 /* Pods */,
+				06D4E3D82D213F98EEDA41D3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,9 +136,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C56CDAD4287EE41F00C1F5F9 /* Build configuration list for PBXNativeTarget "OverTheRainbow" */;
 			buildPhases = (
+				9AC73EBC757FA8F8B52AEDA4 /* [CP] Check Pods Manifest.lock */,
 				C56CDABC287EE41E00C1F5F9 /* Sources */,
 				C56CDABD287EE41E00C1F5F9 /* Frameworks */,
 				C56CDABE287EE41E00C1F5F9 /* Resources */,
+				69819566FD988E01FE588615 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -170,6 +196,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		69819566FD988E01FE588615 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OverTheRainbow/Pods-OverTheRainbow-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OverTheRainbow/Pods-OverTheRainbow-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OverTheRainbow/Pods-OverTheRainbow-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9AC73EBC757FA8F8B52AEDA4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OverTheRainbow-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C56CDABC287EE41E00C1F5F9 /* Sources */ = {
@@ -322,6 +390,7 @@
 		};
 		C56CDAD5287EE41F00C1F5F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE1AAD714EC6C1AF11C4C79B /* Pods-OverTheRainbow.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -350,6 +419,7 @@
 		};
 		C56CDAD6287EE41F00C1F5F9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E25BB3D133FB640732CCAA6 /* Pods-OverTheRainbow.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
