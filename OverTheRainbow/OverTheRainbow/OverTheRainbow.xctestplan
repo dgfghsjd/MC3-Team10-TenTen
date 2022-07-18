@@ -1,0 +1,23 @@
+{
+  "configurations" : [
+    {
+      "id" : "550D3959-EEF5-43FE-B5FD-3EAA01F94D3E",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:OverTheRainbow.xcodeproj",
+      "identifier" : "C56CDABF287EE41E00C1F5F9",
+      "name" : "OverTheRainbow"
+    }
+  },
+  "testTargets" : [
+
+  ],
+  "version" : 1
+}

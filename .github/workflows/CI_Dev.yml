@@ -14,5 +14,5 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build & Test (xcodeproj)
-      run: xcodebuild clean build test -project OverTheRainbow/OverTheRainbow.xcodeproj -scheme OverTheRainbow -destination "platform=iOS Simulator,name=iPhone 13"
+      run: xcodebuild clean build -project OverTheRainbow/OverTheRainbow.xcodeproj -scheme OverTheRainbow -destination 'platform=iOS Simulator,name=iPhone 13,OS=15.2'
     
