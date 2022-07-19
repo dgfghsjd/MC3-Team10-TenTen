@@ -27,15 +27,15 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스크롤 하면 추억하러 갈 수 있어요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atD-kg-YoU">
-                                <rect key="frame" x="86.5" y="119" width="241" height="21.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <rect key="frame" x="113.5" y="119" width="187.5" height="17"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XLS-LB-vuo">
                                 <rect key="frame" x="16" y="182" width="382" height="443"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oy6-Al-TqN">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oy6-Al-TqN" customClass="FlowerBoxView" customModule="OverTheRainbow" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="187" height="443"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <gestureRecognizers/>
@@ -46,7 +46,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H5f-VB-0WL">
                                         <rect key="frame" x="195" y="0.0" width="187" height="443"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Li-oc-Krj">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Li-oc-Krj" customClass="LetterBoxView" customModule="OverTheRainbow" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="217.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <gestureRecognizers/>
@@ -54,7 +54,7 @@
                                                     <outletCollection property="gestureRecognizers" destination="BpN-se-eWA" appends="YES" id="cTz-AZ-gq9"/>
                                                 </connections>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7k-Bx-lHQ">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7k-Bx-lHQ" customClass="SettingBoxView" customModule="OverTheRainbow" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="225.5" width="187" height="217.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <gestureRecognizers/>
@@ -70,8 +70,8 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="상처를 치료해줄 사람 어디 없나.  가만히 놔두다간 끊임없이 덧나." textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lk0-4a-xEL">
-                                <rect key="frame" x="167.5" y="799" width="230.5" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <rect key="frame" x="16" y="806" width="382" height="36"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -80,6 +80,7 @@
                         <color key="backgroundColor" name="backgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="Lk0-4a-xEL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="44K-04-Y61"/>
                             <constraint firstItem="XLS-LB-vuo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="FBf-rx-041"/>
                             <constraint firstItem="4Nl-yc-6r1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="UaK-cN-1vi"/>
                             <constraint firstItem="XLS-LB-vuo" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Y7t-mn-Db8"/>
@@ -96,6 +97,11 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="NjL-t4-h7C"/>
+                    <connections>
+                        <outlet property="flowerBoxView" destination="Oy6-Al-TqN" id="RIf-qP-cb2"/>
+                        <outlet property="letterBoxView" destination="4Li-oc-Krj" id="wE9-Yt-N1J"/>
+                        <outlet property="quoteLabel" destination="Lk0-4a-xEL" id="2wK-Gj-Ka6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="down" id="Mr4-VP-vue">
@@ -119,7 +125,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="866.66666666666674" y="22.767857142857142"/>
+            <point key="canvasLocation" x="1080" y="49"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="cKp-uX-9qp">
@@ -157,8 +163,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="편지뷰 스텁" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9D-RO-3AZ">
-                                <rect key="frame" x="186" y="438" width="78" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="편지뷰 스텁" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9D-RO-3AZ">
+                                <rect key="frame" x="168" y="464.5" width="78" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
