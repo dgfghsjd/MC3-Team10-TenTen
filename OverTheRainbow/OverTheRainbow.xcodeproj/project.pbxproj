@@ -15,6 +15,9 @@
 		C56CDACB287EE41E00C1F5F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56CDAC9287EE41E00C1F5F9 /* Main.storyboard */; };
 		C56CDACD287EE41F00C1F5F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C56CDACC287EE41F00C1F5F9 /* Assets.xcassets */; };
 		C56CDAD0287EE41F00C1F5F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56CDACE287EE41F00C1F5F9 /* LaunchScreen.storyboard */; };
+		C5D36ED228870CB700ADF22A /* WrittenLetterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D36ED128870CB700ADF22A /* WrittenLetterListViewController.swift */; };
+		C5D36ED528870CDA00ADF22A /* WritingLetter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5D36ED328870CDA00ADF22A /* WritingLetter.storyboard */; };
+		C5D36ED72887911700ADF22A /* WrittingLetterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D36ED62887911700ADF22A /* WrittingLetterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		C56CDACC287EE41F00C1F5F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C56CDACF287EE41F00C1F5F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C56CDAD1287EE41F00C1F5F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5D36ED128870CB700ADF22A /* WrittenLetterListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrittenLetterListViewController.swift; sourceTree = "<group>"; };
+		C5D36ED428870CDA00ADF22A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/WritingLetter.storyboard; sourceTree = "<group>"; };
+		C5D36ED62887911700ADF22A /* WrittingLetterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrittingLetterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +104,12 @@
 				C56CDAC3287EE41E00C1F5F9 /* AppDelegate.swift */,
 				C56CDAC5287EE41E00C1F5F9 /* SceneDelegate.swift */,
 				C56CDAC7287EE41E00C1F5F9 /* ViewController.swift */,
+				C5D36ED128870CB700ADF22A /* WrittenLetterListViewController.swift */,
 				C56CDAC9287EE41E00C1F5F9 /* Main.storyboard */,
+				C5D36ED328870CDA00ADF22A /* WritingLetter.storyboard */,
 				C56CDACE287EE41F00C1F5F9 /* LaunchScreen.storyboard */,
 				C56CDAD1287EE41F00C1F5F9 /* Info.plist */,
+				C5D36ED62887911700ADF22A /* WrittingLetterViewController.swift */,
 			);
 			path = OverTheRainbow;
 			sourceTree = "<group>";
@@ -167,6 +176,7 @@
 				C56CDAD0287EE41F00C1F5F9 /* LaunchScreen.storyboard in Resources */,
 				C56CDACD287EE41F00C1F5F9 /* Assets.xcassets in Resources */,
 				C56CDACB287EE41E00C1F5F9 /* Main.storyboard in Resources */,
+				C5D36ED528870CDA00ADF22A /* WritingLetter.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +208,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5D36ED228870CB700ADF22A /* WrittenLetterListViewController.swift in Sources */,
 				27C8AC23288542CD000D2374 /* LetterListViewController.swift in Sources */,
+				C5D36ED72887911700ADF22A /* WrittingLetterViewController.swift in Sources */,
 				C56CDAC8287EE41E00C1F5F9 /* ViewController.swift in Sources */,
 				C56CDAC4287EE41E00C1F5F9 /* AppDelegate.swift in Sources */,
 				C56CDAC6287EE41E00C1F5F9 /* SceneDelegate.swift in Sources */,
@@ -223,6 +235,14 @@
 				C56CDACF287EE41F00C1F5F9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C5D36ED328870CDA00ADF22A /* WritingLetter.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C5D36ED428870CDA00ADF22A /* Base */,
+			);
+			name = WritingLetter.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

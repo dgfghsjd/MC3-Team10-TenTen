@@ -7,11 +7,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class WrittenLetterListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
+    @IBOutlet var letterList: UINavigationItem!
+    
+    
+    
+    @IBAction func writingLetter(_ sender: UIBarButtonItem) {
+    }
+    
+    
 }
