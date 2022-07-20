@@ -9,7 +9,15 @@
 /* Begin PBXBuildFile section */
 		258C43AA17AE644EA77D0B83 /* Pods_OverTheRainbow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0306C05ACD039E0A7DFC5789 /* Pods_OverTheRainbow.framework */; };
 		27C8AC23288542CD000D2374 /* LetterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C8AC22288542CD000D2374 /* LetterListViewController.swift */; };
-		27C8AC25288542DC000D2374 /* TempFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C8AC24288542DC000D2374 /* TempFile.swift */; };
+		A8509B4A28878C4000CD88C1 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B4928878C4000CD88C1 /* Pet.swift */; };
+		A8509B4C28878EA000CD88C1 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B4B28878EA000CD88C1 /* Letter.swift */; };
+		A8509B4E28878F0C00CD88C1 /* LetterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B4D28878F0C00CD88C1 /* LetterStatus.swift */; };
+		A8509B522887906F00CD88C1 /* LetterStatusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B512887906F00CD88C1 /* LetterStatusTest.swift */; };
+		A8509B542887996E00CD88C1 /* Flower.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B532887996E00CD88C1 /* Flower.swift */; };
+		A8509B56288799B400CD88C1 /* FlowerLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B55288799B400CD88C1 /* FlowerLog.swift */; };
+		A8509B5828879A3900CD88C1 /* Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B5728879A3900CD88C1 /* Words.swift */; };
+		A8509B5A2887A0C400CD88C1 /* ModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B592887A0C400CD88C1 /* ModelTest.swift */; };
+		A86EE311288788E400084E98 /* OverTheRainbowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86EE310288788E400084E98 /* OverTheRainbowTests.swift */; };
 		C56CDAC4287EE41E00C1F5F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CDAC3287EE41E00C1F5F9 /* AppDelegate.swift */; };
 		C56CDAC6287EE41E00C1F5F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CDAC5287EE41E00C1F5F9 /* SceneDelegate.swift */; };
 		C56CDAC8287EE41E00C1F5F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CDAC7287EE41E00C1F5F9 /* ViewController.swift */; };
@@ -18,11 +26,30 @@
 		C56CDAD0287EE41F00C1F5F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56CDACE287EE41F00C1F5F9 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A86EE312288788E400084E98 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C56CDAB8287EE41E00C1F5F9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C56CDABF287EE41E00C1F5F9;
+			remoteInfo = OverTheRainbow;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0306C05ACD039E0A7DFC5789 /* Pods_OverTheRainbow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OverTheRainbow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C8AC22288542CD000D2374 /* LetterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterListViewController.swift; sourceTree = "<group>"; };
-		27C8AC24288542DC000D2374 /* TempFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempFile.swift; sourceTree = "<group>"; };
 		7E25BB3D133FB640732CCAA6 /* Pods-OverTheRainbow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OverTheRainbow.release.xcconfig"; path = "Target Support Files/Pods-OverTheRainbow/Pods-OverTheRainbow.release.xcconfig"; sourceTree = "<group>"; };
+		A8509B4928878C4000CD88C1 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
+		A8509B4B28878EA000CD88C1 /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
+		A8509B4D28878F0C00CD88C1 /* LetterStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterStatus.swift; sourceTree = "<group>"; };
+		A8509B512887906F00CD88C1 /* LetterStatusTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterStatusTest.swift; sourceTree = "<group>"; };
+		A8509B532887996E00CD88C1 /* Flower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flower.swift; sourceTree = "<group>"; };
+		A8509B55288799B400CD88C1 /* FlowerLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerLog.swift; sourceTree = "<group>"; };
+		A8509B5728879A3900CD88C1 /* Words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Words.swift; sourceTree = "<group>"; };
+		A8509B592887A0C400CD88C1 /* ModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTest.swift; sourceTree = "<group>"; };
+		A86EE30E288788E400084E98 /* OverTheRainbowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OverTheRainbowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A86EE310288788E400084E98 /* OverTheRainbowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverTheRainbowTests.swift; sourceTree = "<group>"; };
 		BE1AAD714EC6C1AF11C4C79B /* Pods-OverTheRainbow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OverTheRainbow.debug.xcconfig"; path = "Target Support Files/Pods-OverTheRainbow/Pods-OverTheRainbow.debug.xcconfig"; sourceTree = "<group>"; };
 		C56CDAC0287EE41E00C1F5F9 /* OverTheRainbow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OverTheRainbow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56CDAC3287EE41E00C1F5F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +62,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A86EE30B288788E400084E98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C56CDABD287EE41E00C1F5F9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -79,14 +113,6 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		27C8AC2028854182000D2374 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				27C8AC24288542DC000D2374 /* TempFile.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
 		27C8AC21288542B1000D2374 /* letterList */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,10 +121,58 @@
 			path = letterList;
 			sourceTree = "<group>";
 		};
+		A8509B4728878C1400CD88C1 /* DataAccess */ = {
+			isa = PBXGroup;
+			children = (
+				A8509B4828878C1E00CD88C1 /* Model */,
+			);
+			path = DataAccess;
+			sourceTree = "<group>";
+		};
+		A8509B4828878C1E00CD88C1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A8509B4928878C4000CD88C1 /* Pet.swift */,
+				A8509B4B28878EA000CD88C1 /* Letter.swift */,
+				A8509B4D28878F0C00CD88C1 /* LetterStatus.swift */,
+				A8509B532887996E00CD88C1 /* Flower.swift */,
+				A8509B55288799B400CD88C1 /* FlowerLog.swift */,
+				A8509B5728879A3900CD88C1 /* Words.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A8509B4F2887905300CD88C1 /* DataAccess */ = {
+			isa = PBXGroup;
+			children = (
+				A8509B502887905900CD88C1 /* Model */,
+			);
+			path = DataAccess;
+			sourceTree = "<group>";
+		};
+		A8509B502887905900CD88C1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A8509B512887906F00CD88C1 /* LetterStatusTest.swift */,
+				A8509B592887A0C400CD88C1 /* ModelTest.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A86EE30F288788E400084E98 /* OverTheRainbowTests */ = {
+			isa = PBXGroup;
+			children = (
+				A8509B4F2887905300CD88C1 /* DataAccess */,
+				A86EE310288788E400084E98 /* OverTheRainbowTests.swift */,
+			);
+			path = OverTheRainbowTests;
+			sourceTree = "<group>";
+		};
 		C56CDAB7287EE41E00C1F5F9 = {
 			isa = PBXGroup;
 			children = (
 				C56CDAC2287EE41E00C1F5F9 /* OverTheRainbow */,
+				A86EE30F288788E400084E98 /* OverTheRainbowTests */,
 				C56CDAC1287EE41E00C1F5F9 /* Products */,
 				1684BD5086103FB9D6A3B3E7 /* Pods */,
 				06D4E3D82D213F98EEDA41D3 /* Frameworks */,
@@ -109,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				C56CDAC0287EE41E00C1F5F9 /* OverTheRainbow.app */,
+				A86EE30E288788E400084E98 /* OverTheRainbowTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,7 +191,7 @@
 		C56CDAC2287EE41E00C1F5F9 /* OverTheRainbow */ = {
 			isa = PBXGroup;
 			children = (
-				27C8AC2028854182000D2374 /* Network */,
+				A8509B4728878C1400CD88C1 /* DataAccess */,
 				27C8AC1F28854156000D2374 /* Screens */,
 				27C8AC1E2885406A000D2374 /* Global */,
 				C56CDAC3287EE41E00C1F5F9 /* AppDelegate.swift */,
@@ -132,6 +207,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A86EE30D288788E400084E98 /* OverTheRainbowTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A86EE316288788E400084E98 /* Build configuration list for PBXNativeTarget "OverTheRainbowTests" */;
+			buildPhases = (
+				A86EE30A288788E400084E98 /* Sources */,
+				A86EE30B288788E400084E98 /* Frameworks */,
+				A86EE30C288788E400084E98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A86EE313288788E400084E98 /* PBXTargetDependency */,
+			);
+			name = OverTheRainbowTests;
+			productName = OverTheRainbowTests;
+			productReference = A86EE30E288788E400084E98 /* OverTheRainbowTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C56CDABF287EE41E00C1F5F9 /* OverTheRainbow */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C56CDAD4287EE41F00C1F5F9 /* Build configuration list for PBXNativeTarget "OverTheRainbow" */;
@@ -161,6 +254,10 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					A86EE30D288788E400084E98 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = C56CDABF287EE41E00C1F5F9;
+					};
 					C56CDABF287EE41E00C1F5F9 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -180,11 +277,19 @@
 			projectRoot = "";
 			targets = (
 				C56CDABF287EE41E00C1F5F9 /* OverTheRainbow */,
+				A86EE30D288788E400084E98 /* OverTheRainbowTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A86EE30C288788E400084E98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C56CDABE287EE41E00C1F5F9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -240,19 +345,42 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A86EE30A288788E400084E98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8509B5A2887A0C400CD88C1 /* ModelTest.swift in Sources */,
+				A86EE311288788E400084E98 /* OverTheRainbowTests.swift in Sources */,
+				A8509B522887906F00CD88C1 /* LetterStatusTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C56CDABC287EE41E00C1F5F9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8509B4E28878F0C00CD88C1 /* LetterStatus.swift in Sources */,
+				A8509B4A28878C4000CD88C1 /* Pet.swift in Sources */,
+				A8509B56288799B400CD88C1 /* FlowerLog.swift in Sources */,
 				27C8AC23288542CD000D2374 /* LetterListViewController.swift in Sources */,
 				C56CDAC8287EE41E00C1F5F9 /* ViewController.swift in Sources */,
+				A8509B4C28878EA000CD88C1 /* Letter.swift in Sources */,
 				C56CDAC4287EE41E00C1F5F9 /* AppDelegate.swift in Sources */,
+				A8509B542887996E00CD88C1 /* Flower.swift in Sources */,
 				C56CDAC6287EE41E00C1F5F9 /* SceneDelegate.swift in Sources */,
-				27C8AC25288542DC000D2374 /* TempFile.swift in Sources */,
+				A8509B5828879A3900CD88C1 /* Words.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A86EE313288788E400084E98 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C56CDABF287EE41E00C1F5F9 /* OverTheRainbow */;
+			targetProxy = A86EE312288788E400084E98 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C56CDAC9287EE41E00C1F5F9 /* Main.storyboard */ = {
@@ -274,6 +402,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A86EE314288788E400084E98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6R2KHHT3YN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ADA.OverTheRainbowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OverTheRainbow.app/OverTheRainbow";
+			};
+			name = Debug;
+		};
+		A86EE315288788E400084E98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6R2KHHT3YN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ADA.OverTheRainbowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OverTheRainbow.app/OverTheRainbow";
+			};
+			name = Release;
+		};
 		C56CDAD2287EE41F00C1F5F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -449,6 +615,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A86EE316288788E400084E98 /* Build configuration list for PBXNativeTarget "OverTheRainbowTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A86EE314288788E400084E98 /* Debug */,
+				A86EE315288788E400084E98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C56CDABB287EE41E00C1F5F9 /* Build configuration list for PBXProject "OverTheRainbow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
