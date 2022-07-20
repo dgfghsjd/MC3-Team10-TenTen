@@ -101,6 +101,7 @@
                         <outlet property="flowerBoxView" destination="Oy6-Al-TqN" id="RIf-qP-cb2"/>
                         <outlet property="letterBoxView" destination="4Li-oc-Krj" id="wE9-Yt-N1J"/>
                         <outlet property="quoteLabel" destination="Lk0-4a-xEL" id="2wK-Gj-Ka6"/>
+                        <outlet property="swipeRecognizer" destination="Mr4-VP-vue" id="Ax8-tz-vu8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -259,7 +260,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kqr-bA-yPs"/>
+        <segue reference="DZn-P2-yMT"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.up" catalog="system" width="128" height="72"/>

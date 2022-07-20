@@ -16,17 +16,18 @@ class MainViewController: UIViewController {
     @IBOutlet weak var letterBoxView: LetterBoxView!
     @IBOutlet weak var quoteLabel: UILabel!
 
+    @IBOutlet var swipeRecognizer: UISwipeGestureRecognizer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        quoteLabel.text = quotes[Int.random(in: 0...4)]
+        quoteLabel.text = quotes[Int.random(in: 0...4)]
     }
 
-    // navigation bar hide and show ref: https://stackoverflow.com/a/29953818/6183323
+    // 네비바 감추고 보이기 레퍼런스: https://stackoverflow.com/a/29953818/6183323
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        flowerBoxView.updatePreview(flowerIndex: Int.random(in: 0...4), didFlowerToday: didFlowerToday) // testing
-        letterBoxView.updatePreview(numberOfLetter: Int.random(in: 0...100)) // testing
-        quoteLabel.text = quotes[Int.random(in: 0...4)]
+        flowerBoxView.updatePreview(flowerIndex: Int.random(in: 0...4), didFlowerToday: didFlowerToday) // random: testing
+        letterBoxView.updatePreview(numberOfLetter: Int.random(in: 0...100)) // random: testing
     }
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -49,11 +50,11 @@ let flowers = [
     Flower(title: "꽃5", image: UIImage(systemName: "sun.dust.fill")!, floriography: "꽃말5, 꽃말")
 ]
 let quotes: [String] = [
-    "상처를 치료해줄 사람 어디 없나. 가만히 놔두다간 끊임없이 덧나.",
+    "상처를 치료해줄 사람 어디 없나.\n가만히 놔두다간 끊임없이 덧나.",
     "위로1",
     "위로2",
     "투두1",
-    "투두2"
+    "오늘 하늘은 어떤 모양인가요?\n잠시 걸으며 공기의 냄새를 맡아보아요."
 ]
 
 #endif

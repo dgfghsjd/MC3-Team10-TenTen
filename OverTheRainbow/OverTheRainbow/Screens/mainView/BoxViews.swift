@@ -25,6 +25,8 @@ class FlowerBoxView: BoxStyleView, BoxStyle {
     var floriographyLabel = UILabel() // 꽃말
     let noFlowerGuideLabel = UILabel()
 
+    // 박스의 타이틀 -> Flower,
+    // 꽃의 이미지, 이름, 꽃말을 stackview에 넣어서 올림
     func commonInit() {
         setBarTitle(titleText: "Flower")
         let previewView = UIView()
@@ -47,7 +49,6 @@ class FlowerBoxView: BoxStyleView, BoxStyle {
 
         noFlowerGuideLabel.adjustsFontForContentSizeCategory = true
         noFlowerGuideLabel.font = UIFont.preferredFont(forTextStyle: .headline)
-        noFlowerGuideLabel.text = "오늘의 꽃을 골라주세요."
         noFlowerGuideLabel.textAlignment = .center
         noFlowerGuideLabel.lineBreakMode = .byWordWrapping
 
@@ -72,7 +73,7 @@ class FlowerBoxView: BoxStyleView, BoxStyle {
     }
 
     // 꽃 이미지, 꽃 이름, 꽃말 업데이트
-    func updatePreview(flowerIndex: Int?, didFlowerToday: Bool = false) {
+    func updatePreview(flowerIndex: Int? = nil, didFlowerToday: Bool = false) {
         if flowerIndex == nil {
             stackView.alpha = 0
             if didFlowerToday {
@@ -106,9 +107,12 @@ class LetterBoxView: BoxStyleView, BoxStyle {
         commonInit()
     }
 
+    // 프리뷰 업데이트시 필요한 프로퍼티
     var badgeView = UIImageView()
     var badgeNumberLabel = UILabel()
 
+    // 박스의 타이틀 -> Letter
+    // 편지봉투 모양, 원모양 배지, 배지의 숫자 뷰 추가
     func commonInit() {
         setBarTitle(titleText: "Letter")
         let previewView = UIView()
@@ -148,6 +152,7 @@ class LetterBoxView: BoxStyleView, BoxStyle {
         setPreviewView(previewView: previewView)
     }
 
+    // 편지 숫자에 따라 배지 모양(배지 존재, 숫자) 업데이트
     func updatePreview(numberOfLetter: Int) {
         if numberOfLetter > 0 {
             badgeView.alpha = 1
@@ -172,6 +177,7 @@ class SettingBoxView: BoxStyleView, BoxStyle {
         commonInit()
     }
 
+    // 설정 아이콘(SF Symbol geashape) 추가
     func commonInit() {
         setBarTitle(titleText: "Setting")
         let previewView = UIView()
@@ -195,7 +201,7 @@ protocol BoxStyle: UIView {
     func commonInit()
 }
 
-// 박스 모양 설정: 배경색, 둥근 모서리, 아래쪽 색깔 바, 제목, 프리뷰(꽃, 편지) 이미지 위치 설정
+// 박스 모양 설정: 배경색, 둥근 모서리, 아래쪽 색깔 바, 제목, 프리뷰(꽃-꽃말 포함, 편지) 위치 설정
 class BoxStyleView: UIView {
 
     var colorBar = UIView()
@@ -215,6 +221,7 @@ class BoxStyleView: UIView {
         setBarColor()
     }
 
+    // 박스 하단 색 바 추가
     private func setBarColor() {
         colorBar.backgroundColor = UIColor(named: "boxBarColor")
         colorBar.clipsToBounds = true
@@ -233,6 +240,7 @@ class BoxStyleView: UIView {
         ])
     }
 
+    // 박스 하단 제목 추가
     fileprivate func setBarTitle(titleText: String = "Test") {
         titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
@@ -246,6 +254,7 @@ class BoxStyleView: UIView {
         ])
     }
 
+    // 박스 가운데에서 조금 위로 프리뷰(꽃 이미지와 꽃말 등)의 위치 설정
     fileprivate func setPreviewView(previewView: UIView = UIView()) {
         addSubview(previewView)
         previewView.translatesAutoresizingMaskIntoConstraints = false
