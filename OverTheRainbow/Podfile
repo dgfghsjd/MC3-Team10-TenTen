@@ -6,6 +6,6 @@ target 'OverTheRainbow' do
   use_frameworks!
 
   # Pods for OverTheRainbow
-  pod 'RealmSwift', '~>10'
+  pod 'RealmSwift'
 
 end
