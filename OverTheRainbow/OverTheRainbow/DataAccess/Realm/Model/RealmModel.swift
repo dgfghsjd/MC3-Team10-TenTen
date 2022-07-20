@@ -1,5 +1,5 @@
 //
-//  Words.swift
+//  RealmModel.swift
 //  OverTheRainbow
 //
 //  Created by Leo Bang on 2022/07/20.
@@ -8,11 +8,7 @@
 import Foundation
 import RealmSwift
 
-
-class Words: Object {
+class RealmModel: Object {
     @Persisted(primaryKey: true)
     var _id: ObjectId
-    
-    @Persisted
-    var content: String
 }

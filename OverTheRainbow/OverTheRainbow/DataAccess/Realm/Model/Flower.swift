@@ -8,10 +8,7 @@
 import Foundation
 import RealmSwift
 
-class Flower: Object {
-    @Persisted(primaryKey: true)
-    var _id: ObjectId
-    
+class Flower: RealmModel {
     @Persisted
     var name: String
     

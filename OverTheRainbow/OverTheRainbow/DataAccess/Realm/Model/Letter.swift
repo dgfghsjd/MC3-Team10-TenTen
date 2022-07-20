@@ -8,14 +8,11 @@
 import Foundation
 import RealmSwift
 
-class Letter: Object {
-    @Persisted(primaryKey: true)
-    var _id: ObjectId
-    
+class Letter: RealmModel {
     @Persisted
     var title: String
     
-    @Persisted
+    @Persisted(originProperty: "letters")
     var pet: LinkingObjects<Pet>
     
     @Persisted
@@ -32,4 +29,11 @@ class Letter: Object {
     
     @Persisted
     var updatedAt: Date = Date.now
+    
+    convenience init(_ title: String, _ content: String, _ imgUrl: String?) {
+        self.init()
+        self.title = title
+        self.content = content
+        self.imgUrl = imgUrl
+    }
 }

@@ -8,15 +8,12 @@
 import Foundation
 import RealmSwift
 
-class FlowerLog: Object{
-    @Persisted(primaryKey: true)
-    var _id: ObjectId
-    
-    @Persisted
+class FlowerLog: RealmModel{
+    @Persisted(originProperty: "flowerLogs")
     var pet: LinkingObjects<Pet>
     
     @Persisted
-    var flower: Flower
+    var flower: Flower?
     
     @Persisted
     var isSent: Bool = false

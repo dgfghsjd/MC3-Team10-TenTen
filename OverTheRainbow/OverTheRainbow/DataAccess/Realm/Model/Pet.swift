@@ -8,10 +8,7 @@
 import Foundation
 import RealmSwift
 
-class Pet: Object {
-    @Persisted(primaryKey: true)
-    var _id: ObjectId
-    
+class Pet: RealmModel {
     @Persisted
     var name: String
     
@@ -36,12 +33,18 @@ class Pet: Object {
     @Persisted
     var flowerLogs: List<FlowerLog>
     
+    func getAge() -> Int {
+        return 1
+    }
     
-    init(_ name: String, _ species: String, imgUrl: String?, birth: Date, weight: Double) {
+    var id: String { get { _id.stringValue } }
+    
+    convenience init(_ name: String, _ species: String, imgUrl: String?, birth: Date, weight: Double) {
+        self.init()
+        self.name = name
         self.birth = birth
         self.species = species
         self.imgUrl = imgUrl
-        self.birth = birth
         self.weight = weight
     }
 }
