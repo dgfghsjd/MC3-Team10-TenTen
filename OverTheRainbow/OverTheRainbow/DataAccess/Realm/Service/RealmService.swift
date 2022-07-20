@@ -47,8 +47,30 @@ class RealmService: DataAccessProvider {
         }
     }
     
-    func saveLetters(ids: String...) throws {
-        
+    func saveLetters(_ ids: String...) throws {
+        try! ids.forEach { id in
+            let letterId = stringToObjectId(id: id)
+            guard let letter: Letter = repository.findById(id: letterId) else {
+                throw RealmError.letterNotFound
+            }
+            
+            try! realm.write {
+                letter.status = .Saved
+            }
+        }
+    }
+    
+    func unsaveLetters(_ ids: String...) throws {
+        try! ids.forEach { id in
+            let letterId = stringToObjectId(id: id)
+            guard let letter: Letter = repository.findById(id: letterId) else {
+                throw RealmError.letterNotFound
+            }
+            
+            try! realm.write {
+                letter.status = .Temporary
+            }
+        }
     }
 
     

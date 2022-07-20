@@ -23,7 +23,10 @@ protocol DataAccessProvider {
     func addLetter(_ inputDto: LetterInputDto) throws -> Void
     
     // TODO: 편지 저장하기 (저장 상태로 변경)
-    func saveLetters(ids: String...) throws -> Void
+    func saveLetters(_ ids: String...) throws -> Void
+    
+    // TODO: 편지 임시저장 상태로 변경하기
+    func unsaveLetters(_ ids: String...) throws -> Void
     
     // TODO: 보낼 예정인 편지들 가져오기
     
