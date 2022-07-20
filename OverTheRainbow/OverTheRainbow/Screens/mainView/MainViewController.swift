@@ -15,19 +15,25 @@ class MainViewController: UIViewController {
     @IBOutlet weak var flowerBoxView: FlowerBoxView!
     @IBOutlet weak var letterBoxView: LetterBoxView!
     @IBOutlet weak var quoteLabel: UILabel!
+    @IBOutlet weak var guideLabel: UILabel!
 
     @IBOutlet var swipeRecognizer: UISwipeGestureRecognizer!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         quoteLabel.text = quotes[Int.random(in: 0...4)]
+        
+        [guideLabel, quoteLabel].forEach {
+            $0.font = UIFont.preferredFont(forTextStyle: .headline, weight: .regular)
+        }
     }
 
     // 네비바 감추고 보이기 레퍼런스: https://stackoverflow.com/a/29953818/6183323
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        flowerBoxView.updatePreview(flowerIndex: Int.random(in: 0...4), didFlowerToday: didFlowerToday) // random: testing
-        letterBoxView.updatePreview(numberOfLetter: Int.random(in: 0...100)) // random: testing
+        // random: testing
+        flowerBoxView.updatePreview(flowerIndex: Int.random(in: 0...4), didFlowerToday: didFlowerToday)
+        letterBoxView.updatePreview(numberOfLetter: Int.random(in: 0...100))
     }
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: animated)

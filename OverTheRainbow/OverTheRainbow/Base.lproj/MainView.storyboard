@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,35 +18,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Nl-yc-6r1">
-                                <rect key="frame" x="185" y="88" width="44" height="31"/>
+                                <rect key="frame" x="177" y="88" width="60" height="51"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="chevron.up" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.compact.up" catalog="system" title="">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font" scale="default" weight="semibold">
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                    </preferredSymbolConfiguration>
+                                    <color key="baseForegroundColor" name="textColor"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <segue destination="L6k-xh-uim" kind="show" id="kqr-bA-yPs"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스크롤 하면 추억하러 갈 수 있어요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atD-kg-YoU">
-                                <rect key="frame" x="113.5" y="119" width="187.5" height="17"/>
+                                <rect key="frame" x="113.5" y="131" width="187.5" height="17"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XLS-LB-vuo">
-                                <rect key="frame" x="16" y="182" width="382" height="443"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="XLS-LB-vuo">
+                                <rect key="frame" x="16" y="184" width="382" height="443"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oy6-Al-TqN" customClass="FlowerBoxView" customModule="OverTheRainbow" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="187" height="443"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="183" height="443"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="p4N-9l-F7s" appends="YES" id="mFu-iF-l7X"/>
                                         </connections>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H5f-VB-0WL">
-                                        <rect key="frame" x="195" y="0.0" width="187" height="443"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="H5f-VB-0WL">
+                                        <rect key="frame" x="199" y="0.0" width="183" height="443"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Li-oc-Krj" customClass="LetterBoxView" customModule="OverTheRainbow" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="187" height="217.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="183" height="209.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <gestureRecognizers/>
                                                 <connections>
@@ -55,7 +59,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7k-Bx-lHQ" customClass="SettingBoxView" customModule="OverTheRainbow" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="225.5" width="187" height="217.5"/>
+                                                <rect key="frame" x="0.0" y="233.5" width="183" height="209.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <gestureRecognizers/>
                                                 <connections>
@@ -70,9 +74,9 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="상처를 치료해줄 사람 어디 없나.  가만히 놔두다간 끊임없이 덧나." textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lk0-4a-xEL">
-                                <rect key="frame" x="16" y="806" width="382" height="36"/>
+                                <rect key="frame" x="16" y="778" width="382" height="36"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -85,11 +89,11 @@
                             <constraint firstItem="4Nl-yc-6r1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="UaK-cN-1vi"/>
                             <constraint firstItem="XLS-LB-vuo" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Y7t-mn-Db8"/>
                             <constraint firstItem="atD-kg-YoU" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="iTt-7v-yoL"/>
-                            <constraint firstItem="XLS-LB-vuo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="94" id="oU0-w1-V2y"/>
+                            <constraint firstItem="XLS-LB-vuo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="96" id="oU0-w1-V2y"/>
                             <constraint firstItem="4Nl-yc-6r1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="rW1-81-vuH"/>
-                            <constraint firstItem="atD-kg-YoU" firstAttribute="top" secondItem="4Nl-yc-6r1" secondAttribute="bottom" id="srk-7O-jvv"/>
+                            <constraint firstItem="atD-kg-YoU" firstAttribute="top" secondItem="4Nl-yc-6r1" secondAttribute="bottom" constant="-8" id="srk-7O-jvv"/>
                             <constraint firstItem="Lk0-4a-xEL" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-16" id="uzI-d8-RUH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Lk0-4a-xEL" secondAttribute="bottom" constant="20" id="yZS-Uw-M2o"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Lk0-4a-xEL" secondAttribute="bottom" constant="48" id="yZS-Uw-M2o"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XLS-LB-vuo" secondAttribute="trailing" constant="16" id="yaK-Iw-Uxu"/>
                         </constraints>
                         <connections>
@@ -99,6 +103,7 @@
                     <navigationItem key="navigationItem" id="NjL-t4-h7C"/>
                     <connections>
                         <outlet property="flowerBoxView" destination="Oy6-Al-TqN" id="RIf-qP-cb2"/>
+                        <outlet property="guideLabel" destination="atD-kg-YoU" id="d69-QA-1Lg"/>
                         <outlet property="letterBoxView" destination="4Li-oc-Krj" id="wE9-Yt-N1J"/>
                         <outlet property="quoteLabel" destination="Lk0-4a-xEL" id="2wK-Gj-Ka6"/>
                         <outlet property="swipeRecognizer" destination="Mr4-VP-vue" id="Ax8-tz-vu8"/>
@@ -263,12 +268,15 @@
         <segue reference="DZn-P2-yMT"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="chevron.up" catalog="system" width="128" height="72"/>
+        <image name="chevron.compact.up" catalog="system" width="128" height="43"/>
         <namedColor name="backgroundColor">
             <color red="0.95686274509803926" green="0.95686274509803926" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="heavenLetterBackgroundCOlor">
             <color red="0.82745098039215681" green="0.92549019607843142" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textColor">
+            <color red="0.29019607843137257" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

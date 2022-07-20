@@ -42,13 +42,14 @@ class FlowerBoxView: BoxStyleView, BoxStyle {
         [nameLabel, floriographyLabel].forEach {
             $0.adjustsFontForContentSizeCategory = true
             $0.textAlignment = .center
+            $0.textColor = UIColor(named: "textColor")
             $0.frame.size = $0.intrinsicContentSize
         }
-        nameLabel.font = UIFont.preferredFont(forTextStyle: .headline)
-        floriographyLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        nameLabel.font = UIFont.preferredFont(forTextStyle: .headline, weight: .regular)
+        floriographyLabel.font = UIFont.preferredFont(forTextStyle: .body, weight: .regular)
 
         noFlowerGuideLabel.adjustsFontForContentSizeCategory = true
-        noFlowerGuideLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        noFlowerGuideLabel.font = UIFont.preferredFont(forTextStyle: .headline, weight: .regular)
         noFlowerGuideLabel.textAlignment = .center
         noFlowerGuideLabel.lineBreakMode = .byWordWrapping
 
@@ -243,7 +244,8 @@ class BoxStyleView: UIView {
     // 박스 하단 제목 추가
     fileprivate func setBarTitle(titleText: String = "Test") {
         titleLabel.adjustsFontForContentSizeCategory = true
-        titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .headline, weight: .regular)
+        titleLabel.textColor = UIColor(named: "textColor")
         titleLabel.text = titleText
         addSubview(titleLabel)
 
