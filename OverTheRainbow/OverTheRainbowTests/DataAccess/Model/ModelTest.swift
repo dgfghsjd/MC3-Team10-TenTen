@@ -7,14 +7,10 @@
 
 import XCTest
 @testable import OverTheRainbow
-import RealmSwift
+
 
 class ModelTest: XCTestCase {
-//    var realm: Realm?
-
     override func setUpWithError() throws {
-//        let config = Realm.Configuration(inMemoryIdentifier: "ModelTest")
-//        realm = try! Realm(configuration: config)
     }
 
     override func tearDownWithError() throws {
@@ -22,10 +18,6 @@ class ModelTest: XCTestCase {
     }
 
     func testPet_add() throws {
-//        let pet1 = Pet("name", "species", imgUrl: nil, birth: Date.now, weight: 12)
-//        try! realm!.write {
-//            realm!.add(pet1)
-//        }
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         // Any test you write for XCTest can be annotated as throws and async.
