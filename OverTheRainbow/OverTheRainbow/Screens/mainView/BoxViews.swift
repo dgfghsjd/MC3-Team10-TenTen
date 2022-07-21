@@ -25,7 +25,6 @@ class FlowerBoxView: BoxStyleView, BoxStyle {
     let noFlowerGuideLabel = UILabel()
 
     // 박스의 타이틀 -> Flower,
-    // 꽃의 이미지, 이름, 꽃말을 stackview에 넣어서 올림
     func commonInit() {
         setBarTitle(titleText: "Flower")
         let previewView = UIView()
