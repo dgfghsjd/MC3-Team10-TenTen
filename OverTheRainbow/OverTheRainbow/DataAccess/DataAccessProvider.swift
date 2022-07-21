@@ -40,6 +40,7 @@ protocol DataAccessProvider {
     func chooseFlower(petId: String, flowerId: String) throws -> Void
     
     // TODO: 보내기 (꽃 로그와 편지 상태 -> 보냄으로 변경)
+    func send(_ id: String) throws -> Void
     
     // TODO: 메인 뷰 보여주기
     

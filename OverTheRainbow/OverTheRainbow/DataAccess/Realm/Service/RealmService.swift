@@ -75,6 +75,21 @@ class RealmService: DataAccessProvider {
         }
     }
     
+    func send(_ id: String) throws {
+        let petId = stringToObjectId(id: id)
+        guard let pet: Pet = repository.findById(id: petId) else {
+            throw RealmError.petNotFound
+        }
+        
+        try! realm.write {
+            pet.letters.where { $0.status != .sent }
+                .forEach { $0.status = .sent }
+            
+            pet.flowerLogs.where { $0.status != .sent }
+                .forEach { $0.status = .sent }
+        }
+    }
+    
     func findUnsentLetters(_ id: String) throws -> Array<LetterResultDto> {
         let petId = stringToObjectId(id: id)
         guard let pet: Pet = repository.findById(id: petId) else {
