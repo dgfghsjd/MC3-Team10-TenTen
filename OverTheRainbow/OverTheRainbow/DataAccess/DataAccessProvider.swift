@@ -37,6 +37,7 @@ protocol DataAccessProvider {
     func findAllFlowers() -> Array<FlowerResultDto>
     
     // TODO: 꽃 선택하기 (로그 생성하고 일단 unsent 상태로)
+    func chooseFlower(petId: String, flowerId: String) throws -> Void
     
     // TODO: 보내기 (꽃 로그와 편지 상태 -> 보냄으로 변경)
     

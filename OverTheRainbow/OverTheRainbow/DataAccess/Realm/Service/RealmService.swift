@@ -82,7 +82,7 @@ class RealmService: DataAccessProvider {
         }
         
         return pet.letters
-            .filter { $0.status != .sent }
+            .where { $0.status != .sent }
             .sorted {
                 if $0.status == .saved  { return true }
                 else if $1.status == .saved { return false }
@@ -95,6 +95,35 @@ class RealmService: DataAccessProvider {
         let results: Results<Flower> = repository.findAll()
         return Array(results)
             .map { FlowerResultDto.of($0) }
+    }
+    
+    func chooseFlower(petId: String, flowerId: String) throws {
+        let petId = stringToObjectId(id: petId)
+        guard let pet: Pet = repository.findById(id: petId) else {
+            throw RealmError.petNotFound
+        }
+        let flowerId = stringToObjectId(id: flowerId)
+        guard let flower: Flower = repository.findById(id: flowerId) else {
+            throw RealmError.flowerNotFound
+        }
+        
+        // 남아 있는 log가 있으면 있는 log를 바꾼다.
+        let results: Results<FlowerLog> = repository.findAll().where { $0.status == .unsent }
+        if !results.isEmpty {
+            updateFlower(flower: flower, flowerLog: results[0])
+        }
+        
+        // 남아 있는 log가 없으면 새 log 생성
+        let flowerLog = FlowerLog(flower: flower)
+        try! realm.write {
+            pet.flowerLogs.append(flowerLog)
+        }
+    }
+    
+    private func updateFlower(flower: Flower, flowerLog: FlowerLog) {
+        try! realm.write {
+            flowerLog.flower = flower
+        }
     }
     
     private func stringToObjectId(id: String) -> ObjectId {

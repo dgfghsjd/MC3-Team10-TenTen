@@ -20,4 +20,9 @@ class FlowerLog: RealmModel{
     
     @Persisted
     var createdAt: Date = Date.now
+    
+    convenience init(flower: Flower) {
+        self.init()
+        self.flower = flower
+    }
 }
