@@ -29,6 +29,7 @@ protocol DataAccessProvider {
     func unsaveLetters(_ ids: String...) throws -> Void
     
     // TODO: 보낼 예정인 편지들 가져오기
+    func findUnsentLetters(_ id: String) throws -> Array<LetterResultDto>
     
     // TODO: 보낸 편지 List 가져오기 (보냄 상태 편지 가져오기 + 월별로)
     
@@ -39,5 +40,6 @@ protocol DataAccessProvider {
     
     // TODO: 보내기 (꽃 로그와 편지 상태 -> 보냄으로 변경)
     
+    // TODO: 메인 뷰 보여주기
     
 }

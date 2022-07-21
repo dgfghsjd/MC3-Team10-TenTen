@@ -32,7 +32,8 @@ class RealmService: DataAccessProvider {
     
     func findAllPet() -> Array<PetResultDto> {
         let results: Results<Pet> = repository.findAll()
-        return Array(results).map { PetResultDto.of(pet: $0) }
+        return Array(results)
+            .map { PetResultDto.of(pet: $0) }
     }
     
     func addLetter(_ inputDto: LetterInputDto) throws {
@@ -55,7 +56,7 @@ class RealmService: DataAccessProvider {
             }
             
             try! realm.write {
-                letter.status = .Saved
+                letter.status = .saved
             }
         }
     }
@@ -68,9 +69,25 @@ class RealmService: DataAccessProvider {
             }
             
             try! realm.write {
-                letter.status = .Temporary
+                letter.status = .temporary
             }
         }
+    }
+    
+    func findUnsentLetters(_ id: String) throws -> Array<LetterResultDto> {
+        let petId = stringToObjectId(id: id)
+        guard let pet: Pet = repository.findById(id: petId) else {
+            throw RealmError.petNotFound
+        }
+        
+        return pet.letters
+            .filter { $0.status != .sent }
+            .sorted {
+                if $0.status == .saved  { return true }
+                else if $1.status == .saved { return false }
+                return true
+            }
+            .map { LetterResultDto.of($0) }
     }
 
     
