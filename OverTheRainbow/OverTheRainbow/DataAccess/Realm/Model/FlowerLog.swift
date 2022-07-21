@@ -16,7 +16,7 @@ class FlowerLog: RealmModel{
     var flower: Flower?
     
     @Persisted
-    var isSent: Bool = false
+    var status: FlowerLogStatus = .unsent
     
     @Persisted
     var createdAt: Date = Date.now

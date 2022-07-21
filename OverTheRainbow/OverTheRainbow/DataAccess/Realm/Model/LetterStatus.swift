@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 enum LetterStatus: String, PersistableEnum {
-    case Sent
-    case Saved
-    case Temporary
+    case sent = "SENT"
+    case saved = "SAVED"
+    case temporary = "TEMPORARY"
 }

@@ -22,13 +22,17 @@ class Letter: RealmModel {
     var imgUrl: String?
     
     @Persisted
-    var status: LetterStatus = .Temporary
+    var status: LetterStatus = .temporary
     
     @Persisted
     var createdAt: Date = Date.now
     
     @Persisted
     var updatedAt: Date = Date.now
+    
+    var date: String {
+        get { return DateConverter.dateToString(self.createdAt) }
+    }
     
     convenience init(_ title: String, _ content: String, _ imgUrl: String?) {
         self.init()

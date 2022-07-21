@@ -37,8 +37,6 @@ class Pet: RealmModel {
         return 1
     }
     
-    var id: String { get { _id.stringValue } }
-    
     convenience init(_ name: String, _ species: String, imgUrl: String?, birth: Date, weight: Double) {
         self.init()
         self.name = name
