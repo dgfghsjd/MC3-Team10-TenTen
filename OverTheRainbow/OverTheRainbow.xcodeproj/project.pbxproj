@@ -31,6 +31,7 @@
 		A8509B8E2888D9D600CD88C1 /* DateConveter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B8D2888D9D600CD88C1 /* DateConveter.swift */; };
 		A8509B902888E6D300CD88C1 /* UtilError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B8F2888E6D300CD88C1 /* UtilError.swift */; };
 		A86EE311288788E400084E98 /* OverTheRainbowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86EE310288788E400084E98 /* OverTheRainbowTests.swift */; };
+		A8D95DED288935F500EE02CB /* FlowerResultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D95DEC288935F500EE02CB /* FlowerResultDto.swift */; };
 		C56CDAC4287EE41E00C1F5F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CDAC3287EE41E00C1F5F9 /* AppDelegate.swift */; };
 		C56CDAC6287EE41E00C1F5F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CDAC5287EE41E00C1F5F9 /* SceneDelegate.swift */; };
 		C56CDAC8287EE41E00C1F5F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CDAC7287EE41E00C1F5F9 /* ViewController.swift */; };
@@ -82,6 +83,7 @@
 		A8509B8F2888E6D300CD88C1 /* UtilError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilError.swift; sourceTree = "<group>"; };
 		A86EE30E288788E400084E98 /* OverTheRainbowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OverTheRainbowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A86EE310288788E400084E98 /* OverTheRainbowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverTheRainbowTests.swift; sourceTree = "<group>"; };
+		A8D95DEC288935F500EE02CB /* FlowerResultDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerResultDto.swift; sourceTree = "<group>"; };
 		BE1AAD714EC6C1AF11C4C79B /* Pods-OverTheRainbow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OverTheRainbow.debug.xcconfig"; path = "Target Support Files/Pods-OverTheRainbow/Pods-OverTheRainbow.debug.xcconfig"; sourceTree = "<group>"; };
 		C56CDAC0287EE41E00C1F5F9 /* OverTheRainbow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OverTheRainbow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56CDAC3287EE41E00C1F5F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			children = (
 				A8509B84288838A600CD88C1 /* PetResultDto.swift */,
 				A8509B8A2888D79800CD88C1 /* LetterResultDto.swift */,
+				A8D95DEC288935F500EE02CB /* FlowerResultDto.swift */,
 			);
 			path = Out;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				A8509B77288805ED00CD88C1 /* RealmRepository.swift in Sources */,
 				A8509B902888E6D300CD88C1 /* UtilError.swift in Sources */,
 				A8509B542887996E00CD88C1 /* Flower.swift in Sources */,
+				A8D95DED288935F500EE02CB /* FlowerResultDto.swift in Sources */,
 				A8509B792888066F00CD88C1 /* RealmProvider.swift in Sources */,
 				A8509B832888326800CD88C1 /* RealmError.swift in Sources */,
 				A8509B892888D0E400CD88C1 /* FlowerLogStatus.swift in Sources */,

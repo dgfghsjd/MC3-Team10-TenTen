@@ -91,6 +91,11 @@ class RealmService: DataAccessProvider {
             .map { LetterResultDto.of($0) }
     }
 
+    func findAllFlowers() -> Array<FlowerResultDto> {
+        let results: Results<Flower> = repository.findAll()
+        return Array(results)
+            .map { FlowerResultDto.of($0) }
+    }
     
     private func stringToObjectId(id: String) -> ObjectId {
         return try! ObjectId(string: id)
