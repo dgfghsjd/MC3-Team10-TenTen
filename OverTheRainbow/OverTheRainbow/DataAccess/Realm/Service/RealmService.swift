@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 
+// TODO: Service 구현체 refactor
 class RealmService: DataAccessProvider {
     private let realm: Realm
     private let repository: RealmRepository
@@ -33,6 +34,7 @@ class RealmService: DataAccessProvider {
     
     func findAllPet() -> Array<PetResultDto> {
         let results: Results<Pet> = repository.findAll()
+            .sorted(byKeyPath: "createdAt", ascending: false)
         return Array(results)
             .map { PetResultDto.of(pet: $0) }
     }
@@ -98,11 +100,36 @@ class RealmService: DataAccessProvider {
         
         return pet.letters
             .where { $0.status != .sent }
+            .sorted(byKeyPath: "createdAt", ascending: false)
             .sorted {
                 if $0.status == .saved  { return true }
                 else if $1.status == .saved { return false }
                 return true
             }
+            .map { LetterResultDto.of($0) }
+    }
+    
+    // TODO: sorted refactor
+    func findSentLetters(_ id: String, _ selected: String) throws -> Array<LetterResultDto> {
+        let petId = stringToObjectId(id: id)
+        guard let pet: Pet = repository.findById(id: petId) else {
+            throw RealmError.petNotFound
+        }
+        
+        var selectedDate: Date
+        do {
+            selectedDate = try DateConverter.stringToDate(selected, .yearMonthKr)
+        } catch {
+            throw RealmError.illegalDateArgument
+        }
+        
+        guard let next = Date.getNextMonth(selectedDate) else {
+            throw RealmError.illegalDateArgument
+        }
+        return pet.letters
+            .where { $0.status == .sent }
+            .where { $0.createdAt >= selectedDate && $0.createdAt < next }
+            .sorted(byKeyPath: "createdAt", ascending: false)
             .map { LetterResultDto.of($0) }
     }
 
@@ -144,7 +171,6 @@ class RealmService: DataAccessProvider {
     private func stringToObjectId(id: String) -> ObjectId {
         return try! ObjectId(string: id)
     }
-    
     
     init(_ realm: Realm, _ repository: RealmRepository) {
         self.realm = realm

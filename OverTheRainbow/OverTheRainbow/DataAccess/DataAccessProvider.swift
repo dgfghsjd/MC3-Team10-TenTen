@@ -32,6 +32,7 @@ protocol DataAccessProvider {
     func findUnsentLetters(_ id: String) throws -> Array<LetterResultDto>
     
     // TODO: 보낸 편지 List 가져오기 (보냄 상태 편지 가져오기 + 월별로)
+    func findSentLetters(_ id: String, _ selected: String) throws -> Array<LetterResultDto>
     
     // TODO: 꽃 리스트 보여주기 (선택할 수 있도록)
     func findAllFlowers() -> Array<FlowerResultDto>
