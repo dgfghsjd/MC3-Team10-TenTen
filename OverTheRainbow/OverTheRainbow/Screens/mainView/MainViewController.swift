@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         quoteLabel.text = quotes[Int.random(in: 0...4)]
-        
+
         [guideLabel, quoteLabel].forEach {
             $0.font = UIFont.preferredFont(forTextStyle: .headline, weight: .regular)
         }
@@ -49,17 +49,26 @@ struct Flower {
     let floriography: String
 }
 let flowers = [
-    Flower(title: "꽃1", image: UIImage(systemName: "sun.min")!, floriography: "꽃말1, 꽃말"),
-    Flower(title: "꽃2", image: UIImage(systemName: "sun.dust")!, floriography: "꽃말2, 꽃말"),
-    Flower(title: "꽃3", image: UIImage(systemName: "sun.haze")!, floriography: "꽃말3, 꽃말"),
-    Flower(title: "꽃4", image: UIImage(systemName: "sun.min.fill")!, floriography: "꽃말4, 꽃말"),
-    Flower(title: "꽃5", image: UIImage(systemName: "sun.dust.fill")!, floriography: "꽃말5, 꽃말")
+    Flower(title: "꽃1", image: UIImage(named: "flower1")!, floriography: "꽃말1, 꽃말1"),
+    Flower(title: "꽃2", image: UIImage(named: "flower2")!, floriography: "꽃말2, 꽃말2"),
+    Flower(title: "꽃3", image: UIImage(named: "flower3")!, floriography: "꽃말3, 꽃말3"),
+    Flower(title: "꽃4", image: UIImage(named: "flower4")!, floriography: "꽃말4, 꽃말4"),
+    Flower(title: "꽃5", image: UIImage(named: "flower5")!, floriography: "꽃말5, 꽃말5")
 ]
+
+//let flowers = [
+//    Flower(title: "꽃1", image: UIImage(systemName: "sun.min")!, floriography: "꽃말1, 꽃말1"),
+//    Flower(title: "꽃2", image: UIImage(systemName: "sun.dust")!, floriography: "꽃말2, 꽃말2"),
+//    Flower(title: "꽃3", image: UIImage(systemName: "sun.haze")!, floriography: "꽃말3, 꽃말3"),
+//    Flower(title: "꽃4", image: UIImage(systemName: "sun.min.fill")!, floriography: "꽃말4, 꽃말4"),
+//    Flower(title: "꽃5", image: UIImage(systemName: "sun.dust.fill")!, floriography: "꽃말5, 꽃말5")
+//]
+
 let quotes: [String] = [
     "상처를 치료해줄 사람 어디 없나.\n가만히 놔두다간 끊임없이 덧나.",
-    "위로1",
-    "위로2",
-    "투두1",
+    "(위로1)상처를 치료해줄 사람 어디 없나.\n가만히 놔두다간 끊임없이 덧나.",
+    "(위로2)상처를 치료해줄 사람 어디 없나.\n가만히 놔두다간 끊임없이 덧나.",
+    "(투두1)오늘 하늘은 어떤 모양인가요?\n잠시 걸으며 공기의 냄새를 맡아보아요.",
     "오늘 하늘은 어떤 모양인가요?\n잠시 걸으며 공기의 냄새를 맡아보아요."
 ]
 
