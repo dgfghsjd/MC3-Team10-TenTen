@@ -19,7 +19,7 @@ class LetterStatusTest: XCTestCase {
     }
 
     func testEnumStringIsString() throws {
-        let status: LetterStatus = .Sent
+        let status: LetterStatus = .sent
         XCTAssert(status.rawValue == "Sent")
     }
 }
