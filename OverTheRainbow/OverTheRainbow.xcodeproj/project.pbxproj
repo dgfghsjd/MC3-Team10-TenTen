@@ -26,6 +26,10 @@
 		A8509B832888326800CD88C1 /* RealmError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B822888326800CD88C1 /* RealmError.swift */; };
 		A8509B85288838A600CD88C1 /* PetResultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B84288838A600CD88C1 /* PetResultDto.swift */; };
 		A8509B872888437B00CD88C1 /* LetterInputDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B862888437B00CD88C1 /* LetterInputDto.swift */; };
+		A8509B892888D0E400CD88C1 /* FlowerLogStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B882888D0E400CD88C1 /* FlowerLogStatus.swift */; };
+		A8509B8B2888D79800CD88C1 /* LetterResultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B8A2888D79800CD88C1 /* LetterResultDto.swift */; };
+		A8509B8E2888D9D600CD88C1 /* DateConveter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B8D2888D9D600CD88C1 /* DateConveter.swift */; };
+		A8509B902888E6D300CD88C1 /* UtilError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B8F2888E6D300CD88C1 /* UtilError.swift */; };
 		A86EE311288788E400084E98 /* OverTheRainbowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86EE310288788E400084E98 /* OverTheRainbowTests.swift */; };
 		C56CDAC4287EE41E00C1F5F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CDAC3287EE41E00C1F5F9 /* AppDelegate.swift */; };
 		C56CDAC6287EE41E00C1F5F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CDAC5287EE41E00C1F5F9 /* SceneDelegate.swift */; };
@@ -72,6 +76,10 @@
 		A8509B822888326800CD88C1 /* RealmError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmError.swift; sourceTree = "<group>"; };
 		A8509B84288838A600CD88C1 /* PetResultDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetResultDto.swift; sourceTree = "<group>"; };
 		A8509B862888437B00CD88C1 /* LetterInputDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterInputDto.swift; sourceTree = "<group>"; };
+		A8509B882888D0E400CD88C1 /* FlowerLogStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerLogStatus.swift; sourceTree = "<group>"; };
+		A8509B8A2888D79800CD88C1 /* LetterResultDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterResultDto.swift; sourceTree = "<group>"; };
+		A8509B8D2888D9D600CD88C1 /* DateConveter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConveter.swift; sourceTree = "<group>"; };
+		A8509B8F2888E6D300CD88C1 /* UtilError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilError.swift; sourceTree = "<group>"; };
 		A86EE30E288788E400084E98 /* OverTheRainbowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OverTheRainbowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A86EE310288788E400084E98 /* OverTheRainbowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverTheRainbowTests.swift; sourceTree = "<group>"; };
 		BE1AAD714EC6C1AF11C4C79B /* Pods-OverTheRainbow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OverTheRainbow.debug.xcconfig"; path = "Target Support Files/Pods-OverTheRainbow/Pods-OverTheRainbow.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +138,7 @@
 		27C8AC1E2885406A000D2374 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				A8509B8C2888D9C500CD88C1 /* Util */,
 				C56CDACC287EE41F00C1F5F9 /* Assets.xcassets */,
 			);
 			path = Global;
@@ -169,6 +178,7 @@
 				A8509B4D28878F0C00CD88C1 /* LetterStatus.swift */,
 				A8509B532887996E00CD88C1 /* Flower.swift */,
 				A8509B55288799B400CD88C1 /* FlowerLog.swift */,
+				A8509B882888D0E400CD88C1 /* FlowerLogStatus.swift */,
 				A8509B5728879A3900CD88C1 /* Words.swift */,
 				A8509B7A288819C200CD88C1 /* RealmModel.swift */,
 			);
@@ -242,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				A8509B84288838A600CD88C1 /* PetResultDto.swift */,
+				A8509B8A2888D79800CD88C1 /* LetterResultDto.swift */,
 			);
 			path = Out;
 			sourceTree = "<group>";
@@ -252,6 +263,15 @@
 				A8509B822888326800CD88C1 /* RealmError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		A8509B8C2888D9C500CD88C1 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				A8509B8D2888D9D600CD88C1 /* DateConveter.swift */,
+				A8509B8F2888E6D300CD88C1 /* UtilError.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		A86EE30F288788E400084E98 /* OverTheRainbowTests */ = {
@@ -461,14 +481,18 @@
 				A8509B56288799B400CD88C1 /* FlowerLog.swift in Sources */,
 				27C8AC23288542CD000D2374 /* LetterListViewController.swift in Sources */,
 				C56CDAC8287EE41E00C1F5F9 /* ViewController.swift in Sources */,
+				A8509B8E2888D9D600CD88C1 /* DateConveter.swift in Sources */,
 				A8509B4C28878EA000CD88C1 /* Letter.swift in Sources */,
 				C56CDAC4287EE41E00C1F5F9 /* AppDelegate.swift in Sources */,
 				A8509B77288805ED00CD88C1 /* RealmRepository.swift in Sources */,
+				A8509B902888E6D300CD88C1 /* UtilError.swift in Sources */,
 				A8509B542887996E00CD88C1 /* Flower.swift in Sources */,
 				A8509B792888066F00CD88C1 /* RealmProvider.swift in Sources */,
 				A8509B832888326800CD88C1 /* RealmError.swift in Sources */,
+				A8509B892888D0E400CD88C1 /* FlowerLogStatus.swift in Sources */,
 				C56CDAC6287EE41E00C1F5F9 /* SceneDelegate.swift in Sources */,
 				A8509B80288827CD00CD88C1 /* PetInputDto.swift in Sources */,
+				A8509B8B2888D79800CD88C1 /* LetterResultDto.swift in Sources */,
 				A8509B872888437B00CD88C1 /* LetterInputDto.swift in Sources */,
 				A8509B722888053000CD88C1 /* DataAccessProvider.swift in Sources */,
 				A8509B7B288819C200CD88C1 /* RealmModel.swift in Sources */,
