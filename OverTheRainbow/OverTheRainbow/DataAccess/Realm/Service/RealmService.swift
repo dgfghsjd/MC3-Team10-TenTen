@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 // TODO: Service 구현체 refactor
-class RealmService: DataAccessProvider {
+class RealmService: DataAccessService {
     private let realm: Realm
     private let repository: RealmRepository
     
