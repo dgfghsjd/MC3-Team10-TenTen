@@ -162,6 +162,22 @@ class RealmService: DataAccessProvider {
         }
     }
     
+    func getMainView(_ id: String) throws -> MainViewResultDto {
+        let petId = stringToObjectId(id: id)
+        guard let pet: Pet = repository.findById(id: petId) else {
+            throw RealmError.petNotFound
+        }
+        
+        let flowerLog = pet.flowerLogs
+            .where { $0.status == .unsent }
+            .first
+        let letterCount = pet.letters
+            .where { $0.status != .sent }
+            .count
+        
+        return MainViewResultDto(flowerLog, letterCount)
+    }
+    
     private func updateFlower(flower: Flower, flowerLog: FlowerLog) {
         try! realm.write {
             flowerLog.flower = flower

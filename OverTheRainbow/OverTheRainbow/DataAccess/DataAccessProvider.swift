@@ -44,5 +44,6 @@ protocol DataAccessProvider {
     func send(_ id: String) throws -> Void
     
     // TODO: 메인 뷰 보여주기
+    func getMainView(_ id: String) throws -> MainViewResultDto
     
 }
