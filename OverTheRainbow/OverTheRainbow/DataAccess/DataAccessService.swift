@@ -48,4 +48,7 @@ protocol DataAccessService {
     
     // MARK: 메인 뷰에 필요한 정보 가져오기 (선택한 꽃 Preview, 보내지 않은 편지 개수)
     func getMainView(_ id: String) throws -> MainViewResultDto
+    
+    // MARK: 천국 뷰에 필요한 정보 가져오기 (강아지 사진, 가장 최근 꽃, 그 다음 최근 꽃 6개)
+    func getHeavenView(_ id: String) throws -> HeavenViewResultDto
 }

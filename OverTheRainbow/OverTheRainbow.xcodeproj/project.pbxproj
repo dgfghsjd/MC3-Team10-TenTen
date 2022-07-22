@@ -34,6 +34,8 @@
 		A8A87ED92889753A009E3C6C /* MainViewResultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A87ED82889753A009E3C6C /* MainViewResultDto.swift */; };
 		A8A87EDB288A2C85009E3C6C /* DataAccessProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A87EDA288A2C85009E3C6C /* DataAccessProvider.swift */; };
 		A8A87EDD288A484F009E3C6C /* DataAccessConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A87EDC288A484F009E3C6C /* DataAccessConfig.swift */; };
+		A8A87EDF288A4C8F009E3C6C /* HeavenViewResultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A87EDE288A4C8F009E3C6C /* HeavenViewResultDto.swift */; };
+		A8A87EE2288AE2EB009E3C6C /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A87EE1288AE2EB009E3C6C /* Results.swift */; };
 		A8D95DED288935F500EE02CB /* FlowerResultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D95DEC288935F500EE02CB /* FlowerResultDto.swift */; };
 		A8D95DEF2889593200EE02CB /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D95DEE2889593200EE02CB /* DateFormat.swift */; };
 		A8D95DF12889621400EE02CB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D95DF02889621400EE02CB /* DateExtension.swift */; };
@@ -91,6 +93,8 @@
 		A8A87ED82889753A009E3C6C /* MainViewResultDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewResultDto.swift; sourceTree = "<group>"; };
 		A8A87EDA288A2C85009E3C6C /* DataAccessProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAccessProvider.swift; sourceTree = "<group>"; };
 		A8A87EDC288A484F009E3C6C /* DataAccessConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAccessConfig.swift; sourceTree = "<group>"; };
+		A8A87EDE288A4C8F009E3C6C /* HeavenViewResultDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeavenViewResultDto.swift; sourceTree = "<group>"; };
+		A8A87EE1288AE2EB009E3C6C /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		A8D95DEC288935F500EE02CB /* FlowerResultDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerResultDto.swift; sourceTree = "<group>"; };
 		A8D95DEE2889593200EE02CB /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 		A8D95DF02889621400EE02CB /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 		A8509B732888054B00CD88C1 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
+				A8A87EE0288AE2E3009E3C6C /* Extensions */,
 				A8509B7C2888258800CD88C1 /* Dto */,
 				A8509B75288805E100CD88C1 /* Repository */,
 				A8509B6E288804A800CD88C1 /* Service */,
@@ -269,6 +274,7 @@
 				A8509B8A2888D79800CD88C1 /* LetterResultDto.swift */,
 				A8D95DEC288935F500EE02CB /* FlowerResultDto.swift */,
 				A8A87ED82889753A009E3C6C /* MainViewResultDto.swift */,
+				A8A87EDE288A4C8F009E3C6C /* HeavenViewResultDto.swift */,
 			);
 			path = Out;
 			sourceTree = "<group>";
@@ -297,6 +303,14 @@
 				A86EE310288788E400084E98 /* OverTheRainbowTests.swift */,
 			);
 			path = OverTheRainbowTests;
+			sourceTree = "<group>";
+		};
+		A8A87EE0288AE2E3009E3C6C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A8A87EE1288AE2EB009E3C6C /* Results.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		A8D95DF22889629300EE02CB /* Date */ = {
@@ -530,12 +544,14 @@
 				A8509B56288799B400CD88C1 /* FlowerLog.swift in Sources */,
 				A8D95DF12889621400EE02CB /* DateExtension.swift in Sources */,
 				27C8AC23288542CD000D2374 /* LetterListViewController.swift in Sources */,
+				A8A87EE2288AE2EB009E3C6C /* Results.swift in Sources */,
 				C56CDAC8287EE41E00C1F5F9 /* ViewController.swift in Sources */,
 				A8509B8E2888D9D600CD88C1 /* DateConveter.swift in Sources */,
 				A8509B4C28878EA000CD88C1 /* Letter.swift in Sources */,
 				C56CDAC4287EE41E00C1F5F9 /* AppDelegate.swift in Sources */,
 				A8509B77288805ED00CD88C1 /* RealmRepository.swift in Sources */,
 				A8509B902888E6D300CD88C1 /* UtilError.swift in Sources */,
+				A8A87EDF288A4C8F009E3C6C /* HeavenViewResultDto.swift in Sources */,
 				A8509B542887996E00CD88C1 /* Flower.swift in Sources */,
 				A8D95DED288935F500EE02CB /* FlowerResultDto.swift in Sources */,
 				A8A87EDB288A2C85009E3C6C /* DataAccessProvider.swift in Sources */,

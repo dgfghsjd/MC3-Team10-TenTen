@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 // TODO: Service 구현체 refactor
+// TODO: updatedAt 구현
 class RealmService: DataAccessService {
     private let realm: Realm
     private let repository: RealmRepository
@@ -35,7 +36,7 @@ class RealmService: DataAccessService {
     func findAllPet() -> Array<PetResultDto> {
         let results: Results<Pet> = repository.findAll()
             .sorted(byKeyPath: "createdAt", ascending: false)
-        return Array(results)
+        return results.toArray()
             .map { PetResultDto.of(pet: $0) }
     }
     
@@ -135,7 +136,7 @@ class RealmService: DataAccessService {
 
     func findAllFlowers() -> Array<FlowerResultDto> {
         let results: Results<Flower> = repository.findAll()
-        return Array(results)
+        return results.toArray()
             .map { FlowerResultDto.of($0) }
     }
     
@@ -176,6 +177,18 @@ class RealmService: DataAccessService {
             .count
         
         return MainViewResultDto(flowerLog, letterCount)
+    }
+    
+    func getHeavenView(_ id: String) throws -> HeavenViewResultDto {
+        let petId = stringToObjectId(id: id)
+        guard let pet: Pet = repository.findById(id: petId) else {
+            throw RealmError.petNotFound
+        }
+        
+        let flowerLogs = pet.flowerLogs
+            .where { $0.status == .sent }
+            .sorted(byKeyPath: "createdAt", ascending: false)
+        return HeavenViewResultDto.of(flowerLogs.toArray())
     }
     
     private func updateFlower(flower: Flower, flowerLog: FlowerLog) {
