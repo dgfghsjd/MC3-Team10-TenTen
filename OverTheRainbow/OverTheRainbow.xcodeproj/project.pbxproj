@@ -36,6 +36,7 @@
 		A8A87EDD288A484F009E3C6C /* DataAccessConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A87EDC288A484F009E3C6C /* DataAccessConfig.swift */; };
 		A8A87EDF288A4C8F009E3C6C /* HeavenViewResultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A87EDE288A4C8F009E3C6C /* HeavenViewResultDto.swift */; };
 		A8A87EE2288AE2EB009E3C6C /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A87EE1288AE2EB009E3C6C /* Results.swift */; };
+		A8A87EE4288B845A009E3C6C /* WordResultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A87EE3288B845A009E3C6C /* WordResultDto.swift */; };
 		A8D95DED288935F500EE02CB /* FlowerResultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D95DEC288935F500EE02CB /* FlowerResultDto.swift */; };
 		A8D95DEF2889593200EE02CB /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D95DEE2889593200EE02CB /* DateFormat.swift */; };
 		A8D95DF12889621400EE02CB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D95DF02889621400EE02CB /* DateExtension.swift */; };
@@ -95,6 +96,7 @@
 		A8A87EDC288A484F009E3C6C /* DataAccessConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAccessConfig.swift; sourceTree = "<group>"; };
 		A8A87EDE288A4C8F009E3C6C /* HeavenViewResultDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeavenViewResultDto.swift; sourceTree = "<group>"; };
 		A8A87EE1288AE2EB009E3C6C /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
+		A8A87EE3288B845A009E3C6C /* WordResultDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordResultDto.swift; sourceTree = "<group>"; };
 		A8D95DEC288935F500EE02CB /* FlowerResultDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerResultDto.swift; sourceTree = "<group>"; };
 		A8D95DEE2889593200EE02CB /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 		A8D95DF02889621400EE02CB /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				A8D95DEC288935F500EE02CB /* FlowerResultDto.swift */,
 				A8A87ED82889753A009E3C6C /* MainViewResultDto.swift */,
 				A8A87EDE288A4C8F009E3C6C /* HeavenViewResultDto.swift */,
+				A8A87EE3288B845A009E3C6C /* WordResultDto.swift */,
 			);
 			path = Out;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				A8509B77288805ED00CD88C1 /* RealmRepository.swift in Sources */,
 				A8509B902888E6D300CD88C1 /* UtilError.swift in Sources */,
 				A8A87EDF288A4C8F009E3C6C /* HeavenViewResultDto.swift in Sources */,
+				A8A87EE4288B845A009E3C6C /* WordResultDto.swift in Sources */,
 				A8509B542887996E00CD88C1 /* Flower.swift in Sources */,
 				A8D95DED288935F500EE02CB /* FlowerResultDto.swift in Sources */,
 				A8A87EDB288A2C85009E3C6C /* DataAccessProvider.swift in Sources */,

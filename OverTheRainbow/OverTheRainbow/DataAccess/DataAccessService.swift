@@ -46,7 +46,7 @@ protocol DataAccessService {
     // MARK: 편지와 꽃 보내기 (FlowerLog, Letter의 status를 모두 보냄 상태로 변경)
     func send(_ id: String) throws -> Void
     
-    // MARK: 메인 뷰에 필요한 정보 가져오기 (선택한 꽃 Preview, 보내지 않은 편지 개수)
+    // MARK: 메인 뷰에 필요한 정보 가져오기 (선택한 꽃 Preview, 보내지 않은 편지 개수, 격려의 말)
     func getMainView(_ id: String) throws -> MainViewResultDto
     
     // MARK: 천국 뷰에 필요한 정보 가져오기 (강아지 사진, 가장 최근 꽃, 그 다음 최근 꽃 6개)

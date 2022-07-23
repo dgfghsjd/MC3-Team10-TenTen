@@ -169,6 +169,11 @@ class RealmService: DataAccessService {
             throw RealmError.petNotFound
         }
         
+        guard let word: Words = repository.findRandomOne() else {
+            throw RealmError.wordNotFound
+        }
+        
+        
         let flowerLog = pet.flowerLogs
             .where { $0.status == .unsent }
             .first
@@ -176,7 +181,8 @@ class RealmService: DataAccessService {
             .where { $0.status != .sent }
             .count
         
-        return MainViewResultDto(flowerLog, letterCount)
+        
+        return MainViewResultDto(flowerLog, letterCount, word)
     }
     
     func getHeavenView(_ id: String) throws -> HeavenViewResultDto {

@@ -30,6 +30,10 @@ class RealmRepository {
         return result
     }
     
+    func findRandomOne<T: Object>() -> T? {
+        return realm.objects(T.self).getRandomFirst()
+    }
+    
     init(realm: Realm) {
         self.realm = realm;
     }
