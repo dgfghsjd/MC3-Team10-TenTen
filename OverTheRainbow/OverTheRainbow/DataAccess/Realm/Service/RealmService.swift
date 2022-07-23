@@ -9,7 +9,9 @@
 import Foundation
 import RealmSwift
 
-class RealmService: DataAccessProvider {
+// TODO: Service 구현체 refactor
+// TODO: updatedAt 구현
+class RealmService: DataAccessService {
     private let realm: Realm
     private let repository: RealmRepository
     
@@ -33,7 +35,8 @@ class RealmService: DataAccessProvider {
     
     func findAllPet() -> Array<PetResultDto> {
         let results: Results<Pet> = repository.findAll()
-        return Array(results)
+            .sorted(byKeyPath: "createdAt", ascending: false)
+        return results.toArray()
             .map { PetResultDto.of(pet: $0) }
     }
     
@@ -75,6 +78,21 @@ class RealmService: DataAccessProvider {
         }
     }
     
+    func send(_ id: String) throws {
+        let petId = stringToObjectId(id: id)
+        guard let pet: Pet = repository.findById(id: petId) else {
+            throw RealmError.petNotFound
+        }
+        
+        try! realm.write {
+            pet.letters.where { $0.status != .sent }
+                .forEach { $0.status = .sent }
+            
+            pet.flowerLogs.where { $0.status != .sent }
+                .forEach { $0.status = .sent }
+        }
+    }
+    
     func findUnsentLetters(_ id: String) throws -> Array<LetterResultDto> {
         let petId = stringToObjectId(id: id)
         guard let pet: Pet = repository.findById(id: petId) else {
@@ -82,7 +100,8 @@ class RealmService: DataAccessProvider {
         }
         
         return pet.letters
-            .filter { $0.status != .sent }
+            .where { $0.status != .sent }
+            .sorted(byKeyPath: "createdAt", ascending: false)
             .sorted {
                 if $0.status == .saved  { return true }
                 else if $1.status == .saved { return false }
@@ -90,12 +109,103 @@ class RealmService: DataAccessProvider {
             }
             .map { LetterResultDto.of($0) }
     }
+    
+    // TODO: sorted refactor
+    func findSentLetters(_ id: String, _ selected: String) throws -> Array<LetterResultDto> {
+        let petId = stringToObjectId(id: id)
+        guard let pet: Pet = repository.findById(id: petId) else {
+            throw RealmError.petNotFound
+        }
+        
+        var selectedDate: Date
+        do {
+            selectedDate = try DateConverter.stringToDate(selected, .yearMonthKr)
+        } catch {
+            throw RealmError.illegalDateArgument
+        }
+        
+        guard let next = Date.getNextMonth(selectedDate) else {
+            throw RealmError.illegalDateArgument
+        }
+        return pet.letters
+            .where { $0.status == .sent }
+            .where { $0.createdAt >= selectedDate && $0.createdAt < next }
+            .sorted(byKeyPath: "createdAt", ascending: false)
+            .map { LetterResultDto.of($0) }
+    }
 
+    func findAllFlowers() -> Array<FlowerResultDto> {
+        let results: Results<Flower> = repository.findAll()
+        return results.toArray()
+            .map { FlowerResultDto.of($0) }
+    }
+    
+    func chooseFlower(petId: String, flowerId: String) throws {
+        let petId = stringToObjectId(id: petId)
+        guard let pet: Pet = repository.findById(id: petId) else {
+            throw RealmError.petNotFound
+        }
+        let flowerId = stringToObjectId(id: flowerId)
+        guard let flower: Flower = repository.findById(id: flowerId) else {
+            throw RealmError.flowerNotFound
+        }
+        
+        // 남아 있는 log가 있으면 있는 log를 바꾼다.
+        let results: Results<FlowerLog> = repository.findAll().where { $0.status == .unsent }
+        if !results.isEmpty {
+            updateFlower(flower: flower, flowerLog: results[0])
+        }
+        
+        // 남아 있는 log가 없으면 새 log 생성
+        let flowerLog = FlowerLog(flower: flower)
+        try! realm.write {
+            pet.flowerLogs.append(flowerLog)
+        }
+    }
+    
+    func getMainView(_ id: String) throws -> MainViewResultDto {
+        let petId = stringToObjectId(id: id)
+        guard let pet: Pet = repository.findById(id: petId) else {
+            throw RealmError.petNotFound
+        }
+        
+        guard let word: Words = repository.findRandomOne() else {
+            throw RealmError.wordNotFound
+        }
+        
+        
+        let flowerLog = pet.flowerLogs
+            .where { $0.status == .unsent }
+            .first
+        let letterCount = pet.letters
+            .where { $0.status != .sent }
+            .count
+        
+        
+        return MainViewResultDto(flowerLog, letterCount, word)
+    }
+    
+    func getHeavenView(_ id: String) throws -> HeavenViewResultDto {
+        let petId = stringToObjectId(id: id)
+        guard let pet: Pet = repository.findById(id: petId) else {
+            throw RealmError.petNotFound
+        }
+        
+        let flowerLogs = pet.flowerLogs
+            .where { $0.status == .sent }
+            .sorted(byKeyPath: "createdAt", ascending: false)
+        return HeavenViewResultDto.of(flowerLogs.toArray())
+    }
+    
+    private func updateFlower(flower: Flower, flowerLog: FlowerLog) {
+        try! realm.write {
+            flowerLog.flower = flower
+        }
+    }
     
     private func stringToObjectId(id: String) -> ObjectId {
         return try! ObjectId(string: id)
     }
-    
     
     init(_ realm: Realm, _ repository: RealmRepository) {
         self.realm = realm
