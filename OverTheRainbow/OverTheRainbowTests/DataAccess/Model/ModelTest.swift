@@ -8,7 +8,6 @@
 import XCTest
 @testable import OverTheRainbow
 
-
 class ModelTest: XCTestCase {
     override func setUpWithError() throws {
     }

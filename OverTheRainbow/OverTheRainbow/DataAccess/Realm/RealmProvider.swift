@@ -4,6 +4,7 @@
 //
 //  Created by Leo Bang on 2022/07/20.
 //
+// swiftlint:disable force_try
 
 import Foundation
 import RealmSwift
