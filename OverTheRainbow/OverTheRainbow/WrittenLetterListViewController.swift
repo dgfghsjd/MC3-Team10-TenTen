@@ -7,10 +7,12 @@
 
 import UIKit
 
-class WrittenLetterViewController: UIViewController {
+class WrittenLetterListViewController: UIViewController {
 
+    @IBOutlet weak var listNavBar: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        listNavBar.title = "리스트"
         // Do any additional setup after loading the view.
     }
 

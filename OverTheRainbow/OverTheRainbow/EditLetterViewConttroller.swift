@@ -1,5 +1,5 @@
 //
-//  WrittenLetterViewController.swift
+//  EditLetterViewConttroller.swift
 //  OverTheRainbow
 //
 //  Created by SeungHwanKim on 2022/07/25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WrittenLetterViewController: UIViewController {
+class EditLetterViewConttroller: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
