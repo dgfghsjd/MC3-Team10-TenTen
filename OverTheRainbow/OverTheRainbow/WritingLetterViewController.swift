@@ -29,8 +29,8 @@ class WritingLetterViewController: UIViewController, UITextViewDelegate {
         button.setTitle("취소", for: .normal)
         button.sizeToFit()
         button.tintColor = UIColor(named: "textColor")
-
         writingLetterNavBar.leftBarButtonItem = UIBarButtonItem(customView: button)
+        button.addTarget(self, action: #selector(showActionSheet), for: .touchUpInside)
         openGallery.layer.cornerRadius = 10
 
         let largeSymbol = UIImage.SymbolConfiguration(pointSize: 86, weight: .bold, scale: .large)
@@ -39,8 +39,6 @@ class WritingLetterViewController: UIViewController, UITextViewDelegate {
         selectPicture.setImage(largeBoldButton, for: .normal)
         selectPicture.tintColor = UIColor(named: "textColor")
         selectPicture.addTarget(self, action: #selector(pickImage), for: .touchUpInside)
-        
-
         letterTitle.placeholder = "제목을 작성해주세요"
 
         letterContent.delegate = self
@@ -53,9 +51,25 @@ class WritingLetterViewController: UIViewController, UITextViewDelegate {
         dateFormatter.dateFormat = "yyyy.MM.dd"
         writingDate.text = dateFormatter.string(from: date)
         }
+
+    @objc func showActionSheet() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let first = UIAlertAction(title: "임시 저장", style: .default){action in print("1")}
+        
+        let second = UIAlertAction(title: "임시저장 삭제", style: .destructive){action in print("2")}
+        let cancel = UIAlertAction(title: "취소", style: .cancel){action in print("3")}
+        
+        actionSheet.addAction(first)
+        
+        actionSheet.addAction(second)
+        actionSheet.addAction(cancel)
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
 }
 
-extension ViewController :  UITextViewDelegate {
+extension ViewController : UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
@@ -73,34 +87,31 @@ extension ViewController :  UITextViewDelegate {
 
 @available(iOS 14, *)
 extension WritingLetterViewController: PHPickerViewControllerDelegate {
-    @objc func pickImage(sender: UIButton){
+    @objc func pickImage(sender: UIButton) {
         selectPicture = sender
-            var configuration = PHPickerConfiguration()
+        var configuration = PHPickerConfiguration()
 //    이미지 정보를 가지고 올 필요가 있을땐 photolibarary 를 사용해준다. //use when need image file info.
 //            let photoLibrary = PHPhotoLibrary.shared()
 //            var configuration = PHPickerConfiguration(photoLibrary: photoLibrary)
 
-            configuration.selectionLimit = 1 //한번에 가지고 올 이미지 갯수 제한 //limit selectable image counts
-            configuration.filter = .any(of: [.images])
-            
-            let picker = PHPickerViewController(configuration: configuration)
-            picker.delegate = self
-            self.present(picker, animated: true, completion: nil)
+        configuration.selectionLimit = 1 //한번에 가지고 올 이미지 갯수 제한 //limit selectable image counts
+        configuration.filter = .any(of: [.images])
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        self.present(picker, animated: true, completion: nil)
     }
-    
-    
+
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-          
+
         var imgData: Data?
         var img: UIImage?
-        
-        
+
+
         picker.dismiss(animated: true, completion: nil)
-        
         let itemProvider = results.first?.itemProvider
-        
+
         if let itemProvider = itemProvider,
-           itemProvider.canLoadObject(ofClass: UIImage.self){
+           itemProvider.canLoadObject(ofClass: UIImage.self) {
             itemProvider.loadObject(ofClass: UIImage.self) {
                 (image, error) in
                 DispatchQueue.main.async {
@@ -108,6 +119,5 @@ extension WritingLetterViewController: PHPickerViewControllerDelegate {
                 }
             }
         }
-       
     }
 }
