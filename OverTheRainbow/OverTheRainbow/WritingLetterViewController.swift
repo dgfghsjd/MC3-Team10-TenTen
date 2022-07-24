@@ -52,21 +52,22 @@ class WritingLetterViewController: UIViewController, UITextViewDelegate {
         writingDate.text = dateFormatter.string(from: date)
         }
 
+    @IBAction func doneWritingLetter(_ sender: UIBarButtonItem) {
+        print("작성을 완료했습니다.")
+        dismiss(animated: true)
+    }
+
     @objc func showActionSheet() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
         let first = UIAlertAction(title: "임시 저장", style: .default){action in print("1")}
-        
         let second = UIAlertAction(title: "임시저장 삭제", style: .destructive){action in print("2")}
         let cancel = UIAlertAction(title: "취소", style: .cancel){action in print("3")}
-        
+
         actionSheet.addAction(first)
-        
         actionSheet.addAction(second)
         actionSheet.addAction(cancel)
         present(actionSheet, animated: true, completion: nil)
     }
-    
 }
 
 extension ViewController : UITextViewDelegate {
