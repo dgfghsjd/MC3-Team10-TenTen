@@ -50,11 +50,23 @@ class WritingLetterViewController: UIViewController, UITextViewDelegate {
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = "yyyy.MM.dd"
         writingDate.text = dateFormatter.string(from: date)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+
+            //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+            //tap.cancelsTouchesInView = false
+
+            view.addGestureRecognizer(tap)
         }
 
     @IBAction func doneWritingLetter(_ sender: UIBarButtonItem) {
         print("작성을 완료했습니다.")
         dismiss(animated: true)
+    }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
 
     @objc func showActionSheet() {
