@@ -59,9 +59,15 @@ class WritingLetterViewController: UIViewController, UITextViewDelegate {
 
     @objc func showActionSheet() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let first = UIAlertAction(title: "임시 저장", style: .default){action in print("1")}
-        let second = UIAlertAction(title: "임시저장 삭제", style: .destructive){action in print("2")}
-        let cancel = UIAlertAction(title: "취소", style: .cancel){action in print("3")}
+        let first = UIAlertAction(title: "임시 저장", style: .default) {
+            action in print("1")
+            self.dismiss(animated: true)
+        }
+        let second = UIAlertAction(title: "임시저장 삭제", style: .destructive) {
+            action in print("2")
+            self.dismiss(animated: true)
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel){action in}
 
         actionSheet.addAction(first)
         actionSheet.addAction(second)
