@@ -43,27 +43,18 @@ class MainViewController: UIViewController {
 #if DEBUG
 // mockupdata
 
-struct Flower {
+struct FlowerMockUpData {
     let title: String
     let image: UIImage
     let floriography: String
 }
-let flowers = [
-    Flower(title: "꽃1", image: UIImage(named: "flower1")!, floriography: "꽃말1, 꽃말1"),
-    Flower(title: "꽃2", image: UIImage(named: "flower2")!, floriography: "꽃말2, 꽃말2"),
-    Flower(title: "꽃3", image: UIImage(named: "flower3")!, floriography: "꽃말3, 꽃말3"),
-    Flower(title: "꽃4", image: UIImage(named: "flower4")!, floriography: "꽃말4, 꽃말4"),
-    Flower(title: "꽃5", image: UIImage(named: "flower5")!, floriography: "꽃말5, 꽃말5")
+let mockUpFlowers = [
+    FlowerMockUpData(title: "꽃1", image: UIImage(named: "flower1")!, floriography: "꽃말1, 꽃말1"),
+    FlowerMockUpData(title: "꽃2", image: UIImage(named: "flower2")!, floriography: "꽃말2, 꽃말2"),
+    FlowerMockUpData(title: "꽃3", image: UIImage(named: "flower3")!, floriography: "꽃말3, 꽃말3"),
+    FlowerMockUpData(title: "꽃4", image: UIImage(named: "flower4")!, floriography: "꽃말4, 꽃말4"),
+    FlowerMockUpData(title: "꽃5", image: UIImage(named: "flower5")!, floriography: "꽃말5, 꽃말5")
 ]
-
-//let flowers = [
-//    Flower(title: "꽃1", image: UIImage(systemName: "sun.min")!, floriography: "꽃말1, 꽃말1"),
-//    Flower(title: "꽃2", image: UIImage(systemName: "sun.dust")!, floriography: "꽃말2, 꽃말2"),
-//    Flower(title: "꽃3", image: UIImage(systemName: "sun.haze")!, floriography: "꽃말3, 꽃말3"),
-//    Flower(title: "꽃4", image: UIImage(systemName: "sun.min.fill")!, floriography: "꽃말4, 꽃말4"),
-//    Flower(title: "꽃5", image: UIImage(systemName: "sun.dust.fill")!, floriography: "꽃말5, 꽃말5")
-//]
-
 let quotes: [String] = [
     "상처를 치료해줄 사람 어디 없나.\n가만히 놔두다간 끊임없이 덧나.",
     "(위로1)상처를 치료해줄 사람 어디 없나.\n가만히 놔두다간 끊임없이 덧나.",

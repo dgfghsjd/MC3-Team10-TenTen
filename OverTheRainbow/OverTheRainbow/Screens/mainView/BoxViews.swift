@@ -102,9 +102,9 @@ class FlowerBoxView: BoxStyleView, BoxStyle {
             }
             noFlowerGuideLabel.alpha = 0
 
-            imageView.image = flowers[flowerIndex ?? 0].image
-            nameLabel.text = flowers[flowerIndex ?? 0].title
-            floriographyLabel.text = flowers[flowerIndex ?? 0].floriography
+            imageView.image = mockUpFlowers[flowerIndex ?? 0].image
+            nameLabel.text = mockUpFlowers[flowerIndex ?? 0].title
+            floriographyLabel.text = mockUpFlowers[flowerIndex ?? 0].floriography
 
             nameLabel.frame.size = nameLabel.intrinsicContentSize
             floriographyLabel.frame.size = floriographyLabel.intrinsicContentSize
