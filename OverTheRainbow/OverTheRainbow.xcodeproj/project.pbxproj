@@ -18,7 +18,6 @@
 		C56CDACD287EE41F00C1F5F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C56CDACC287EE41F00C1F5F9 /* Assets.xcassets */; };
 		C56CDAD0287EE41F00C1F5F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56CDACE287EE41F00C1F5F9 /* LaunchScreen.storyboard */; };
 		C5F7E8BA2887F03500F6B409 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F7E8B92887F03500F6B409 /* FontExtension.swift */; };
-		C5F7E8BC288876B000F6B409 /* TransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F7E8BB288876B000F6B409 /* TransitionController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 		C56CDACF287EE41F00C1F5F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C56CDAD1287EE41F00C1F5F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5F7E8B92887F03500F6B409 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
-		C5F7E8BB288876B000F6B409 /* TransitionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +86,6 @@
 				C5345AF7288649C9007CF796 /* MainViewController.swift */,
 				C5345AFB28864E86007CF796 /* BoxViews.swift */,
 				C5F7E8B92887F03500F6B409 /* FontExtension.swift */,
-				C5F7E8BB288876B000F6B409 /* TransitionController.swift */,
 			);
 			path = mainView;
 			sourceTree = "<group>";
@@ -218,7 +215,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5F7E8BC288876B000F6B409 /* TransitionController.swift in Sources */,
 				27C8AC23288542CD000D2374 /* LetterListViewController.swift in Sources */,
 				C56CDAC8287EE41E00C1F5F9 /* ViewController.swift in Sources */,
 				C5F7E8BA2887F03500F6B409 /* FontExtension.swift in Sources */,
