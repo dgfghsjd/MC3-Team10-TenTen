@@ -19,25 +19,19 @@ class FlowerBoxView: BoxStyleView, BoxStyle {
     }
 
     // 프리뷰 업데이트시 필요한 프로퍼티
-    let stackView = UIStackView()
     var imageView = UIImageView()
     var nameLabel = UILabel()
     var floriographyLabel = UILabel() // 꽃말
     let noFlowerGuideLabel = UILabel()
 
     // 박스의 타이틀 -> Flower,
-    // 꽃의 이미지, 이름, 꽃말을 stackview에 넣어서 올림
     func commonInit() {
         setBarTitle(titleText: "Flower")
         let previewView = UIView()
 
-        stackView.axis = NSLayoutConstraint.Axis.vertical
-        stackView.distribution = UIStackView.Distribution.equalSpacing
-        stackView.spacing = 0.0
-
-        stackView.addArrangedSubview(imageView)
-        stackView.addArrangedSubview(nameLabel)
-        stackView.addArrangedSubview(floriographyLabel)
+        [imageView, nameLabel, floriographyLabel].forEach {
+            previewView.addSubview($0)
+        }
 
         [nameLabel, floriographyLabel].forEach {
             $0.adjustsFontForContentSizeCategory = true
@@ -45,6 +39,7 @@ class FlowerBoxView: BoxStyleView, BoxStyle {
             $0.textColor = UIColor(named: "textColor")
             $0.frame.size = $0.intrinsicContentSize
         }
+        
         nameLabel.font = UIFont.preferredFont(forTextStyle: .headline, weight: .regular)
         floriographyLabel.font = UIFont.preferredFont(forTextStyle: .body, weight: .regular)
 
@@ -53,19 +48,35 @@ class FlowerBoxView: BoxStyleView, BoxStyle {
         noFlowerGuideLabel.textAlignment = .center
         noFlowerGuideLabel.lineBreakMode = .byWordWrapping
 
-        previewView.addSubview(stackView)
         previewView.addSubview(noFlowerGuideLabel)
 
-        imageView.contentMode = .scaleAspectFit
+        // imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
 
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        noFlowerGuideLabel.translatesAutoresizingMaskIntoConstraints = false
+        [imageView, nameLabel, floriographyLabel, noFlowerGuideLabel].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+
         NSLayoutConstraint.activate([
-            imageView.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.7),
-            stackView.centerXAnchor.constraint(equalTo: previewView.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: previewView.centerYAnchor, constant: -16),
-            stackView.widthAnchor.constraint(equalTo: previewView.widthAnchor),
-            stackView.topAnchor.constraint(lessThanOrEqualTo: previewView.topAnchor, constant: 16),
+            imageView.topAnchor.constraint(greaterThanOrEqualTo: previewView.topAnchor, constant: 8),
+            imageView.centerYAnchor.constraint(equalTo: previewView.centerYAnchor),
+            imageView.heightAnchor.constraint(equalTo: previewView.heightAnchor, multiplier: 0.7),
+            imageView.centerXAnchor.constraint(equalTo: previewView.centerXAnchor),
+            imageView.leadingAnchor.constraint(greaterThanOrEqualTo: previewView.leadingAnchor),
+            imageView.trailingAnchor.constraint(greaterThanOrEqualTo: previewView.trailingAnchor),
+
+            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 4),
+            nameLabel.centerXAnchor.constraint(equalTo: previewView.centerXAnchor),
+            nameLabel.leadingAnchor.constraint(greaterThanOrEqualTo: previewView.leadingAnchor),
+            nameLabel.trailingAnchor.constraint(greaterThanOrEqualTo: previewView.trailingAnchor),
+            nameLabel.bottomAnchor.constraint(equalTo: floriographyLabel.topAnchor, constant: 4),
+
+            floriographyLabel.centerXAnchor.constraint(equalTo: previewView.centerXAnchor),
+            floriographyLabel.leadingAnchor.constraint(greaterThanOrEqualTo: previewView.leadingAnchor),
+            floriographyLabel.trailingAnchor.constraint(greaterThanOrEqualTo: previewView.trailingAnchor),
+            floriographyLabel.bottomAnchor.constraint(greaterThanOrEqualTo: previewView.bottomAnchor),
+
             noFlowerGuideLabel.centerXAnchor.constraint(equalTo: previewView.centerXAnchor),
             noFlowerGuideLabel.centerYAnchor.constraint(equalTo: previewView.centerYAnchor, constant: -16)
         ])
@@ -76,7 +87,9 @@ class FlowerBoxView: BoxStyleView, BoxStyle {
     // 꽃 이미지, 꽃 이름, 꽃말 업데이트
     func updatePreview(flowerIndex: Int? = nil, didFlowerToday: Bool = false) {
         if flowerIndex == nil {
-            stackView.alpha = 0
+            [imageView, nameLabel, floriographyLabel].forEach {
+                $0.alpha = 0
+            }
             if didFlowerToday {
                 noFlowerGuideLabel.text = "헌화를 했습니다."
             } else {
@@ -84,12 +97,14 @@ class FlowerBoxView: BoxStyleView, BoxStyle {
             }
             noFlowerGuideLabel.alpha = 1
         } else {
-            stackView.alpha = 1
+            [imageView, nameLabel, floriographyLabel].forEach {
+                $0.alpha = 1
+            }
             noFlowerGuideLabel.alpha = 0
 
-            imageView.image = flowers[flowerIndex ?? 0].image
-            nameLabel.text = flowers[flowerIndex ?? 0].title
-            floriographyLabel.text = flowers[flowerIndex ?? 0].floriography
+            imageView.image = mockUpFlowers[flowerIndex ?? 0].image
+            nameLabel.text = mockUpFlowers[flowerIndex ?? 0].title
+            floriographyLabel.text = mockUpFlowers[flowerIndex ?? 0].floriography
 
             nameLabel.frame.size = nameLabel.intrinsicContentSize
             floriographyLabel.frame.size = floriographyLabel.intrinsicContentSize
@@ -261,6 +276,8 @@ class BoxStyleView: UIView {
         addSubview(previewView)
         previewView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            previewView.topAnchor.constraint(lessThanOrEqualTo: topAnchor),
+            previewView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
             previewView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
             previewView.centerXAnchor.constraint(equalTo: centerXAnchor),
             previewView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.9),
