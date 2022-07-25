@@ -188,10 +188,10 @@
             </objects>
             <point key="canvasLocation" x="1750" y="800"/>
         </scene>
-        <!--View Controller-->
+        <!--Test Heaven View Controller-->
         <scene sceneID="Bad-QJ-bKF">
             <objects>
-                <viewController storyboardIdentifier="HEAVENVIEW" id="L6k-xh-uim" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HEAVENVIEW" id="L6k-xh-uim" customClass="TestHeavenViewController" customModule="OverTheRainbow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ng8-pV-sXZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -214,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Inr-a0-Rfe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="867" y="-733"/>
+            <point key="canvasLocation" x="866.66666666666674" y="-733.25892857142856"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="L0N-yT-Ip8">
@@ -255,10 +255,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
+                        <outlet property="delegate" destination="hYb-ML-DOn" id="XvR-xu-qxD"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="0ir-i7-DkD"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TiX-C4-puy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <customObject id="hYb-ML-DOn" customClass="NavigationControllerDelegate" customModule="OverTheRainbow" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="2.8985507246376816" y="22.767857142857142"/>
         </scene>
