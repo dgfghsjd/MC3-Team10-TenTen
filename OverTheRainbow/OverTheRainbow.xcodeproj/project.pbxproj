@@ -8,12 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		27C8AC23288542CD000D2374 /* LetterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C8AC22288542CD000D2374 /* LetterListViewController.swift */; };
-		27C8AC25288542DC000D2374 /* TempFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C8AC24288542DC000D2374 /* TempFile.swift */; };
-		C5345AF8288649C9007CF796 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5345AF7288649C9007CF796 /* MainViewController.swift */; };
-		C5345AFC28864E86007CF796 /* BoxViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5345AFB28864E86007CF796 /* BoxViews.swift */; };
-		C554EA18288E603200954E11 /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C554EA14288E603100954E11 /* TransitionAnimation.swift */; };
-		C554EA1A288E603200954E11 /* NavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C554EA16288E603200954E11 /* NavigationControllerDelegate.swift */; };
-		C554EA1B288E603200954E11 /* TestHeavenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C554EA17288E603200954E11 /* TestHeavenViewController.swift */; };
+		662A14E5288D593900A06517 /* MainViewTemporary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 662A14E4288D593900A06517 /* MainViewTemporary.storyboard */; };
+		666EF68F2888AF6200C08297 /* FlowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666EF68E2888AF6200C08297 /* FlowerViewController.swift */; };
+		666EF6912888AF7A00C08297 /* FlowerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666EF6902888AF7A00C08297 /* FlowerData.swift */; };
+		666EF6952888AFDD00C08297 /* FlowerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666EF6942888AFDD00C08297 /* FlowerCollectionViewCell.swift */; };
+		666EF69B2888BF3500C08297 /* FlowerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666EF69A2888BF3500C08297 /* FlowerView.storyboard */; };
 		A8509B4A28878C4000CD88C1 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B4928878C4000CD88C1 /* Pet.swift */; };
 		A8509B4C28878EA000CD88C1 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B4B28878EA000CD88C1 /* Letter.swift */; };
 		A8509B4E28878F0C00CD88C1 /* LetterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B4D28878F0C00CD88C1 /* LetterStatus.swift */; };
@@ -49,10 +48,9 @@
 		C56CDAC4287EE41E00C1F5F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CDAC3287EE41E00C1F5F9 /* AppDelegate.swift */; };
 		C56CDAC6287EE41E00C1F5F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CDAC5287EE41E00C1F5F9 /* SceneDelegate.swift */; };
 		C56CDAC8287EE41E00C1F5F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CDAC7287EE41E00C1F5F9 /* ViewController.swift */; };
-		C56CDACB287EE41E00C1F5F9 /* MainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56CDAC9287EE41E00C1F5F9 /* MainView.storyboard */; };
+		C56CDACB287EE41E00C1F5F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56CDAC9287EE41E00C1F5F9 /* Main.storyboard */; };
 		C56CDACD287EE41F00C1F5F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C56CDACC287EE41F00C1F5F9 /* Assets.xcassets */; };
 		C56CDAD0287EE41F00C1F5F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56CDACE287EE41F00C1F5F9 /* LaunchScreen.storyboard */; };
-		C5F7E8BA2887F03500F6B409 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F7E8B92887F03500F6B409 /* FontExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,12 +66,12 @@
 /* Begin PBXFileReference section */
 		0306C05ACD039E0A7DFC5789 /* Pods_OverTheRainbow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OverTheRainbow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C8AC22288542CD000D2374 /* LetterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterListViewController.swift; sourceTree = "<group>"; };
-		27C8AC24288542DC000D2374 /* TempFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempFile.swift; sourceTree = "<group>"; };
-		C5345AF7288649C9007CF796 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		C5345AFB28864E86007CF796 /* BoxViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxViews.swift; sourceTree = "<group>"; };
-		C554EA14288E603100954E11 /* TransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimation.swift; sourceTree = "<group>"; };
-		C554EA16288E603200954E11 /* NavigationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerDelegate.swift; sourceTree = "<group>"; };
-		C554EA17288E603200954E11 /* TestHeavenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHeavenViewController.swift; sourceTree = "<group>"; };
+		662A14E4288D593900A06517 /* MainViewTemporary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainViewTemporary.storyboard; sourceTree = "<group>"; };
+		666EF68E2888AF6200C08297 /* FlowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerViewController.swift; sourceTree = "<group>"; };
+		666EF6902888AF7A00C08297 /* FlowerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerData.swift; sourceTree = "<group>"; };
+		666EF6942888AFDD00C08297 /* FlowerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerCollectionViewCell.swift; sourceTree = "<group>"; };
+		666EF69A2888BF3500C08297 /* FlowerView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FlowerView.storyboard; sourceTree = "<group>"; };
+    
 		7E25BB3D133FB640732CCAA6 /* Pods-OverTheRainbow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OverTheRainbow.release.xcconfig"; path = "Target Support Files/Pods-OverTheRainbow/Pods-OverTheRainbow.release.xcconfig"; sourceTree = "<group>"; };
 		A8509B4928878C4000CD88C1 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		A8509B4B28878EA000CD88C1 /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
@@ -118,11 +116,10 @@
 		C56CDAC3287EE41E00C1F5F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C56CDAC5287EE41E00C1F5F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C56CDAC7287EE41E00C1F5F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C56CDACA287EE41E00C1F5F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainView.storyboard; sourceTree = "<group>"; };
+		C56CDACA287EE41E00C1F5F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C56CDACC287EE41F00C1F5F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C56CDACF287EE41F00C1F5F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C56CDAD1287EE41F00C1F5F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C5F7E8B92887F03500F6B409 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +176,7 @@
 		27C8AC1F28854156000D2374 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				C5345AF6288649AB007CF796 /* mainView */,
+				666EF68D2888AF3E00C08297 /* flowerView */,
 				27C8AC21288542B1000D2374 /* letterList */,
 			);
 			path = Screens;
@@ -341,17 +338,16 @@
 			path = Date;
 			sourceTree = "<group>";
 		};
-		C5345AF6288649AB007CF796 /* mainView */ = {
+		666EF68D2888AF3E00C08297 /* flowerView */ = {
 			isa = PBXGroup;
 			children = (
-				C554EA16288E603200954E11 /* NavigationControllerDelegate.swift */,
-				C554EA17288E603200954E11 /* TestHeavenViewController.swift */,
-				C554EA14288E603100954E11 /* TransitionAnimation.swift */,
-				C5345AF7288649C9007CF796 /* MainViewController.swift */,
-				C5345AFB28864E86007CF796 /* BoxViews.swift */,
-				C5F7E8B92887F03500F6B409 /* FontExtension.swift */,
+				666EF6942888AFDD00C08297 /* FlowerCollectionViewCell.swift */,
+				666EF68E2888AF6200C08297 /* FlowerViewController.swift */,
+				666EF6902888AF7A00C08297 /* FlowerData.swift */,
+				666EF69A2888BF3500C08297 /* FlowerView.storyboard */,
+				662A14E4288D593900A06517 /* MainViewTemporary.storyboard */,
 			);
-			path = mainView;
+			path = flowerView;
 			sourceTree = "<group>";
 		};
 		C56CDAB7287EE41E00C1F5F9 = {
@@ -383,7 +379,7 @@
 				C56CDAC3287EE41E00C1F5F9 /* AppDelegate.swift */,
 				C56CDAC5287EE41E00C1F5F9 /* SceneDelegate.swift */,
 				C56CDAC7287EE41E00C1F5F9 /* ViewController.swift */,
-				C56CDAC9287EE41E00C1F5F9 /* MainView.storyboard */,
+				C56CDAC9287EE41E00C1F5F9 /* Main.storyboard */,
 				C56CDACE287EE41F00C1F5F9 /* LaunchScreen.storyboard */,
 				C56CDAD1287EE41F00C1F5F9 /* Info.plist */,
 			);
@@ -483,7 +479,9 @@
 			files = (
 				C56CDAD0287EE41F00C1F5F9 /* LaunchScreen.storyboard in Resources */,
 				C56CDACD287EE41F00C1F5F9 /* Assets.xcassets in Resources */,
-				C56CDACB287EE41E00C1F5F9 /* MainView.storyboard in Resources */,
+				666EF69B2888BF3500C08297 /* FlowerView.storyboard in Resources */,
+				C56CDACB287EE41E00C1F5F9 /* Main.storyboard in Resources */,
+				662A14E5288D593900A06517 /* MainViewTemporary.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,7 +565,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C554EA18288E603200954E11 /* TransitionAnimation.swift in Sources */,
+				666EF6952888AFDD00C08297 /* FlowerCollectionViewCell.swift in Sources */,
+				666EF68F2888AF6200C08297 /* FlowerViewController.swift in Sources */,
+
 				A8509B4E28878F0C00CD88C1 /* LetterStatus.swift in Sources */,
 				A8A87ED92889753A009E3C6C /* MainViewResultDto.swift in Sources */,
 				A8509B70288804C900CD88C1 /* RealmService.swift in Sources */,
@@ -578,12 +578,6 @@
 				27C8AC23288542CD000D2374 /* LetterListViewController.swift in Sources */,
 				A8A87EE2288AE2EB009E3C6C /* Results.swift in Sources */,
 				C56CDAC8287EE41E00C1F5F9 /* ViewController.swift in Sources */,
-				C5F7E8BA2887F03500F6B409 /* FontExtension.swift in Sources */,
-				C56CDAC4287EE41E00C1F5F9 /* AppDelegate.swift in Sources */,
-				C5345AFC28864E86007CF796 /* BoxViews.swift in Sources */,
-				C5345AF8288649C9007CF796 /* MainViewController.swift in Sources */,
-				C554EA1B288E603200954E11 /* TestHeavenViewController.swift in Sources */,
-				C554EA1A288E603200954E11 /* NavigationControllerDelegate.swift in Sources */,
 				A8509B8E2888D9D600CD88C1 /* DateConveter.swift in Sources */,
 				A8509B4C28878EA000CD88C1 /* Letter.swift in Sources */,
 				C56CDAC4287EE41E00C1F5F9 /* AppDelegate.swift in Sources */,
@@ -598,6 +592,7 @@
 				A8509B832888326800CD88C1 /* RealmError.swift in Sources */,
 				A8509B892888D0E400CD88C1 /* FlowerLogStatus.swift in Sources */,
 				C56CDAC6287EE41E00C1F5F9 /* SceneDelegate.swift in Sources */,
+				666EF6912888AF7A00C08297 /* FlowerData.swift in Sources */,
 				A8509B80288827CD00CD88C1 /* PetInputDto.swift in Sources */,
 				A8509B8B2888D79800CD88C1 /* LetterResultDto.swift in Sources */,
 				A8A87EDD288A484F009E3C6C /* DataAccessConfig.swift in Sources */,
@@ -620,12 +615,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C56CDAC9287EE41E00C1F5F9 /* MainView.storyboard */ = {
+		C56CDAC9287EE41E00C1F5F9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C56CDACA287EE41E00C1F5F9 /* Base */,
 			);
-			name = MainView.storyboard;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		C56CDACE287EE41F00C1F5F9 /* LaunchScreen.storyboard */ = {
@@ -811,12 +806,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W97GTPRX7R;
+				DEVELOPMENT_TEAM = 956H2C4NC8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OverTheRainbow/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = MainView;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -840,12 +835,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W97GTPRX7R;
+				DEVELOPMENT_TEAM = 956H2C4NC8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OverTheRainbow/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = MainView;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
