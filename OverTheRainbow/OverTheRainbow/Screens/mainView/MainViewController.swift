@@ -11,7 +11,8 @@ class MainViewController: UIViewController {
     var numberOfLetters: Int = 0
     var pickedFlowerIndex: Int?
     var didFlowerToday: Bool = false
-
+    var service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
+    
     @IBOutlet weak var flowerBoxView: FlowerBoxView!
     @IBOutlet weak var letterBoxView: LetterBoxView!
     @IBOutlet weak var quoteLabel: UILabel!
