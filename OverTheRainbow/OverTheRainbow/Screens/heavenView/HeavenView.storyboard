@@ -16,23 +16,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="heavenViewBackground" translatesAutoresizingMaskIntoConstraints="NO" id="6GR-3W-1aw">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heavenViewBackground" translatesAutoresizingMaskIntoConstraints="NO" id="6GR-3W-1aw">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSX-rk-St0">
-                                <rect key="frame" x="92" y="53" width="200" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSX-rk-St0">
+                                <rect key="frame" x="90" y="48" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="kDR-UH-TRm"/>
+                                    <constraint firstAttribute="width" constant="200" id="nb5-2c-cfy"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title=""/>
                                 <connections>
                                     <action selector="photoButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="L1c-tV-SvC"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P2h-8a-eBK">
-                                <rect key="frame" x="92" y="53" width="200" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P2h-8a-eBK">
+                                <rect key="frame" x="90" y="48" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="JYR-Du-ArK"/>
+                                    <constraint firstAttribute="width" constant="200" id="anl-mX-sZt"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NkW-GW-MDb">
                                 <rect key="frame" x="83" y="436" width="105" height="162"/>
@@ -50,6 +55,16 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="P2h-8a-eBK" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" constant="4" id="0gZ-mR-1Pj"/>
+                            <constraint firstAttribute="trailing" secondItem="6GR-3W-1aw" secondAttribute="trailing" id="8Ja-va-ipg"/>
+                            <constraint firstAttribute="bottom" secondItem="6GR-3W-1aw" secondAttribute="bottom" id="bqj-iC-2R6"/>
+                            <constraint firstItem="qSX-rk-St0" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" constant="70" id="dAZ-Si-T5B"/>
+                            <constraint firstItem="6GR-3W-1aw" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="gdY-2d-WR3"/>
+                            <constraint firstItem="qSX-rk-St0" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" constant="4" id="nLk-HX-F2O"/>
+                            <constraint firstItem="P2h-8a-eBK" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" constant="70" id="pz7-gv-zVL"/>
+                            <constraint firstItem="6GR-3W-1aw" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="qLt-SQ-g2q"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="letterButton" destination="NkW-GW-MDb" id="lrV-aq-gFp"/>
