@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		273BF89E288E730A005BA63B /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273BF89D288E730A005BA63B /* BackButton.swift */; };
 		273BF8A1288E7379005BA63B /* ImageLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273BF8A0288E7379005BA63B /* ImageLiterals.swift */; };
+		273BF8A4288E7406005BA63B /* LetterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273BF8A3288E7406005BA63B /* LetterCollectionViewCell.swift */; };
+		273BF8AB288E76A4005BA63B /* LetterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273BF8AA288E76A4005BA63B /* LetterModel.swift */; };
+		27465D7C288E7CCB0017F1DF /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27465D7B288E7CCB0017F1DF /* NSObject+Extension.swift */; };
+		27465D7E288E7CEB0017F1DF /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27465D7D288E7CEB0017F1DF /* UICollectionView+Extension.swift */; };
 		27BEC4F7288E6E1C003A4395 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BEC4F6288E6E1C003A4395 /* BaseViewController.swift */; };
 		27C8AC23288542CD000D2374 /* LetterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C8AC22288542CD000D2374 /* LetterListViewController.swift */; };
 		A8509B4A28878C4000CD88C1 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B4928878C4000CD88C1 /* Pet.swift */; };
@@ -46,7 +50,6 @@
 		C56CDAC4287EE41E00C1F5F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CDAC3287EE41E00C1F5F9 /* AppDelegate.swift */; };
 		C56CDAC6287EE41E00C1F5F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CDAC5287EE41E00C1F5F9 /* SceneDelegate.swift */; };
 		C56CDAC8287EE41E00C1F5F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CDAC7287EE41E00C1F5F9 /* ViewController.swift */; };
-		C56CDACB287EE41E00C1F5F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56CDAC9287EE41E00C1F5F9 /* Main.storyboard */; };
 		C56CDACD287EE41F00C1F5F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C56CDACC287EE41F00C1F5F9 /* Assets.xcassets */; };
 		C56CDAD0287EE41F00C1F5F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56CDACE287EE41F00C1F5F9 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -65,6 +68,10 @@
 		0306C05ACD039E0A7DFC5789 /* Pods_OverTheRainbow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OverTheRainbow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		273BF89D288E730A005BA63B /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		273BF8A0288E7379005BA63B /* ImageLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiterals.swift; sourceTree = "<group>"; };
+		273BF8A3288E7406005BA63B /* LetterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterCollectionViewCell.swift; sourceTree = "<group>"; };
+		273BF8AA288E76A4005BA63B /* LetterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterModel.swift; sourceTree = "<group>"; };
+		27465D7B288E7CCB0017F1DF /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		27465D7D288E7CEB0017F1DF /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		27BEC4F6288E6E1C003A4395 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		27C8AC22288542CD000D2374 /* LetterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterListViewController.swift; sourceTree = "<group>"; };
 		7E25BB3D133FB640732CCAA6 /* Pods-OverTheRainbow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OverTheRainbow.release.xcconfig"; path = "Target Support Files/Pods-OverTheRainbow/Pods-OverTheRainbow.release.xcconfig"; sourceTree = "<group>"; };
@@ -111,7 +118,6 @@
 		C56CDAC3287EE41E00C1F5F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C56CDAC5287EE41E00C1F5F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C56CDAC7287EE41E00C1F5F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C56CDACA287EE41E00C1F5F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C56CDACC287EE41F00C1F5F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C56CDACF287EE41F00C1F5F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C56CDAD1287EE41F00C1F5F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -175,6 +181,39 @@
 			path = Literal;
 			sourceTree = "<group>";
 		};
+		273BF8A2288E73EA005BA63B /* UIComponent */ = {
+			isa = PBXGroup;
+			children = (
+				273BF8A3288E7406005BA63B /* LetterCollectionViewCell.swift */,
+			);
+			path = UIComponent;
+			sourceTree = "<group>";
+		};
+		273BF8A8288E7691005BA63B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				273BF8A9288E769C005BA63B /* Model */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		273BF8A9288E769C005BA63B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				273BF8AA288E76A4005BA63B /* LetterModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		27465D7A288E7CBB0017F1DF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				27465D7B288E7CCB0017F1DF /* NSObject+Extension.swift */,
+				27465D7D288E7CEB0017F1DF /* UICollectionView+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		27BEC4F5288E6DDA003A4395 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +225,7 @@
 		27C8AC1E2885406A000D2374 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				27465D7A288E7CBB0017F1DF /* Extension */,
 				273BF89F288E736E005BA63B /* Literal */,
 				273BF89C288E72F8005BA63B /* UIComponent */,
 				A8509B8C2888D9C500CD88C1 /* Util */,
@@ -206,6 +246,7 @@
 		27C8AC21288542B1000D2374 /* LetterList */ = {
 			isa = PBXGroup;
 			children = (
+				273BF8A2288E73EA005BA63B /* UIComponent */,
 				27C8AC22288542CD000D2374 /* LetterListViewController.swift */,
 			);
 			path = LetterList;
@@ -382,13 +423,13 @@
 		C56CDAC2287EE41E00C1F5F9 /* OverTheRainbow */ = {
 			isa = PBXGroup;
 			children = (
+				273BF8A8288E7691005BA63B /* Network */,
 				A8509B4728878C1400CD88C1 /* DataAccess */,
 				27C8AC1F28854156000D2374 /* Screens */,
 				27C8AC1E2885406A000D2374 /* Global */,
 				C56CDAC3287EE41E00C1F5F9 /* AppDelegate.swift */,
 				C56CDAC5287EE41E00C1F5F9 /* SceneDelegate.swift */,
 				C56CDAC7287EE41E00C1F5F9 /* ViewController.swift */,
-				C56CDAC9287EE41E00C1F5F9 /* Main.storyboard */,
 				C56CDACE287EE41F00C1F5F9 /* LaunchScreen.storyboard */,
 				C56CDAD1287EE41F00C1F5F9 /* Info.plist */,
 			);
@@ -488,7 +529,6 @@
 			files = (
 				C56CDAD0287EE41F00C1F5F9 /* LaunchScreen.storyboard in Resources */,
 				C56CDACD287EE41F00C1F5F9 /* Assets.xcassets in Resources */,
-				C56CDACB287EE41E00C1F5F9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,9 +615,12 @@
 				A8509B70288804C900CD88C1 /* RealmService.swift in Sources */,
 				A8509B85288838A600CD88C1 /* PetResultDto.swift in Sources */,
 				A8509B4A28878C4000CD88C1 /* Pet.swift in Sources */,
+				27465D7E288E7CEB0017F1DF /* UICollectionView+Extension.swift in Sources */,
 				273BF89E288E730A005BA63B /* BackButton.swift in Sources */,
 				A8509B56288799B400CD88C1 /* FlowerLog.swift in Sources */,
+				273BF8A4288E7406005BA63B /* LetterCollectionViewCell.swift in Sources */,
 				A8D95DF12889621400EE02CB /* DateExtension.swift in Sources */,
+				273BF8AB288E76A4005BA63B /* LetterModel.swift in Sources */,
 				27C8AC23288542CD000D2374 /* LetterListViewController.swift in Sources */,
 				A8A87EE2288AE2EB009E3C6C /* Results.swift in Sources */,
 				C56CDAC8287EE41E00C1F5F9 /* ViewController.swift in Sources */,
@@ -600,6 +643,7 @@
 				A8509B8B2888D79800CD88C1 /* LetterResultDto.swift in Sources */,
 				A8A87EDD288A484F009E3C6C /* DataAccessConfig.swift in Sources */,
 				A8509B872888437B00CD88C1 /* LetterInputDto.swift in Sources */,
+				27465D7C288E7CCB0017F1DF /* NSObject+Extension.swift in Sources */,
 				A8509B722888053000CD88C1 /* DataAccessService.swift in Sources */,
 				A8509B7B288819C200CD88C1 /* RealmModel.swift in Sources */,
 				A8D95DEF2889593200EE02CB /* DateFormat.swift in Sources */,
@@ -618,14 +662,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C56CDAC9287EE41E00C1F5F9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C56CDACA287EE41E00C1F5F9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C56CDACE287EE41F00C1F5F9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -814,7 +850,6 @@
 				INFOPLIST_FILE = OverTheRainbow/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -843,7 +878,6 @@
 				INFOPLIST_FILE = OverTheRainbow/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
