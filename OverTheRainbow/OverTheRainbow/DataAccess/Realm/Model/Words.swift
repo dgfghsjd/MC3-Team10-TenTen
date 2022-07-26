@@ -8,7 +8,6 @@
 import Foundation
 import RealmSwift
 
-
 class Words: RealmModel {
     @Persisted
     var content: String
