@@ -15,6 +15,7 @@ struct LetterResultDto {
     private(set) var createdAt: Date
     private(set) var updatedAt: Date
     private(set) var status: LetterStatus
+    
     public static func of(_ letter: Letter) -> LetterResultDto {
         return LetterResultDto(id: letter.id, title: letter.title, imgUrl: letter.imgUrl, date: letter.date, createdAt: letter.createdAt, updatedAt: letter.updatedAt, status: letter.status)
     }

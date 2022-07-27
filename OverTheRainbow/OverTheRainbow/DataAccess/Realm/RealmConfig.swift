@@ -9,18 +9,28 @@
 import Foundation
 import RealmSwift
 
+// TODO: getService를 실질적으로 한 번만 호출하도록 변경
 class RealmConfig: DataAccessConfig {
     public static let config = RealmConfig()
     
-    private let realm: Realm = try! Realm()
+    private(set) var realm: Realm
     
     private func getRepository() -> RealmRepository {
         return RealmRepository(realm: self.realm)
     }
-    
+
     public func getService() -> DataAccessService {
         return RealmService(realm, self.getRepository())
     }
     
-    private init() {}
+    // TODO: init 메서드 리팩토링
+    private init() {
+        let appName = "over-the-rainbow"
+        var config = Realm.Configuration.defaultConfiguration
+        config.fileURL!.deleteLastPathComponent()
+        config.fileURL!.appendPathComponent(appName)
+        config.fileURL!.appendPathExtension("realm")
+        realm = try! Realm(configuration: config)
+        print("Realm FilePath: \t\(realm.configuration.fileURL!)")
+    }
 }
