@@ -17,6 +17,7 @@
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 
 					<key>UISceneStoryboardFile</key>
+					<string>WritingLetter</string>
 					<string>MainView</string>
 				</dict>
 			</array>
