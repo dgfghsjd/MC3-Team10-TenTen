@@ -83,13 +83,11 @@ final class LetterCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate(photoStampConstraints)
     }
     // MARK: - func
-    func setLetterData(with data: LetterModel) {
+    func setLetterData(with data: LetterResultDto) {
         dateLabel.text = data.date
-        if let title = data.title {
-            titleLabel.text = title
-        }
+        titleLabel.text = data.title
         
-        if let image = data.image {
+        if let image = data.imgUrl {
             // FIXME: - 현재는 더미
             photoStampView.image = UIImage(systemName: "heart.fill")
 //            photoStampView.heightAnchor.constraint(equalToConstant: 204)

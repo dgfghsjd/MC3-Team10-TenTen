@@ -9,8 +9,10 @@ import UIKit
 import SwiftUI
 
 class LetterLitstMainViewController: BaseViewController {
-    private var lists: [LetterModel] {
-        return tempLetters
+    private var lists: [LetterResultDto] {
+        let service = DataAccessProvider.dataAccessConfig.getService()
+        // swiftlint:disable:next force_try
+        return try! service.findUnsentLetters("62e0e873fa44195244c53769")
     }
     private enum Size {
         static let collectionHorizontalSpacing: CGFloat = 16.0
@@ -72,7 +74,6 @@ class LetterLitstMainViewController: BaseViewController {
 // MARK: - UICollectionViewDataSource
 extension LetterLitstMainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-          print(lists.count)
         return lists.count
     }
     func collectionView(_ collectionView: UICollectionView,
