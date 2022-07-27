@@ -255,14 +255,10 @@
 		27C8AC1F28854156000D2374 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-
 				27BEC4F5288E6DDA003A4395 /* Base */,
-				27C8AC21288542B1000D2374 /* LetterList */,
-
 				2C93A762288F8F86005A0CA8 /* heavenView */,
-        
 				C5345AF6288649AB007CF796 /* mainView */,
-				27C8AC21288542B1000D2374 /* letterList */,
+				27C8AC21288542B1000D2374 /* LetterList */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -910,7 +906,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W97GTPRX7R;
+				DEVELOPMENT_TEAM = 956H2C4NC8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OverTheRainbow/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -939,7 +935,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W97GTPRX7R;
+				DEVELOPMENT_TEAM = 956H2C4NC8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OverTheRainbow/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
