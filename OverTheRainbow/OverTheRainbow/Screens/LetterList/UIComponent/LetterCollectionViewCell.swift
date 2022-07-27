@@ -71,10 +71,12 @@ final class LetterCollectionViewCell: UICollectionViewCell {
             dateLabel.bottomAnchor.constraint(equalTo: contentView.topAnchor, constant: 150),
             dateLabel.trailingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 300)
         ]
+        photoStampView.translatesAutoresizingMaskIntoConstraints = false
         let photoStampConstraints = [
             photoStampView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            photoStampView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            photoStampView.heightAnchor.constraint(equalToConstant: 100)
+            photoStampView.leadingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 230),
+            photoStampView.heightAnchor.constraint(equalToConstant: 100),
+            photoStampView.widthAnchor.constraint(equalToConstant: 100)
         ]
         NSLayoutConstraint.activate(titleLabelConstraints)
         NSLayoutConstraint.activate(dateLabelConstraints)
