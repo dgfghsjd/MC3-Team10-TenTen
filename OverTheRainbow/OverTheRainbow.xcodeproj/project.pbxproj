@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		273BF89E288E730A005BA63B /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273BF89D288E730A005BA63B /* BackButton.swift */; };
+		273BF8A1288E7379005BA63B /* ImageLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273BF8A0288E7379005BA63B /* ImageLiterals.swift */; };
+		273BF8A4288E7406005BA63B /* LetterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273BF8A3288E7406005BA63B /* LetterCollectionViewCell.swift */; };
+		273BF8AB288E76A4005BA63B /* LetterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273BF8AA288E76A4005BA63B /* LetterModel.swift */; };
+		27465D7C288E7CCB0017F1DF /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27465D7B288E7CCB0017F1DF /* NSObject+Extension.swift */; };
+		27465D7E288E7CEB0017F1DF /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27465D7D288E7CEB0017F1DF /* UICollectionView+Extension.swift */; };
+		27BEC4F7288E6E1C003A4395 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BEC4F6288E6E1C003A4395 /* BaseViewController.swift */; };
 		27C8AC23288542CD000D2374 /* LetterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C8AC22288542CD000D2374 /* LetterListViewController.swift */; };
 		2C93A764288F8F93005A0CA8 /* HeavenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C93A763288F8F93005A0CA8 /* HeavenViewController.swift */; };
 		2C93A766288F8FA4005A0CA8 /* HeavenView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C93A765288F8FA4005A0CA8 /* HeavenView.storyboard */; };
@@ -68,6 +75,13 @@
 
 /* Begin PBXFileReference section */
 		0306C05ACD039E0A7DFC5789 /* Pods_OverTheRainbow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OverTheRainbow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		273BF89D288E730A005BA63B /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		273BF8A0288E7379005BA63B /* ImageLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiterals.swift; sourceTree = "<group>"; };
+		273BF8A3288E7406005BA63B /* LetterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterCollectionViewCell.swift; sourceTree = "<group>"; };
+		273BF8AA288E76A4005BA63B /* LetterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterModel.swift; sourceTree = "<group>"; };
+		27465D7B288E7CCB0017F1DF /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		27465D7D288E7CEB0017F1DF /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		27BEC4F6288E6E1C003A4395 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		27C8AC22288542CD000D2374 /* LetterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterListViewController.swift; sourceTree = "<group>"; };
 		2C93A763288F8F93005A0CA8 /* HeavenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeavenViewController.swift; sourceTree = "<group>"; };
 		2C93A765288F8FA4005A0CA8 /* HeavenView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HeavenView.storyboard; sourceTree = "<group>"; };
@@ -169,9 +183,69 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		273BF89C288E72F8005BA63B /* UIComponent */ = {
+			isa = PBXGroup;
+			children = (
+				273BF89D288E730A005BA63B /* BackButton.swift */,
+			);
+			path = UIComponent;
+			sourceTree = "<group>";
+		};
+		273BF89F288E736E005BA63B /* Literal */ = {
+			isa = PBXGroup;
+			children = (
+				273BF8A0288E7379005BA63B /* ImageLiterals.swift */,
+			);
+			path = Literal;
+			sourceTree = "<group>";
+		};
+		273BF8A2288E73EA005BA63B /* UIComponent */ = {
+			isa = PBXGroup;
+			children = (
+				273BF8A3288E7406005BA63B /* LetterCollectionViewCell.swift */,
+			);
+			path = UIComponent;
+			sourceTree = "<group>";
+		};
+		273BF8A8288E7691005BA63B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				273BF8A9288E769C005BA63B /* Model */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		273BF8A9288E769C005BA63B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				273BF8AA288E76A4005BA63B /* LetterModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		27465D7A288E7CBB0017F1DF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				27465D7B288E7CCB0017F1DF /* NSObject+Extension.swift */,
+				27465D7D288E7CEB0017F1DF /* UICollectionView+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		27BEC4F5288E6DDA003A4395 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				27BEC4F6288E6E1C003A4395 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		27C8AC1E2885406A000D2374 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				27465D7A288E7CBB0017F1DF /* Extension */,
+				273BF89F288E736E005BA63B /* Literal */,
+				273BF89C288E72F8005BA63B /* UIComponent */,
 				A8509B8C2888D9C500CD88C1 /* Util */,
 				C56CDACC287EE41F00C1F5F9 /* Assets.xcassets */,
 			);
@@ -181,19 +255,25 @@
 		27C8AC1F28854156000D2374 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+
+				27BEC4F5288E6DDA003A4395 /* Base */,
+				27C8AC21288542B1000D2374 /* LetterList */,
+
 				2C93A762288F8F86005A0CA8 /* heavenView */,
+        
 				C5345AF6288649AB007CF796 /* mainView */,
 				27C8AC21288542B1000D2374 /* letterList */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		27C8AC21288542B1000D2374 /* letterList */ = {
+		27C8AC21288542B1000D2374 /* LetterList */ = {
 			isa = PBXGroup;
 			children = (
+				273BF8A2288E73EA005BA63B /* UIComponent */,
 				27C8AC22288542CD000D2374 /* LetterListViewController.swift */,
 			);
-			path = letterList;
+			path = LetterList;
 			sourceTree = "<group>";
 		};
 		2C93A762288F8F86005A0CA8 /* heavenView */ = {
@@ -389,6 +469,7 @@
 		C56CDAC2287EE41E00C1F5F9 /* OverTheRainbow */ = {
 			isa = PBXGroup;
 			children = (
+				273BF8A8288E7691005BA63B /* Network */,
 				A8509B4728878C1400CD88C1 /* DataAccess */,
 				27C8AC1F28854156000D2374 /* Screens */,
 				27C8AC1E2885406A000D2374 /* Global */,
@@ -580,14 +661,20 @@
 				C554EA18288E603200954E11 /* TransitionAnimation.swift in Sources */,
 				A8509B4E28878F0C00CD88C1 /* LetterStatus.swift in Sources */,
 				A8A87ED92889753A009E3C6C /* MainViewResultDto.swift in Sources */,
+				27BEC4F7288E6E1C003A4395 /* BaseViewController.swift in Sources */,
 				A8509B70288804C900CD88C1 /* RealmService.swift in Sources */,
 				A8509B85288838A600CD88C1 /* PetResultDto.swift in Sources */,
 				A8509B4A28878C4000CD88C1 /* Pet.swift in Sources */,
+				27465D7E288E7CEB0017F1DF /* UICollectionView+Extension.swift in Sources */,
+				273BF89E288E730A005BA63B /* BackButton.swift in Sources */,
 				A8509B56288799B400CD88C1 /* FlowerLog.swift in Sources */,
+				273BF8A4288E7406005BA63B /* LetterCollectionViewCell.swift in Sources */,
 				A8D95DF12889621400EE02CB /* DateExtension.swift in Sources */,
+				273BF8AB288E76A4005BA63B /* LetterModel.swift in Sources */,
 				27C8AC23288542CD000D2374 /* LetterListViewController.swift in Sources */,
 				A8A87EE2288AE2EB009E3C6C /* Results.swift in Sources */,
 				C56CDAC8287EE41E00C1F5F9 /* ViewController.swift in Sources */,
+				273BF8A1288E7379005BA63B /* ImageLiterals.swift in Sources */,
 				C5F7E8BA2887F03500F6B409 /* FontExtension.swift in Sources */,
 				C56CDAC4287EE41E00C1F5F9 /* AppDelegate.swift in Sources */,
 				C5345AFC28864E86007CF796 /* BoxViews.swift in Sources */,
@@ -613,6 +700,7 @@
 				A8509B8B2888D79800CD88C1 /* LetterResultDto.swift in Sources */,
 				A8A87EDD288A484F009E3C6C /* DataAccessConfig.swift in Sources */,
 				A8509B872888437B00CD88C1 /* LetterInputDto.swift in Sources */,
+				27465D7C288E7CCB0017F1DF /* NSObject+Extension.swift in Sources */,
 				A8509B722888053000CD88C1 /* DataAccessService.swift in Sources */,
 				A8509B7B288819C200CD88C1 /* RealmModel.swift in Sources */,
 				A8D95DEF2889593200EE02CB /* DateFormat.swift in Sources */,
