@@ -39,12 +39,10 @@ class FlowerViewController: UIViewController {
         pagerContorl.numberOfPages = flowerData.count - 1
         pagerContorl.currentPage = 0
     }
-    
     // 컬렉션뷰에 필요한 데이터 및 뷰를 제공하기 위한 기능을 정의한 프로토콜입니다.
     // 기존 객체를 수정하지 않고 프로토콜을 구현하기 위해
     // extension 사용
 }
-
 
 extension FlowerViewController: UICollectionViewDataSource {
     // collrctionView의 색션 갯수를 return
@@ -55,8 +53,8 @@ extension FlowerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return flowerData.count
     }
-    //셀에 대입되었던 자료들은 for each 처럼 배분해주는 함수? 등록해 놓은 데이터를 재사용하는 방식.
-    //등록해두었던 셀을 빼서 쓰는것
+    // 셀에 대입되었던 자료들은 for each 처럼 배분해주는 함수? 등록해 놓은 데이터를 재사용하는 방식.
+    // 등록해두었던 셀을 빼서 쓰는것
     func collectionView
     (_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell =
@@ -100,7 +98,6 @@ extension FlowerViewController: UIScrollViewDelegate, UICollectionViewDelegate {
         let offsetX = collectionView.contentOffset.x
         let index = (offsetX + collectionView.contentInset.left) / cellWidthIncludeSpacing
          roundedIndex = Int(round(index))
-        
         print("roundedIndex\(roundedIndex)")
         print("previousCellIndex\(previousCellIndex)")
         print("nextCellIndex\(nextCellIndex)")
@@ -108,7 +105,6 @@ extension FlowerViewController: UIScrollViewDelegate, UICollectionViewDelegate {
         //
         //
         pagerContorl.currentPage = roundedIndex
-        
         // 줌 하는 현재 셀
                 let indexPath = IndexPath(item: Int(roundedIndex), section: 0)
         if let cell = collectionView.cellForItem(at: indexPath) {
