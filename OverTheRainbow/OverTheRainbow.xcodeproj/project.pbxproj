@@ -15,10 +15,6 @@
 		27465D7E288E7CEB0017F1DF /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27465D7D288E7CEB0017F1DF /* UICollectionView+Extension.swift */; };
 		27BEC4F7288E6E1C003A4395 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BEC4F6288E6E1C003A4395 /* BaseViewController.swift */; };
 		27C8AC23288542CD000D2374 /* LetterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C8AC22288542CD000D2374 /* LetterListViewController.swift */; };
-		27C8AC25288542DC000D2374 /* TempFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C8AC24288542DC000D2374 /* TempFile.swift */; };
-		C50FC85F288DF8760005DA18 /* EditLetterViewConttroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50FC85E288DF8760005DA18 /* EditLetterViewConttroller.swift */; };
-		C50FC861288DFA270005DA18 /* WrittenLetterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50FC860288DFA270005DA18 /* WrittenLetterViewController.swift */; };
-		C52ACC5A288DBC8D00E4F9F6 /* WritingLetter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C52ACC58288DBC8D00E4F9F6 /* WritingLetter.storyboard */; };
 		2C93A764288F8F93005A0CA8 /* HeavenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C93A763288F8F93005A0CA8 /* HeavenViewController.swift */; };
 		2C93A766288F8FA4005A0CA8 /* HeavenView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C93A765288F8FA4005A0CA8 /* HeavenView.storyboard */; };
 		66ACBF112890DF10006D0B39 /* FlowerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66ACBF0C2890DF10006D0B39 /* FlowerView.storyboard */; };
@@ -69,8 +65,6 @@
 		C56CDACB287EE41E00C1F5F9 /* MainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56CDAC9287EE41E00C1F5F9 /* MainView.storyboard */; };
 		C56CDACD287EE41F00C1F5F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C56CDACC287EE41F00C1F5F9 /* Assets.xcassets */; };
 		C56CDAD0287EE41F00C1F5F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56CDACE287EE41F00C1F5F9 /* LaunchScreen.storyboard */; };
-		C58E3B61288DBF1800D66BBD /* WritingLetterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58E3B60288DBF1800D66BBD /* WritingLetterViewController.swift */; };
-		C58E3B63288DBF3F00D66BBD /* WrittenLetterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58E3B62288DBF3F00D66BBD /* WrittenLetterListViewController.swift */; };
 		C5F7E8BA2887F03500F6B409 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F7E8B92887F03500F6B409 /* FontExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,10 +88,6 @@
 		27465D7D288E7CEB0017F1DF /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		27BEC4F6288E6E1C003A4395 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		27C8AC22288542CD000D2374 /* LetterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterListViewController.swift; sourceTree = "<group>"; };
-		27C8AC24288542DC000D2374 /* TempFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempFile.swift; sourceTree = "<group>"; };
-		C50FC85E288DF8760005DA18 /* EditLetterViewConttroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLetterViewConttroller.swift; sourceTree = "<group>"; };
-		C50FC860288DFA270005DA18 /* WrittenLetterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrittenLetterViewController.swift; sourceTree = "<group>"; };
-		C52ACC59288DBC8D00E4F9F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/WritingLetter.storyboard; sourceTree = "<group>"; };
 		2C93A763288F8F93005A0CA8 /* HeavenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeavenViewController.swift; sourceTree = "<group>"; };
 		2C93A765288F8FA4005A0CA8 /* HeavenView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HeavenView.storyboard; sourceTree = "<group>"; };
 		66ACBF0C2890DF10006D0B39 /* FlowerView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FlowerView.storyboard; sourceTree = "<group>"; };
@@ -158,8 +148,6 @@
 		C56CDACC287EE41F00C1F5F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C56CDACF287EE41F00C1F5F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C56CDAD1287EE41F00C1F5F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C58E3B60288DBF1800D66BBD /* WritingLetterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingLetterViewController.swift; sourceTree = "<group>"; };
-		C58E3B62288DBF3F00D66BBD /* WrittenLetterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrittenLetterListViewController.swift; sourceTree = "<group>"; };
 		C5F7E8B92887F03500F6B409 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -507,12 +495,6 @@
 				C56CDAC3287EE41E00C1F5F9 /* AppDelegate.swift */,
 				C56CDAC5287EE41E00C1F5F9 /* SceneDelegate.swift */,
 				C56CDAC7287EE41E00C1F5F9 /* ViewController.swift */,
-				C56CDAC9287EE41E00C1F5F9 /* Main.storyboard */,
-				C52ACC58288DBC8D00E4F9F6 /* WritingLetter.storyboard */,
-				C50FC860288DFA270005DA18 /* WrittenLetterViewController.swift */,
-				C50FC85E288DF8760005DA18 /* EditLetterViewConttroller.swift */,
-				C58E3B60288DBF1800D66BBD /* WritingLetterViewController.swift */,
-				C58E3B62288DBF3F00D66BBD /* WrittenLetterListViewController.swift */,
 				C56CDAC9287EE41E00C1F5F9 /* MainView.storyboard */,
 				C56CDACE287EE41F00C1F5F9 /* LaunchScreen.storyboard */,
 				C56CDAD1287EE41F00C1F5F9 /* Info.plist */,
@@ -611,7 +593,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C52ACC5A288DBC8D00E4F9F6 /* WritingLetter.storyboard in Resources */,
 				66ACBF142890DF10006D0B39 /* MainViewTemporary.storyboard in Resources */,
 				C56CDAD0287EE41F00C1F5F9 /* LaunchScreen.storyboard in Resources */,
 				66ACBF112890DF10006D0B39 /* FlowerView.storyboard in Resources */,
@@ -726,12 +707,6 @@
 				A8509B4C28878EA000CD88C1 /* Letter.swift in Sources */,
 				2C93A764288F8F93005A0CA8 /* HeavenViewController.swift in Sources */,
 				C56CDAC4287EE41E00C1F5F9 /* AppDelegate.swift in Sources */,
-				C50FC85F288DF8760005DA18 /* EditLetterViewConttroller.swift in Sources */,
-				C58E3B63288DBF3F00D66BBD /* WrittenLetterListViewController.swift in Sources */,
-				C56CDAC6287EE41E00C1F5F9 /* SceneDelegate.swift in Sources */,
-				C50FC861288DFA270005DA18 /* WrittenLetterViewController.swift in Sources */,
-				27C8AC25288542DC000D2374 /* TempFile.swift in Sources */,
-				C58E3B61288DBF1800D66BBD /* WritingLetterViewController.swift in Sources */,
 				A8509B77288805ED00CD88C1 /* RealmRepository.swift in Sources */,
 				A8509B902888E6D300CD88C1 /* UtilError.swift in Sources */,
 				A8A87EDF288A4C8F009E3C6C /* HeavenViewResultDto.swift in Sources */,
@@ -768,15 +743,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C52ACC58288DBC8D00E4F9F6 /* WritingLetter.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C52ACC59288DBC8D00E4F9F6 /* Base */,
-			);
-			name = WritingLetter.storyboard;
-			sourceTree = "<group>";
-		};
-		C56CDAC9287EE41E00C1F5F9 /* Main.storyboard */ = {
 		C56CDAC9287EE41E00C1F5F9 /* MainView.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
