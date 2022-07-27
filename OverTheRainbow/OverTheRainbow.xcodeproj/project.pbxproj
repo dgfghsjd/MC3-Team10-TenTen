@@ -464,8 +464,8 @@
 		C5345AF6288649AB007CF796 /* mainView */ = {
 			isa = PBXGroup;
 			children = (
+				C57CEF8E28910A4200D53F7E /* Test */,
 				C554EA16288E603200954E11 /* NavigationControllerDelegate.swift */,
-				C554EA17288E603200954E11 /* TestHeavenViewController.swift */,
 				C554EA14288E603100954E11 /* TransitionAnimation.swift */,
 				C5345AF7288649C9007CF796 /* MainViewController.swift */,
 				C5345AFB28864E86007CF796 /* BoxViews.swift */,
@@ -520,6 +520,14 @@
 				C56CDAD1287EE41F00C1F5F9 /* Info.plist */,
 			);
 			path = OverTheRainbow;
+			sourceTree = "<group>";
+		};
+		C57CEF8E28910A4200D53F7E /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				C554EA17288E603200954E11 /* TestHeavenViewController.swift */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
