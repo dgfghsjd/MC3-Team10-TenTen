@@ -22,6 +22,10 @@ final class LetterCollectionViewCell: UICollectionViewCell {
         label.textColor = UIColor(named: "textColor")
         return label
     }()
+    private var isSavedLabel: UIImageView = {
+        let isSavedIconView = UIImageView(frame: .zero)
+        return isSavedIconView
+    }()
     private var photoStampView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.contentMode = .scaleAspectFill
@@ -61,6 +65,7 @@ final class LetterCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(dateLabel)
         contentView.addSubview(photoStampView)
+        contentView.addSubview(isSavedLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         let titleLabelConstraints = [
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 17),
@@ -78,9 +83,17 @@ final class LetterCollectionViewCell: UICollectionViewCell {
             photoStampView.heightAnchor.constraint(equalToConstant: 100),
             photoStampView.widthAnchor.constraint(equalToConstant: 100)
         ]
+        isSavedLabel.translatesAutoresizingMaskIntoConstraints = false
+        let isSavedLabelConstraints = [
+            isSavedLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 120),
+            isSavedLabel.leadingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 20),
+            isSavedLabel.heightAnchor.constraint(equalToConstant: 30),
+            isSavedLabel.widthAnchor.constraint(equalToConstant: 30)
+        ]
         NSLayoutConstraint.activate(titleLabelConstraints)
         NSLayoutConstraint.activate(dateLabelConstraints)
         NSLayoutConstraint.activate(photoStampConstraints)
+        NSLayoutConstraint.activate(isSavedLabelConstraints)
     }
     // MARK: - func
     func setLetterData(with data: LetterResultDto) {
@@ -90,7 +103,15 @@ final class LetterCollectionViewCell: UICollectionViewCell {
         if let image = data.imgUrl {
             // FIXME: - 현재는 더미
             photoStampView.image = UIImage(systemName: "heart.fill")
+            photoStampView.image?.withTintColor(UIColor(named: "textColor") ?? .black)
 //            photoStampView.heightAnchor.constraint(equalToConstant: 204)
+        }
+        print(data.status)
+        if data.status == .saved {
+            isSavedLabel.image = ImageLiterals.isSavedIcon
+            isSavedLabel.tintColor = UIColor(named: "textColor")
+//            self.tintColor
+//            UIColor(named: "textColor")
         }
     }
 }

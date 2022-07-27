@@ -9,8 +9,10 @@ import UIKit
 
 enum ImageLiterals {
     // MARK: - button
-    
     static var btnBack: UIImage { .load(systemName: "chevron.backward") }
+    
+    // MARK: - icon
+    static var isSavedIcon: UIImage { .load(systemName: "checkmark.circle")}
 }
 
 extension UIImage {
