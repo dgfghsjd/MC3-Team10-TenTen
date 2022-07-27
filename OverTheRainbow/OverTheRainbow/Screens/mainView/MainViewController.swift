@@ -125,7 +125,7 @@ extension MainViewController {
 
             try? service.send(petID ?? "DEBUG REQUIRED")
 
-            navigateToStoryboardVC("HEAVENVIEW")
+            navigateToStoryboardVC("HeavenView")
         }
     }
     // 천국뷰로 올라갈 때 조건이 맞으면 부르기
