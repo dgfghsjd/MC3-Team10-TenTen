@@ -117,7 +117,7 @@ extension MainViewController {
 
             // MARK: 렘에 현재 선택한 꽃 없애기
 
-            navigateToStoryboardVC("HEAVENVIEW")
+            navigateToStoryboardVC("HeavenView")
         }
     }
     // 천국뷰로 올라갈 때 조건이 맞으면 부르기
