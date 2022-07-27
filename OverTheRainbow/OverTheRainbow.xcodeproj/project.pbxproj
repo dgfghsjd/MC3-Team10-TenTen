@@ -56,6 +56,10 @@
 		A8D95DF12889621400EE02CB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D95DF02889621400EE02CB /* DateExtension.swift */; };
 		C5345AF8288649C9007CF796 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5345AF7288649C9007CF796 /* MainViewController.swift */; };
 		C5345AFC28864E86007CF796 /* BoxViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5345AFB28864E86007CF796 /* BoxViews.swift */; };
+		C54B1DC928913FF00095F8E1 /* WritingLetter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C54B1DC828913FF00095F8E1 /* WritingLetter.storyboard */; };
+		C54B1DCD289148600095F8E1 /* WritingLetterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54B1DCA289148600095F8E1 /* WritingLetterViewController.swift */; };
+		C54B1DCE289148600095F8E1 /* WrittenLetterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54B1DCB289148600095F8E1 /* WrittenLetterListViewController.swift */; };
+		C54B1DCF289148600095F8E1 /* WrittenLetterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54B1DCC289148600095F8E1 /* WrittenLetterViewController.swift */; };
 		C554EA18288E603200954E11 /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C554EA14288E603100954E11 /* TransitionAnimation.swift */; };
 		C554EA1A288E603200954E11 /* NavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C554EA16288E603200954E11 /* NavigationControllerDelegate.swift */; };
 		C554EA1B288E603200954E11 /* TestHeavenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C554EA17288E603200954E11 /* TestHeavenViewController.swift */; };
@@ -137,6 +141,10 @@
 		BE1AAD714EC6C1AF11C4C79B /* Pods-OverTheRainbow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OverTheRainbow.debug.xcconfig"; path = "Target Support Files/Pods-OverTheRainbow/Pods-OverTheRainbow.debug.xcconfig"; sourceTree = "<group>"; };
 		C5345AF7288649C9007CF796 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C5345AFB28864E86007CF796 /* BoxViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxViews.swift; sourceTree = "<group>"; };
+		C54B1DC828913FF00095F8E1 /* WritingLetter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WritingLetter.storyboard; sourceTree = "<group>"; };
+		C54B1DCA289148600095F8E1 /* WritingLetterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WritingLetterViewController.swift; sourceTree = "<group>"; };
+		C54B1DCB289148600095F8E1 /* WrittenLetterListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrittenLetterListViewController.swift; sourceTree = "<group>"; };
+		C54B1DCC289148600095F8E1 /* WrittenLetterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrittenLetterViewController.swift; sourceTree = "<group>"; };
 		C554EA14288E603100954E11 /* TransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimation.swift; sourceTree = "<group>"; };
 		C554EA16288E603200954E11 /* NavigationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerDelegate.swift; sourceTree = "<group>"; };
 		C554EA17288E603200954E11 /* TestHeavenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHeavenViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +273,7 @@
 		27C8AC1F28854156000D2374 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				C54B1DC728913FBC0095F8E1 /* WritingLetter */,
 				66ACBF0B2890DF10006D0B39 /* flowerView */,
 				27BEC4F5288E6DDA003A4395 /* Base */,
 				2C93A762288F8F86005A0CA8 /* heavenView */,
@@ -465,6 +474,17 @@
 			path = mainView;
 			sourceTree = "<group>";
 		};
+		C54B1DC728913FBC0095F8E1 /* WritingLetter */ = {
+			isa = PBXGroup;
+			children = (
+				C54B1DC828913FF00095F8E1 /* WritingLetter.storyboard */,
+				C54B1DCA289148600095F8E1 /* WritingLetterViewController.swift */,
+				C54B1DCB289148600095F8E1 /* WrittenLetterListViewController.swift */,
+				C54B1DCC289148600095F8E1 /* WrittenLetterViewController.swift */,
+			);
+			path = WritingLetter;
+			sourceTree = "<group>";
+		};
 		C56CDAB7287EE41E00C1F5F9 = {
 			isa = PBXGroup;
 			children = (
@@ -593,6 +613,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C54B1DC928913FF00095F8E1 /* WritingLetter.storyboard in Resources */,
 				66ACBF142890DF10006D0B39 /* MainViewTemporary.storyboard in Resources */,
 				C56CDAD0287EE41F00C1F5F9 /* LaunchScreen.storyboard in Resources */,
 				66ACBF112890DF10006D0B39 /* FlowerView.storyboard in Resources */,
@@ -707,6 +728,7 @@
 				A8509B4C28878EA000CD88C1 /* Letter.swift in Sources */,
 				2C93A764288F8F93005A0CA8 /* HeavenViewController.swift in Sources */,
 				C56CDAC4287EE41E00C1F5F9 /* AppDelegate.swift in Sources */,
+				C54B1DCF289148600095F8E1 /* WrittenLetterViewController.swift in Sources */,
 				A8509B77288805ED00CD88C1 /* RealmRepository.swift in Sources */,
 				A8509B902888E6D300CD88C1 /* UtilError.swift in Sources */,
 				A8A87EDF288A4C8F009E3C6C /* HeavenViewResultDto.swift in Sources */,
@@ -714,6 +736,8 @@
 				A8509B542887996E00CD88C1 /* Flower.swift in Sources */,
 				A8D95DED288935F500EE02CB /* FlowerResultDto.swift in Sources */,
 				A8A87EDB288A2C85009E3C6C /* DataAccessProvider.swift in Sources */,
+				C54B1DCD289148600095F8E1 /* WritingLetterViewController.swift in Sources */,
+				C54B1DCE289148600095F8E1 /* WrittenLetterListViewController.swift in Sources */,
 				A8509B792888066F00CD88C1 /* RealmConfig.swift in Sources */,
 				A8509B832888326800CD88C1 /* RealmError.swift in Sources */,
 				A8509B892888D0E400CD88C1 /* FlowerLogStatus.swift in Sources */,
