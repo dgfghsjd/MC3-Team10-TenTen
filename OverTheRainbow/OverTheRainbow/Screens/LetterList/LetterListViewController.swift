@@ -46,6 +46,7 @@ class LetterLitstMainViewController: BaseViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupButtonAction()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -69,9 +70,18 @@ class LetterLitstMainViewController: BaseViewController {
     override func setupNavigationBar() {
         super.setupNavigationBar()
         
-        let writtingButtonView = makeBarButtonItem(with: writingButton)
-        navigationItem.rightBarButtonItem = writtingButtonView
+        let writingButtonView = makeBarButtonItem(with: writingButton)
+        navigationItem.rightBarButtonItem = writingButtonView
         navigationItem.title = "리스트"
+    }
+    private func setupButtonAction() {
+        let presentSendButtonAction = UIAction { _ in
+            let storyboard = UIStoryboard(name: "WritingLetter", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "writeLetter")
+            self.present(viewController, animated: true, completion: nil)
+        }
+        writingButton.addAction(presentSendButtonAction,
+                                                  for: .touchUpInside)
     }
 }
 

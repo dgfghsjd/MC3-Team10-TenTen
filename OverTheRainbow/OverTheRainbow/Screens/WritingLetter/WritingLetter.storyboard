@@ -48,7 +48,7 @@
         <!--Writing Letter View Controller-->
         <scene sceneID="l4Y-gD-fGQ">
             <objects>
-                <viewController id="9G4-a1-YfW" customClass="WritingLetterViewController" customModule="OverTheRainbow" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="writeLetter" id="9G4-a1-YfW" customClass="WritingLetterViewController" customModule="OverTheRainbow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GgM-C5-S3H">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -365,7 +365,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sh4-g9-v7w"/>
+        <segue reference="FeV-qr-T0h"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
