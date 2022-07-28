@@ -6,11 +6,14 @@
 //
 
 import UIKit
-
+//import RealmSwift
 class MainViewController: UIViewController {
     var numberOfLetters: Int = 0
-    var pickedFlowerIndex: Int?
+    var pickedFlower: FlowerResultDto?
     var didFlowerToday: Bool = false
+    var petID: String?
+    let service = DataAccessProvider.dataAccessConfig.getService()
+    var userData: MainViewResultDto?
 
     @IBOutlet weak var flowerBoxView: FlowerBoxView!
     @IBOutlet weak var letterBoxView: LetterBoxView!
@@ -18,8 +21,13 @@ class MainViewController: UIViewController {
     @IBOutlet weak var guideLabel: UILabel!
 
     override func viewDidLoad() {
+//        print("realm 위치: ", Realm.Configuration.defaultConfiguration.fileURL!)
         super.viewDidLoad()
-        quoteLabel.text = quotes[Int.random(in: 0...4)]
+        petID = UserDefaults.standard.string(forKey: "petID")
+        if petID != nil {
+            userData = try? service.getMainView(petID!)
+        }
+        quoteLabel.text = userData?.word.content ?? "DEBUG word 없음"
 
         [guideLabel, quoteLabel].forEach {
             $0.font = UIFont.preferredFont(forTextStyle: .headline, weight: .regular)
@@ -27,38 +35,83 @@ class MainViewController: UIViewController {
         setIfFlowerPickedToday()
     }
 
-    // 네비바 감추고 보이기 레퍼런스: https://stackoverflow.com/a/29953818/6183323
     override func viewWillAppear(_ animated: Bool) {
+        // 네비바 감추고 보이기 레퍼런스: https://stackoverflow.com/a/29953818/6183323
         navigationController?.setNavigationBarHidden(true, animated: animated)
 
-        // 렘에서 fetch한 꽃의 인덱스, 편지 숫자
-        // random: testing
-        pickedFlowerIndex = Int.random(in: 0...4)
-        numberOfLetters = Int.random(in: 0...100)
+        // 세팅뷰에서
+        petID = UserDefaults.standard.string(forKey: "petID")
 
-        flowerBoxView.updatePreview(flowerIndex: pickedFlowerIndex, didFlowerToday: didFlowerToday)
+        // 렘에서 정보 받기
+        if petID != nil {
+            userData = try? service.getMainView(petID!)
+        }
+        pickedFlower = userData?.flower
+        numberOfLetters = userData?.letterCount ?? 0
+
+        // 정보에 따라 박스에 보이는 정보 업데이트
+        flowerBoxView.updatePreview(flower: pickedFlower, didFlowerToday: didFlowerToday)
         letterBoxView.updatePreview(numberOfLetter: numberOfLetters)
     }
     override func viewWillDisappear(_ animated: Bool) {
+        // 네비바 감추고 보이기 레퍼런스: https://stackoverflow.com/a/29953818/6183323
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
+    @IBAction func flowerBoxTapped(_ sender: UITapGestureRecognizer) {
+        if petID == nil {
+            petRegisterGuideAlert()
+        } else {
+            navigateToStoryboardVC("FLOWERVIEW")
+        }
+    }
+    @IBAction func letterBoxTapped(_ sender: UITapGestureRecognizer) {
+        if petID == nil {
+            petRegisterGuideAlert()
+        } else {
+            navigateToStoryboardVC("LETTERVIEW")
+        }
+    }
     @IBAction func heavenTransitionButton(_ sender: UIButton) {
-        heavenTransition()
+        if petID == nil {
+            petRegisterGuideAlert()
+        } else {
+            heavenTransition()
+        }
     }
     @IBAction func heavenTransitionGesture(_ sender: UISwipeGestureRecognizer) {
-        heavenTransition()
+        if petID == nil {
+            petRegisterGuideAlert()
+        } else {
+            heavenTransition()
+        }
     }
 }
 
+// 뷰 이동 관련 메소드 모음
 extension MainViewController {
-    // 버튼이나 제스쳐로 천국뷰로 이동할 때 조건에 따라 안내 문구를 표시하거나, 오늘 헌화한 상태를 업데이트합니다.
+    // 펫 정보가 없을 때 안내 가이드 띄우기
+    private func petRegisterGuideAlert() {
+        let guideAlert = UIAlertController(
+            title: "추모할 반려동물의\n정보를 입력해주세요",
+            message: "",
+            preferredStyle: UIAlertController.Style.alert)
+        let offAction = UIAlertAction(title: "취소", style: UIAlertAction.Style.default)
+        let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: { _ in
+            self.navigateToStoryboardVC("SETTINGVIEW")
+        })
+        guideAlert.addAction(offAction)
+        guideAlert.addAction(okAction)
+        present(guideAlert, animated: true, completion: nil)
+    }
+
+    // 버튼이나 제스쳐로 천국뷰로 이동할 때 조건에 따라 안내 문구를 표시하거나, 오늘 헌화한 상태를 업데이트
     // ref: https://moonibot.tistory.com/23
     private func heavenTransition() {
         // debug
         // alertCondition(didFlowerToday: &didFlowerToday, pickedFlowerIndex: &pickedFlowerIndex)
 
-        if !didFlowerToday && (pickedFlowerIndex == nil) {
+        if !didFlowerToday && (pickedFlower == nil) {
             let guideAlert = UIAlertController(
                 title: "오늘 헌화할 꽃을 선택해주세요",
                 message: "추모하러 가기 전에 꽃을 준비해주세요.",
@@ -71,13 +124,9 @@ extension MainViewController {
                 updateIfFlowerPickedToday()
             }
 
-            // MARK: 렘에 현재 선택한 꽃 없애기
+            try? service.send(petID ?? "DEBUG REQUIRED")
 
-            // ref: https://m.blog.naver.com/horajjan/220622322609
-            if let heavenVC = storyboard?.instantiateViewController(withIdentifier: "HEAVENVIEW") {
-                heavenVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-                navigationController?.pushViewController(heavenVC, animated: true)
-            }
+            navigateToStoryboardVC("HeavenView")
         }
     }
     // 천국뷰로 올라갈 때 조건이 맞으면 부르기
@@ -100,11 +149,24 @@ extension MainViewController {
             }
         }
     }
+}
+
+// 유틸 함수 모음
+extension MainViewController {
     // 오늘 날짜를 yyyyMMdd 스트링으로 받기
     private func todayStr() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyyMMdd"
         return formatter.string(from: Date())
+    }
+
+    // 연결할 스토리보드 뷰컨트롤러 설정
+    // ref: https://m.blog.naver.com/horajjan/220622322609
+    private func navigateToStoryboardVC(_ viewControllerName: String) {
+        if let viewController = storyboard?.instantiateViewController(withIdentifier: viewControllerName) {
+            viewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+            navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }
 
@@ -114,9 +176,9 @@ func clearUserDefault() {
     let key = "flowerPickedToday"
     UserDefaults.standard.removeObject(forKey: key)
 }
-func alertCondition(didFlowerToday: inout Bool, pickedFlowerIndex: inout Int?) {
+func alertCondition(didFlowerToday: inout Bool, pickedFlower: inout FlowerResultDto?) {
     didFlowerToday = false
-    pickedFlowerIndex = nil
+    pickedFlower = nil
 }
 
 // mockupdata
