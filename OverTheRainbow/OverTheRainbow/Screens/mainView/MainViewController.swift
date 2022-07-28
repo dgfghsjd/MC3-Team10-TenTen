@@ -21,7 +21,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var guideLabel: UILabel!
 
     override func viewDidLoad() {
-//        print("realm 위치: ", Realm.Configuration.defaultConfiguration.fileURL!)
         super.viewDidLoad()
         petID = UserDefaults.standard.string(forKey: "petID")
         if petID != nil {
@@ -39,7 +38,7 @@ class MainViewController: UIViewController {
         // 네비바 감추고 보이기 레퍼런스: https://stackoverflow.com/a/29953818/6183323
         navigationController?.setNavigationBarHidden(true, animated: animated)
 
-        // 세팅뷰에서
+        // 세팅뷰에서 수정된 정보 반영
         petID = UserDefaults.standard.string(forKey: "petID")
 
         // 렘에서 정보 받기
@@ -69,7 +68,8 @@ class MainViewController: UIViewController {
         if petID == nil {
             petRegisterGuideAlert()
         } else {
-            navigateToStoryboardVC("LETTERVIEW")
+            navigationController?.pushViewController(LetterLitstMainViewController(), animated: true)
+            // navigateToStoryboardVC("LETTERVIEW") // 테스트용
         }
     }
     @IBAction func heavenTransitionButton(_ sender: UIButton) {
@@ -164,7 +164,6 @@ extension MainViewController {
     // ref: https://m.blog.naver.com/horajjan/220622322609
     private func navigateToStoryboardVC(_ viewControllerName: String) {
         if let viewController = storyboard?.instantiateViewController(withIdentifier: viewControllerName) {
-            viewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
             navigationController?.pushViewController(viewController, animated: true)
         }
     }
