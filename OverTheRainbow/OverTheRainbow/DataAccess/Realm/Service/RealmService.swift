@@ -46,7 +46,7 @@ class RealmService: DataAccessService {
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
         }
-        let letter = inputDto.toLetter()
+        let letter = inputDto.toLetter(imageManager.saveImage)
         
         try! realm.write {
             pet.letters.append(letter)
