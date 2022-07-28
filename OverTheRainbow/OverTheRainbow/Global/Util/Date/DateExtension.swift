@@ -20,7 +20,14 @@ extension Date {
         if let timeZone = TimeZone(abbreviation: timeZone) {
             calendar.timeZone = timeZone
         }
-        
         return calendar.startOfDay(for: Date.now)
     }
-}
+    
+    public static func - (_ lhs: Date, rhs: Date) -> TimeInterval {
+        return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+    }
+    
+    func years(from date: Date) -> Int {
+            return Calendar.current.dateComponents([.year], from: date, to: self).year ?? 0
+        }
+ }
