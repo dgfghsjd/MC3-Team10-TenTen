@@ -14,10 +14,11 @@ import RealmSwift
 class RealmService: DataAccessService {
     private let realm: Realm
     private let repository: RealmRepository
+    private let imageManager: ImageManager = ImageManager.shared!
     
     func addPet(_ inputDto: PetInputDto) {
         try! realm.write {
-            let pet = inputDto.toPet()
+            let pet = inputDto.toPet(imageManager.saveImage)
             repository.save(pet)
         }
     }

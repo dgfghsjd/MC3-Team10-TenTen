@@ -21,7 +21,7 @@ class ImageManager {
         return ymd + UUID().uuidString + imageType.value
     }
     
-    public func saveImage(_ image: UIImage) throws -> URL {
+    public func saveImage(_ image: UIImage) throws -> String {
         guard let pngImage = image.pngData() else {
             throw RealmError.petNotFound
         }
@@ -31,7 +31,7 @@ class ImageManager {
         } catch {
             throw ImageManagerError.imageWriteError
         }
-        return imageUrl
+        return imageUrl.path
     }
     
     public func createDirectory() throws {
