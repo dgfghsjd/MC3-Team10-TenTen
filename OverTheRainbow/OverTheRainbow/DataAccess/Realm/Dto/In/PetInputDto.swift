@@ -24,7 +24,6 @@ struct PetInputDto {
         return Pet(self.name, self.species, imgUrl: imgUrl, birth: self.birth, weight: self.weight)
     }
     
-    
     init(_ name: String, _ species: String, _ birth: Date, _ weight: Double, _ image: UIImage?) {
         self.name = name
         self.species = species

@@ -3,7 +3,6 @@
 //  OverTheRainbow
 //
 //  Created by Leo Bang on 2022/07/22.
-// swiftlint:disable force_try
 
 import Foundation
 

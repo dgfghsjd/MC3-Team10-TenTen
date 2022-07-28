@@ -3,7 +3,7 @@
 //  OverTheRainbow
 //
 //  Created by Leo Bang on 2022/07/27.
-//swiftlint:disable force_try
+// swiftlint:disable force_try
 
 import Foundation
 import UIKit
@@ -38,7 +38,11 @@ class ImageManager {
         let filePath = documentPath.appendingPathComponent(ImageManager.ENDPOINT)
         if !fileManager.fileExists(atPath: filePath.path) {
             do {
-                try fileManager.createDirectory(atPath: filePath.path, withIntermediateDirectories: true, attributes: nil)
+                try fileManager.createDirectory(
+                    atPath: filePath.path,
+                    withIntermediateDirectories: true,
+                    attributes: nil
+                )
             } catch {
                 throw ImageManagerError.directoryCreateError
             }
@@ -47,7 +51,12 @@ class ImageManager {
     
     private init?() {
         fileManager = FileManager.default
-        guard let path = try? fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true) else {
+        guard let path = try? fileManager.url(
+            for: .documentDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: true
+        ) else {
             return nil
         }
         documentPath = path

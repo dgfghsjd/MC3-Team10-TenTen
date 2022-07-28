@@ -14,17 +14,15 @@ enum DateFormat {
     case yearMonthDateHyphen
     
     var value: String {
-        get {
-            switch (self) {
-            case .yearMonth:
-                return "yyyy.MM"
-            case .yearMonthDate:
-                return "yyyy.MM.dd"
-            case .yearMonthKr:
-                return "yyyy년 MM월"
-            case .yearMonthDateHyphen:
-                return "yyyy-MM-dd-"
-            }
+        switch self {
+        case .yearMonth:
+            return "yyyy.MM"
+        case .yearMonthDate:
+            return "yyyy.MM.dd"
+        case .yearMonthKr:
+            return "yyyy년 MM월"
+        case .yearMonthDateHyphen:
+            return "yyyy-MM-dd-"
         }
     }
 }
