@@ -17,12 +17,12 @@ class RealmService: DataAccessService {
     
     private let realm: Realm
     private let repository: RealmRepository
+    private let imageManager: ImageManager = ImageManager.shared!
     
-    func addPet(_ inputDto: PetInputDto) {
-        
+    func addPet(_ inputDto: PetInputDto) -> String {
         try! realm.write {
-            let pet = inputDto.toPet()
-            repository.save(pet)
+            let pet = inputDto.toPet(imageManager.saveImage)
+            return repository.save(pet)
         }
     }
     
@@ -44,16 +44,17 @@ class RealmService: DataAccessService {
             .map { PetResultDto.of(pet: $0) }
     }
     
-    func addLetter(_ inputDto: LetterInputDto) throws {
+    func addLetter(_ inputDto: LetterInputDto) throws -> String {
         let petId = stringToObjectId(id: inputDto.petId)
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
         }
-        let letter = inputDto.toLetter()
+        let letter = inputDto.toLetter(imageManager.saveImage)
         
         try! realm.write {
             pet.letters.append(letter)
         }
+        return letter.id
     }
     
     func saveLetters(_ ids: String...) throws {
@@ -176,7 +177,6 @@ class RealmService: DataAccessService {
         guard let word: Words = repository.findRandomOne() else {
             throw RealmError.wordNotFound
         }
-        
         
         let flowerLog = pet.flowerLogs
             .where { $0.status == .unsent }
