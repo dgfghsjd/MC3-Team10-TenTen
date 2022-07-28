@@ -102,8 +102,8 @@ class FlowerBoxView: BoxStyleView, BoxStyle {
             }
             noFlowerGuideLabel.alpha = 0
 
-            // imageView.image = flower?.imgUrl
-            imageView.image = mockUpFlowers[Int.random(in: 0...4)].image
+            imageView.image = UIImage(named: flower?.imgUrl ?? "no-flower-asset") // 없으면 nil 리턴
+//            imageView.image = mockUpFlowers[Int.random(in: 0...4)].image
             nameLabel.text = flower?.name// mockUpFlowers[flowerIndex ?? 0].title
             floriographyLabel.text = flower?.meaning// mockUpFlowers[flowerIndex ?? 0].floriography
 
