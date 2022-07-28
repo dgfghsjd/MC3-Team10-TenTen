@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+//import RealmSwift
 class MainViewController: UIViewController {
     var numberOfLetters: Int = 0
     var pickedFlower: FlowerResultDto?
@@ -21,6 +21,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var guideLabel: UILabel!
 
     override func viewDidLoad() {
+//        print("realm 위치: ", Realm.Configuration.defaultConfiguration.fileURL!)
         super.viewDidLoad()
         petID = UserDefaults.standard.string(forKey: "petID")
         if petID != nil {

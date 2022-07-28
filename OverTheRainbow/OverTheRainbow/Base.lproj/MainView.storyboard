@@ -116,7 +116,7 @@
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="p4N-9l-F7s">
                     <connections>
-                        <action selector="flowerBoxTapped:" destination="BYZ-38-t0r" id="zqK-HJ-CFk"/>
+                        <segue destination="W2l-z3-mft" kind="show" id="FIG-Bl-yqO"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="BpN-se-eWA">
@@ -132,10 +132,21 @@
             </objects>
             <point key="canvasLocation" x="1080" y="49"/>
         </scene>
-        <!--Test Flower View Controller-->
+        <!--FlowerView-->
+        <scene sceneID="7Ba-MX-fhv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FlowerView" referencedIdentifier="FlowerView" id="W2l-z3-mft" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="VHp-DO-UA7"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GF2-El-eQT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="575" y="-104"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="cKp-uX-9qp">
             <objects>
-                <viewController storyboardIdentifier="FLOWERVIEW" id="i1x-40-OxG" customClass="TestFlowerViewController" customModule="OverTheRainbow" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YdM-XX-263" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="i1x-40-OxG" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x8T-aY-qSi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,7 +189,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="bEq-Q4-79V"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YdM-XX-263" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="909" y="785"/>
         </scene>
@@ -242,8 +252,8 @@
         <!--HeavenView-->
         <scene sceneID="iMo-cU-YvW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VtV-nL-RPT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardIdentifier="HeavenView" storyboardName="HeavenView" id="4AM-RE-rFq" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VtV-nL-RPT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1491" y="-623"/>
         </scene>

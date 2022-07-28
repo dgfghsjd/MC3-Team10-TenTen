@@ -8,7 +8,6 @@ class FlowerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var flowerTitleLabel: UILabel!
     @IBOutlet weak var backgroundLabel: UIView!
     @IBOutlet weak var boxLabel: UIView!
-    @IBOutlet weak var alphaContorl: UIView!
     // set 되었을때 FlowerData에서 정보를 가지고 오기위해서
     var flowers: FlowerData! {
         didSet {
@@ -21,7 +20,6 @@ class FlowerCollectionViewCell: UICollectionViewCell {
             flowerImageView.image = flowers.flowerImage
             flowerTitleLabel.text = flowers.label
             flowerMeans.text = flowers.means
-            alphaContorl.alpha = flowers.alpha
         }
         backgroundLabel.layer.cornerRadius = 15.0
 //        backgroundLabel.layer.masksToBounds = true[.layerMinXMinYCorner, .layerMaxXMinYCorner]

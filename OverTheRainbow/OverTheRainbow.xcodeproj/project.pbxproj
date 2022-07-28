@@ -20,7 +20,6 @@
 		66ACBF112890DF10006D0B39 /* FlowerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66ACBF0C2890DF10006D0B39 /* FlowerView.storyboard */; };
 		66ACBF122890DF10006D0B39 /* FlowerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ACBF0D2890DF10006D0B39 /* FlowerData.swift */; };
 		66ACBF132890DF10006D0B39 /* FlowerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ACBF0E2890DF10006D0B39 /* FlowerCollectionViewCell.swift */; };
-		66ACBF142890DF10006D0B39 /* MainViewTemporary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66ACBF0F2890DF10006D0B39 /* MainViewTemporary.storyboard */; };
 		66ACBF152890DF10006D0B39 /* FlowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ACBF102890DF10006D0B39 /* FlowerViewController.swift */; };
 		A8509B4A28878C4000CD88C1 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B4928878C4000CD88C1 /* Pet.swift */; };
 		A8509B4C28878EA000CD88C1 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B4B28878EA000CD88C1 /* Letter.swift */; };
@@ -97,7 +96,6 @@
 		66ACBF0C2890DF10006D0B39 /* FlowerView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FlowerView.storyboard; sourceTree = "<group>"; };
 		66ACBF0D2890DF10006D0B39 /* FlowerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowerData.swift; sourceTree = "<group>"; };
 		66ACBF0E2890DF10006D0B39 /* FlowerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowerCollectionViewCell.swift; sourceTree = "<group>"; };
-		66ACBF0F2890DF10006D0B39 /* MainViewTemporary.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainViewTemporary.storyboard; sourceTree = "<group>"; };
 		66ACBF102890DF10006D0B39 /* FlowerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowerViewController.swift; sourceTree = "<group>"; };
 		7E25BB3D133FB640732CCAA6 /* Pods-OverTheRainbow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OverTheRainbow.release.xcconfig"; path = "Target Support Files/Pods-OverTheRainbow/Pods-OverTheRainbow.release.xcconfig"; sourceTree = "<group>"; };
 		A8509B4928878C4000CD88C1 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
@@ -307,7 +305,6 @@
 				66ACBF0C2890DF10006D0B39 /* FlowerView.storyboard */,
 				66ACBF0D2890DF10006D0B39 /* FlowerData.swift */,
 				66ACBF0E2890DF10006D0B39 /* FlowerCollectionViewCell.swift */,
-				66ACBF0F2890DF10006D0B39 /* MainViewTemporary.storyboard */,
 				66ACBF102890DF10006D0B39 /* FlowerViewController.swift */,
 			);
 			path = flowerView;
