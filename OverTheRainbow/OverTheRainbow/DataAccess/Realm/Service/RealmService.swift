@@ -90,10 +90,10 @@ class RealmService: DataAccessService {
         }
         
         try! realm.write {
-            pet.letters.where { $0.status != .sent }
+            pet.letters.where { $0.status == .saved }
                 .forEach { $0.status = .sent }
             
-            pet.flowerLogs.where { $0.status != .sent }
+            pet.flowerLogs.where { $0.status == .unsent }
                 .forEach { $0.status = .sent }
         }
     }
