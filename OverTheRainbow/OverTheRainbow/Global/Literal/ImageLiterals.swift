@@ -11,6 +11,7 @@ enum ImageLiterals {
     // MARK: - button
     
     static var btnBack: UIImage { .load(systemName: "chevron.backward") }
+    static var btnWriting: UIImage { .load(systemName: "square.and.pencil")}
 }
 
 extension UIImage {

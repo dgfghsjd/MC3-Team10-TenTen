@@ -23,6 +23,8 @@ class LetterLitstMainViewController: BaseViewController {
                                                   bottom: collectionVerticalSpacing,
                                                   right: collectionHorizontalSpacing)
     }
+    private let writingButton = WritingButton()
+    
     private let collectionViewFlowLayout: UICollectionViewFlowLayout = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
@@ -56,7 +58,7 @@ class LetterLitstMainViewController: BaseViewController {
             listCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             listCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 3),
             listCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 3),
-            listCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 3),
+            listCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 3)
 //            listCollectionView.heightAnchor.constraint(equalToConstant: 10000)
         ]
         NSLayoutConstraint.activate(listCollectionViewConstraints)
@@ -66,6 +68,9 @@ class LetterLitstMainViewController: BaseViewController {
     }
     override func setupNavigationBar() {
         super.setupNavigationBar()
+        
+        let writtingButtonView = makeBarButtonItem(with: writingButton)
+        navigationItem.rightBarButtonItem = writtingButtonView
     }
 }
 

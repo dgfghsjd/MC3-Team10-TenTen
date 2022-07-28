@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		272295FB2892366E00DDBF58 /* WritingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272295FA2892366E00DDBF58 /* WritingButton.swift */; };
 		273BF89E288E730A005BA63B /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273BF89D288E730A005BA63B /* BackButton.swift */; };
 		273BF8A1288E7379005BA63B /* ImageLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273BF8A0288E7379005BA63B /* ImageLiterals.swift */; };
 		273BF8A4288E7406005BA63B /* LetterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273BF8A3288E7406005BA63B /* LetterCollectionViewCell.swift */; };
@@ -83,6 +84,7 @@
 
 /* Begin PBXFileReference section */
 		0306C05ACD039E0A7DFC5789 /* Pods_OverTheRainbow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OverTheRainbow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		272295FA2892366E00DDBF58 /* WritingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingButton.swift; sourceTree = "<group>"; };
 		273BF89D288E730A005BA63B /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		273BF8A0288E7379005BA63B /* ImageLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiterals.swift; sourceTree = "<group>"; };
 		273BF8A3288E7406005BA63B /* LetterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				273BF89D288E730A005BA63B /* BackButton.swift */,
+				272295FA2892366E00DDBF58 /* WritingButton.swift */,
 			);
 			path = UIComponent;
 			sourceTree = "<group>";
@@ -619,7 +622,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C54B1DC928913FF00095F8E1 /* WritingLetter.storyboard in Resources */,
-				66ACBF142890DF10006D0B39 /* MainViewTemporary.storyboard in Resources */,
 				C56CDAD0287EE41F00C1F5F9 /* LaunchScreen.storyboard in Resources */,
 				66ACBF112890DF10006D0B39 /* FlowerView.storyboard in Resources */,
 				C56CDACD287EE41F00C1F5F9 /* Assets.xcassets in Resources */,
@@ -711,6 +713,7 @@
 				27BEC4F7288E6E1C003A4395 /* BaseViewController.swift in Sources */,
 				66ACBF122890DF10006D0B39 /* FlowerData.swift in Sources */,
 				A8509B70288804C900CD88C1 /* RealmService.swift in Sources */,
+				272295FB2892366E00DDBF58 /* WritingButton.swift in Sources */,
 				A8509B85288838A600CD88C1 /* PetResultDto.swift in Sources */,
 				A8509B4A28878C4000CD88C1 /* Pet.swift in Sources */,
 				27465D7E288E7CEB0017F1DF /* UICollectionView+Extension.swift in Sources */,
