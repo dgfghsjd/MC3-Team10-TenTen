@@ -69,6 +69,11 @@ class LetterLitstMainViewController: BaseViewController {
     override func setupNavigationBar() {
         super.setupNavigationBar()
     }
+    private func pushDetailView() {
+         let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
+         guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
+         self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -93,5 +98,9 @@ extension LetterLitstMainViewController: UICollectionViewDataSource {
 extension LetterLitstMainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        pushDetailView()
     }
 }
