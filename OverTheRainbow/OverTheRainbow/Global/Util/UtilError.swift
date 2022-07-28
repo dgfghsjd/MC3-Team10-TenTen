@@ -9,4 +9,5 @@ import Foundation
 
 enum UtilError: String, Error {
     case stringToDateFailed
+    case timeZoneIllegalArguments
 }

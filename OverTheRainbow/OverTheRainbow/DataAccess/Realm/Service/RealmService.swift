@@ -178,15 +178,21 @@ class RealmService: DataAccessService {
             throw RealmError.wordNotFound
         }
         
-        let flowerLog = pet.flowerLogs
+        let todayFlowerLog = pet.flowerLogs
+            .where { $0.createdAt > Date.startOfToday() }
+            .sorted(byKeyPath: "createdAt", ascending: false)
+        
+        let flowerLog = todayFlowerLog
             .where { $0.status == .unsent }
             .first
+        
+        let permitted = todayFlowerLog.count > 0 ? true : false
+        
         let letterCount = pet.letters
-            .where { $0.status != .sent }
+            .where { $0.status == .saved }
             .count
         
-        
-        return MainViewResultDto(flowerLog, letterCount, word)
+        return MainViewResultDto(flowerLog, letterCount, permitted, word)
     }
     
     func getHeavenView(_ id: String) throws -> HeavenViewResultDto {

@@ -14,4 +14,13 @@ extension Date {
         }
         return res
     }
+    
+    public static func startOfToday(_ timeZone: String = "KST") -> Date {
+        var calendar = Calendar.current
+        if let timeZone = TimeZone(abbreviation: timeZone) {
+            calendar.timeZone = timeZone
+        }
+        
+        return calendar.startOfDay(for: Date.now)
+    }
 }
