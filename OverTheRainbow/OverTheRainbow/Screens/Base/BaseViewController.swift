@@ -40,6 +40,7 @@ class BaseViewController: UIViewController {
         guard let navigationBar = navigationController?.navigationBar else { return }
         let appearance = UINavigationBarAppearance()
         appearance.shadowColor = UIColor(named: "textColor")
+        appearance.titleTextAttributes = [.foregroundColor: UIColor(named: "textColor")]
         appearance.backgroundColor = UIColor(named: "navigationBar Color")
         navigationBar.standardAppearance = appearance
         navigationBar.compactAppearance = appearance

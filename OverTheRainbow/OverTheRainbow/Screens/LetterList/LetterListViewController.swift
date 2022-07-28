@@ -71,6 +71,7 @@ class LetterLitstMainViewController: BaseViewController {
         
         let writtingButtonView = makeBarButtonItem(with: writingButton)
         navigationItem.rightBarButtonItem = writtingButtonView
+        navigationItem.title = "리스트"
     }
 }
 
