@@ -11,6 +11,7 @@ enum DateFormat {
     case yearMonthDate
     case yearMonth
     case yearMonthKr
+    case yearMonthDateHyphen
     
     var value: String {
         get {
@@ -21,6 +22,8 @@ enum DateFormat {
                 return "yyyy.MM.dd"
             case .yearMonthKr:
                 return "yyyy년 MM월"
+            case .yearMonthDateHyphen:
+                return "yyyy-MM-dd-"
             }
         }
     }
