@@ -31,7 +31,7 @@ class Letter: RealmModel {
     var updatedAt: Date = Date.now
     
     var date: String {
-        get { return DateConverter.dateToString(self.createdAt) }
+        return DateConverter.dateToString(self.createdAt)
     }
     
     convenience init(_ title: String, _ content: String, _ imgUrl: String?) {

@@ -13,9 +13,7 @@ import RealmSwift
 // TODO: updatedAt 구현
 
 class RealmService: DataAccessService {
-    
-    
-    private let realm: Realm
+private let realm: Realm
     private let repository: RealmRepository
     private let imageManager: ImageManager = ImageManager.shared!
     
@@ -98,7 +96,7 @@ class RealmService: DataAccessService {
         }
     }
     
-    func findUnsentLetters(_ id: String) throws -> Array<LetterResultDto> {
+    func findUnsentLetters(_ id: String) throws -> [LetterResultDto] {
         let petId = stringToObjectId(id: id)
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
@@ -108,7 +106,7 @@ class RealmService: DataAccessService {
             .where { $0.status != .sent }
             .sorted(byKeyPath: "createdAt", ascending: false)
             .sorted {
-                if $0.status == .saved  { return true }
+                if $0.status == .saved { return true }
                 else if $1.status == .saved { return false }
                 return true
             }
@@ -116,7 +114,7 @@ class RealmService: DataAccessService {
     }
     
     // TODO: sorted refactor
-    func findSentLetters(_ id: String, _ selected: String) throws -> Array<LetterResultDto> {
+    func findSentLetters(_ id: String, _ selected: String) throws -> [LetterResultDto] {
         let petId = stringToObjectId(id: id)
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
@@ -139,7 +137,7 @@ class RealmService: DataAccessService {
             .map { LetterResultDto.of($0) }
     }
 
-    func findAllFlowers() -> Array<FlowerResultDto> {
+    func findAllFlowers() -> [FlowerResultDto] {
         let results: Results<Flower> = repository.findAll()
         return results.toArray()
             .map { FlowerResultDto.of($0) }
