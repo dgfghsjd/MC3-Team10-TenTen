@@ -48,16 +48,21 @@
                                     <action selector="letterButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="jon-sK-lh6"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kGM-Ub-7SM">
-                                <rect key="frame" x="20" y="615" width="120" height="280"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kGM-Ub-7SM">
+                                <rect key="frame" x="20" y="616" width="120" height="280"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Hrt-a4-ehL"/>
+                                    <constraint firstAttribute="height" constant="280" id="Wuf-qh-L5P"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="P2h-8a-eBK" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" constant="4" id="0gZ-mR-1Pj"/>
+                            <constraint firstItem="kGM-Ub-7SM" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="5C0-OY-0jQ"/>
                             <constraint firstAttribute="trailing" secondItem="6GR-3W-1aw" secondAttribute="trailing" id="8Ja-va-ipg"/>
+                            <constraint firstAttribute="bottom" secondItem="kGM-Ub-7SM" secondAttribute="bottom" id="JMk-Cq-DVT"/>
                             <constraint firstAttribute="bottom" secondItem="6GR-3W-1aw" secondAttribute="bottom" id="bqj-iC-2R6"/>
                             <constraint firstItem="qSX-rk-St0" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" constant="70" id="dAZ-Si-T5B"/>
                             <constraint firstItem="6GR-3W-1aw" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="gdY-2d-WR3"/>
