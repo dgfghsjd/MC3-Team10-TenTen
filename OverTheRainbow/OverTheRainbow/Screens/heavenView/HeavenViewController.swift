@@ -15,7 +15,7 @@ class HeavenViewController: UIViewController {
     @IBOutlet weak var petImageView: UIImageView!
     @IBOutlet weak var recentFlowerImageView: UIImageView!
 
-    let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
+    private let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,17 +32,27 @@ class HeavenViewController: UIViewController {
             var resultDTO = try service.getHeavenView("62df7c5eedd840ec0d2c01c2")
             recentFlowerImageView.image = UIImage(named: resultDTO.lastFlower!.name)
 
-            // TODO: recentFlowers 수정 후 다시 코드 짜기
-            print(resultDTO.recentFlowers)
-            var xPos = 20
+            var xPos = 200
+            var yPos = 500
+            var numOfFlowers = 0
 
             for flower in resultDTO.recentFlowers {
-                let flowerImageView = UIImageView(frame: CGRect(x: xPos, y: 300, width: 70, height: 140))
+                // 최대 꽃 개수를 5개로 제한합니다.
+                if numOfFlowers > 5 {
+                    break
+                }
+                let flowerImageView = UIImageView(frame: CGRect(x: xPos, y: yPos, width: 30, height: 80))
+
+                // 꽃을 위,아래 번갈아가면서 배치하기 위해 yPos값을 번갈아가면서 증감시킵니다.
+                if numOfFlowers % 2 == 0 {
+                    yPos += 60
+                } else {
+                    yPos -= 90
+                }
                 self.view.addSubview(flowerImageView)
-
                 flowerImageView.image = UIImage(named: flower.name)
-                xPos += 100
-
+                xPos += 30
+                numOfFlowers += 1
             }
         } catch {
             print("Error getting heaven view : \(error)")
