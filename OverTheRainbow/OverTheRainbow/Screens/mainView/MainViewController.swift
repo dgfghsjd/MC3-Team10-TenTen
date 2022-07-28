@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import RealmSwift
+
 class MainViewController: UIViewController {
     var numberOfLetters: Int = 0
     var pickedFlower: FlowerResultDto?
@@ -31,7 +31,6 @@ class MainViewController: UIViewController {
         [guideLabel, quoteLabel].forEach {
             $0.font = UIFont.preferredFont(forTextStyle: .headline, weight: .regular)
         }
-        setIfFlowerPickedToday()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +44,7 @@ class MainViewController: UIViewController {
         if petID != nil {
             userData = try? service.getMainView(petID!)
         }
+        didFlowerToday = userData?.permitted ?? false
         pickedFlower = userData?.flower
         numberOfLetters = userData?.letterCount ?? 0
 
@@ -108,9 +108,6 @@ extension MainViewController {
     // 버튼이나 제스쳐로 천국뷰로 이동할 때 조건에 따라 안내 문구를 표시하거나, 오늘 헌화한 상태를 업데이트
     // ref: https://moonibot.tistory.com/23
     private func heavenTransition() {
-        // debug
-        // alertCondition(didFlowerToday: &didFlowerToday, pickedFlowerIndex: &pickedFlowerIndex)
-
         if !didFlowerToday && (pickedFlower == nil) {
             let guideAlert = UIAlertController(
                 title: "오늘 헌화할 꽃을 선택해주세요",
@@ -120,33 +117,9 @@ extension MainViewController {
             guideAlert.addAction(offAction)
             present(guideAlert, animated: true, completion: nil)
         } else {
-            if !didFlowerToday {
-                updateIfFlowerPickedToday()
-            }
-
             try? service.send(petID ?? "DEBUG REQUIRED")
 
             navigateToStoryboardVC("HeavenView")
-        }
-    }
-    // 천국뷰로 올라갈 때 조건이 맞으면 부르기
-    private func updateIfFlowerPickedToday() {
-        let key = "flowerPickedToday"
-        didFlowerToday = true
-        UserDefaults.standard.set([todayStr(): true], forKey: key)
-        UserDefaults.standard.synchronize()
-    }
-    // 앱을 켤 때 유저디폴트를 사용해 오늘 헌화를 했는지 확인
-    private func setIfFlowerPickedToday() {
-        let key = "flowerPickedToday"
-        let info = UserDefaults.standard.object(forKey: key) as? [String: Bool]
-        if info?.keys.first != todayStr() {
-            UserDefaults.standard.set([todayStr(): false], forKey: key)
-            UserDefaults.standard.synchronize()
-        } else {
-            if let test = info?[todayStr()] {
-                didFlowerToday = test
-            }
         }
     }
 }
@@ -170,16 +143,6 @@ extension MainViewController {
 }
 
 #if DEBUG
-// DebugFunc
-func clearUserDefault() {
-    let key = "flowerPickedToday"
-    UserDefaults.standard.removeObject(forKey: key)
-}
-func alertCondition(didFlowerToday: inout Bool, pickedFlower: inout FlowerResultDto?) {
-    didFlowerToday = false
-    pickedFlower = nil
-}
-
 // mockupdata
 struct FlowerMockUpData {
     let title: String
