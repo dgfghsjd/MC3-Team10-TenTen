@@ -27,42 +27,27 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var navItem: UINavigationItem!
     
     private let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
-    var pets = [PetResultDto]() {
-        didSet {
-            collectionView.delegate = self
-            collectionView.dataSource = self
-        }
-    }
+    var pets = [PetResultDto]()
     var mode: UpdateMode?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("load")
         // TODO: pets에 현재 UserDefaults 펫을 먼저 넣고 나머지 펫들을 append시키기
 
         UserDefaults.standard.set("62e1351dedd840ec0d2c01d4", forKey: "petID")
+        updatePetList()
 
-//        updatePetList()
-
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         let updateButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(showActionSheet))
         updateButton.tintColor = UIColor(named: "textColor")
         navItem.rightBarButtonItem = updateButton
-
-        //        do {
-        //            let petDTO = try service.findPet(id: "62e0952349d71adbcea8ae97")
-        //        } catch {
-        //            print("Error finding pet : \(error)")
-        //        }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("will appear")
-        updatePetList()
-    }
-
+//
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//    }
     @objc func showActionSheet() {
         let actionSheet = UIAlertController(title: "펫 설정하기", message: "", preferredStyle: .actionSheet)
         let addPet = UIAlertAction(title: "펫 추가하기", style: .default) { action in
@@ -78,16 +63,16 @@ class SettingViewController: UIViewController {
         }
         let cancelAction = UIAlertAction(title: "취소", style: .cancel) { action in
         }
-
+        
         actionSheet.addAction(addPet)
         actionSheet.addAction(updatePet)
         actionSheet.addAction(deletePet)
         actionSheet.addAction(cancelAction)
         actionSheet.view.tintColor = UIColor(named: "textColor")
-
+        
         present(actionSheet, animated: true)
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destinationVC = segue.destination as? UpdatePetViewController else {
             return
@@ -105,28 +90,30 @@ class SettingViewController: UIViewController {
         destinationVC.parentVC = self
     }
 
-    func updatePetList() {
-        print("update!")
-        pets = [PetResultDto]()
-
-        let currentPetID = UserDefaults.standard.string(forKey: "petID")
-
-        do {
-            try pets.append(service.findPet(id: currentPetID!))
-        } catch {
-            print("Error finding pet : \(error)")
+        func updatePetList() {
+            print("update!")
+            pets = [PetResultDto]()
+    
+            let currentPetID = UserDefaults.standard.string(forKey: "petID")
+    
+            do {
+                try pets.append(service.findPet(id: currentPetID!))
+            } catch {
+                print("Error finding pet : \(error)")
+            }
+    
+            let otherPets = service.findAllPet().filter {
+                $0.id != currentPetID
+            }
+    
+            for pet in otherPets {
+                pets.append(pet)
+            }
+    
+            print("pets : \(pets)")
+            
+            collectionView.reloadData()
         }
-
-        let otherPets = service.findAllPet().filter {
-            $0.id != currentPetID
-        }
-
-        for pet in otherPets {
-            pets.append(pet)
-        }
-
-        print("pets : \(pets)")
-    }
 }
 
 // MARK: - DataSource, Delegate of CollectionView
@@ -139,7 +126,7 @@ extension SettingViewController: UICollectionViewDelegate, UICollectionViewDataS
             return UICollectionViewCell()
         }
         let pet = pets[indexPath.row]
-
+        
         if pet.id == UserDefaults.standard.string(forKey: "petID") {
             let imageAttachment = NSTextAttachment()
             imageAttachment.image = UIImage(systemName: "checkmark.circle")
@@ -160,7 +147,7 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = collectionView.bounds.width
         let height: CGFloat = 260
-
+        
         return CGSize(width: width, height: height)
     }
 }

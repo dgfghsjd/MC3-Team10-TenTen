@@ -7,11 +7,6 @@
 
 import UIKit
 
-//enum UpdateMode: String {
-//    case update = "UPDATE"
-//    case add = "ADD"
-//}
-
 class UpdatePetViewController: UIViewController {
 
     var currentPet: PetResultDto?
@@ -22,7 +17,7 @@ class UpdatePetViewController: UIViewController {
     @IBOutlet weak var speciesTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var weightTextField: UITextField!
-    
+
     private let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
 
     override func viewDidLoad() {
@@ -61,13 +56,9 @@ class UpdatePetViewController: UIViewController {
             }
         } else {
             // update mode
-        }
-
-        if let name = nameTextField.text, let species = speciesTextField.text, let birth = ageTextField.text, let weight = weightTextField.text {
-//            let myPet = Pet(name: name, species: species, birth: birth, weight: weight)
+            // TODO: Realm update pet 추가
         }
         self.dismiss(animated: true) {
-            print("dismiss")
             guard let vc = self.parentVC as? SettingViewController else { return }
             vc.updatePetList()
         }
