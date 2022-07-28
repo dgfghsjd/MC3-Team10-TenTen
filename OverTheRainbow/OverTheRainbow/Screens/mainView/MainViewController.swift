@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+//import RealmSwift
 class MainViewController: UIViewController {
     var numberOfLetters: Int = 0
     var pickedFlowerIndex: Int?
@@ -18,6 +18,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var guideLabel: UILabel!
 
     override func viewDidLoad() {
+//        print("realm 위치: ", Realm.Configuration.defaultConfiguration.fileURL!)
         super.viewDidLoad()
         quoteLabel.text = quotes[Int.random(in: 0...4)]
 

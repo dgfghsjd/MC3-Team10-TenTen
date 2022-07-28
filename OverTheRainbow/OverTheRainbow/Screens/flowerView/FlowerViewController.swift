@@ -3,11 +3,13 @@
 import UIKit
 
 class FlowerViewController: UIViewController {
+    @IBOutlet weak var flowerViewNaviBar: UINavigationItem!
     @IBOutlet weak var takeFlowerlabel: UIBarButtonItem!
     @IBAction func takeAFlower(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
         print(flowerData[roundedIndex].label, flowerData[roundedIndex].means )
         print("\(offsetPoint)뷰가 리로드 될때 x 시작점입니다.")
+        print("\(roundedIndex)가 다음 인덱스 시작점입니다")
     }
     @IBOutlet weak var pagerContorl: UIPageControl!
     // 데이터를 인스턴스로 받아온다.
@@ -16,9 +18,8 @@ class FlowerViewController: UIViewController {
     var currentIndex: CGFloat = 0.0
     var previousCellIndex = 0
     var nextCellIndex = 0
-    var roundedIndex = 1
+    var roundedIndex = 0
     var offsetPoint = 0.0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // 셀의 사이즈 설정
@@ -36,8 +37,9 @@ class FlowerViewController: UIViewController {
         // 문장이다.
         collectionView.dataSource = self
         collectionView.delegate = self
-        pagerContorl.numberOfPages = flowerData.count - 1
-        pagerContorl.currentPage = 0
+        pagerContorl.numberOfPages = flowerData.count
+        pagerContorl.currentPage = roundedIndex
+        UINavigationBar.appearance().tintColor = UIColor(named: "textColor")
     }
     // 컬렉션뷰에 필요한 데이터 및 뷰를 제공하기 위한 기능을 정의한 프로토콜입니다.
     // 기존 객체를 수정하지 않고 프로토콜을 구현하기 위해
@@ -84,7 +86,7 @@ extension FlowerViewController: UIScrollViewDelegate, UICollectionViewDelegate {
                 currentIndex -= 1
             }
         }
-        // 얼마나 넘어갈지 알려주는 명령어인데 왜 내가 설정한 만큼만 넘어가지않는건데ㅠㅠㅠ
+        // 얼마나 넘어갈지 설정
         offset = CGPoint(x: currentIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: 0)
         // 스크롤을 햇을때 정지할 offset
         targetContentOffset.pointee = offset
@@ -98,19 +100,13 @@ extension FlowerViewController: UIScrollViewDelegate, UICollectionViewDelegate {
         let offsetX = collectionView.contentOffset.x
         let index = (offsetX + collectionView.contentInset.left) / cellWidthIncludeSpacing
          roundedIndex = Int(round(index))
-        print("roundedIndex\(roundedIndex)")
-        print("previousCellIndex\(previousCellIndex)")
-        print("nextCellIndex\(nextCellIndex)")
-        print(offsetPoint)
-        //
-        //
         pagerContorl.currentPage = roundedIndex
         // 줌 하는 현재 셀
                 let indexPath = IndexPath(item: Int(roundedIndex), section: 0)
         if let cell = collectionView.cellForItem(at: indexPath) {
             zoomFocusCell(cell: cell, isFocus: true)
         }
-        //
+
         // 줌 아웃되는 이전 셀
         let preIndexPath = IndexPath(item: previousCellIndex, section: 0)
         if let preCell = collectionView.cellForItem(at: preIndexPath) {
