@@ -36,6 +36,6 @@ class RealmRepository {
     }
     
     init(realm: Realm) {
-        self.realm = realm;
+        self.realm = realm
     }
 }
