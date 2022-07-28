@@ -14,7 +14,7 @@ import CoreData
 // MARK: 함수 signature의 parameter type, return type을 잘 확인하고 이용해주세요!
 protocol DataAccessService {
     // MARK: Pet 생성
-    func addPet(_ inputDto: PetInputDto) -> Void
+    func addPet(_ inputDto: PetInputDto) -> String
     
     // MARK: Pet 정보 가져오기
     func findPet(id: String) throws -> PetResultDto
@@ -23,7 +23,7 @@ protocol DataAccessService {
     func findAllPet() -> Array<PetResultDto>
     
     // MARK: 편지 생성하기 (임시 저장 상태)
-    func addLetter(_ inputDto: LetterInputDto) throws -> Void
+    func addLetter(_ inputDto: LetterInputDto) throws -> String
     
     // MARK: 편지 저장하기 (저장 상태로 변경)
     func saveLetters(_ ids: String...) throws -> Void
