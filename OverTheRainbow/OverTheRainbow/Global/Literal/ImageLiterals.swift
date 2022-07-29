@@ -12,7 +12,7 @@ enum ImageLiterals {
     static var btnBack: UIImage { .load(systemName: "chevron.backward") }
     
     // MARK: - icon
-    static var isSavedIcon: UIImage { .load(systemName: "checkmark.circle")}
+    static var savedIcon: UIImage { .load(systemName: "checkmark.circle")}
 }
 
 extension UIImage {
