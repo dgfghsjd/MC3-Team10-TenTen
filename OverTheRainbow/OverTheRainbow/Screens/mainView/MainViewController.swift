@@ -23,15 +23,22 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
 //        print("realm 위치: ", Realm.Configuration.defaultConfiguration.fileURL!)
         super.viewDidLoad()
+        //realm pet id 받아오기
         petID = UserDefaults.standard.string(forKey: "petID")
+        
+        //pet id 가 비어있지 않을 경우에 userData에 getMainView 함수를 넣는다(파라미터 petID)
         if petID != nil {
+            
             userData = try? service.getMainView(petID!)
         }
+        
+        //명언 레이블에 realm getMainView함수에 있는 word.content를 넣는다. 없을경우 뒷부분으로 대처
         quoteLabel.text = userData?.word.content ?? "DEBUG word 없음"
 
         [guideLabel, quoteLabel].forEach {
             $0.font = UIFont.preferredFont(forTextStyle: .headline, weight: .regular)
         }
+        //추후에 다시 보도록 하자.
         setIfFlowerPickedToday()
     }
 
