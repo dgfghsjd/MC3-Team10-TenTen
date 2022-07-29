@@ -37,8 +37,18 @@ private let realm: Realm
             let updatedPet = inputDto.toPet(pet: pet, saveImage: imageManager.saveImage)
             repository.update(updatedPet)
         }
-         
         return pet.id
+    }
+    
+    func deletePet(_ id: String) throws {
+        let petId = id.toObjectId()
+        guard let pet: Pet = repository.findById(id: petId) else {
+            throw RealmError.petNotFound
+        }
+        
+        try! realm.write {
+            repository.delete(pet)
+        }
     }
     
     func findPet(id: String) throws -> PetResultDto {

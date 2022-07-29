@@ -19,6 +19,9 @@ protocol DataAccessService {
     // MARK: Pet 정보수정
     func updatePet(_ inputDto: PetUpdateDto) throws -> String
     
+    // MARK: Pet 삭제
+    func deletePet(_ id: String) throws 
+    
     // MARK: Pet 정보 가져오기
     func findPet(id: String) throws -> PetResultDto
     
