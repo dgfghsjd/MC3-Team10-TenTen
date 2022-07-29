@@ -17,11 +17,11 @@ struct PetInputDto {
     private(set) var image: UIImage?
     
     func toPet(_ saveImage: (UIImage) throws -> String) -> Pet {
-        var imgUrl: String?
+        var fileName: String?
         if let img = self.image {
-            imgUrl = try? saveImage(img)
+            fileName = try? saveImage(img)
         }
-        return Pet(self.name, self.species, imgUrl: imgUrl, birth: self.birth, weight: self.weight)
+        return Pet(self.name, self.species, fileName: fileName, birth: self.birth, weight: self.weight)
     }
     
     init(_ name: String, _ species: String, _ birth: Date, _ weight: Double, _ image: UIImage?) {

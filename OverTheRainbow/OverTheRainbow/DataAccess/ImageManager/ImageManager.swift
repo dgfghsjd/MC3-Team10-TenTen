@@ -15,6 +15,9 @@ class ImageManager {
     private static let ENDPOINT = "image"
     private let fileManager: FileManager
     private let documentPath: URL
+    public var imagePath: URL {
+        return self.documentPath.appendingPathComponent(ImageManager.ENDPOINT)
+    }
     
     public func fileNameGenerator(_ imageType: ImageType = .png) -> String {
         let ymd = DateConverter.dateToString(Date.now, .yearMonthDateHyphen)
@@ -25,17 +28,18 @@ class ImageManager {
         guard let pngImage = image.pngData() else {
             throw RealmError.petNotFound
         }
-        let imageUrl = documentPath.appendingPathComponent("/image/" + fileNameGenerator(.png))
+        let fileName: String = fileNameGenerator(.png)
+        let imageUrl: URL = imagePath.appendingPathComponent(fileName)
         do {
             try pngImage.write(to: imageUrl)
         } catch {
             throw ImageManagerError.imageWriteError
         }
-        return imageUrl.path
+        return fileName
     }
     
     public func createDirectory() throws {
-        let filePath = documentPath.appendingPathComponent(ImageManager.ENDPOINT)
+        let filePath = imagePath
         if !fileManager.fileExists(atPath: filePath.path) {
             do {
                 try fileManager.createDirectory(
