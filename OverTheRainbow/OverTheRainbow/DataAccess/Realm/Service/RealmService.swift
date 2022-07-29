@@ -42,7 +42,7 @@ private let realm: Realm
     }
     
     func findPet(id: String) throws -> PetResultDto {
-        let objectId = stringToObjectId(id: id)
+        let objectId = id.toObjectId()
         
         // 찾는 pet이 없으면 error throw
         guard let pet: Pet = repository.findById(id: objectId) else {
@@ -60,7 +60,7 @@ private let realm: Realm
     }
     
     func addLetter(_ inputDto: LetterInputDto) throws -> String {
-        let petId = stringToObjectId(id: inputDto.petId)
+        let petId = inputDto.petId.toObjectId()
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
         }
@@ -74,7 +74,7 @@ private let realm: Realm
     
     func saveLetters(_ ids: String...) throws {
         try! ids.forEach { id in
-            let letterId = stringToObjectId(id: id)
+            let letterId = id.toObjectId()
             guard let letter: Letter = repository.findById(id: letterId) else {
                 throw RealmError.letterNotFound
             }
@@ -87,7 +87,7 @@ private let realm: Realm
     
     func unsaveLetters(_ ids: String...) throws {
         try! ids.forEach { id in
-            let letterId = stringToObjectId(id: id)
+            let letterId = id.toObjectId()
             guard let letter: Letter = repository.findById(id: letterId) else {
                 throw RealmError.letterNotFound
             }
@@ -99,7 +99,7 @@ private let realm: Realm
     }
     
     func send(_ id: String) throws {
-        let petId = stringToObjectId(id: id)
+        let petId = id.toObjectId()
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
         }
@@ -114,7 +114,7 @@ private let realm: Realm
     }
     
     func findUnsentLetters(_ id: String) throws -> [LetterResultDto] {
-        let petId = stringToObjectId(id: id)
+        let petId = id.toObjectId()
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
         }
@@ -132,7 +132,7 @@ private let realm: Realm
     
     // TODO: sorted refactor
     func findSentLetters(_ id: String, _ selected: String) throws -> [LetterResultDto] {
-        let petId = stringToObjectId(id: id)
+        let petId = id.toObjectId()
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
         }
@@ -161,11 +161,11 @@ private let realm: Realm
     }
     
     func chooseFlower(petId: String, flowerId: String) throws {
-        let petId = stringToObjectId(id: petId)
+        let petId = petId.toObjectId()
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
         }
-        let flowerId = stringToObjectId(id: flowerId)
+        let flowerId = flowerId.toObjectId()
         guard let flower: Flower = repository.findById(id: flowerId) else {
             throw RealmError.flowerNotFound
         }
@@ -184,7 +184,7 @@ private let realm: Realm
     }
     
     func getMainView(_ id: String) throws -> MainViewResultDto {
-        let petId = stringToObjectId(id: id)
+        let petId = id.toObjectId()
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
         }
@@ -211,7 +211,7 @@ private let realm: Realm
     }
     
     func getHeavenView(_ id: String) throws -> HeavenViewResultDto {
-        let petId = stringToObjectId(id: id)
+        let petId = id.toObjectId()
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
         }
@@ -226,10 +226,6 @@ private let realm: Realm
         try! realm.write {
             flowerLog.flower = flower
         }
-    }
-    
-    private func stringToObjectId(id: String) -> ObjectId {
-        return try! ObjectId(string: id)
     }
     
     init(_ realm: Realm, _ repository: RealmRepository) {

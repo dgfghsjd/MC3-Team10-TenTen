@@ -50,10 +50,12 @@
 		A8A87EDF288A4C8F009E3C6C /* HeavenViewResultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A87EDE288A4C8F009E3C6C /* HeavenViewResultDto.swift */; };
 		A8A87EE2288AE2EB009E3C6C /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A87EE1288AE2EB009E3C6C /* Results.swift */; };
 		A8A87EE4288B845A009E3C6C /* WordResultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A87EE3288B845A009E3C6C /* WordResultDto.swift */; };
+		A8AA6EC428935EB5004CB44D /* PetUpdateDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AA6EC328935EB5004CB44D /* PetUpdateDto.swift */; };
+		A8AA6EC728935FDA004CB44D /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AA6EC628935FDA004CB44D /* StringExtension.swift */; };
 		A8B1929D28916759006F8433 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B1929C28916759006F8433 /* ImageManager.swift */; };
 		A8B1929F2891722C006F8433 /* ImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B1929E2891722C006F8433 /* ImageType.swift */; };
 		A8B192A12891861D006F8433 /* ImageManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B192A02891861D006F8433 /* ImageManagerError.swift */; };
-		A8B192A5289215B8006F8433 /* RealmServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B192A4289215B8006F8433 /* RealmServiceTest.swift */; };
+		A8B192A5289215B8006F8433 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A8D95DED288935F500EE02CB /* FlowerResultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D95DEC288935F500EE02CB /* FlowerResultDto.swift */; };
 		A8D95DEF2889593200EE02CB /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D95DEE2889593200EE02CB /* DateFormat.swift */; };
 		A8D95DF12889621400EE02CB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D95DF02889621400EE02CB /* DateExtension.swift */; };
@@ -137,6 +139,8 @@
 		A8A87EDE288A4C8F009E3C6C /* HeavenViewResultDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeavenViewResultDto.swift; sourceTree = "<group>"; };
 		A8A87EE1288AE2EB009E3C6C /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		A8A87EE3288B845A009E3C6C /* WordResultDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordResultDto.swift; sourceTree = "<group>"; };
+		A8AA6EC328935EB5004CB44D /* PetUpdateDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetUpdateDto.swift; sourceTree = "<group>"; };
+		A8AA6EC628935FDA004CB44D /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		A8B1929C28916759006F8433 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		A8B1929E2891722C006F8433 /* ImageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageType.swift; sourceTree = "<group>"; };
 		A8B192A02891861D006F8433 /* ImageManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagerError.swift; sourceTree = "<group>"; };
@@ -406,6 +410,7 @@
 			children = (
 				A8509B7F288827CD00CD88C1 /* PetInputDto.swift */,
 				A8509B862888437B00CD88C1 /* LetterInputDto.swift */,
+				A8AA6EC328935EB5004CB44D /* PetUpdateDto.swift */,
 			);
 			path = In;
 			sourceTree = "<group>";
@@ -435,6 +440,7 @@
 		A8509B8C2888D9C500CD88C1 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				A8AA6EC528935FCE004CB44D /* String */,
 				A8D95DF22889629300EE02CB /* Date */,
 				A8509B8F2888E6D300CD88C1 /* UtilError.swift */,
 			);
@@ -458,6 +464,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		A8AA6EC528935FCE004CB44D /* String */ = {
+			isa = PBXGroup;
+			children = (
+				A8AA6EC628935FDA004CB44D /* StringExtension.swift */,
+			);
+			path = String;
+			sourceTree = "<group>";
+		};
 		A8B192992891671B006F8433 /* ImageManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,7 +492,6 @@
 		A8B192A32892159B006F8433 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				A8B192A4289215B8006F8433 /* RealmServiceTest.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -654,7 +667,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C54B1DC928913FF00095F8E1 /* WritingLetter.storyboard in Resources */,
-				66ACBF142890DF10006D0B39 /* MainViewTemporary.storyboard in Resources */,
 				C56CDAD0287EE41F00C1F5F9 /* LaunchScreen.storyboard in Resources */,
 				66ACBF112890DF10006D0B39 /* FlowerView.storyboard in Resources */,
 				C56CDACD287EE41F00C1F5F9 /* Assets.xcassets in Resources */,
@@ -733,7 +745,7 @@
 				A8509B5A2887A0C400CD88C1 /* ModelTest.swift in Sources */,
 				A86EE311288788E400084E98 /* OverTheRainbowTests.swift in Sources */,
 				A8509B522887906F00CD88C1 /* LetterStatusTest.swift in Sources */,
-				A8B192A5289215B8006F8433 /* RealmServiceTest.swift in Sources */,
+				A8B192A5289215B8006F8433 /* (null) in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,6 +765,7 @@
 				273BF89E288E730A005BA63B /* BackButton.swift in Sources */,
 				A8509B56288799B400CD88C1 /* FlowerLog.swift in Sources */,
 				273BF8A4288E7406005BA63B /* LetterCollectionViewCell.swift in Sources */,
+				A8AA6EC728935FDA004CB44D /* StringExtension.swift in Sources */,
 				A8D95DF12889621400EE02CB /* DateExtension.swift in Sources */,
 				273BF8AB288E76A4005BA63B /* LetterModel.swift in Sources */,
 				27C8AC23288542CD000D2374 /* LetterListViewController.swift in Sources */,
@@ -774,6 +787,7 @@
 				C54B1DCF289148600095F8E1 /* WrittenLetterViewController.swift in Sources */,
 				A8509B77288805ED00CD88C1 /* RealmRepository.swift in Sources */,
 				A8509B902888E6D300CD88C1 /* UtilError.swift in Sources */,
+				A8AA6EC428935EB5004CB44D /* PetUpdateDto.swift in Sources */,
 				A8A87EDF288A4C8F009E3C6C /* HeavenViewResultDto.swift in Sources */,
 				A8A87EE4288B845A009E3C6C /* WordResultDto.swift in Sources */,
 				A8509B542887996E00CD88C1 /* Flower.swift in Sources */,
