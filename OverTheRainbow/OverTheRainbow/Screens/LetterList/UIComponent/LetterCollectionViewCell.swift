@@ -23,8 +23,8 @@ final class LetterCollectionViewCell: UICollectionViewCell {
         return label
     }()
     private var isSavedLabel: UIImageView = {
-        let isSavedIconView = UIImageView(frame: .zero)
-        return isSavedIconView
+        let savedIconView = UIImageView(frame: .zero)
+        return savedIconView
     }()
     private var photoStampView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
@@ -108,7 +108,7 @@ final class LetterCollectionViewCell: UICollectionViewCell {
         }
         print(data.status)
         if data.status == .saved {
-            isSavedLabel.image = ImageLiterals.isSavedIcon
+            isSavedLabel.image = ImageLiterals.savedIcon
             isSavedLabel.tintColor = UIColor(named: "textColor")
 //            self.tintColor
 //            UIColor(named: "textColor")
