@@ -10,7 +10,7 @@ import Foundation
 struct LetterResultDto {
     private(set) var id: String
     private(set) var title: String
-    private(set) var imgUrl: String?
+    private(set) var imgUrl: URL?
     private(set) var date: String
     private(set) var createdAt: Date
     private(set) var updatedAt: Date
