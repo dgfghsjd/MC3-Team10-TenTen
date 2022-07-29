@@ -6,25 +6,30 @@
 //
 
 import Foundation
+import UIKit
 
+// TODO: toPet 리팩토링
 struct PetInputDto {
     private(set) var name: String
     private(set) var species: String
     private(set) var birth: Date
     private(set) var weight: Double
-    private(set) var imgUrl: String?
+    private(set) var image: UIImage?
     
-    func toPet() -> Pet {
-        return Pet(self.name, self.species, imgUrl: self.imgUrl, birth: self.birth, weight: self.weight)
+    func toPet(_ saveImage: (UIImage) throws -> String) -> Pet {
+        var imgUrl: String?
+        if let img = self.image {
+            imgUrl = try? saveImage(img)
+        }
+        return Pet(self.name, self.species, imgUrl: imgUrl, birth: self.birth, weight: self.weight)
     }
     
-    
-    init(_ name: String, _ species: String, _ birth: Date, _ weight: Double, imgUrl: String) {
+    init(_ name: String, _ species: String, _ birth: Date, _ weight: Double, _ image: UIImage?) {
         self.name = name
         self.species = species
         self.birth = birth
         self.weight = weight
-        self.imgUrl = imgUrl
+        self.image = image
     }
     
     init(_ name: String, _ species: String, _ birth: Date, _ weight: Double) {

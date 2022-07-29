@@ -15,7 +15,7 @@ extension Results where Element: Object {
     
     // TODO: type narrowing 추가
     func getRandomFirst() -> Element? {
-        return self.sorted { curr, next in
+        return self.sorted { _, _ in
             if Int.random(in: 1...10) < 5 { return true }
             else { return false }
         }.first

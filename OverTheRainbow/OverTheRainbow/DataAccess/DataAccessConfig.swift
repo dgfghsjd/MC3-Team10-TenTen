@@ -8,5 +8,5 @@
 import Foundation
 
 protocol DataAccessConfig {
-    func getService() ->  DataAccessService
+    func getService() -> DataAccessService
 }

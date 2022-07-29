@@ -11,8 +11,9 @@ import RealmSwift
 class RealmRepository {
     private let realm: Realm
     
-    func save<T: RealmModel>(_ object: T) {
+    func save<T: RealmModel>(_ object: T) -> String {
         realm.add(object)
+        return object.id
     }
     
     func update<T: Object>(_ object: T) {
@@ -35,6 +36,6 @@ class RealmRepository {
     }
     
     init(realm: Realm) {
-        self.realm = realm;
+        self.realm = realm
     }
 }

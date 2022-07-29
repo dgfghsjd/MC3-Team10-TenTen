@@ -11,14 +11,16 @@ import RealmSwift
 
 // TODO: Service 구현체 refactor
 // TODO: updatedAt 구현
+
 class RealmService: DataAccessService {
-    private let realm: Realm
+private let realm: Realm
     private let repository: RealmRepository
+    private let imageManager: ImageManager = ImageManager.shared!
     
-    func addPet(_ inputDto: PetInputDto) {
+    func addPet(_ inputDto: PetInputDto) -> String {
         try! realm.write {
-            let pet = inputDto.toPet()
-            repository.save(pet)
+            let pet = inputDto.toPet(imageManager.saveImage)
+            return repository.save(pet)
         }
     }
     
@@ -40,16 +42,17 @@ class RealmService: DataAccessService {
             .map { PetResultDto.of(pet: $0) }
     }
     
-    func addLetter(_ inputDto: LetterInputDto) throws {
+    func addLetter(_ inputDto: LetterInputDto) throws -> String {
         let petId = stringToObjectId(id: inputDto.petId)
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
         }
-        let letter = inputDto.toLetter()
+        let letter = inputDto.toLetter(imageManager.saveImage)
         
         try! realm.write {
             pet.letters.append(letter)
         }
+        return letter.id
     }
     
     func saveLetters(_ ids: String...) throws {
@@ -85,15 +88,15 @@ class RealmService: DataAccessService {
         }
         
         try! realm.write {
-            pet.letters.where { $0.status != .sent }
+            pet.letters.where { $0.status == .saved }
                 .forEach { $0.status = .sent }
             
-            pet.flowerLogs.where { $0.status != .sent }
+            pet.flowerLogs.where { $0.status == .unsent }
                 .forEach { $0.status = .sent }
         }
     }
     
-    func findUnsentLetters(_ id: String) throws -> Array<LetterResultDto> {
+    func findUnsentLetters(_ id: String) throws -> [LetterResultDto] {
         let petId = stringToObjectId(id: id)
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
@@ -103,7 +106,7 @@ class RealmService: DataAccessService {
             .where { $0.status != .sent }
             .sorted(byKeyPath: "createdAt", ascending: false)
             .sorted {
-                if $0.status == .saved  { return true }
+                if $0.status == .saved { return true }
                 else if $1.status == .saved { return false }
                 return true
             }
@@ -111,7 +114,7 @@ class RealmService: DataAccessService {
     }
     
     // TODO: sorted refactor
-    func findSentLetters(_ id: String, _ selected: String) throws -> Array<LetterResultDto> {
+    func findSentLetters(_ id: String, _ selected: String) throws -> [LetterResultDto] {
         let petId = stringToObjectId(id: id)
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
@@ -134,7 +137,7 @@ class RealmService: DataAccessService {
             .map { LetterResultDto.of($0) }
     }
 
-    func findAllFlowers() -> Array<FlowerResultDto> {
+    func findAllFlowers() -> [FlowerResultDto] {
         let results: Results<Flower> = repository.findAll()
         return results.toArray()
             .map { FlowerResultDto.of($0) }
@@ -173,16 +176,21 @@ class RealmService: DataAccessService {
             throw RealmError.wordNotFound
         }
         
+        let todayFlowerLog = pet.flowerLogs
+            .where { $0.createdAt > Date.startOfToday() }
+            .sorted(byKeyPath: "createdAt", ascending: false)
         
-        let flowerLog = pet.flowerLogs
+        let flowerLog = todayFlowerLog
             .where { $0.status == .unsent }
             .first
+        
+        let permitted = todayFlowerLog.count > 0 ? true : false
+        
         let letterCount = pet.letters
-            .where { $0.status != .sent }
+            .where { $0.status == .saved }
             .count
         
-        
-        return MainViewResultDto(flowerLog, letterCount, word)
+        return MainViewResultDto(flowerLog, letterCount, permitted, word)
     }
     
     func getHeavenView(_ id: String) throws -> HeavenViewResultDto {

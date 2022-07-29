@@ -85,8 +85,8 @@ class FlowerBoxView: BoxStyleView, BoxStyle {
     }
 
     // 꽃 이미지, 꽃 이름, 꽃말 업데이트
-    func updatePreview(flowerIndex: Int? = nil, didFlowerToday: Bool = false) {
-        if flowerIndex == nil {
+    func updatePreview(flower: FlowerResultDto? = nil, didFlowerToday: Bool = false) {
+        if flower == nil {
             [imageView, nameLabel, floriographyLabel].forEach {
                 $0.alpha = 0
             }
@@ -102,9 +102,13 @@ class FlowerBoxView: BoxStyleView, BoxStyle {
             }
             noFlowerGuideLabel.alpha = 0
 
-            imageView.image = mockUpFlowers[flowerIndex ?? 0].image
-            nameLabel.text = mockUpFlowers[flowerIndex ?? 0].title
-            floriographyLabel.text = mockUpFlowers[flowerIndex ?? 0].floriography
+            imageView.image = UIImage(named: flower?.imgUrl ?? "flower-is-nil")
+            nameLabel.text = flower?.name
+            floriographyLabel.text = flower?.meaning
+            // debug
+            // imageView.image = mockUpFlowers[Int.random(in: 0...4)].image
+            // mockUpFlowers[flowerIndex ?? 0].title
+            // mockUpFlowers[flowerIndex ?? 0].floriography
 
             nameLabel.frame.size = nameLabel.intrinsicContentSize
             floriographyLabel.frame.size = floriographyLabel.intrinsicContentSize
