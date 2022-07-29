@@ -17,7 +17,7 @@ class LetterLitstMainViewController: BaseViewController {
         static let collectionVerticalSpacing: CGFloat = 17.0
         static let cellWidth: CGFloat = UIScreen.main.bounds.size.width - collectionHorizontalSpacing * 2
         static let cellHeight: CGFloat = (UIScreen.main.bounds.size.width - collectionHorizontalSpacing
-                                          * 2 - collectionVerticalSpacing) / 2
+                                          * 2) / 2
         static let collectionInset = UIEdgeInsets(top: 0,
                                                   left: collectionHorizontalSpacing,
                                                   bottom: collectionVerticalSpacing,
@@ -30,8 +30,7 @@ class LetterLitstMainViewController: BaseViewController {
         flowLayout.scrollDirection = .vertical
         flowLayout.sectionInset = Size.collectionInset
         flowLayout.itemSize = CGSize(width: Size.cellWidth, height: Size.cellHeight)
-        flowLayout.minimumLineSpacing = 16
-        flowLayout.minimumInteritemSpacing = 16
+        flowLayout.minimumLineSpacing = 33
         return flowLayout
     }()
     private lazy var listCollectionView: UICollectionView = {
@@ -59,8 +58,8 @@ class LetterLitstMainViewController: BaseViewController {
             listCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             listCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 3),
             listCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 3),
-            listCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 3)
-//            listCollectionView.heightAnchor.constraint(equalToConstant: 10000)
+            listCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 3),
+//            listCollectionView.heightAnchor
         ]
         NSLayoutConstraint.activate(listCollectionViewConstraints)
     }
