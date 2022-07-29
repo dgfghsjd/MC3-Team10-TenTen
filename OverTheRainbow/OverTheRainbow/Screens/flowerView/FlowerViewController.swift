@@ -9,10 +9,7 @@ class FlowerViewController: UIViewController {
     @IBAction func takeAFlower(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
         UserDefaults.standard.set(roundedIndex, forKey: "roundedIndex")
-        print("\(offsetPoint)뷰가 리로드 될때 x 시작점입니다.")
-        print("\(roundedIndex)가 다음 인덱스 시작점입니다")
        try! service.chooseFlower(petId: petID!, flowerId: getService[roundedIndex].id)
-        print("\(getService[roundedIndex].id)프린트 검사")
 
     }
     @IBOutlet weak var pagerContorl: UIPageControl!
