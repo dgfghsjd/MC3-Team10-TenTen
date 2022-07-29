@@ -238,7 +238,7 @@
                     <navigationItem key="navigationItem" id="E7R-IJ-AHR">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="pencil.circle" catalog="system" id="AdJ-Gz-91X">
                             <connections>
-                                <segue destination="WIv-hS-0CB" kind="presentation" id="fu6-CT-ze6"/>
+                                <segue destination="WIv-hS-0CB" kind="presentation" id="H0w-Pg-3cG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -269,10 +269,10 @@
             </objects>
             <point key="canvasLocation" x="2782" y="38"/>
         </scene>
-        <!--Edit Letter View Conttroller-->
+        <!--Editing Letter View Controller-->
         <scene sceneID="Ri8-qa-iTP">
             <objects>
-                <viewController id="rjd-Mf-sdI" customClass="EditLetterViewConttroller" customModule="OverTheRainbow" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rjd-Mf-sdI" customClass="EditingLetterViewController" customModule="OverTheRainbow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qFH-NE-R3g">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -315,6 +315,12 @@
                                     <constraint firstAttribute="height" constant="255" id="JBL-ZS-oo1"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cU-aA-Rek">
+                                <rect key="frame" x="20" y="80" width="350" height="255"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=""/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DRp-gq-X4V"/>
                         <color key="backgroundColor" red="0.95934301609999995" green="0.95799666640000003" blue="0.91491341589999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -340,10 +346,19 @@
                     <navigationItem key="navigationItem" id="AS4-hE-dq2">
                         <barButtonItem key="rightBarButtonItem" title="완료" id="Cpq-nQ-Qt0"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="btnChangeImage" destination="4cU-aA-Rek" id="z6a-2e-zwn"/>
+                        <outlet property="editingLetterNavBar" destination="AS4-hE-dq2" id="paP-N9-NZp"/>
+                        <outlet property="galleryImageView" destination="oCd-h1-seR" id="sb4-B8-Q22"/>
+                        <outlet property="letterContent" destination="TiR-2L-hiZ" id="6SW-Ki-OTj"/>
+                        <outlet property="letterTitle" destination="qhZ-uV-tDR" id="clC-XD-p2Q"/>
+                        <outlet property="naavBarRightItem" destination="Cpq-nQ-Qt0" id="R3m-Wx-4Zt"/>
+                        <outlet property="writtenDate" destination="mFv-Er-Wds" id="CIj-tc-C7H"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NWd-I2-h61" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1714" y="815"/>
+            <point key="canvasLocation" x="1713.8461538461538" y="814.69194312796208"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7U2-p2-uhl">
@@ -365,7 +380,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sh4-g9-v7w"/>
+        <segue reference="FeV-qr-T0h"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>

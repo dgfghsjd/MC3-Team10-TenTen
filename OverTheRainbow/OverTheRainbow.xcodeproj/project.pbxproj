@@ -63,6 +63,7 @@
 		C54B1DCD289148600095F8E1 /* WritingLetterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54B1DCA289148600095F8E1 /* WritingLetterViewController.swift */; };
 		C54B1DCE289148600095F8E1 /* WrittenLetterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54B1DCB289148600095F8E1 /* WrittenLetterListViewController.swift */; };
 		C54B1DCF289148600095F8E1 /* WrittenLetterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54B1DCC289148600095F8E1 /* WrittenLetterViewController.swift */; };
+		C54B1DD128916FDF0095F8E1 /* EditingLetterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54B1DD028916FDF0095F8E1 /* EditingLetterViewController.swift */; };
 		C554EA18288E603200954E11 /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C554EA14288E603100954E11 /* TransitionAnimation.swift */; };
 		C554EA1A288E603200954E11 /* NavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C554EA16288E603200954E11 /* NavigationControllerDelegate.swift */; };
 		C554EA1B288E603200954E11 /* TestHeavenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C554EA17288E603200954E11 /* TestHeavenViewController.swift */; };
@@ -150,6 +151,7 @@
 		C54B1DCA289148600095F8E1 /* WritingLetterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WritingLetterViewController.swift; sourceTree = "<group>"; };
 		C54B1DCB289148600095F8E1 /* WrittenLetterListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrittenLetterListViewController.swift; sourceTree = "<group>"; };
 		C54B1DCC289148600095F8E1 /* WrittenLetterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrittenLetterViewController.swift; sourceTree = "<group>"; };
+		C54B1DD028916FDF0095F8E1 /* EditingLetterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingLetterViewController.swift; sourceTree = "<group>"; };
 		C554EA14288E603100954E11 /* TransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimation.swift; sourceTree = "<group>"; };
 		C554EA16288E603200954E11 /* NavigationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerDelegate.swift; sourceTree = "<group>"; };
 		C554EA17288E603200954E11 /* TestHeavenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHeavenViewController.swift; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 				C54B1DCA289148600095F8E1 /* WritingLetterViewController.swift */,
 				C54B1DCB289148600095F8E1 /* WrittenLetterListViewController.swift */,
 				C54B1DCC289148600095F8E1 /* WrittenLetterViewController.swift */,
+				C54B1DD028916FDF0095F8E1 /* EditingLetterViewController.swift */,
 			);
 			path = WritingLetter;
 			sourceTree = "<group>";
@@ -791,6 +794,7 @@
 				66ACBF152890DF10006D0B39 /* FlowerViewController.swift in Sources */,
 				A8A87EDD288A484F009E3C6C /* DataAccessConfig.swift in Sources */,
 				A8509B872888437B00CD88C1 /* LetterInputDto.swift in Sources */,
+				C54B1DD128916FDF0095F8E1 /* EditingLetterViewController.swift in Sources */,
 				27465D7C288E7CCB0017F1DF /* NSObject+Extension.swift in Sources */,
 				A8509B722888053000CD88C1 /* DataAccessService.swift in Sources */,
 				66ACBF132890DF10006D0B39 /* FlowerCollectionViewCell.swift in Sources */,
