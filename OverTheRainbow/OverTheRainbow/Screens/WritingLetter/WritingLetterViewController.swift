@@ -21,6 +21,9 @@ class WritingLetterViewController: UIViewController {
     var button = UIButton(type: .system)
     let date = Date()
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
+    let petID = "62e33bcd124a6dd7c5708eae"
+//        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
+
     
 
     override func viewDidLoad() {
@@ -65,9 +68,27 @@ class WritingLetterViewController: UIViewController {
     }
 
     @IBAction func doneWritingLetter(_ sender: UIBarButtonItem) {
-        print("작성을 완료했습니다.")
-//        service.addLetter(LetterInputDto(petId: UserDefaults.standard.string(forKey: "petID"), letter: LetterInput(title: <#T##String#>, content: <#T##String#>, imgUrl: <#T##String?#>)))
-        dismiss(animated: true)
+        if letterTitle.text!.isEmpty {
+            print("제목을 입력하지 않으셨습니다.")
+            let alret = UIAlertController(title: "오류", message: "제목을 입력하지 않으셨습니다.", preferredStyle: .alert)
+            let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alret.addAction(confirm)
+            present(alret, animated: true, completion: nil)
+        }
+        else if letterContent.textColor == UIColor.lightGray {
+            print("내용을 입력하지 않으셨습니다.")
+            let alret = UIAlertController(title: "오류", message: "내용을 입력하지 않으셨습니다.", preferredStyle: .alert)
+            let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alret.addAction(confirm)
+            present(alret, animated: true, completion: nil)
+        }
+        else {
+            let letter = LetterInput(title: letterTitle.text!, content: letterContent.text, image: openGallery.image)
+            let letterID = try? service.addLetter(LetterInputDto(petId: petID, letter: letter))
+            try? service.saveLetters(letterID!)
+            dismiss(animated: true)
+            print("작성을 완료했습니다.")
+        }
     }
 
     @objc func dismissKeyboard() {
@@ -76,8 +97,9 @@ class WritingLetterViewController: UIViewController {
 
     @objc func showActionSheet() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let first = UIAlertAction(title: "임시 저장", style: .default) {
-            action in print("1")
+        let first = UIAlertAction(title: "임시 저장", style: .default) { [self]_ in
+            let letter = LetterInput(title: letterTitle.text!, content: letterContent.text, image: openGallery.image)
+            try? self.service.addLetter(LetterInputDto(petId: petID, letter: letter))
             self.dismiss(animated: true)
         }
         let second = UIAlertAction(title: "임시저장 삭제", style: .destructive) {
