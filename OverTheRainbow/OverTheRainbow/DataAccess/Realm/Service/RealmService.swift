@@ -11,7 +11,7 @@ import RealmSwift
 
 // TODO: Service 구현체 refactor
 // TODO: updatedAt 구현
-
+// TODO: toObjectId() 메서드로 변환
 class RealmService: DataAccessService {
 private let realm: Realm
     private let repository: RealmRepository
@@ -22,6 +22,23 @@ private let realm: Realm
             let pet = inputDto.toPet(imageManager.saveImage)
             return repository.save(pet)
         }
+    }
+    
+    func updatePet(_ inputDto: PetUpdateDto) throws -> String {
+        let petId: ObjectId = inputDto.id.toObjectId()
+        guard let pet: Pet = repository.findById(id: petId) else {
+            throw RealmError.petNotFound
+        }
+        if let imgUrl = pet.imgUrl {
+            try! imageManager.deleteFile(imgUrl)
+        }
+
+        try! realm.write {
+            let updatedPet = inputDto.toPet(pet: pet, saveImage: imageManager.saveImage)
+            repository.update(updatedPet)
+        }
+         
+        return pet.id
     }
     
     func findPet(id: String) throws -> PetResultDto {
@@ -35,7 +52,7 @@ private let realm: Realm
         return PetResultDto.of(pet: pet)
     }
     
-    func findAllPet() -> Array<PetResultDto> {
+    func findAllPet() -> [PetResultDto] {
         let results: Results<Pet> = repository.findAll()
             .sorted(byKeyPath: "createdAt", ascending: false)
         return results.toArray()

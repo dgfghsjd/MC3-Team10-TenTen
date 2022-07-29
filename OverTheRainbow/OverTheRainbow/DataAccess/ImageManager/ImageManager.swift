@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 // TODO: Refactor
+// TODO: File Directory가 Pet과 Letter가 다르도록 configuration할 수 있는 singleton 구조 만들기
 class ImageManager {
     public static var shared: ImageManager? = ImageManager()
     
@@ -49,6 +50,16 @@ class ImageManager {
                 )
             } catch {
                 throw ImageManagerError.directoryCreateError
+            }
+        }
+    }
+    
+    public func deleteFile(_ fileUrl: URL) throws {
+        if fileManager.fileExists(atPath: fileUrl.path) {
+            do {
+                try fileManager.removeItem(at: fileUrl)
+            } catch {
+                throw ImageManagerError.fileDeletionError
             }
         }
     }
