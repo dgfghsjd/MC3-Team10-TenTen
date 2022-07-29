@@ -20,6 +20,8 @@ class WritingLetterViewController: UIViewController {
     @IBOutlet weak var selectPicture: UIButton!
     var button = UIButton(type: .system)
     let date = Date()
+    let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +66,7 @@ class WritingLetterViewController: UIViewController {
 
     @IBAction func doneWritingLetter(_ sender: UIBarButtonItem) {
         print("작성을 완료했습니다.")
+//        service.addLetter(LetterInputDto(petId: UserDefaults.standard.string(forKey: "petID"), letter: LetterInput(title: <#T##String#>, content: <#T##String#>, imgUrl: <#T##String?#>)))
         dismiss(animated: true)
     }
 
