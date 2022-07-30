@@ -34,7 +34,7 @@ class Pet: RealmModel {
     var flowerLogs: List<FlowerLog>
     
     func getAge() -> Int {
-        return 1
+        return Date.now.years(from: self.birth)
     }
     
     convenience init(_ name: String, _ species: String, imgUrl: String?, birth: Date, weight: Double) {

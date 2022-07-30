@@ -11,13 +11,11 @@ enum ImageType: String {
     case jpeg, png
     
     var value: String {
-        get {
-            switch (self) {
-            case .jpeg:
-                return ".jpeg"
-            case .png:
-                return ".png"
-            }
+        switch self {
+        case .jpeg:
+            return ".jpeg"
+        case .png:
+            return ".png"
         }
     }
 }

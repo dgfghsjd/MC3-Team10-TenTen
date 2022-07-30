@@ -13,5 +13,5 @@ class RealmModel: Object {
     @Persisted(primaryKey: true)
     var _id: ObjectId
     
-    var id: String { get { _id.stringValue } }
+    var id: String { _id.stringValue }
 }
