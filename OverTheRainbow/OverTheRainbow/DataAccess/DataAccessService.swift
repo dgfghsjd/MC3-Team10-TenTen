@@ -41,7 +41,7 @@ protocol DataAccessService {
     func deleteLetter(petId: String, letterId: String) throws
     
     // MARK: 편지 상세보기
-//    func findLetter(_ letterId: String) throws -> LetterResultDto
+    func findLetter(_ letterId: String) throws -> LetterResultDto
     
     // MARK: 보내지 않은 편지 List 가져오기 (임시저장 상태 + 저장 상태)
     func findUnsentLetters(_ id: String) throws -> [LetterResultDto]

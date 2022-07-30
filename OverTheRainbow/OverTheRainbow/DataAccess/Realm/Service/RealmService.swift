@@ -81,6 +81,16 @@ class RealmService: DataAccessService {
         return letter.id
     }
     
+    func findLetter(_ letterId: String) throws -> LetterResultDto {
+        let letterObjId = letterId.toObjectId()
+        
+        guard let letter: Letter = repository.findById(id: letterObjId) else {
+            throw RealmError.letterNotFound
+        }
+        
+        return LetterResultDto.of(letter)
+    }
+    
     func saveLetters(_ ids: String...) throws {
         try! ids.forEach { id in
             let letterId = id.toObjectId()
