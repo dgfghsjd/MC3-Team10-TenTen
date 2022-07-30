@@ -125,9 +125,30 @@ class RealmService: DataAccessService {
         }
         
         try! realm.write {
-            for (idx, letter) in pet.letters.enumerated() {
+            for letter in pet.letters {
                 if letter.id == letterId {
                     repository.delete(letter)
+                    return
+                }
+            }
+            throw RealmError.letterNotFound
+        }
+    }
+    
+    func updateLetter(petId: String, dto: LetterUpdateDto) throws {
+        let petObjId = petId.toObjectId()
+        
+        guard let pet: Pet = repository.findById(id: petObjId) else {
+            throw RealmError.petNotFound
+        }
+        
+        try! realm.write {
+            try! pet.letters.forEach { letter in
+                switch letter.status {
+                case .saved: throw RealmError.letterAlreadySaved
+                case .sent: throw RealmError.letterAlreadySent
+                case .temporary:
+                    repository.update(dto.toLetter(letter: letter, saveImage: imageManager.saveImage))
                     return
                 }
             }

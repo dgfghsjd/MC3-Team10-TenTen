@@ -40,6 +40,9 @@ protocol DataAccessService {
     // MARK: 편지 삭제
     func deleteLetter(petId: String, letterId: String) throws
     
+    // MARK: 편지 수정 (임시저장 상태에서만 가능)
+    func updateLetter(petId: String, dto: LetterUpdateDto) throws
+    
     // MARK: 편지 상세보기
     func findLetter(_ letterId: String) throws -> LetterResultDto
     
