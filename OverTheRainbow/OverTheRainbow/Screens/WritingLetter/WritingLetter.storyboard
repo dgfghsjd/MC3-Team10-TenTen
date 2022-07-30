@@ -49,7 +49,7 @@
         <!--Writing Letter View Controller-->
         <scene sceneID="l4Y-gD-fGQ">
             <objects>
-                <viewController id="9G4-a1-YfW" customClass="WritingLetterViewController" customModule="OverTheRainbow" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="writeLetter" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9G4-a1-YfW" customClass="WritingLetterViewController" customModule="OverTheRainbow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GgM-C5-S3H">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -180,7 +180,7 @@
         <!--Written Letter View Controller-->
         <scene sceneID="o7P-IV-C8Y">
             <objects>
-                <viewController id="uHt-fA-QB2" customClass="WrittenLetterViewController" customModule="OverTheRainbow" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="letterList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uHt-fA-QB2" customClass="WrittenLetterViewController" customModule="OverTheRainbow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1X0-kh-RaT">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
