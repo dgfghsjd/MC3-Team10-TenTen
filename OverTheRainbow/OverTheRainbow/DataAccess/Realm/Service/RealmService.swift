@@ -13,7 +13,7 @@ import RealmSwift
 // TODO: updatedAt 구현
 // TODO: toObjectId() 메서드로 변환
 class RealmService: DataAccessService {
-private let realm: Realm
+    private let realm: Realm
     private let repository: RealmRepository
     private let imageManager: ImageManager = ImageManager.shared!
     
@@ -58,7 +58,6 @@ private let realm: Realm
         guard let pet: Pet = repository.findById(id: objectId) else {
             throw RealmError.petNotFound
         }
-        
         return PetResultDto.of(pet: pet)
     }
     
@@ -105,6 +104,24 @@ private let realm: Realm
             try! realm.write {
                 letter.status = .temporary
             }
+        }
+    }
+    
+    func deleteLetter(petId: String, letterId: String) throws {
+        let petObjId = petId.toObjectId()
+        
+        guard let pet: Pet = repository.findById(id: petObjId) else {
+            throw RealmError.petNotFound
+        }
+        
+        try! realm.write {
+            for (idx, letter) in pet.letters.enumerated() {
+                if letter.id == letterId {
+                    repository.delete(letter)
+                    return
+                }
+            }
+            throw RealmError.letterNotFound
         }
     }
     
