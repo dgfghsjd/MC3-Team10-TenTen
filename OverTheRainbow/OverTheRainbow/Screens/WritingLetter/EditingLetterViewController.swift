@@ -19,6 +19,8 @@ class EditingLetterViewController: UIViewController {
     @IBOutlet weak var writtenDate: UILabel!
     var button = UIButton(type: .system)
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
+    let petID = "62e33bcd124a6dd7c5708eae"
+//        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +49,30 @@ class EditingLetterViewController: UIViewController {
 
         letterContent.delegate = self
     }
-
+    @IBAction func doneeditingLetter(_ sender: UIBarButtonItem) {
+        if letterTitle.text!.isEmpty {
+            print("제목을 입력하지 않으셨습니다.")
+            let alret = UIAlertController(title: "오류", message: "제목을 입력하지 않으셨습니다.", preferredStyle: .alert)
+            let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alret.addAction(confirm)
+            present(alret, animated: true, completion: nil)
+        }
+        else if letterContent.textColor == UIColor.lightGray {
+            print("내용을 입력하지 않으셨습니다.")
+            let alret = UIAlertController(title: "오류", message: "내용을 입력하지 않으셨습니다.", preferredStyle: .alert)
+            let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alret.addAction(confirm)
+            present(alret, animated: true, completion: nil)
+        }
+        else {
+            let letter = LetterInput(title: letterTitle.text!, content: letterContent.text, image: galleryImageView.image)
+            let letterID = try? service.addLetter(LetterInputDto(petId: petID, letter: letter))
+            try? service.saveLetters(letterID!)
+            dismiss(animated: true)
+            print("작성을 완료했습니다.")
+        }
+    }
+    
     @objc func showActionSheet() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let first = UIAlertAction(title: "편지 삭제", style: .destructive) {
@@ -55,7 +80,7 @@ class EditingLetterViewController: UIViewController {
             self.dismiss(animated: true)
         }
         
-        let cancel = UIAlertAction(title: "취소", style: .cancel){action in}
+        let cancel = UIAlertAction(title: "취소", style: .cancel){_ in}
 
         actionSheet.addAction(first)
         actionSheet.addAction(cancel)

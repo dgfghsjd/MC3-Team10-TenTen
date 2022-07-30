@@ -35,7 +35,6 @@ class WritingLetterViewController: UIViewController {
 
         button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         button.setTitle("취소", for: .normal)
-//        button.sizeToFit()
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         button.tintColor = UIColor(named: "textColor")
         writingLetterNavBar.leftBarButtonItem = UIBarButtonItem(customView: button)
@@ -106,7 +105,7 @@ class WritingLetterViewController: UIViewController {
             action in print("2")
             self.dismiss(animated: true)
         }
-        let cancel = UIAlertAction(title: "취소", style: .cancel){action in}
+        let cancel = UIAlertAction(title: "취소", style: .cancel){_ in}
 
         actionSheet.addAction(first)
         actionSheet.addAction(second)

@@ -9,6 +9,7 @@ import UIKit
 
 class WrittenLetterViewController: UIViewController {
     @IBOutlet weak var selectedLetterNavBar: UINavigationItem!
+    let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
