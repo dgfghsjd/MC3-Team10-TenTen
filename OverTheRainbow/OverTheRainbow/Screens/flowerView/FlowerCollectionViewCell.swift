@@ -8,22 +8,44 @@ class FlowerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var flowerTitleLabel: UILabel!
     @IBOutlet weak var backgroundLabel: UIView!
     @IBOutlet weak var boxLabel: UIView!
-    // set 되었을때 FlowerData에서 정보를 가지고 오기위해서
-    var flowers: FlowerData! {
+    // realm 데이터 연결
+    let service = DataAccessProvider.dataAccessConfig.getService()
+    var flowerID: String?
+    
+    var flowers: FlowerResultDto! {
         didSet {
             self.updateUI()
-            
         }
     }
+    
     func updateUI() {
         if let flowers = flowers {
-            flowerImageView.image = flowers.flowerImage
-            flowerTitleLabel.text = flowers.label
-            flowerMeans.text = flowers.means
+            flowerID = flowers.id
+            flowerImageView.image = UIImage(named: flowers.imgUrl)
+            flowerTitleLabel.text = flowers.name
+            flowerMeans.text = flowers.meaning
         }
-        backgroundLabel.layer.cornerRadius = 15.0
-//        backgroundLabel.layer.masksToBounds = true[.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        boxLabel.layer.cornerRadius = 15.0
-        boxLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+                backgroundLabel.layer.cornerRadius = 15.0
+               boxLabel.layer.cornerRadius = 15.0
+               boxLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
     }
+//    var flowers: FlowerData! {
+//        didSet {
+//            self.updateUI()
+//        }
+//    }
+//    func updateUI() {
+//        if let flowers = flowers {
+//            flowerImageView.image = flowers.flowerImage
+//            flowerTitleLabel.text = flowers.label
+//            flowerMeans.text = flowers.means
+//        }
+//        backgroundLabel.layer.cornerRadius = 15.0
+//        boxLabel.layer.cornerRadius = 15.0
+//        boxLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+//    }
+
+
+    
 }
+

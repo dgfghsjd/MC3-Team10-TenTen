@@ -23,7 +23,9 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         petID = UserDefaults.standard.string(forKey: "petID")
+        
         if petID != nil {
+            
             userData = try? service.getMainView(petID!)
         }
         quoteLabel.text = userData?.word.content ?? "DEBUG word 없음"
