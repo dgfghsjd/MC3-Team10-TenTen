@@ -23,11 +23,11 @@ struct LetterInput {
     private(set) var image: UIImage?
     
     func toLetter(_ saveImage: (UIImage) throws -> String) -> Letter {
-        var imgUrl: String?
+        var fileName: String?
         if let img = self.image {
-            imgUrl = try? saveImage(img)
+            fileName = try? saveImage(img)
         }
-        return Letter(title, content, imgUrl)
+        return Letter(title, content, fileName)
     }
     
     init(title: String, content: String) {

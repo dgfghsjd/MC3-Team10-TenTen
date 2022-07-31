@@ -16,6 +16,12 @@ protocol DataAccessService {
     // MARK: Pet 생성
     func addPet(_ inputDto: PetInputDto) -> String
     
+    // MARK: Pet 정보수정
+    func updatePet(_ inputDto: PetUpdateDto) throws -> String
+    
+    // MARK: Pet 삭제
+    func deletePet(_ id: String) throws
+    
     // MARK: Pet 정보 가져오기
     func findPet(id: String) throws -> PetResultDto
     
@@ -31,11 +37,20 @@ protocol DataAccessService {
     // MARK: 편지 임시저장 상태로 되돌리기 (임시저장 상태로 변경)
     func unsaveLetters(_ ids: String...) throws
     
+    // MARK: 편지 삭제
+    func deleteLetter(petId: String, letterId: String) throws
+    
+    // MARK: 편지 수정 (임시저장 상태에서만 가능)
+    func updateLetter(petId: String, dto: LetterUpdateDto) throws
+    
+    // MARK: 편지 상세보기
+    func findLetter(_ letterId: String) throws -> LetterResultDto
+    
     // MARK: 보내지 않은 편지 List 가져오기 (임시저장 상태 + 저장 상태)
     func findUnsentLetters(_ id: String) throws -> [LetterResultDto]
     
     // MARK: 보낸 편지 List 가져오기 (월별로)
-    func findSentLetters(_ id: String, _ selected: String) throws -> Array<LetterResultDto>
+    func findSentLetters(_ id: String, _ selected: String) throws -> [LetterResultDto]
     
     // MARK: 꽃 List 보여주기
     func findAllFlowers() -> [FlowerResultDto]

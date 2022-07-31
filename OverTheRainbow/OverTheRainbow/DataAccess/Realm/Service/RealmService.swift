@@ -11,9 +11,9 @@ import RealmSwift
 
 // TODO: Service 구현체 refactor
 // TODO: updatedAt 구현
-
+// TODO: toObjectId() 메서드로 변환
 class RealmService: DataAccessService {
-private let realm: Realm
+    private let realm: Realm
     private let repository: RealmRepository
     private let imageManager: ImageManager = ImageManager.shared!
     
@@ -24,18 +24,44 @@ private let realm: Realm
         }
     }
     
+    func updatePet(_ inputDto: PetUpdateDto) throws -> String {
+        let petId: ObjectId = inputDto.id.toObjectId()
+        guard let pet: Pet = repository.findById(id: petId) else {
+            throw RealmError.petNotFound
+        }
+        if let imgUrl = pet.imgUrl {
+            try! imageManager.deleteFile(imgUrl)
+        }
+
+        try! realm.write {
+            let updatedPet = inputDto.toPet(pet: pet, saveImage: imageManager.saveImage)
+            repository.update(updatedPet)
+        }
+        return pet.id
+    }
+    
+    func deletePet(_ id: String) throws {
+        let petId = id.toObjectId()
+        guard let pet: Pet = repository.findById(id: petId) else {
+            throw RealmError.petNotFound
+        }
+        
+        try! realm.write {
+            repository.delete(pet)
+        }
+    }
+    
     func findPet(id: String) throws -> PetResultDto {
-        let objectId = stringToObjectId(id: id)
+        let objectId = id.toObjectId()
         
         // 찾는 pet이 없으면 error throw
         guard let pet: Pet = repository.findById(id: objectId) else {
             throw RealmError.petNotFound
         }
-        
         return PetResultDto.of(pet: pet)
     }
     
-    func findAllPet() -> Array<PetResultDto> {
+    func findAllPet() -> [PetResultDto] {
         let results: Results<Pet> = repository.findAll()
             .sorted(byKeyPath: "createdAt", ascending: false)
         return results.toArray()
@@ -43,7 +69,7 @@ private let realm: Realm
     }
     
     func addLetter(_ inputDto: LetterInputDto) throws -> String {
-        let petId = stringToObjectId(id: inputDto.petId)
+        let petId = inputDto.petId.toObjectId()
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
         }
@@ -55,9 +81,19 @@ private let realm: Realm
         return letter.id
     }
     
+    func findLetter(_ letterId: String) throws -> LetterResultDto {
+        let letterObjId = letterId.toObjectId()
+        
+        guard let letter: Letter = repository.findById(id: letterObjId) else {
+            throw RealmError.letterNotFound
+        }
+        
+        return LetterResultDto.of(letter)
+    }
+    
     func saveLetters(_ ids: String...) throws {
         try! ids.forEach { id in
-            let letterId = stringToObjectId(id: id)
+            let letterId = id.toObjectId()
             guard let letter: Letter = repository.findById(id: letterId) else {
                 throw RealmError.letterNotFound
             }
@@ -70,7 +106,7 @@ private let realm: Realm
     
     func unsaveLetters(_ ids: String...) throws {
         try! ids.forEach { id in
-            let letterId = stringToObjectId(id: id)
+            let letterId = id.toObjectId()
             guard let letter: Letter = repository.findById(id: letterId) else {
                 throw RealmError.letterNotFound
             }
@@ -81,8 +117,47 @@ private let realm: Realm
         }
     }
     
+    func deleteLetter(petId: String, letterId: String) throws {
+        let petObjId = petId.toObjectId()
+        
+        guard let pet: Pet = repository.findById(id: petObjId) else {
+            throw RealmError.petNotFound
+        }
+        
+        try! realm.write {
+            for letter in pet.letters {
+                if letter.id == letterId {
+                    repository.delete(letter)
+                    return
+                }
+            }
+            throw RealmError.letterNotFound
+        }
+    }
+    
+    func updateLetter(petId: String, dto: LetterUpdateDto) throws {
+        let petObjId = petId.toObjectId()
+        
+        guard let pet: Pet = repository.findById(id: petObjId) else {
+            throw RealmError.petNotFound
+        }
+        
+        try! realm.write {
+            try! pet.letters.forEach { letter in
+                switch letter.status {
+                case .saved: throw RealmError.letterAlreadySaved
+                case .sent: throw RealmError.letterAlreadySent
+                case .temporary:
+                    repository.update(dto.toLetter(letter: letter, saveImage: imageManager.saveImage))
+                    return
+                }
+            }
+            throw RealmError.letterNotFound
+        }
+    }
+    
     func send(_ id: String) throws {
-        let petId = stringToObjectId(id: id)
+        let petId = id.toObjectId()
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
         }
@@ -97,7 +172,7 @@ private let realm: Realm
     }
     
     func findUnsentLetters(_ id: String) throws -> [LetterResultDto] {
-        let petId = stringToObjectId(id: id)
+        let petId = id.toObjectId()
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
         }
@@ -115,7 +190,7 @@ private let realm: Realm
     
     // TODO: sorted refactor
     func findSentLetters(_ id: String, _ selected: String) throws -> [LetterResultDto] {
-        let petId = stringToObjectId(id: id)
+        let petId = id.toObjectId()
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
         }
@@ -144,11 +219,11 @@ private let realm: Realm
     }
     
     func chooseFlower(petId: String, flowerId: String) throws {
-        let petId = stringToObjectId(id: petId)
+        let petId = petId.toObjectId()
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
         }
-        let flowerId = stringToObjectId(id: flowerId)
+        let flowerId = flowerId.toObjectId()
         guard let flower: Flower = repository.findById(id: flowerId) else {
             throw RealmError.flowerNotFound
         }
@@ -167,7 +242,7 @@ private let realm: Realm
     }
     
     func getMainView(_ id: String) throws -> MainViewResultDto {
-        let petId = stringToObjectId(id: id)
+        let petId = id.toObjectId()
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
         }
@@ -194,7 +269,7 @@ private let realm: Realm
     }
     
     func getHeavenView(_ id: String) throws -> HeavenViewResultDto {
-        let petId = stringToObjectId(id: id)
+        let petId = id.toObjectId()
         guard let pet: Pet = repository.findById(id: petId) else {
             throw RealmError.petNotFound
         }
@@ -209,10 +284,6 @@ private let realm: Realm
         try! realm.write {
             flowerLog.flower = flower
         }
-    }
-    
-    private func stringToObjectId(id: String) -> ObjectId {
-        return try! ObjectId(string: id)
     }
     
     init(_ realm: Realm, _ repository: RealmRepository) {
