@@ -3,7 +3,7 @@
 //  OverTheRainbow
 //
 //  Created by SeungHwanKim on 2022/07/27.
-//
+//swiftlint:disable force_try
 
 import UIKit
 import PhotosUI
@@ -19,10 +19,11 @@ class EditingLetterViewController: UIViewController {
     @IBOutlet weak var writtenDate: UILabel!
     var button = UIButton(type: .system)
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
-    let petID = "62e33bcd124a6dd7c5708eae"
+    let petID = "62e60ab040a87a9ab0637612"
 //        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
     
     override func viewDidLoad() {
+        let letter = try? service.findLetter("62e60b0440a87a9ab0637613")
         super.viewDidLoad()
         
         let attributes: [NSAttributedString.Key: Any] = [ .font: UIFont.boldSystemFont(ofSize: 18) ]
@@ -35,6 +36,7 @@ class EditingLetterViewController: UIViewController {
         editingLetterNavBar.leftBarButtonItem = UIBarButtonItem(customView: button)
         
         galleryImageView.layer.cornerRadius = 10
+//        galleryImageView.image = letter.imgUrl? as UIImage
 
         let largeSymbol = UIImage.SymbolConfiguration(pointSize: 50, weight: .bold, scale: .large)
         let largeBoldButton = UIImage(systemName: "plus.square.dashed", withConfiguration: largeSymbol)
@@ -43,11 +45,13 @@ class EditingLetterViewController: UIViewController {
         btnChangeImage.tintColor = UIColor(named: "textColor")
         btnChangeImage.alpha = 0.2
         btnChangeImage.addTarget(self, action: #selector(changeImage), for: .touchUpInside)
-        
-        letterTitle.delegate = self
-        letterTitle.returnKeyType = .done
 
-        letterContent.delegate = self
+        letterTitle.returnKeyType = .done
+        letterTitle.text = letter?.title
+
+        letterContent.text = letter?.content
+        
+        writtenDate.text = letter?.date
     }
     @IBAction func doneeditingLetter(_ sender: UIBarButtonItem) {
         if letterTitle.text!.isEmpty {
@@ -120,32 +124,5 @@ extension EditingLetterViewController: PHPickerViewControllerDelegate {
                 }
             }
         }
-    }
-}
-
-extension EditingLetterViewController: UITextViewDelegate {
-
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if !textView.text.isEmpty {
-            textView.text = nil
-            textView.textColor = UIColor.black
-        }
-    } // 텍스트 뷰에 포커스 잡히면 원래 있던 글자가 placeholder 처럼 작동하도록 변경
-
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "어떤 말을 전하고 싶나요?"
-            textView.textColor = UIColor.lightGray
-        }
-    } // 텍스트 뷰가 비어있으면 placeholder 유지
-}
-
-extension EditingLetterViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == self.letterTitle {
-            textField.resignFirstResponder()
-            return false
-        }
-        return true
     }
 }

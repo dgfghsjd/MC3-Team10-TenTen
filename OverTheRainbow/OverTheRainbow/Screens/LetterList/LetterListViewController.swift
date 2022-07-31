@@ -12,7 +12,7 @@ class LetterLitstMainViewController: BaseViewController {
     private var lists: [LetterResultDto] {
         let service = DataAccessProvider.dataAccessConfig.getService()
         
-        let petID = "62e5e9f4209793a5466aa830"
+        let petID = "62e60ab040a87a9ab0637612"
 //        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
         // swiftlint:disable:next force_try
         return try! service.findUnsentLetters(petID)
