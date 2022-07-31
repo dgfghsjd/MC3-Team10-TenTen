@@ -16,7 +16,7 @@ class Pet: RealmModel {
     var species: String
     
     @Persisted
-    var imgUrl: String?
+    var fileName: String?
     
     @Persisted
     var birth: Date
@@ -33,16 +33,21 @@ class Pet: RealmModel {
     @Persisted
     var flowerLogs: List<FlowerLog>
     
-    func getAge() -> Int {
-        return 1
+    var age: Int {
+        return Date.now.years(from: self.birth)
     }
     
-    convenience init(_ name: String, _ species: String, imgUrl: String?, birth: Date, weight: Double) {
+    var imgUrl: URL? {
+        guard let filename = self.fileName else { return nil }
+        return ImageManager.shared?.imagePath.appendingPathComponent(filename)
+    }
+    
+    convenience init(_ name: String, _ species: String, fileName: String?, birth: Date, weight: Double) {
         self.init()
         self.name = name
         self.birth = birth
         self.species = species
-        self.imgUrl = imgUrl
+        self.fileName = fileName
         self.weight = weight
     }
 }

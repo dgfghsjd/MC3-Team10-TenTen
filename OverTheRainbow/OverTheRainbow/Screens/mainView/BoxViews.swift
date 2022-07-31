@@ -102,10 +102,13 @@ class FlowerBoxView: BoxStyleView, BoxStyle {
             }
             noFlowerGuideLabel.alpha = 0
 
-            // imageView.image = flower?.imgUrl
-            imageView.image = mockUpFlowers[Int.random(in: 0...4)].image
-            nameLabel.text = flower?.name// mockUpFlowers[flowerIndex ?? 0].title
-            floriographyLabel.text = flower?.meaning// mockUpFlowers[flowerIndex ?? 0].floriography
+            imageView.image = UIImage(named: flower?.imgUrl ?? "flower-is-nil")
+            nameLabel.text = flower?.name
+            floriographyLabel.text = flower?.meaning
+            // debug
+            // imageView.image = mockUpFlowers[Int.random(in: 0...4)].image
+            // mockUpFlowers[flowerIndex ?? 0].title
+            // mockUpFlowers[flowerIndex ?? 0].floriography
 
             nameLabel.frame.size = nameLabel.intrinsicContentSize
             floriographyLabel.frame.size = floriographyLabel.intrinsicContentSize

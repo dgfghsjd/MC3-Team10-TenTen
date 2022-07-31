@@ -14,37 +14,52 @@ import CoreData
 // MARK: 함수 signature의 parameter type, return type을 잘 확인하고 이용해주세요!
 protocol DataAccessService {
     // MARK: Pet 생성
-    func addPet(_ inputDto: PetInputDto) -> Void
+    func addPet(_ inputDto: PetInputDto) -> String
+    
+    // MARK: Pet 정보수정
+    func updatePet(_ inputDto: PetUpdateDto) throws -> String
+    
+    // MARK: Pet 삭제
+    func deletePet(_ id: String) throws
     
     // MARK: Pet 정보 가져오기
     func findPet(id: String) throws -> PetResultDto
     
     // MARK: 모든 Pet List 가져오기
-    func findAllPet() -> Array<PetResultDto>
+    func findAllPet() -> [PetResultDto]
     
     // MARK: 편지 생성하기 (임시 저장 상태)
-    func addLetter(_ inputDto: LetterInputDto) throws -> Void
+    func addLetter(_ inputDto: LetterInputDto) throws -> String
     
     // MARK: 편지 저장하기 (저장 상태로 변경)
-    func saveLetters(_ ids: String...) throws -> Void
+    func saveLetters(_ ids: String...) throws
     
     // MARK: 편지 임시저장 상태로 되돌리기 (임시저장 상태로 변경)
-    func unsaveLetters(_ ids: String...) throws -> Void
+    func unsaveLetters(_ ids: String...) throws
+    
+    // MARK: 편지 삭제
+    func deleteLetter(petId: String, letterId: String) throws
+    
+    // MARK: 편지 수정 (임시저장 상태에서만 가능)
+    func updateLetter(petId: String, dto: LetterUpdateDto) throws
+    
+    // MARK: 편지 상세보기
+    func findLetter(_ letterId: String) throws -> LetterResultDto
     
     // MARK: 보내지 않은 편지 List 가져오기 (임시저장 상태 + 저장 상태)
-    func findUnsentLetters(_ id: String) throws -> Array<LetterResultDto>
+    func findUnsentLetters(_ id: String) throws -> [LetterResultDto]
     
     // MARK: 보낸 편지 List 가져오기 (월별로)
-    func findSentLetters(_ id: String, _ selected: String) throws -> Array<LetterResultDto>
+    func findSentLetters(_ id: String, _ selected: String) throws -> [LetterResultDto]
     
     // MARK: 꽃 List 보여주기
-    func findAllFlowers() -> Array<FlowerResultDto>
+    func findAllFlowers() -> [FlowerResultDto]
     
     // MARK: 꽃 선택하기 (보내지 않은 상태로 저장)
-    func chooseFlower(petId: String, flowerId: String) throws -> Void
+    func chooseFlower(petId: String, flowerId: String) throws
     
     // MARK: 편지와 꽃 보내기 (FlowerLog, Letter의 status를 모두 보냄 상태로 변경)
-    func send(_ id: String) throws -> Void
+    func send(_ id: String) throws
     
     // MARK: 메인 뷰에 필요한 정보 가져오기 (선택한 꽃 Preview, 보내지 않은 편지 개수, 격려의 말)
     func getMainView(_ id: String) throws -> MainViewResultDto
