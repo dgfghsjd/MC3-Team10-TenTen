@@ -181,16 +181,27 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="sp2-za-8fv">
                                 <rect key="frame" x="40" y="115" width="271" height="232"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이름을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iK3-kn-ND0">
-                                        <rect key="frame" x="0.0" y="0.0" width="140" height="34"/>
-                                        <color key="backgroundColor" name="backgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="140" id="cG4-0s-NWl"/>
-                                        </constraints>
-                                        <color key="textColor" name="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="101" translatesAutoresizingMaskIntoConstraints="NO" id="GCJ-yL-9EC" userLabel="Age">
+                                        <rect key="frame" x="0.0" y="0.0" width="270.5" height="34"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G32-Py-s7r" userLabel="이름">
+                                                <rect key="frame" x="0.0" y="0.0" width="29.5" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" name="settingCategoryTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이름을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CLg-0E-Wh9" userLabel="이름을 입력해주세요">
+                                                <rect key="frame" x="130.5" y="0.0" width="140" height="34"/>
+                                                <color key="backgroundColor" name="backgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="140" id="lEi-Mm-ybl"/>
+                                                </constraints>
+                                                <color key="textColor" name="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="116" translatesAutoresizingMaskIntoConstraints="NO" id="QQk-bL-5wD" userLabel="Species">
                                         <rect key="frame" x="0.0" y="66" width="271" height="34"/>
                                         <subviews>
@@ -276,7 +287,7 @@
                     </view>
                     <connections>
                         <outlet property="ageTextField" destination="fwJ-OF-Kb5" id="o36-qh-9PN"/>
-                        <outlet property="nameTextField" destination="iK3-kn-ND0" id="qcN-6R-3xh"/>
+                        <outlet property="nameTextField" destination="CLg-0E-Wh9" id="rJx-fK-LyY"/>
                         <outlet property="navigationBar" destination="Q5n-8v-wae" id="HUD-C5-kBi"/>
                         <outlet property="speciesTextField" destination="83C-F7-CdT" id="2zd-gI-lCG"/>
                         <outlet property="weightTextField" destination="dR9-RH-HDp" id="NID-iU-MSd"/>

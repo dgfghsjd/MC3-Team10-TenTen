@@ -29,25 +29,25 @@ class SettingViewController: UIViewController {
     private let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
     var pets = [PetResultDto]()
     var mode: UpdateMode?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO: pets에 현재 UserDefaults 펫을 먼저 넣고 나머지 펫들을 append시키기
-
-        UserDefaults.standard.set("62e1351dedd840ec0d2c01d4", forKey: "petID")
+        
+        UserDefaults.standard.set("62e6a4abe51bf54102027f89", forKey: "petID")
         updatePetList()
-
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         let updateButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(showActionSheet))
         updateButton.tintColor = UIColor(named: "textColor")
         navItem.rightBarButtonItem = updateButton
     }
-//
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//    }
+    //
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        super.viewWillAppear(animated)
+    //
+    //    }
     @objc func showActionSheet() {
         let actionSheet = UIAlertController(title: "펫 설정하기", message: "", preferredStyle: .actionSheet)
         let addPet = UIAlertAction(title: "펫 추가하기", style: .default) { action in
@@ -89,31 +89,31 @@ class SettingViewController: UIViewController {
         }
         destinationVC.parentVC = self
     }
-
-        func updatePetList() {
-            print("update!")
-            pets = [PetResultDto]()
     
-            let currentPetID = UserDefaults.standard.string(forKey: "petID")
-    
-            do {
-                try pets.append(service.findPet(id: currentPetID!))
-            } catch {
-                print("Error finding pet : \(error)")
-            }
-    
-            let otherPets = service.findAllPet().filter {
-                $0.id != currentPetID
-            }
-    
-            for pet in otherPets {
-                pets.append(pet)
-            }
-    
-            print("pets : \(pets)")
-            
-            collectionView.reloadData()
+    func updatePetList() {
+        print("update!")
+        pets = [PetResultDto]()
+        
+        let currentPetID = UserDefaults.standard.string(forKey: "petID")
+        
+        do {
+            try pets.append(service.findPet(id: currentPetID!))
+        } catch {
+            print("Error finding pet : \(error)")
         }
+        
+        let otherPets = service.findAllPet().filter {
+            $0.id != currentPetID
+        }
+        
+        for pet in otherPets {
+            pets.append(pet)
+        }
+        
+        print("pets : \(pets)")
+        
+        collectionView.reloadData()
+    }
 }
 
 // MARK: - DataSource, Delegate of CollectionView
