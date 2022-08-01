@@ -61,11 +61,9 @@
                                                                 <constraint firstAttribute="width" constant="210" id="D7Q-T9-L0B"/>
                                                                 <constraint firstAttribute="bottom" secondItem="q0a-IY-2eb" secondAttribute="bottom" constant="35" id="XL6-we-lab"/>
                                                                 <constraint firstItem="q0a-IY-2eb" firstAttribute="leading" secondItem="TI3-sQ-TKb" secondAttribute="leading" constant="115" id="ba1-kh-hQ6"/>
-                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="51" id="gd9-nC-0gI"/>
                                                                 <constraint firstItem="q0a-IY-2eb" firstAttribute="top" secondItem="TI3-sQ-TKb" secondAttribute="top" constant="-14" id="gjz-sp-5tb"/>
                                                                 <constraint firstAttribute="trailing" secondItem="q0a-IY-2eb" secondAttribute="trailing" constant="8" id="nGE-Gp-TxL"/>
                                                                 <constraint firstAttribute="height" constant="51" id="o37-bW-Yf3"/>
-                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="pkQ-ko-hPR"/>
                                                             </constraints>
                                                         </view>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flower4" translatesAutoresizingMaskIntoConstraints="NO" id="bzK-7e-KAQ">
@@ -75,11 +73,10 @@
                                                                 <constraint firstAttribute="width" constant="180" id="Oas-ox-QEK"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="그리움" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETv-tw-kaH">
-                                                            <rect key="frame" x="90" y="409" width="30" height="15"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="그리움" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETv-tw-kaH">
+                                                            <rect key="frame" x="15" y="409" width="180" height="13.333333333333314"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="15" id="KqL-PX-QYL"/>
-                                                                <constraint firstAttribute="width" constant="30" id="eHe-Dd-Erv"/>
+                                                                <constraint firstAttribute="width" constant="180" id="bpr-b0-0Mw"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
                                                             <nil key="textColor"/>
@@ -88,24 +85,20 @@
                                                     </subviews>
                                                     <color key="backgroundColor" name="whiteColor"/>
                                                     <constraints>
-                                                        <constraint firstItem="ETv-tw-kaH" firstAttribute="top" secondItem="bzK-7e-KAQ" secondAttribute="bottom" constant="47" id="8Bx-Z8-mAg"/>
-                                                        <constraint firstItem="ETv-tw-kaH" firstAttribute="top" secondItem="bzK-7e-KAQ" secondAttribute="bottom" constant="47" id="BWH-3I-FVf"/>
-                                                        <constraint firstItem="TI3-sQ-TKb" firstAttribute="leading" secondItem="aSf-99-Ufr" secondAttribute="leading" id="EAY-Fm-n8S"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ETv-tw-kaH" secondAttribute="trailing" constant="15" id="4Am-N2-jFO"/>
+                                                        <constraint firstItem="TI3-sQ-TKb" firstAttribute="top" secondItem="ETv-tw-kaH" secondAttribute="bottom" constant="48.670000000000002" id="A7A-mN-c13"/>
                                                         <constraint firstAttribute="height" constant="522" id="IgE-Wz-yMz"/>
                                                         <constraint firstItem="TI3-sQ-TKb" firstAttribute="leading" secondItem="aSf-99-Ufr" secondAttribute="leading" id="RQY-Xy-fo6"/>
                                                         <constraint firstAttribute="trailing" secondItem="TI3-sQ-TKb" secondAttribute="trailing" id="S3H-JF-KJG"/>
-                                                        <constraint firstAttribute="bottom" secondItem="TI3-sQ-TKb" secondAttribute="bottom" id="Tps-T6-ULv"/>
                                                         <constraint firstItem="bzK-7e-KAQ" firstAttribute="leading" secondItem="aSf-99-Ufr" secondAttribute="leading" constant="15" id="Ue4-t6-Oyt"/>
-                                                        <constraint firstItem="TI3-sQ-TKb" firstAttribute="top" secondItem="ETv-tw-kaH" secondAttribute="bottom" constant="47" id="cZV-kD-4u2"/>
                                                         <constraint firstItem="bzK-7e-KAQ" firstAttribute="top" secondItem="aSf-99-Ufr" secondAttribute="top" constant="62" id="cvz-U6-woz"/>
                                                         <constraint firstAttribute="bottom" secondItem="TI3-sQ-TKb" secondAttribute="bottom" id="esk-bi-q6f"/>
                                                         <constraint firstItem="TI3-sQ-TKb" firstAttribute="top" secondItem="aSf-99-Ufr" secondAttribute="top" constant="471" id="hDY-KS-SgZ"/>
-                                                        <constraint firstAttribute="trailing" secondItem="TI3-sQ-TKb" secondAttribute="trailing" id="kMI-vI-sFQ"/>
                                                         <constraint firstAttribute="trailing" secondItem="bzK-7e-KAQ" secondAttribute="trailing" constant="15" id="nzL-pA-LWX"/>
-                                                        <constraint firstItem="ETv-tw-kaH" firstAttribute="leading" secondItem="aSf-99-Ufr" secondAttribute="leading" constant="90" id="qpH-uY-oQw"/>
-                                                        <constraint firstItem="TI3-sQ-TKb" firstAttribute="top" secondItem="ETv-tw-kaH" secondAttribute="bottom" constant="47" id="sgx-At-7GK"/>
-                                                        <constraint firstAttribute="trailing" secondItem="ETv-tw-kaH" secondAttribute="trailing" constant="90" id="waY-al-qn9"/>
+                                                        <constraint firstItem="ETv-tw-kaH" firstAttribute="top" secondItem="bzK-7e-KAQ" secondAttribute="bottom" constant="47" id="qOq-N2-edS"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ETv-tw-kaH" secondAttribute="trailing" constant="15" id="w4A-ge-QQw"/>
                                                         <constraint firstAttribute="width" constant="210" id="x4F-dg-tDR"/>
+                                                        <constraint firstItem="ETv-tw-kaH" firstAttribute="leading" secondItem="aSf-99-Ufr" secondAttribute="leading" constant="15" id="xnb-NK-PFn"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -149,7 +142,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="꽃뷰" id="pEr-oV-fkC" customClass="flowerViewNaviBar" colorLabel="IBBuiltInLabel-Orange">
-                        <barButtonItem key="rightBarButtonItem" title="완료" id="E19-og-Rf6">
+                        <barButtonItem key="rightBarButtonItem" title="선택" id="E19-og-Rf6">
                             <color key="tintColor" red="0.29956644770000002" green="0.25532671810000002" blue="0.25483909249999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="takeAFlower:" destination="Y6W-OH-hqX" id="1Lo-jP-XMe"/>
@@ -214,7 +207,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="flower4" width="91.666664123535156" height="61"/>
+        <image name="flower4" width="800" height="800"/>
         <namedColor name="backgroundColor">
             <color red="0.95686274509803926" green="0.95686274509803926" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

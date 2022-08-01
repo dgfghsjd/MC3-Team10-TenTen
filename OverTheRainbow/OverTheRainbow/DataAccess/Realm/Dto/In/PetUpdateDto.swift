@@ -10,6 +10,7 @@ import UIKit
 
 struct PetUpdateDto {
     private(set) var id: String
+    private(set) var name: String
     private(set) var species: String
     private(set) var birth: Date
     private(set) var weight: Double
@@ -20,6 +21,7 @@ struct PetUpdateDto {
         if let img = self.image {
             fileName = try? saveImage(img)
         }
+        pet.name = self.name
         pet.species = self.species
         pet.birth = self.birth
         pet.weight = self.weight

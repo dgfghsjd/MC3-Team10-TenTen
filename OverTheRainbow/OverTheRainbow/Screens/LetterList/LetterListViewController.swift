@@ -9,10 +9,11 @@ import UIKit
 import SwiftUI
 
 class LetterLitstMainViewController: BaseViewController {
+    let service = DataAccessProvider.dataAccessConfig.getService()
     private var lists: [LetterResultDto] {
-        let service = DataAccessProvider.dataAccessConfig.getService()
+        
         // swiftlint:disable:next force_try
-        return try! service.findUnsentLetters("62e0e873fa44195244c53769")
+        return (try? service.findUnsentLetters(UserDefaults.standard.string(forKey: "petID") ?? "err")) ?? []
     }
     private enum Size {
         static let collectionHorizontalSpacing: CGFloat = 16.0
