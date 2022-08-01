@@ -12,6 +12,7 @@ import RealmSwift
 // TODO: getService를 실질적으로 한 번만 호출하도록 변경
 class RealmConfig: DataAccessConfig {
     public static let config = RealmConfig()
+    private static var didSet: Bool = false
     
     private(set) var realm: Realm
     
@@ -31,6 +32,19 @@ class RealmConfig: DataAccessConfig {
         config.fileURL!.appendPathComponent(appName)
         config.fileURL!.appendPathExtension("realm")
         realm = try! Realm(configuration: config)
+        
+        if !UserDefaults.standard.bool(forKey: "didSet") {
+            try! realm.write {
+                RealmPreset.Flowers.forEach { name, meaning, imgUrl in
+                    realm.add(Flower(name, meaning, imgUrl))
+                }
+
+                RealmPreset.Words.forEach { content in
+                    realm.add(Words(content))
+                }
+            }
+            UserDefaults.standard.set(true, forKey: "didSet")
+        }
         print("Realm FilePath: \t\(realm.configuration.fileURL!)")
     }
 }

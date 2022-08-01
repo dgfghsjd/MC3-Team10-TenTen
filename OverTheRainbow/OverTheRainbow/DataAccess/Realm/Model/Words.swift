@@ -12,4 +12,9 @@ import RealmSwift
 class Words: RealmModel {
     @Persisted
     var content: String
+    
+    convenience init(_ content: String) {
+        self.init()
+        self.content = content
+    }
 }

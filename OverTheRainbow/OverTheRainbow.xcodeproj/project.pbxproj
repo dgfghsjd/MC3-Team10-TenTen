@@ -43,6 +43,7 @@
 		A8509B8E2888D9D600CD88C1 /* DateConveter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B8D2888D9D600CD88C1 /* DateConveter.swift */; };
 		A8509B902888E6D300CD88C1 /* UtilError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509B8F2888E6D300CD88C1 /* UtilError.swift */; };
 		A86EE311288788E400084E98 /* OverTheRainbowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86EE310288788E400084E98 /* OverTheRainbowTests.swift */; };
+		A88E887B289773D900A13ACF /* RealmPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88E887A289773D900A13ACF /* RealmPreset.swift */; };
 		A8A87ED92889753A009E3C6C /* MainViewResultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A87ED82889753A009E3C6C /* MainViewResultDto.swift */; };
 		A8A87EDB288A2C85009E3C6C /* DataAccessProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A87EDA288A2C85009E3C6C /* DataAccessProvider.swift */; };
 		A8A87EDD288A484F009E3C6C /* DataAccessConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A87EDC288A484F009E3C6C /* DataAccessConfig.swift */; };
@@ -133,6 +134,7 @@
 		A8509B8F2888E6D300CD88C1 /* UtilError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilError.swift; sourceTree = "<group>"; };
 		A86EE30E288788E400084E98 /* OverTheRainbowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OverTheRainbowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A86EE310288788E400084E98 /* OverTheRainbowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverTheRainbowTests.swift; sourceTree = "<group>"; };
+		A88E887A289773D900A13ACF /* RealmPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPreset.swift; sourceTree = "<group>"; };
 		A8A87ED82889753A009E3C6C /* MainViewResultDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewResultDto.swift; sourceTree = "<group>"; };
 		A8A87EDA288A2C85009E3C6C /* DataAccessProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAccessProvider.swift; sourceTree = "<group>"; };
 		A8A87EDC288A484F009E3C6C /* DataAccessConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAccessConfig.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				273BF8A0288E7379005BA63B /* ImageLiterals.swift */,
+				A88E887A289773D900A13ACF /* RealmPreset.swift */,
 			);
 			path = Literal;
 			sourceTree = "<group>";
@@ -780,6 +783,7 @@
 				C5F7E8BA2887F03500F6B409 /* FontExtension.swift in Sources */,
 				C56CDAC4287EE41E00C1F5F9 /* AppDelegate.swift in Sources */,
 				C5345AFC28864E86007CF796 /* BoxViews.swift in Sources */,
+				A88E887B289773D900A13ACF /* RealmPreset.swift in Sources */,
 				C5345AF8288649C9007CF796 /* MainViewController.swift in Sources */,
 				C554EA1B288E603200954E11 /* TestHeavenViewController.swift in Sources */,
 				C554EA1A288E603200954E11 /* NavigationControllerDelegate.swift in Sources */,
