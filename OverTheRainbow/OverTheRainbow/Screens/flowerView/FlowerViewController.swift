@@ -20,7 +20,7 @@ class FlowerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // 임시로 아이디 유저디폴트에 넣는거 설정
-        UserDefaults.standard.set("62e5ea0388e194d12a199bf5", forKey: "petID")
+        // UserDefaults.standard.set("62e5ea0388e194d12a199bf5", forKey: "petID")
         let cellWidth = floor(210)
         let cellHeight = floor(522)
         let insetX = (view.bounds.width - cellWidth) / 2.0 // 90

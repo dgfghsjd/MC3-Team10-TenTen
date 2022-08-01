@@ -9,8 +9,9 @@ import UIKit
 import SwiftUI
 
 class LetterLitstMainViewController: BaseViewController {
+    let service = DataAccessProvider.dataAccessConfig.getService()
     private var lists: [LetterResultDto] {
-        let service = DataAccessProvider.dataAccessConfig.getService()
+        
         // swiftlint:disable:next force_try
         return try! service.findUnsentLetters("62e5ea0388e194d12a199bf5")
     }

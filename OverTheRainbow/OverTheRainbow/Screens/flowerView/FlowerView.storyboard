@@ -87,16 +87,13 @@
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="ETv-tw-kaH" secondAttribute="trailing" constant="15" id="4Am-N2-jFO"/>
                                                         <constraint firstItem="TI3-sQ-TKb" firstAttribute="top" secondItem="ETv-tw-kaH" secondAttribute="bottom" constant="48.670000000000002" id="A7A-mN-c13"/>
-                                                        <constraint firstItem="TI3-sQ-TKb" firstAttribute="leading" secondItem="aSf-99-Ufr" secondAttribute="leading" id="EAY-Fm-n8S"/>
                                                         <constraint firstAttribute="height" constant="522" id="IgE-Wz-yMz"/>
                                                         <constraint firstItem="TI3-sQ-TKb" firstAttribute="leading" secondItem="aSf-99-Ufr" secondAttribute="leading" id="RQY-Xy-fo6"/>
                                                         <constraint firstAttribute="trailing" secondItem="TI3-sQ-TKb" secondAttribute="trailing" id="S3H-JF-KJG"/>
-                                                        <constraint firstAttribute="bottom" secondItem="TI3-sQ-TKb" secondAttribute="bottom" id="Tps-T6-ULv"/>
                                                         <constraint firstItem="bzK-7e-KAQ" firstAttribute="leading" secondItem="aSf-99-Ufr" secondAttribute="leading" constant="15" id="Ue4-t6-Oyt"/>
                                                         <constraint firstItem="bzK-7e-KAQ" firstAttribute="top" secondItem="aSf-99-Ufr" secondAttribute="top" constant="62" id="cvz-U6-woz"/>
                                                         <constraint firstAttribute="bottom" secondItem="TI3-sQ-TKb" secondAttribute="bottom" id="esk-bi-q6f"/>
                                                         <constraint firstItem="TI3-sQ-TKb" firstAttribute="top" secondItem="aSf-99-Ufr" secondAttribute="top" constant="471" id="hDY-KS-SgZ"/>
-                                                        <constraint firstAttribute="trailing" secondItem="TI3-sQ-TKb" secondAttribute="trailing" id="kMI-vI-sFQ"/>
                                                         <constraint firstAttribute="trailing" secondItem="bzK-7e-KAQ" secondAttribute="trailing" constant="15" id="nzL-pA-LWX"/>
                                                         <constraint firstItem="ETv-tw-kaH" firstAttribute="top" secondItem="bzK-7e-KAQ" secondAttribute="bottom" constant="47" id="qOq-N2-edS"/>
                                                         <constraint firstAttribute="trailing" secondItem="ETv-tw-kaH" secondAttribute="trailing" constant="15" id="w4A-ge-QQw"/>
