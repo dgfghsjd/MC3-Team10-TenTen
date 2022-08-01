@@ -279,13 +279,14 @@ class BoxStyleView: UIView {
     fileprivate func setPreviewView(previewView: UIView = UIView()) {
         addSubview(previewView)
         previewView.translatesAutoresizingMaskIntoConstraints = false
+                
         NSLayoutConstraint.activate([
             previewView.topAnchor.constraint(lessThanOrEqualTo: topAnchor),
-            previewView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
+            previewView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.topAnchor, constant: 16),
             previewView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
             previewView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            previewView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.9),
-            previewView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -16)
+            previewView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, multiplier: 0.9)
         ])
+        
     }
 }
