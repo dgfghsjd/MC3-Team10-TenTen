@@ -66,4 +66,7 @@ protocol DataAccessService {
     
     // MARK: 천국 뷰에 필요한 정보 가져오기 (강아지 사진, 가장 최근 꽃, 그 다음 최근 꽃 6개)
     func getHeavenView(_ id: String) throws -> HeavenViewResultDto
+    
+    // MARK: 격려의 말 가져오기
+    func getWord() throws -> WordResultDto
 }

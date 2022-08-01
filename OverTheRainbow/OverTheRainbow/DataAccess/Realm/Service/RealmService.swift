@@ -247,10 +247,6 @@ class RealmService: DataAccessService {
             throw RealmError.petNotFound
         }
         
-        guard let word: Words = repository.findRandomOne() else {
-            throw RealmError.wordNotFound
-        }
-        
         let todayFlowerLog = pet.flowerLogs
             .where { $0.createdAt > Date.startOfToday() }
             .sorted(byKeyPath: "createdAt", ascending: false)
@@ -265,7 +261,7 @@ class RealmService: DataAccessService {
             .where { $0.status == .saved }
             .count
         
-        return MainViewResultDto(flowerLog, letterCount, permitted, word)
+        return MainViewResultDto(flowerLog, letterCount, permitted)
     }
     
     func getHeavenView(_ id: String) throws -> HeavenViewResultDto {
@@ -278,6 +274,13 @@ class RealmService: DataAccessService {
             .where { $0.status == .sent }
             .sorted(byKeyPath: "createdAt", ascending: false)
         return HeavenViewResultDto.of(flowerLogs.toArray())
+    }
+    
+    func getWord() throws -> WordResultDto {
+        guard let word: Words = repository.findRandomOne() else {
+            throw RealmError.wordNotFound
+        }
+        return WordResultDto.of(word)
     }
     
     private func updateFlower(flower: Flower, flowerLog: FlowerLog) {

@@ -31,7 +31,7 @@ class MainViewController: UIViewController {
             
             userData = try? service.getMainView(petID!)
         }
-        quoteLabel.text = userData?.word.content ?? "DEBUG word 없음"
+//        quoteLabel.text = userData?.word.content ?? "DEBUG word 없음"
 
         [guideLabel, quoteLabel].forEach {
             $0.font = UIFont.preferredFont(forTextStyle: .headline, weight: .regular)
