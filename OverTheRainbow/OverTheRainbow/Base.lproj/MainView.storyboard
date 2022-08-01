@@ -142,119 +142,13 @@
             </objects>
             <point key="canvasLocation" x="575" y="-104"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="cKp-uX-9qp">
-            <objects>
-                <viewController id="i1x-40-OxG" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="x8T-aY-qSi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="꽃뷰 스텁" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2J-J4-HfV">
-                                <rect key="frame" x="175" y="442.5" width="64" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8r-nh-VBf">
-                                <rect key="frame" x="168.5" y="376" width="77" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="꽃 고르기"/>
-                                <connections>
-                                    <action selector="selectFlower:" destination="i1x-40-OxG" eventType="touchUpInside" id="siM-SS-3vd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6o-Sp-Vmq">
-                                <rect key="frame" x="168.5" y="510" width="77" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="꽃 버리기"/>
-                                <connections>
-                                    <action selector="disSelectFlower:" destination="i1x-40-OxG" eventType="touchUpInside" id="RrW-nA-Bg5"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="k0u-0t-tQq"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                        <constraints>
-                            <constraint firstItem="g6o-Sp-Vmq" firstAttribute="width" secondItem="k0u-0t-tQq" secondAttribute="width" multiplier="0.18599" id="1PY-Gg-v2U"/>
-                            <constraint firstItem="j8r-nh-VBf" firstAttribute="centerX" secondItem="k0u-0t-tQq" secondAttribute="centerX" id="4dl-2K-cXT"/>
-                            <constraint firstItem="z2J-J4-HfV" firstAttribute="centerY" secondItem="k0u-0t-tQq" secondAttribute="centerY" id="EYw-Tz-mDA"/>
-                            <constraint firstItem="z2J-J4-HfV" firstAttribute="centerX" secondItem="k0u-0t-tQq" secondAttribute="centerX" id="hAl-PX-5nb"/>
-                            <constraint firstItem="g6o-Sp-Vmq" firstAttribute="centerX" secondItem="k0u-0t-tQq" secondAttribute="centerX" id="mzb-aY-xyu"/>
-                            <constraint firstItem="j8r-nh-VBf" firstAttribute="top" secondItem="k0u-0t-tQq" secondAttribute="top" constant="332" id="pAB-PT-iSH"/>
-                            <constraint firstItem="j8r-nh-VBf" firstAttribute="width" secondItem="k0u-0t-tQq" secondAttribute="width" multiplier="0.18599" id="pPE-PD-f1U"/>
-                            <constraint firstItem="g6o-Sp-Vmq" firstAttribute="top" secondItem="j8r-nh-VBf" secondAttribute="bottom" constant="103" id="qOO-LG-REq"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="bEq-Q4-79V"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YdM-XX-263" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="909" y="785"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="tX6-QM-5W9">
-            <objects>
-                <viewController storyboardIdentifier="LETTERVIEW" id="svf-Zk-k25" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Q8n-B5-wfM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="편지뷰 스텁" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9D-RO-3AZ">
-                                <rect key="frame" x="168" y="442.5" width="78" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="kMe-Lf-0Kr"/>
-                        <color key="backgroundColor" systemColor="systemMintColor"/>
-                        <constraints>
-                            <constraint firstItem="g9D-RO-3AZ" firstAttribute="centerX" secondItem="kMe-Lf-0Kr" secondAttribute="centerX" id="mEy-x3-7bK"/>
-                            <constraint firstItem="g9D-RO-3AZ" firstAttribute="centerY" secondItem="kMe-Lf-0Kr" secondAttribute="centerY" id="nqk-By-C2N"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="YOb-dM-EHh"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ca2-Re-pSp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1750" y="800"/>
-        </scene>
-        <!--Test Heaven View Controller-->
-        <scene sceneID="Bad-QJ-bKF">
-            <objects>
-                <viewController storyboardIdentifier="HEAVENVIEW" id="L6k-xh-uim" customClass="TestHeavenViewController" customModule="OverTheRainbow" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ng8-pV-sXZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="천국뷰 스텁 애니메이션 아님" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTe-BB-zcM">
-                                <rect key="frame" x="112" y="442.5" width="190" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="rqu-tR-cqI"/>
-                        <color key="backgroundColor" name="heavenLetterBackgroundCOlor"/>
-                        <constraints>
-                            <constraint firstItem="dTe-BB-zcM" firstAttribute="centerX" secondItem="rqu-tR-cqI" secondAttribute="centerX" id="Jl2-Ii-rMa"/>
-                            <constraint firstItem="dTe-BB-zcM" firstAttribute="centerY" secondItem="rqu-tR-cqI" secondAttribute="centerY" id="QIs-Ob-Bon"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="ybM-o7-jF2"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Inr-a0-Rfe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="866.66666666666674" y="-733.25892857142856"/>
-        </scene>
         <!--HeavenView-->
         <scene sceneID="iMo-cU-YvW">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="HeavenView" storyboardName="HeavenView" id="4AM-RE-rFq" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VtV-nL-RPT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1491" y="-623"/>
+            <point key="canvasLocation" x="1080" y="-348"/>
         </scene>
         <!--SettingView-->
         <scene sceneID="d5m-6T-HWe">
@@ -263,56 +157,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sDv-z1-Dod" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1671" y="-158"/>
-        </scene>
-        <!--Test Setting View Controller-->
-        <scene sceneID="L0N-yT-Ip8">
-            <objects>
-                <viewController storyboardIdentifier="SETTINGVIEW" id="hVL-sE-Ukl" customClass="TestSettingViewController" customModule="OverTheRainbow" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vKi-XY-XqY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정뷰 스텁" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6b-Kg-6Zx">
-                                <rect key="frame" x="168" y="442.5" width="78" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dAv-nb-lBI">
-                                <rect key="frame" x="145" y="224" width="124" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="펫 등록"/>
-                                <connections>
-                                    <action selector="petRegister:" destination="hVL-sE-Ukl" eventType="touchUpInside" id="3CQ-gZ-cK0"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJX-S6-ot4">
-                                <rect key="frame" x="145" y="294" width="124" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="펫 삭제"/>
-                                <connections>
-                                    <action selector="petDelete:" destination="hVL-sE-Ukl" eventType="touchUpInside" id="4cQ-GR-nQG"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="m3J-LD-3aL"/>
-                        <color key="backgroundColor" name="backgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="dAv-nb-lBI" firstAttribute="width" secondItem="m3J-LD-3aL" secondAttribute="width" multiplier="0.3" id="4Ho-SH-Hqu"/>
-                            <constraint firstItem="pJX-S6-ot4" firstAttribute="width" secondItem="m3J-LD-3aL" secondAttribute="width" multiplier="0.3" id="56h-ew-8DM"/>
-                            <constraint firstItem="dAv-nb-lBI" firstAttribute="top" secondItem="m3J-LD-3aL" secondAttribute="top" constant="180" id="P8V-L4-TWq"/>
-                            <constraint firstItem="pJX-S6-ot4" firstAttribute="centerX" secondItem="m3J-LD-3aL" secondAttribute="centerX" id="cSU-OW-kzb"/>
-                            <constraint firstItem="pJX-S6-ot4" firstAttribute="top" secondItem="dAv-nb-lBI" secondAttribute="bottom" constant="39" id="cxm-Dx-T1r"/>
-                            <constraint firstItem="dAv-nb-lBI" firstAttribute="centerX" secondItem="m3J-LD-3aL" secondAttribute="centerX" id="g7s-gY-8G4"/>
-                            <constraint firstItem="t6b-Kg-6Zx" firstAttribute="centerX" secondItem="m3J-LD-3aL" secondAttribute="centerX" id="qGP-WC-Dae"/>
-                            <constraint firstItem="t6b-Kg-6Zx" firstAttribute="centerY" secondItem="m3J-LD-3aL" secondAttribute="centerY" id="yQw-o2-trk"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="H0x-x2-7kY"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SLY-ar-pTB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2228" y="23"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BMc-EH-8sm">
@@ -348,20 +192,11 @@
         <namedColor name="backgroundColor">
             <color red="0.95686274509803926" green="0.95686274509803926" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="heavenLetterBackgroundCOlor">
-            <color red="0.82745098039215681" green="0.92549019607843142" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="textColor">
             <color red="0.29019607843137257" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemMintColor">
-            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
