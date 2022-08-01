@@ -173,13 +173,13 @@
         <!--UpdatePetViewController-->
         <scene sceneID="xeV-7i-c61">
             <objects>
-                <viewController storyboardIdentifier="UpdatePetView" title="UpdatePetViewController" id="HkB-PE-HVk" customClass="UpdatePetViewController" customModule="OverTheRainbow" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UpdatePetViewController" title="UpdatePetViewController" id="HkB-PE-HVk" customClass="UpdatePetViewController" customModule="OverTheRainbow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wZw-z4-ZOP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="sp2-za-8fv">
-                                <rect key="frame" x="40" y="115" width="271" height="232"/>
+                                <rect key="frame" x="40" y="115" width="271" height="249"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="101" translatesAutoresizingMaskIntoConstraints="NO" id="GCJ-yL-9EC" userLabel="Age">
                                         <rect key="frame" x="0.0" y="0.0" width="270.5" height="34"/>
@@ -224,28 +224,24 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="101" translatesAutoresizingMaskIntoConstraints="NO" id="ubZ-LZ-3Oo" userLabel="Age">
-                                        <rect key="frame" x="0.0" y="132" width="270.5" height="34"/>
+                                        <rect key="frame" x="0.0" y="132" width="266.5" height="51"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나이" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUn-QN-Wu5">
-                                                <rect key="frame" x="0.0" y="0.0" width="29.5" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="29.5" height="51"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="settingCategoryTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="나이를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fwJ-OF-Kb5">
-                                                <rect key="frame" x="130.5" y="0.0" width="140" height="34"/>
-                                                <color key="backgroundColor" name="backgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="140" id="At6-4N-95H"/>
-                                                </constraints>
-                                                <color key="textColor" name="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="OSQ-Zi-fnm">
+                                                <rect key="frame" x="130" y="0.0" width="136" height="51"/>
+                                                <connections>
+                                                    <action selector="datePicked:" destination="HkB-PE-HVk" eventType="valueChanged" id="yID-gx-AHJ"/>
+                                                </connections>
+                                            </datePicker>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="101" translatesAutoresizingMaskIntoConstraints="NO" id="R9h-Vn-r3d" userLabel="Weight">
-                                        <rect key="frame" x="0.0" y="198" width="270.5" height="34"/>
+                                        <rect key="frame" x="0.0" y="215" width="270.5" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="체중" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6p-H7-mPH">
                                                 <rect key="frame" x="0.0" y="0.0" width="29.5" height="34"/>
@@ -286,7 +282,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="ageTextField" destination="fwJ-OF-Kb5" id="o36-qh-9PN"/>
                         <outlet property="nameTextField" destination="CLg-0E-Wh9" id="rJx-fK-LyY"/>
                         <outlet property="navigationBar" destination="Q5n-8v-wae" id="HUD-C5-kBi"/>
                         <outlet property="speciesTextField" destination="83C-F7-CdT" id="2zd-gI-lCG"/>
@@ -295,7 +290,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iwl-9U-7Gg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2700" y="76"/>
+            <point key="canvasLocation" x="2694.202898550725" y="-308.03571428571428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lN4-Xi-YeG">

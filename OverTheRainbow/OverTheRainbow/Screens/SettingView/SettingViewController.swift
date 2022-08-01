@@ -27,15 +27,26 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var navItem: UINavigationItem!
     
     private let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
+    private var currentPetID = UserDefaults.standard.string(forKey: "petID")
     var pets = [PetResultDto]()
     var mode: UpdateMode?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO: pets에 현재 UserDefaults 펫을 먼저 넣고 나머지 펫들을 append시키기
-        
-        UserDefaults.standard.set("62e6a4abe51bf54102027f89", forKey: "petID")
+
+//        UserDefaults.standard.set("62e6b8435e207edb7ed26706", forKey: "petID")
         updatePetList()
+  
+//        if currentPetID == nil {
+//            mode = .add
+//            self.performSegue(withIdentifier: "UpdatePetView", sender: self)
+//        }
+
+//        if pets.isEmpty {
+//            mode = .add
+//            self.performSegue(withIdentifier: "UpdatePetView", sender: self)
+//        }
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -43,11 +54,16 @@ class SettingViewController: UIViewController {
         updateButton.tintColor = UIColor(named: "textColor")
         navItem.rightBarButtonItem = updateButton
     }
-    //
-    //    override func viewWillAppear(_ animated: Bool) {
-    //        super.viewWillAppear(animated)
-    //
-    //    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if currentPetID == nil {
+            mode = .add
+            self.performSegue(withIdentifier: "UpdatePetView", sender: self)
+        }
+    }
+    
     @objc func showActionSheet() {
         let actionSheet = UIAlertController(title: "펫 설정하기", message: "", preferredStyle: .actionSheet)
         let addPet = UIAlertAction(title: "펫 추가하기", style: .default) { action in
@@ -60,6 +76,27 @@ class SettingViewController: UIViewController {
         }
         let deletePet = UIAlertAction(title: "현재 펫 삭제하기", style: .default) { action in
             // TODO: UserDefaults에 있는 현재 Pet 삭제 후 그 다음 Pet을 UserDefaults로?
+            do {
+                if let removePetID = self.currentPetID {
+                    if self.pets.count > 1 {
+                        let nextPetID = self.pets[1].id
+                        self.currentPetID = nextPetID
+                        UserDefaults.standard.set(self.currentPetID, forKey: "petID")
+                    } else {
+                        self.currentPetID = nil
+//                        UserDefaults.standard.set("", forKey: "petID")
+                        UserDefaults.standard.removeObject(forKey: "petID")
+                    }
+                    print("remove pet id : \(removePetID)")
+                    try self.service.deletePet(removePetID)
+                } else {
+                    print("There's no pet to remove.")
+                }
+            } catch {
+                print("Error deleting pet : \(error)")
+            }
+            print("deleted!")
+            self.updatePetList()
         }
         let cancelAction = UIAlertAction(title: "취소", style: .cancel) { action in
         }
@@ -91,17 +128,18 @@ class SettingViewController: UIViewController {
     }
     
     func updatePetList() {
-        print("update!")
+        currentPetID = UserDefaults.standard.string(forKey: "petID")
+        print("current pet id : \(currentPetID)")
         pets = [PetResultDto]()
         
-        let currentPetID = UserDefaults.standard.string(forKey: "petID")
-        
-        do {
-            try pets.append(service.findPet(id: currentPetID!))
-        } catch {
-            print("Error finding pet : \(error)")
+        if let currentPetID = self.currentPetID {
+            do {
+                try pets.append(service.findPet(id: currentPetID))
+            } catch {
+                print("Error finding pet : \(error)")
+            }
         }
-        
+
         let otherPets = service.findAllPet().filter {
             $0.id != currentPetID
         }

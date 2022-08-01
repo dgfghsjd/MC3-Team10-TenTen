@@ -8,17 +8,20 @@
 import UIKit
 
 class UpdatePetViewController: UIViewController {
-
+    
+    private let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
     var currentPet: PetResultDto?
     var parentVC: UIViewController?
+    private var selectedDate = Date()
     
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var speciesTextField: UITextField!
-    @IBOutlet weak var ageTextField: UITextField!
+    
     @IBOutlet weak var weightTextField: UITextField!
-
-    private let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
+    @IBAction func datePicked(_ sender: UIDatePicker) {
+        selectedDate = sender.date
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +40,6 @@ class UpdatePetViewController: UIViewController {
         if let currentPet = currentPet {
             nameTextField.placeholder = currentPet.name
             speciesTextField.placeholder = currentPet.species
-            ageTextField.placeholder = String(currentPet.age)
             weightTextField.placeholder = String(currentPet.weight)
         }
     }
@@ -48,15 +50,23 @@ class UpdatePetViewController: UIViewController {
 
     @objc func confirmBtnPressed() {
         // TODO: Pet Model 업데이트
-        
         if currentPet == nil {
             // add mode
-            if let name = nameTextField.text, let species = speciesTextField.text, let age = ageTextField.text, let weight = weightTextField.text {
-                service.addPet(PetInputDto(name, species, Date(), Double(weight)!))
+            if let name = nameTextField.text, let species = speciesTextField.text, let weight = weightTextField.text {
+                let newPetID = service.addPet(PetInputDto(name, species, selectedDate, Double(weight)!))
+                UserDefaults.standard.set(newPetID, forKey: "petID")
             }
         } else {
             // update mode
             // TODO: Realm update pet 추가
+            if let name = nameTextField.text, let species = speciesTextField.text, let weight = weightTextField.text {
+                let updatedPet = PetUpdateDto(id: currentPet!.id, species: species, birth: selectedDate, weight: Double(weight)!)
+                do {
+                    try service.updatePet(updatedPet)
+                } catch {
+                    print("Error updating pet : \(error)")
+                }
+            }
         }
         self.dismiss(animated: true) {
             guard let vc = self.parentVC as? SettingViewController else { return }
