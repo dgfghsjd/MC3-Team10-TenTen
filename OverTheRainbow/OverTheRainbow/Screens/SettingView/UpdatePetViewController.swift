@@ -60,7 +60,7 @@ class UpdatePetViewController: UIViewController {
             // update mode
             // TODO: Realm update pet 추가
             if let name = nameTextField.text, let species = speciesTextField.text, let weight = weightTextField.text {
-                let updatedPet = PetUpdateDto(id: currentPet!.id, species: species, birth: selectedDate, weight: Double(weight)!)
+                let updatedPet = PetUpdateDto(id: currentPet!.id, name: name, species: species, birth: selectedDate, weight: Double(weight)!)
                 do {
                     try service.updatePet(updatedPet)
                 } catch {

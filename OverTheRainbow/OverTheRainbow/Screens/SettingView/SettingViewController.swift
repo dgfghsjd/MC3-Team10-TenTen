@@ -59,8 +59,15 @@ class SettingViewController: UIViewController {
             self.performSegue(withIdentifier: "UpdatePetView", sender: self)
         }
         let updatePet = UIAlertAction(title: "현재 펫 수정하기", style: .default) { action in
-            self.mode = .update
-            self.performSegue(withIdentifier: "UpdatePetView", sender: self)
+            if self.currentPetID == nil {
+                let alert = UIAlertController(title: "알림", message: "현재 펫이 없습니다.", preferredStyle: .alert)
+                let confirm = UIAlertAction(title: "확인", style: .default)
+                alert.addAction(confirm)
+                self.present(alert, animated: true)
+            } else {
+                self.mode = .update
+                self.performSegue(withIdentifier: "UpdatePetView", sender: self)
+            }
         }
         let deletePet = UIAlertAction(title: "현재 펫 삭제하기", style: .default) { action in
             // TODO: UserDefaults에 있는 현재 Pet 삭제 후 그 다음 Pet을 UserDefaults로?
@@ -76,7 +83,10 @@ class SettingViewController: UIViewController {
                     }
                     try self.service.deletePet(removePetID)
                 } else {
-                    print("There's no pet to remove.")
+                    let alert = UIAlertController(title: "알림", message: "현재 펫이 없습니다.", preferredStyle: .alert)
+                    let confirm = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(confirm)
+                    self.present(alert, animated: true)
                 }
             } catch {
                 print("Error deleting pet : \(error)")
@@ -131,6 +141,13 @@ class SettingViewController: UIViewController {
         }
         collectionView.reloadData()
     }
+    
+    func updateCurrentPet(newPetID: String) {
+        UserDefaults.standard.set(newPetID, forKey: "petID")
+        currentPetID = newPetID
+        
+        updatePetList()
+    }
 }
 
 // MARK: - DataSource, Delegate of CollectionView
@@ -153,9 +170,16 @@ extension SettingViewController: UICollectionViewDelegate, UICollectionViewDataS
         } else {
             cell.nameLabel.text = pet.name
         }
-        cell.weightLabel.text = String(pet.age)
+        cell.weightLabel.text = String(pet.weight)
+        cell.ageLabel.text = String(pet.age)
         cell.speciesLabel.text = pet.species
+        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedPetID = pets[indexPath.row].id
+        updateCurrentPet(newPetID: selectedPetID)
     }
 }
 
