@@ -19,13 +19,16 @@ class EditingLetterViewController: UIViewController {
     @IBOutlet weak var writtenDate: UILabel!
     var button = UIButton(type: .system)
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
-    let petID = "62e60ab040a87a9ab0637612"
+    let petID = "62e73c3f30516fbf94f3fe77"
 //        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
+    var letterID: String! = ""
     
     override func viewDidLoad() {
-        let letter = try? service.findLetter("62e60b0440a87a9ab0637613")
+        let editingLetter = try! service.findLetter(letterID)
+        try! service.unsaveLetters(letterID)
         super.viewDidLoad()
-        
+        print(editingLetter.status)
+
         let attributes: [NSAttributedString.Key: Any] = [ .font: UIFont.boldSystemFont(ofSize: 18) ]
         naavBarRightItem.setTitleTextAttributes(attributes, for: .normal)
 
@@ -36,7 +39,8 @@ class EditingLetterViewController: UIViewController {
         editingLetterNavBar.leftBarButtonItem = UIBarButtonItem(customView: button)
         
         galleryImageView.layer.cornerRadius = 10
-//        galleryImageView.image = letter.imgUrl? as UIImage
+        galleryImageView.contentMode = .scaleAspectFill
+        load(url: editingLetter.imgUrl!)
 
         let largeSymbol = UIImage.SymbolConfiguration(pointSize: 50, weight: .bold, scale: .large)
         let largeBoldButton = UIImage(systemName: "plus.square.dashed", withConfiguration: largeSymbol)
@@ -47,12 +51,13 @@ class EditingLetterViewController: UIViewController {
         btnChangeImage.addTarget(self, action: #selector(changeImage), for: .touchUpInside)
 
         letterTitle.returnKeyType = .done
-        letterTitle.text = letter?.title
-
-        letterContent.text = letter?.content
+        letterTitle.text = editingLetter.title
         
-        writtenDate.text = letter?.date
+        letterContent.text = editingLetter.content
+
+        writtenDate.text = editingLetter.date
     }
+
     @IBAction func doneeditingLetter(_ sender: UIBarButtonItem) {
         if letterTitle.text!.isEmpty {
             print("제목을 입력하지 않으셨습니다.")
@@ -69,9 +74,8 @@ class EditingLetterViewController: UIViewController {
             present(alret, animated: true, completion: nil)
         }
         else {
-            let letter = LetterInput(title: letterTitle.text!, content: letterContent.text, image: galleryImageView.image)
-            let letterID = try? service.addLetter(LetterInputDto(petId: petID, letter: letter))
-            try? service.saveLetters(letterID!)
+            let letter = LetterUpdateDto(id: self.letterID, title: letterTitle.text!, content: letterContent.text, image: galleryImageView.image)
+            try? service.updateLetter(petId: petID, dto: letter)
             dismiss(animated: true)
             print("작성을 완료했습니다.")
         }
@@ -79,16 +83,38 @@ class EditingLetterViewController: UIViewController {
     
     @objc func showActionSheet() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let first = UIAlertAction(title: "편지 삭제", style: .destructive) {
-            action in print("1")
+        let first = UIAlertAction(title: "삭제하기", style: .destructive) { [self]_ in
+            try? service.deleteLetter(petId: petID, letterId: letterID)
+            print("삭제 완료")
+            self.dismiss(animated: true)
+        }
+        
+        let second = UIAlertAction(title: "돌아가기", style: .default) { [self]_ in
+            print("삭제 완료")
             self.dismiss(animated: true)
         }
         
         let cancel = UIAlertAction(title: "취소", style: .cancel){_ in}
 
+        actionSheet.addAction(second)
         actionSheet.addAction(first)
         actionSheet.addAction(cancel)
         present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func setID(letterID: String){
+        self.letterID = letterID
+    }
+    
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.galleryImageView.image = image                    }
+                }
+            }
+        }
     }
 
 }

@@ -21,7 +21,7 @@ class WritingLetterViewController: UIViewController {
     var button = UIButton(type: .system)
     let date = Date()
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
-    let petID = "62e60ab040a87a9ab0637612"
+    let petID = "62e73c3f30516fbf94f3fe77"
 //        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
 
     
@@ -98,11 +98,11 @@ class WritingLetterViewController: UIViewController {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let first = UIAlertAction(title: "임시 저장", style: .default) { [self]_ in
             let letter = LetterInput(title: letterTitle.text!, content: letterContent.text, image: openGallery.image)
-            try? self.service.addLetter(LetterInputDto(petId: petID, letter: letter))
+            try? service.addLetter(LetterInputDto(petId: petID, letter: letter))
             self.dismiss(animated: true)
         }
-        let second = UIAlertAction(title: "임시저장 삭제", style: .destructive) {
-            action in print("2")
+        let second = UIAlertAction(title: "임시저장 삭제", style: .destructive) { [self]_ in
+//            try service.deleteLetter(petId: String, letterId: String)
             self.dismiss(animated: true)
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel){_ in}
