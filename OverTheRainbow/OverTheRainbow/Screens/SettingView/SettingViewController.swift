@@ -34,19 +34,7 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO: pets에 현재 UserDefaults 펫을 먼저 넣고 나머지 펫들을 append시키기
-
-//        UserDefaults.standard.set("62e6b8435e207edb7ed26706", forKey: "petID")
         updatePetList()
-  
-//        if currentPetID == nil {
-//            mode = .add
-//            self.performSegue(withIdentifier: "UpdatePetView", sender: self)
-//        }
-
-//        if pets.isEmpty {
-//            mode = .add
-//            self.performSegue(withIdentifier: "UpdatePetView", sender: self)
-//        }
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -84,10 +72,8 @@ class SettingViewController: UIViewController {
                         UserDefaults.standard.set(self.currentPetID, forKey: "petID")
                     } else {
                         self.currentPetID = nil
-//                        UserDefaults.standard.set("", forKey: "petID")
                         UserDefaults.standard.removeObject(forKey: "petID")
                     }
-                    print("remove pet id : \(removePetID)")
                     try self.service.deletePet(removePetID)
                 } else {
                     print("There's no pet to remove.")
@@ -95,7 +81,6 @@ class SettingViewController: UIViewController {
             } catch {
                 print("Error deleting pet : \(error)")
             }
-            print("deleted!")
             self.updatePetList()
         }
         let cancelAction = UIAlertAction(title: "취소", style: .cancel) { action in
@@ -129,7 +114,6 @@ class SettingViewController: UIViewController {
     
     func updatePetList() {
         currentPetID = UserDefaults.standard.string(forKey: "petID")
-        print("current pet id : \(currentPetID)")
         pets = [PetResultDto]()
         
         if let currentPetID = self.currentPetID {
@@ -139,17 +123,12 @@ class SettingViewController: UIViewController {
                 print("Error finding pet : \(error)")
             }
         }
-
         let otherPets = service.findAllPet().filter {
             $0.id != currentPetID
         }
-        
         for pet in otherPets {
             pets.append(pet)
         }
-        
-        print("pets : \(pets)")
-        
         collectionView.reloadData()
     }
 }
