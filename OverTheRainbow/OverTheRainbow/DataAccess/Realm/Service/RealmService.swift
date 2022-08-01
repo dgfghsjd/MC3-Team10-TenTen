@@ -232,12 +232,12 @@ class RealmService: DataAccessService {
         let results: Results<FlowerLog> = repository.findAll().where { $0.status == .unsent }
         if !results.isEmpty {
             updateFlower(flower: flower, flowerLog: results[0])
-        }
-        
-        // 남아 있는 log가 없으면 새 log 생성
-        let flowerLog = FlowerLog(flower: flower)
-        try! realm.write {
-            pet.flowerLogs.append(flowerLog)
+        } else {
+            // 남아 있는 log가 없으면 새 log 생성
+            let flowerLog = FlowerLog(flower: flower)
+            try! realm.write {
+                pet.flowerLogs.append(flowerLog)
+            }
         }
     }
     
