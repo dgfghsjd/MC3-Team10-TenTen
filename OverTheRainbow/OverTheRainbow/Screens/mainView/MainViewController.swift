@@ -25,13 +25,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Realm is located at:", realm.configuration.fileURL!)
-        petID = UserDefaults.standard.string(forKey: "petID")
-        
-        if petID != nil {
-            
-            userData = try? service.getMainView(petID!)
-        }
-//        quoteLabel.text = userData?.word.content ?? "DEBUG word 없음"
+        quoteLabel.text = (try? service.getWord().content) ?? "DEBUG word 없음"
 
         [guideLabel, quoteLabel].forEach {
             $0.font = UIFont.preferredFont(forTextStyle: .headline, weight: .regular)
