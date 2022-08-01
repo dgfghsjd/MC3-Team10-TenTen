@@ -13,7 +13,8 @@ class LetterLitstMainViewController: BaseViewController {
     private var lists: [LetterResultDto] {
         
         // swiftlint:disable:next force_try
-        return (try? service.findUnsentLetters(UserDefaults.standard.string(forKey: "petID") ?? "err")) ?? []
+        return try! service.findUnsentLetters("62e6166fccc1805922c3f4a0")
+//        return (try? service.findUnsentLetters(UserDefaults.standard.string(forKey: "petID") ?? "err")) ?? []
     }
     private enum Size {
         static let collectionHorizontalSpacing: CGFloat = 16.0
@@ -21,7 +22,7 @@ class LetterLitstMainViewController: BaseViewController {
         static let cellWidth: CGFloat = UIScreen.main.bounds.size.width - collectionHorizontalSpacing * 2
         static let cellHeight: CGFloat = (UIScreen.main.bounds.size.width - collectionHorizontalSpacing
                                           * 2) / 2
-        static let collectionInset = UIEdgeInsets(top: 0,
+        static let collectionInset = UIEdgeInsets(top: 5,
                                                   left: collectionHorizontalSpacing,
                                                   bottom: collectionVerticalSpacing,
                                                   right: collectionHorizontalSpacing)
@@ -62,7 +63,6 @@ class LetterLitstMainViewController: BaseViewController {
             listCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 3),
             listCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 3),
             listCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 3),
-//            listCollectionView.heightAnchor
         ]
         NSLayoutConstraint.activate(listCollectionViewConstraints)
     }
@@ -102,7 +102,7 @@ extension LetterLitstMainViewController: UICollectionViewDataSource {
         let cell: LetterCollectionViewCell =  collectionView.dequeueReusableCell(forIndexPath: indexPath)
         cell.layer.shadowColor = UIColor.black.cgColor
         cell.layer.shadowOffset = CGSize(width: 0, height: 0)
-        cell.layer.shadowRadius = 5.0
+//        cell.layer.shadowRadius = 1.0
         cell.layer.shadowOpacity = 1
         cell.layer.masksToBounds = false
         cell.setLetterData(with: lists[indexPath.item])
