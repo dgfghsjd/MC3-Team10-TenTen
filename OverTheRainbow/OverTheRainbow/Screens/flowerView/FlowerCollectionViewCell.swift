@@ -24,28 +24,10 @@ class FlowerCollectionViewCell: UICollectionViewCell {
             flowerImageView.image = UIImage(named: flowers.imgUrl)
             flowerTitleLabel.text = flowers.name
             flowerMeans.text = flowers.meaning
+            flowerMeans.sizeToFit()
         }
-                backgroundLabel.layer.cornerRadius = 15.0
-               boxLabel.layer.cornerRadius = 15.0
-               boxLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        backgroundLabel.layer.cornerRadius = 15.0
+        boxLabel.layer.cornerRadius = 15.0
+        boxLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
     }
-//    var flowers: FlowerData! {
-//        didSet {
-//            self.updateUI()
-//        }
-//    }
-//    func updateUI() {
-//        if let flowers = flowers {
-//            flowerImageView.image = flowers.flowerImage
-//            flowerTitleLabel.text = flowers.label
-//            flowerMeans.text = flowers.means
-//        }
-//        backgroundLabel.layer.cornerRadius = 15.0
-//        boxLabel.layer.cornerRadius = 15.0
-//        boxLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-//    }
-
-
-    
 }
-

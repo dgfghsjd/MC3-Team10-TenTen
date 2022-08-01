@@ -3,9 +3,9 @@
 //  OverTheRainbow
 //
 //  Created by Hyorim Nam on 2022/07/19.
-//
-
+// swiftlint:disable force_try
 import UIKit
+import RealmSwift
 
 class MainViewController: UIViewController {
     var numberOfLetters: Int = 0
@@ -14,6 +14,8 @@ class MainViewController: UIViewController {
     var petID: String?
     let service = DataAccessProvider.dataAccessConfig.getService()
     var userData: MainViewResultDto?
+    let realm = try! Realm()
+
 
     @IBOutlet weak var flowerBoxView: FlowerBoxView!
     @IBOutlet weak var letterBoxView: LetterBoxView!
@@ -22,6 +24,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Realm is located at:", realm.configuration.fileURL!)
         petID = UserDefaults.standard.string(forKey: "petID")
         
         if petID != nil {

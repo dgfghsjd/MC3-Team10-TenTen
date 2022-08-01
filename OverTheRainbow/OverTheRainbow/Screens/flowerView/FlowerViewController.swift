@@ -6,12 +6,6 @@ import UIKit
 class FlowerViewController: UIViewController {
     @IBOutlet weak var flowerViewNaviBar: UINavigationItem!
     @IBOutlet weak var takeFlowerlabel: UIBarButtonItem!
-    @IBAction func takeAFlower(_ sender: UIBarButtonItem) {
-        self.navigationController?.popViewController(animated: true)
-        UserDefaults.standard.set(roundedIndex, forKey: "roundedIndex")
-       try! service.chooseFlower(petId: petID!, flowerId: getService[roundedIndex].id)
-
-    }
     @IBOutlet weak var pagerContorl: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
     let service = DataAccessProvider.dataAccessConfig.getService()
@@ -22,16 +16,11 @@ class FlowerViewController: UIViewController {
     var roundedIndex = 0
     var offsetPoint = 0.0
     var petID = UserDefaults.standard.string(forKey: "petID")
+    // 뷰가 로드될때
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDid")
-//        let getservice = service.findAllFlowers()
-        // 셀의 사이즈 설정
-//        if roundedIndex == 1 {
-//            collectionView.contentOffset.x = 157.0
-//            print("왜안돼")
-//        }
-//        print("\(roundedIndex)뷰가 로드됩니다")
+        // 임시로 아이디 유저디폴트에 넣는거 설정
+        // UserDefaults.standard.set("62e5ea0388e194d12a199bf5", forKey: "petID")
         let cellWidth = floor(210)
         let cellHeight = floor(522)
         let insetX = (view.bounds.width - cellWidth) / 2.0 // 90
@@ -40,27 +29,23 @@ class FlowerViewController: UIViewController {
         layout!.itemSize = CGSize(width: cellWidth, height: cellHeight) // 셀의 사이즈
         layout!.minimumLineSpacing = 37      // 옆셀과의 거리
         collectionView.contentInset = UIEdgeInsets(top: 0, left: insetX, bottom: 104, right: insetX)
-        // 컨텐츠의 여백 길이를 설정함으로 옆의 셀이 얼마나 나올지를 보여준다.
-        // 컬렉션 뷰에게 데이터 소스를 제공해 주는 메소드
-        // collectiomView의 dataSource는 이 class임을 알려주는
-        // 문장이다.
         collectionView.dataSource = self
         collectionView.delegate = self
         pagerContorl.numberOfPages = getService.count
         pagerContorl.currentPage = roundedIndex
         UINavigationBar.appearance().tintColor = UIColor(named: "textColor")
+       
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewDidLoad()
-            collectionView.contentOffset.x = 157.0
-            print("왜안돼")
-        print("\(roundedIndex)뷰가 로드됩니다")
+    // 네비게이션 바의 선택 버튼 메소드
+    @IBAction func takeAFlower(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
+        UserDefaults.standard.set(roundedIndex, forKey: "roundedIndex")
+        try! service.chooseFlower(petId: petID!, flowerId: getService[roundedIndex].id)
     }
-    // 컬렉션뷰에 필요한 데이터 및 뷰를 제공하기 위한 기능을 정의한 프로토콜입니다.
-    // 기존 객체를 수정하지 않고 프로토콜을 구현하기 위해
-    // extension 사용
 }
-
+// 컬렉션뷰에 필요한 데이터 및 뷰를 제공하기 위한 기능을 정의한 프로토콜입니다.
+// 기존 객체를 수정하지 않고 프로토콜을 구현하기 위해
+// extension 사용
 extension FlowerViewController: UICollectionViewDataSource {
     // collrctionView의 색션 갯수를 return
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -117,11 +102,11 @@ extension FlowerViewController: UIScrollViewDelegate, UICollectionViewDelegate {
         roundedIndex = Int(round(index))
         pagerContorl.currentPage = roundedIndex
         // 줌 하는 현재 셀
-                let indexPath = IndexPath(item: roundedIndex, section: 0)
+        let indexPath = IndexPath(item: roundedIndex, section: 0)
         if let cell = collectionView.cellForItem(at: indexPath) {
             zoomFocusCell(cell: cell, isFocus: true)
         }
-
+        
         // 줌 아웃되는 이전 셀
         let preIndexPath = IndexPath(item: previousCellIndex, section: 0)
         if let preCell = collectionView.cellForItem(at: preIndexPath) {
