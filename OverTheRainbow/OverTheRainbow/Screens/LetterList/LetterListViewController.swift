@@ -14,7 +14,7 @@ class LetterLitstMainViewController: BaseViewController {
         let petID = "62e73c3f30516fbf94f3fe77"
         //        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
         // swiftlint:disable:next force_try
-        return try! service.findUnsentLetters(petID)
+        return try! service.findUnsentLetters("62e6166fccc1805922c3f4a0")
 //        return (try? service.findUnsentLetters(UserDefaults.standard.string(forKey: "petID") ?? "err")) ?? []
 
     }
@@ -24,19 +24,20 @@ class LetterLitstMainViewController: BaseViewController {
         static let collectionVerticalSpacing: CGFloat = 17.0
         static let cellWidth: CGFloat = UIScreen.main.bounds.size.width - collectionHorizontalSpacing * 2
         static let cellHeight: CGFloat = (UIScreen.main.bounds.size.width - collectionHorizontalSpacing
-                                          * 2 - collectionVerticalSpacing) / 2
-        static let collectionInset = UIEdgeInsets(top: 0,
+                                          * 2) / 2
+        static let collectionInset = UIEdgeInsets(top: 5,
                                                   left: collectionHorizontalSpacing,
                                                   bottom: collectionVerticalSpacing,
                                                   right: collectionHorizontalSpacing)
     }
+    private let writingButton = WritingButton()
+    
     private let collectionViewFlowLayout: UICollectionViewFlowLayout = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         flowLayout.sectionInset = Size.collectionInset
         flowLayout.itemSize = CGSize(width: Size.cellWidth, height: Size.cellHeight)
-        flowLayout.minimumLineSpacing = 16
-        flowLayout.minimumInteritemSpacing = 16
+        flowLayout.minimumLineSpacing = 33
         return flowLayout
     }()
     private lazy var listCollectionView: UICollectionView = {
@@ -51,6 +52,7 @@ class LetterLitstMainViewController: BaseViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupButtonAction()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -64,7 +66,6 @@ class LetterLitstMainViewController: BaseViewController {
             listCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 3),
             listCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 3),
             listCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 3),
-            //            listCollectionView.heightAnchor.constraint(equalToConstant: 10000)
         ]
         NSLayoutConstraint.activate(listCollectionViewConstraints)
     }
@@ -73,6 +74,19 @@ class LetterLitstMainViewController: BaseViewController {
     }
     override func setupNavigationBar() {
         super.setupNavigationBar()
+        
+        let writingButtonView = makeBarButtonItem(with: writingButton)
+        navigationItem.rightBarButtonItem = writingButtonView
+        navigationItem.title = "리스트"
+    }
+    private func setupButtonAction() {
+        let presentSendButtonAction = UIAction { _ in
+            let storyboard = UIStoryboard(name: "WritingLetter", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "writeLetter")
+            self.present(viewController, animated: true, completion: nil)
+        }
+        writingButton.addAction(presentSendButtonAction,
+                                                  for: .touchUpInside)
     }
     private func pushDetailView(_ letterID: String) {
         let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
@@ -92,7 +106,7 @@ extension LetterLitstMainViewController: UICollectionViewDataSource {
         let cell: LetterCollectionViewCell =  collectionView.dequeueReusableCell(forIndexPath: indexPath)
         cell.layer.shadowColor = UIColor.black.cgColor
         cell.layer.shadowOffset = CGSize(width: 0, height: 0)
-        cell.layer.shadowRadius = 5.0
+//        cell.layer.shadowRadius = 1.0
         cell.layer.shadowOpacity = 1
         cell.layer.masksToBounds = false
         cell.setLetterData(with: lists[indexPath.item])
