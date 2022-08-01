@@ -22,17 +22,17 @@ class WritingLetterViewController: UIViewController {
     let date = Date()
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
     let petID = "62e73c3f30516fbf94f3fe77"
-//        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
-
+    //        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
     
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         writingLetterNavBar.title = "편지 작성"
-
+        
         let attributes: [NSAttributedString.Key: Any] = [ .font: UIFont.boldSystemFont(ofSize: 18) ]
         navBarRightItem.setTitleTextAttributes(attributes, for: .normal)
-
+        
         button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         button.setTitle("취소", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
@@ -40,42 +40,40 @@ class WritingLetterViewController: UIViewController {
         writingLetterNavBar.leftBarButtonItem = UIBarButtonItem(customView: button)
         button.addTarget(self, action: #selector(showActionSheet), for: .touchUpInside)
         openGallery.layer.cornerRadius = 10
-
+        
         let largeSymbol = UIImage.SymbolConfiguration(pointSize: 86, weight: .bold, scale: .large)
         let largeBoldButton = UIImage(systemName: "plus.square.dashed", withConfiguration: largeSymbol)
-
+        
         selectPicture.setImage(largeBoldButton, for: .normal)
         selectPicture.tintColor = UIColor(named: "textColor")
         selectPicture.addTarget(self, action: #selector(pickImage), for: .touchUpInside)
         letterTitle.placeholder = "제목을 작성해주세요"
         letterTitle.delegate = self
         letterTitle.returnKeyType = .done
-
+        
         letterContent.delegate = self
         letterContent.text = "어떤 말을 전하고 싶나요?"
         letterContent.textColor = UIColor.lightGray
-
+        
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = "yyyy.MM.dd"
         writingDate.text = dateFormatter.string(from: date)
-
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-
+        
         view.addGestureRecognizer(tap)
     }
-
+    
     @IBAction func doneWritingLetter(_ sender: UIBarButtonItem) {
         if letterTitle.text!.isEmpty {
-            print("제목을 입력하지 않으셨습니다.")
             let alret = UIAlertController(title: "오류", message: "제목을 입력하지 않으셨습니다.", preferredStyle: .alert)
             let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
             alret.addAction(confirm)
             present(alret, animated: true, completion: nil)
         }
         else if letterContent.textColor == UIColor.lightGray {
-            print("내용을 입력하지 않으셨습니다.")
             let alret = UIAlertController(title: "오류", message: "내용을 입력하지 않으셨습니다.", preferredStyle: .alert)
             let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
             alret.addAction(confirm)
@@ -86,23 +84,35 @@ class WritingLetterViewController: UIViewController {
             let letterID = try? service.addLetter(LetterInputDto(petId: petID, letter: letter))
             try? service.saveLetters(letterID!)
             dismiss(animated: true)
-            print("작성을 완료했습니다.")
         }
     }
-
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-
+    
     @objc func showActionSheet() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let first = UIAlertAction(title: "임시 저장", style: .default) { [self]_ in
             let letter = LetterInput(title: letterTitle.text!, content: letterContent.text, image: openGallery.image)
-            try? service.addLetter(LetterInputDto(petId: petID, letter: letter))
-            self.dismiss(animated: true)
+            if letterTitle.text!.isEmpty {
+                let alret = UIAlertController(title: "오류", message: "제목을 입력하지 않으셨습니다.", preferredStyle: .alert)
+                let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alret.addAction(confirm)
+                present(alret, animated: true, completion: nil)
+            }
+            else if letterContent.textColor == UIColor.lightGray {
+                let alret = UIAlertController(title: "오류", message: "내용을 입력하지 않으셨습니다.", preferredStyle: .alert)
+                let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alret.addAction(confirm)
+                present(alret, animated: true, completion: nil)
+            }
+            else {
+                try? service.addLetter(LetterInputDto(petId: petID, letter: letter))
+                self.dismiss(animated: true)
+            }
         }
         let second = UIAlertAction(title: "임시저장 삭제", style: .destructive) { [self]_ in
-//            try service.deleteLetter(petId: String, letterId: String)
             self.dismiss(animated: true)
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel){_ in}
@@ -115,14 +125,14 @@ class WritingLetterViewController: UIViewController {
 }
 
 extension WritingLetterViewController: UITextViewDelegate {
-
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if !textView.text.isEmpty {
             textView.text = nil
             textView.textColor = UIColor.black
         }
     } // 텍스트 뷰에 포커스 잡히면 원래 있던 글자가 placeholder 처럼 작동하도록 변경
-
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "어떤 말을 전하고 싶나요?"
@@ -146,7 +156,7 @@ extension WritingLetterViewController: PHPickerViewControllerDelegate {
     @objc func pickImage(sender: UIButton) {
         selectPicture = sender
         var configuration = PHPickerConfiguration()
-
+        
         configuration.selectionLimit = 1
         configuration.filter = .any(of: [.images])
         let picker = PHPickerViewController(configuration: configuration)
@@ -154,12 +164,12 @@ extension WritingLetterViewController: PHPickerViewControllerDelegate {
         self.present(picker, animated: true, completion: nil)
         dismissKeyboard() // 편지 작성하다가도 사진 불러오기 버튼 누르면 키보드 사라지도록 변경
     }
-
+    
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-
+        
         picker.dismiss(animated: true, completion: nil)
         let itemProvider = results.first?.itemProvider
-
+        
         if let itemProvider = itemProvider,
            itemProvider.canLoadObject(ofClass: UIImage.self) {
             itemProvider.loadObject(ofClass: UIImage.self) { (image, _) in
