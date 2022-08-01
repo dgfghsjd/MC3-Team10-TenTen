@@ -63,7 +63,7 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <gestureRecognizers/>
                                                 <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="1DQ-Qu-TP5" appends="YES" id="vsS-B2-Ag4"/>
+                                                    <outletCollection property="gestureRecognizers" destination="1DQ-Qu-TP5" appends="YES" id="udU-8p-WRz"/>
                                                 </connections>
                                             </view>
                                         </subviews>
@@ -111,12 +111,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="1DQ-Qu-TP5">
                     <connections>
-                        <segue destination="hVL-sE-Ukl" kind="show" id="wIg-CV-tRC"/>
+                        <action selector="settingBoxTapped:" destination="BYZ-38-t0r" id="b5Z-V3-sF3"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="p4N-9l-F7s">
                     <connections>
-                        <segue destination="W2l-z3-mft" kind="show" id="FIG-Bl-yqO"/>
+                        <action selector="flowerBoxTapped:" destination="BYZ-38-t0r" id="ZHF-gY-nps"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="BpN-se-eWA">
@@ -135,7 +135,7 @@
         <!--FlowerView-->
         <scene sceneID="7Ba-MX-fhv">
             <objects>
-                <viewControllerPlaceholder storyboardName="FlowerView" referencedIdentifier="FlowerView" id="W2l-z3-mft" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="FlowerView" storyboardName="FlowerView" referencedIdentifier="FlowerView" id="W2l-z3-mft" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="VHp-DO-UA7"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GF2-El-eQT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -256,6 +256,14 @@
             </objects>
             <point key="canvasLocation" x="1491" y="-623"/>
         </scene>
+        <!--SettingView-->
+        <scene sceneID="d5m-6T-HWe">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="SettingView" storyboardName="SettingView" referencedIdentifier="SettingView" id="95H-tW-VdC" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sDv-z1-Dod" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1671" y="-158"/>
+        </scene>
         <!--Test Setting View Controller-->
         <scene sceneID="L0N-yT-Ip8">
             <objects>
@@ -265,13 +273,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정뷰 스텁" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6b-Kg-6Zx">
-                                <rect key="frame" x="168" y="464.5" width="78" height="21"/>
+                                <rect key="frame" x="168" y="442.5" width="78" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dAv-nb-lBI">
-                                <rect key="frame" x="145" y="268" width="124" height="31"/>
+                                <rect key="frame" x="145" y="224" width="124" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="펫 등록"/>
                                 <connections>
@@ -279,7 +287,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJX-S6-ot4">
-                                <rect key="frame" x="145" y="338" width="124" height="31"/>
+                                <rect key="frame" x="145" y="294" width="124" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="펫 삭제"/>
                                 <connections>
@@ -304,7 +312,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLY-ar-pTB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1715.9420289855075" y="22.767857142857142"/>
+            <point key="canvasLocation" x="2228" y="23"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BMc-EH-8sm">
@@ -325,6 +333,14 @@
                 <customObject id="hYb-ML-DOn" customClass="NavigationControllerDelegate" customModule="OverTheRainbow" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="2.8985507246376816" y="22.767857142857142"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="cag-we-QtG">
+            <objects>
+                <viewControllerPlaceholder id="iZR-xw-bbt" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="muv-Ic-j0I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="991" y="382"/>
         </scene>
     </scenes>
     <resources>
