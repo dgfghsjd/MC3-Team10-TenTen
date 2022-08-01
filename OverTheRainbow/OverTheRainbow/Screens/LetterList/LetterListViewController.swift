@@ -9,8 +9,11 @@ import UIKit
 import SwiftUI
 
 class LetterLitstMainViewController: BaseViewController {
-    private var lists: [LetterModel] {
-        return tempLetters
+    let service = DataAccessProvider.dataAccessConfig.getService()
+    private var lists: [LetterResultDto] {
+        
+        // swiftlint:disable:next force_try
+        return try! service.findUnsentLetters("62e5ea0388e194d12a199bf5")
     }
     private enum Size {
         static let collectionHorizontalSpacing: CGFloat = 16.0
@@ -67,12 +70,16 @@ class LetterLitstMainViewController: BaseViewController {
     override func setupNavigationBar() {
         super.setupNavigationBar()
     }
+    private func pushDetailView() {
+         let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
+         guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
+         self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
 extension LetterLitstMainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-          print(lists.count)
         return lists.count
     }
     func collectionView(_ collectionView: UICollectionView,
@@ -92,5 +99,9 @@ extension LetterLitstMainViewController: UICollectionViewDataSource {
 extension LetterLitstMainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        pushDetailView()
     }
 }

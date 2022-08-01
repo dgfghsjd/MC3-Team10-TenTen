@@ -9,13 +9,13 @@ import Foundation
 
 struct HeavenViewResultDto {
     var lastFlower: FlowerResultDto?
-    var recentFlowers: Array<FlowerResultDto> = Array<FlowerResultDto>()
+    var recentFlowers: [FlowerResultDto] = [FlowerResultDto]()
     
-    public static func of(_ flowerLogs: Array<FlowerLog>) -> HeavenViewResultDto {
+    public static func of(_ flowerLogs: [FlowerLog]) -> HeavenViewResultDto {
         return HeavenViewResultDto(flowerLogs)
     }
     
-    private init(_ flowerLogs: Array<FlowerLog>) {
+    private init(_ flowerLogs: [FlowerLog]) {
         for (idx, flowerLog) in flowerLogs.enumerated() {
             if idx == 0 { lastFlower = FlowerResultDto.of(flowerLog.flower!) }
             else { recentFlowers.append(FlowerResultDto.of(flowerLog.flower!)) }

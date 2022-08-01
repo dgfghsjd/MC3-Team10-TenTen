@@ -20,6 +20,10 @@ class RealmRepository {
         realm.add(object, update: .modified)
     }
     
+    func delete<T: RealmModel>(_ object: T) {
+        realm.delete(object)
+    }
+    
     func findAll<T: Object>() -> Results<T> {
         return realm.objects(T.self)
     }
@@ -36,6 +40,6 @@ class RealmRepository {
     }
     
     init(realm: Realm) {
-        self.realm = realm;
+        self.realm = realm
     }
 }

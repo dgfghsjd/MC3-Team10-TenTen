@@ -10,4 +10,5 @@ import Foundation
 enum ImageManagerError: String, Error {
     case imageWriteError
     case directoryCreateError
+    case fileDeletionError
 }
