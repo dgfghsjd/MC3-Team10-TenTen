@@ -11,11 +11,14 @@ import SwiftUI
 class LetterLitstMainViewController: BaseViewController {
     let service = DataAccessProvider.dataAccessConfig.getService()
     private var lists: [LetterResultDto] {
-        
+        let petID = "62e73c3f30516fbf94f3fe77"
+        //        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
         // swiftlint:disable:next force_try
         return try! service.findUnsentLetters("62e6166fccc1805922c3f4a0")
 //        return (try? service.findUnsentLetters(UserDefaults.standard.string(forKey: "petID") ?? "err")) ?? []
+
     }
+    var letterID: String = ""
     private enum Size {
         static let collectionHorizontalSpacing: CGFloat = 16.0
         static let collectionVerticalSpacing: CGFloat = 17.0
@@ -85,10 +88,11 @@ class LetterLitstMainViewController: BaseViewController {
         writingButton.addAction(presentSendButtonAction,
                                                   for: .touchUpInside)
     }
-    private func pushDetailView() {
-         let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
-         guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
-         self.navigationController?.pushViewController(viewController, animated: true)
+    private func pushDetailView(_ letterID: String) {
+        let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
+        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
+        self.navigationController?.pushViewController(viewController, animated: true)
+        viewController.letterID = letterID
     }
 }
 
@@ -117,6 +121,6 @@ extension LetterLitstMainViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        pushDetailView()
+        pushDetailView(lists[indexPath.item].id)
     }
 }
