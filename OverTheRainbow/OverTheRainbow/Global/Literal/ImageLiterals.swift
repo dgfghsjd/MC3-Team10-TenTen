@@ -10,6 +10,7 @@ import UIKit
 enum ImageLiterals {
     // MARK: - button
     static var btnBack: UIImage { .load(systemName: "chevron.backward") }
+    static var btnWriting: UIImage { .load(systemName: "square.and.pencil")}
     
     // MARK: - icon
     static var savedIcon: UIImage { .load(systemName: "checkmark.circle")}

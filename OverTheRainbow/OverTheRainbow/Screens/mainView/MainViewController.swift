@@ -24,13 +24,9 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "홈"
         print("Realm is located at:", realm.configuration.fileURL!)
-        petID = UserDefaults.standard.string(forKey: "petID")
-        if petID != nil {
-            
-            userData = try? service.getMainView(petID!)
-        }
-        quoteLabel.text = userData?.word.content ?? "DEBUG word 없음"
+        quoteLabel.text = (try? service.getWord().content) ?? "DEBUG word 없음"
 
         [guideLabel, quoteLabel].forEach {
             $0.font = UIFont.preferredFont(forTextStyle: .headline, weight: .regular)
@@ -69,9 +65,10 @@ class MainViewController: UIViewController {
         if petID == nil {
             petRegisterGuideAlert()
         } else {
-            navigateToStoryboardVC("FLOWERVIEW")
+            navigateToStoryboardVC("FlowerView")
         }
     }
+
     @IBAction func letterBoxTapped(_ sender: UITapGestureRecognizer) {
         if petID == nil {
             petRegisterGuideAlert()
@@ -79,6 +76,9 @@ class MainViewController: UIViewController {
             navigationController?.pushViewController(LetterLitstMainViewController(), animated: true)
             // navigateToStoryboardVC("LETTERVIEW") // 테스트용
         }
+    }
+    @IBAction func settingBoxTapped(_ sender: UITapGestureRecognizer) {
+        navigateToStoryboardVC("SettingView")
     }
     @IBAction func heavenTransitionButton(_ sender: UIButton) {
         if petID == nil {
@@ -106,7 +106,7 @@ extension MainViewController {
             preferredStyle: UIAlertController.Style.alert)
         let offAction = UIAlertAction(title: "취소", style: UIAlertAction.Style.default)
         let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: { _ in
-            self.navigateToStoryboardVC("SETTINGVIEW")
+            self.navigateToStoryboardVC("SettingView")
         })
         guideAlert.addAction(offAction)
         guideAlert.addAction(okAction)

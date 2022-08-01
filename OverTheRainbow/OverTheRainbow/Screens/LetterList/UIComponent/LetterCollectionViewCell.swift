@@ -102,9 +102,11 @@ final class LetterCollectionViewCell: UICollectionViewCell {
         
         if let image = data.imgUrl {
             // FIXME: - 현재는 더미
-            photoStampView.image = UIImage(systemName: "heart.fill")
-            photoStampView.image?.withTintColor(UIColor(named: "textColor") ?? .black)
-//            photoStampView.heightAnchor.constraint(equalToConstant: 204)
+            if let data = try? Data(contentsOf: data.imgUrl!) {
+                if let image = UIImage(data: data) {
+                    photoStampView.image = image
+                }
+            }
         }
         print(data.status)
         if data.status == .saved {
