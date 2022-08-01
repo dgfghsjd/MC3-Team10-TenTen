@@ -20,8 +20,6 @@ class HeavenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
 
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(mainTransition))
         swipeUp.direction = .up
@@ -33,9 +31,9 @@ class HeavenViewController: UIViewController {
         do {
             if let currentPetID = UserDefaults.standard.string(forKey: "petID") {
                 var resultDTO = try service.getHeavenView(currentPetID)
-                let flowerURL = resultDTO.lastFlower?.imgUrl
-                let data = try Data(contentsOf: URL(fileURLWithPath: flowerURL!))
-                recentFlowerImageView.image = UIImage(data: data)
+                if let flowerName = resultDTO.lastFlower?.imgUrl {
+                    recentFlowerImageView.image = UIImage(named: flowerName)
+                }
                 
                 var xPos = 200
                 var yPos = 500
@@ -55,9 +53,8 @@ class HeavenViewController: UIViewController {
                         yPos -= 90
                     }
                     
-                    let flowerURL = flower.imgUrl
-                    let data = try Data(contentsOf: URL(fileURLWithPath: flowerURL))
-                    flowerImageView.image = UIImage(data: data)
+                    let flowerName = flower.imgUrl
+                    flowerImageView.image = UIImage(named: flowerName)
                     self.view.addSubview(flowerImageView)
                     
                     xPos += 40
@@ -74,10 +71,11 @@ class HeavenViewController: UIViewController {
         if let currentPetID = UserDefaults.standard.string(forKey: "petID") {
             do {
                 let currentPet = try service.findPet(id: currentPetID)
-                let imageURL = currentPet.imgUrl
-                let data = try Data(contentsOf: imageURL!)
-                petImageView.image = UIImage(data: data)
-                navigationController?.setNavigationBarHidden(true, animated: animated)
+                if let imageURL = currentPet.imgUrl {
+                    let data = try Data(contentsOf: imageURL)
+                    petImageView.image = UIImage(data: data)
+                    navigationController?.setNavigationBarHidden(true, animated: animated)
+                }
             } catch {
                 print("Error finding pet : \(error)")
             }
