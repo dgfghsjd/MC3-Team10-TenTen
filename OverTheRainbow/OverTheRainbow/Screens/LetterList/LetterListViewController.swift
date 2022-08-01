@@ -11,10 +11,14 @@ import SwiftUI
 class LetterLitstMainViewController: BaseViewController {
     let service = DataAccessProvider.dataAccessConfig.getService()
     private var lists: [LetterResultDto] {
-        
+        let petID = "62e73c3f30516fbf94f3fe77"
+        //        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
         // swiftlint:disable:next force_try
-        return (try? service.findUnsentLetters(UserDefaults.standard.string(forKey: "petID") ?? "err")) ?? []
+        return try! service.findUnsentLetters(petID)
+//        return (try? service.findUnsentLetters(UserDefaults.standard.string(forKey: "petID") ?? "err")) ?? []
+
     }
+    var letterID: String = ""
     private enum Size {
         static let collectionHorizontalSpacing: CGFloat = 16.0
         static let collectionVerticalSpacing: CGFloat = 17.0
@@ -60,7 +64,7 @@ class LetterLitstMainViewController: BaseViewController {
             listCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 3),
             listCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 3),
             listCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 3),
-//            listCollectionView.heightAnchor.constraint(equalToConstant: 10000)
+            //            listCollectionView.heightAnchor.constraint(equalToConstant: 10000)
         ]
         NSLayoutConstraint.activate(listCollectionViewConstraints)
     }
@@ -70,10 +74,11 @@ class LetterLitstMainViewController: BaseViewController {
     override func setupNavigationBar() {
         super.setupNavigationBar()
     }
-    private func pushDetailView() {
-         let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
-         guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
-         self.navigationController?.pushViewController(viewController, animated: true)
+    private func pushDetailView(_ letterID: String) {
+        let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
+        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
+        self.navigationController?.pushViewController(viewController, animated: true)
+        viewController.letterID = letterID
     }
 }
 
@@ -102,6 +107,6 @@ extension LetterLitstMainViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        pushDetailView()
+        pushDetailView(lists[indexPath.item].id)
     }
 }
