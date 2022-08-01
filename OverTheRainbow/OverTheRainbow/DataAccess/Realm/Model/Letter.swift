@@ -19,7 +19,7 @@ class Letter: RealmModel {
     var content: String
     
     @Persisted
-    var imgUrl: String?
+    var fileName: String?
     
     @Persisted
     var status: LetterStatus = .temporary
@@ -31,13 +31,18 @@ class Letter: RealmModel {
     var updatedAt: Date = Date.now
     
     var date: String {
-        get { return DateConverter.dateToString(self.createdAt) }
+        return DateConverter.dateToString(self.createdAt)
     }
     
-    convenience init(_ title: String, _ content: String, _ imgUrl: String?) {
+    var imgUrl: URL? {
+        guard let fileName = fileName else { return nil }
+        return ImageManager.shared?.imagePath.appendingPathComponent(fileName)
+    }
+    
+    convenience init(_ title: String, _ content: String, _ fileName: String?) {
         self.init()
         self.title = title
         self.content = content
-        self.imgUrl = imgUrl
+        self.fileName = fileName
     }
 }

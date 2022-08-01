@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class FlowerLog: RealmModel{
+class FlowerLog: RealmModel {
     @Persisted(originProperty: "flowerLogs")
     var pet: LinkingObjects<Pet>
     

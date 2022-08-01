@@ -8,17 +8,17 @@
 import Foundation
 
 struct MainViewResultDto {
-    let flower: FlowerResultDto?
-    let letterCount: Int
-    let word: WordResultDto
+    private(set) var flower: FlowerResultDto?
+    private(set) var letterCount: Int
+    private(set) var permitted: Bool
+    private(set) var word: WordResultDto
     
-    init(_ flowerLog: FlowerLog?, _ letterCount: Int, _ word: Words) {
+    init(_ flowerLog: FlowerLog?, _ letterCount: Int, _ permitted: Bool, _ word: Words) {
         self.letterCount = letterCount
         if let flowerLog = flowerLog {
             self.flower = FlowerResultDto.of(flowerLog.flower!)
-        } else {
-            flower = nil
         }
+        self.permitted = permitted
         self.word = WordResultDto.of(word)
     }
 }

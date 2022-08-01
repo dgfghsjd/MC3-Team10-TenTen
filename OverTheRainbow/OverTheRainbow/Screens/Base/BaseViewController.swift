@@ -42,6 +42,7 @@ class BaseViewController: UIViewController {
         appearance.shadowColor = UIColor(named: "textColor")
         appearance.titleTextAttributes = [.foregroundColor: UIColor(named: "textColor")]
         appearance.backgroundColor = UIColor(named: "navigationBar Color")
+
         navigationBar.standardAppearance = appearance
         navigationBar.compactAppearance = appearance
         navigationBar.scrollEdgeAppearance = appearance
