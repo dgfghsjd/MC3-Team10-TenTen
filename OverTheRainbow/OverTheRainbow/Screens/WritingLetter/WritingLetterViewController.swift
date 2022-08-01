@@ -21,7 +21,7 @@ class WritingLetterViewController: UIViewController {
     var button = UIButton(type: .system)
     let date = Date()
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
-    let petID = "62e73c3f30516fbf94f3fe77"
+    let petID = "62e7cbc3bbe204e79551bc56"
     //        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
     
     
