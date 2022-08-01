@@ -143,16 +143,16 @@ class RealmService: DataAccessService {
         }
         
         try! realm.write {
-            try! pet.letters.forEach { letter in
-                switch letter.status {
-                case .saved: throw RealmError.letterAlreadySaved
-                case .sent: throw RealmError.letterAlreadySent
-                case .temporary:
-                    repository.update(dto.toLetter(letter: letter, saveImage: imageManager.saveImage))
-                    return
-                }
+            guard let letter = pet.letters.filter { $0.id == dto.id }.first else{
+                throw RealmError.letterNotFound
             }
-            throw RealmError.letterNotFound
+            
+            switch letter.status {
+            case .sent: throw RealmError.letterAlreadySent
+            case .saved: throw RealmError.letterAlreadySaved
+            case .temporary:
+                repository.update(dto.toLetter(letter: letter, saveImage: imageManager.saveImage))
+            }
         }
     }
     
@@ -232,12 +232,12 @@ class RealmService: DataAccessService {
         let results: Results<FlowerLog> = repository.findAll().where { $0.status == .unsent }
         if !results.isEmpty {
             updateFlower(flower: flower, flowerLog: results[0])
-        }
-        
-        // 남아 있는 log가 없으면 새 log 생성
-        let flowerLog = FlowerLog(flower: flower)
-        try! realm.write {
-            pet.flowerLogs.append(flowerLog)
+        } else {
+            // 남아 있는 log가 없으면 새 log 생성
+            let flowerLog = FlowerLog(flower: flower)
+            try! realm.write {
+                pet.flowerLogs.append(flowerLog)
+            }
         }
     }
     

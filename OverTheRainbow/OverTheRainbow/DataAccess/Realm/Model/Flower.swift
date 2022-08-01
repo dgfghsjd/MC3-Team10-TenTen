@@ -17,4 +17,11 @@ class Flower: RealmModel {
     
     @Persisted
     var imgUrl: String
+    
+    convenience init(_ name: String, _ meaning: String, _ imgUrl: String) {
+        self.init()
+        self.name = name
+        self.meaning = meaning
+        self.imgUrl = imgUrl
+    }
 }
