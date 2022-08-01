@@ -47,7 +47,11 @@ class MainViewController: UIViewController {
 
         // 렘에서 정보 받기
         if petID != nil {
-            userData = try? service.getMainView(petID!)
+            do {
+            userData = try service.getMainView(petID!)
+            } catch {
+                print("mainVC vWA error: \(error)")
+            }
         }
         didFlowerToday = userData?.permitted ?? false
         pickedFlower = userData?.flower
@@ -162,10 +166,10 @@ let mockUpFlowers = [
     FlowerMockUpData(title: "꽃5", image: UIImage(named: "flower5")!, floriography: "꽃말5, 꽃말5")
 ]
 let quotes: [String] = [
-    "상처를 치료해줄 사람 어디 없나.\n가만히 놔두다간 끊임없이 덧나.",
-    "(위로1)상처를 치료해줄 사람 어디 없나.\n가만히 놔두다간 끊임없이 덧나.",
-    "(위로2)상처를 치료해줄 사람 어디 없나.\n가만히 놔두다간 끊임없이 덧나.",
-    "(투두1)오늘 하늘은 어떤 모양인가요?\n잠시 걸으며 공기의 냄새를 맡아보아요.",
+    "당신이 지금 슬퍼한다는 것은\n함께한 시간들이 그만큼 행복했다는 증거에요.",
+    "당신은 충분히 잘 하고 있어요.",
+    "괜찮아요? \n같은 아픔을 겪은 사람에게 나눠보아요.",
+    "오늘은 간단한 산책을 나가보면 어떤가요?",
     "오늘 하늘은 어떤 모양인가요?\n잠시 걸으며 공기의 냄새를 맡아보아요."
 ]
 
