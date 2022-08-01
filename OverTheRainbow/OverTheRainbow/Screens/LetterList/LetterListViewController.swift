@@ -14,8 +14,8 @@ class LetterLitstMainViewController: BaseViewController {
         let petID = "62e73c3f30516fbf94f3fe77"
         //        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
         // swiftlint:disable:next force_try
-        return try! service.findUnsentLetters("62e6166fccc1805922c3f4a0")
-//        return (try? service.findUnsentLetters(UserDefaults.standard.string(forKey: "petID") ?? "err")) ?? []
+//        return try! service.findUnsentLetters("62e6166fccc1805922c3f4a0")
+        return (try? service.findUnsentLetters(UserDefaults.standard.string(forKey: "petID") ?? "err")) ?? []
 
     }
     var letterID: String = ""
