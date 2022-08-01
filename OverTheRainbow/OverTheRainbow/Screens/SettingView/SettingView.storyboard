@@ -233,7 +233,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="OSQ-Zi-fnm">
-                                                <rect key="frame" x="130" y="0.0" width="136" height="51"/>
+                                                <rect key="frame" x="130.5" y="0.0" width="136" height="51"/>
                                                 <connections>
                                                     <action selector="datePicked:" destination="HkB-PE-HVk" eventType="valueChanged" id="yID-gx-AHJ"/>
                                                 </connections>

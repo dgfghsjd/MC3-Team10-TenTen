@@ -26,7 +26,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         print("Realm is located at:", realm.configuration.fileURL!)
         petID = UserDefaults.standard.string(forKey: "petID")
-        
         if petID != nil {
             
             userData = try? service.getMainView(petID!)
