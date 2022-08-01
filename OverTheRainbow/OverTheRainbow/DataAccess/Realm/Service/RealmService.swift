@@ -143,16 +143,16 @@ class RealmService: DataAccessService {
         }
         
         try! realm.write {
-            try! pet.letters.forEach { letter in
-                switch letter.status {
-                case .saved: throw RealmError.letterAlreadySaved
-                case .sent: throw RealmError.letterAlreadySent
-                case .temporary:
-                    repository.update(dto.toLetter(letter: letter, saveImage: imageManager.saveImage))
-                    return
-                }
+            guard let letter = pet.letters.filter { $0.id == dto.id }.first else{
+                throw RealmError.letterNotFound
             }
-            throw RealmError.letterNotFound
+            
+            switch letter.status {
+            case .sent: throw RealmError.letterAlreadySent
+            case .saved: throw RealmError.letterAlreadySaved
+            case .temporary:
+                repository.update(dto.toLetter(letter: letter, saveImage: imageManager.saveImage))
+            }
         }
     }
     
