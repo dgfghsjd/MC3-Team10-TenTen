@@ -107,8 +107,6 @@ final class LetterCollectionViewCell: UICollectionViewCell {
                     photoStampView.image = image
                 }
             }
-//            photoStampView.image?.withTintColor(UIColor(named: "textColor") ?? .black)
-//            photoStampView.heightAnchor.constraint(equalToConstant: 204)
         }
         print(data.status)
         if data.status == .saved {

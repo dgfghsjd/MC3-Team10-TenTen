@@ -29,7 +29,7 @@ class WrittenLetterViewController: UIViewController {
         
         selectedLetterImage.layer.cornerRadius = 10
         selectedLetterImage.contentMode = .scaleAspectFill
-        load(url: letter.imgUrl!)
+//        load(url: letter.imgUrl!)
         selectedLetterDate.text = letter.date
     }
 

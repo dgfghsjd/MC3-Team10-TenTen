@@ -6,15 +6,14 @@
 //
 
 import UIKit
-import SwiftUI
 
 class LetterLitstMainViewController: BaseViewController {
     let service = DataAccessProvider.dataAccessConfig.getService()
     private var lists: [LetterResultDto] {
-        let petID = "62e73c3f30516fbf94f3fe77"
+        let petID = "62e7cbc3bbe204e79551bc56"
         //        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
         // swiftlint:disable:next force_try
-        return try! service.findUnsentLetters("62e6166fccc1805922c3f4a0")
+        return try! service.findUnsentLetters("62e7cbc3bbe204e79551bc56")
 //        return (try? service.findUnsentLetters(UserDefaults.standard.string(forKey: "petID") ?? "err")) ?? []
 
     }
@@ -79,11 +78,18 @@ class LetterLitstMainViewController: BaseViewController {
         navigationItem.rightBarButtonItem = writingButtonView
         navigationItem.title = "리스트"
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "writeLetter" {
+            // swiftlint:disable:next force_cast
+            let destinationVC = segue.destination as! WritingLetterViewController
+//            destinationVC.bmiValue = "0.0"
+        }
+    }
     private func setupButtonAction() {
         let presentSendButtonAction = UIAction { _ in
             let storyboard = UIStoryboard(name: "WritingLetter", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "writeLetter")
-            self.present(viewController, animated: true, completion: nil)
+            guard let viewController = storyboard.instantiateViewController(withIdentifier: "writeLetter") as? WritingLetterViewController else { return }
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
         writingButton.addAction(presentSendButtonAction,
                                                   for: .touchUpInside)
