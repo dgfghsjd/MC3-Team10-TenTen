@@ -15,6 +15,9 @@
 		27465D7E288E7CEB0017F1DF /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27465D7D288E7CEB0017F1DF /* UICollectionView+Extension.swift */; };
 		27BEC4F7288E6E1C003A4395 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BEC4F6288E6E1C003A4395 /* BaseViewController.swift */; };
 		27C8AC23288542CD000D2374 /* LetterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C8AC22288542CD000D2374 /* LetterListViewController.swift */; };
+		2C7043BE28915DF1006A9E34 /* SettingView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C7043BD28915DF1006A9E34 /* SettingView.storyboard */; };
+		2C7043C028915E05006A9E34 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7043BF28915E05006A9E34 /* SettingViewController.swift */; };
+		2C7043C228915E2F006A9E34 /* UpdatePetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7043C128915E2F006A9E34 /* UpdatePetViewController.swift */; };
 		2C93A764288F8F93005A0CA8 /* HeavenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C93A763288F8F93005A0CA8 /* HeavenViewController.swift */; };
 		2C93A766288F8FA4005A0CA8 /* HeavenView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C93A765288F8FA4005A0CA8 /* HeavenView.storyboard */; };
 		66ACBF112890DF10006D0B39 /* FlowerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66ACBF0C2890DF10006D0B39 /* FlowerView.storyboard */; };
@@ -99,6 +102,9 @@
 		27465D7D288E7CEB0017F1DF /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		27BEC4F6288E6E1C003A4395 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		27C8AC22288542CD000D2374 /* LetterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterListViewController.swift; sourceTree = "<group>"; };
+		2C7043BD28915DF1006A9E34 /* SettingView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingView.storyboard; sourceTree = "<group>"; };
+		2C7043BF28915E05006A9E34 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		2C7043C128915E2F006A9E34 /* UpdatePetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePetViewController.swift; sourceTree = "<group>"; };
 		2C93A763288F8F93005A0CA8 /* HeavenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeavenViewController.swift; sourceTree = "<group>"; };
 		2C93A765288F8FA4005A0CA8 /* HeavenView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HeavenView.storyboard; sourceTree = "<group>"; };
 		66ACBF0C2890DF10006D0B39 /* FlowerView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FlowerView.storyboard; sourceTree = "<group>"; };
@@ -287,6 +293,7 @@
 		27C8AC1F28854156000D2374 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2C7043BC28915DDC006A9E34 /* SettingView */,
 				C54B1DC728913FBC0095F8E1 /* WritingLetter */,
 				66ACBF0B2890DF10006D0B39 /* flowerView */,
 				27BEC4F5288E6DDA003A4395 /* Base */,
@@ -304,6 +311,16 @@
 				27C8AC22288542CD000D2374 /* LetterListViewController.swift */,
 			);
 			path = LetterList;
+			sourceTree = "<group>";
+		};
+		2C7043BC28915DDC006A9E34 /* SettingView */ = {
+			isa = PBXGroup;
+			children = (
+				2C7043BD28915DF1006A9E34 /* SettingView.storyboard */,
+				2C7043BF28915E05006A9E34 /* SettingViewController.swift */,
+				2C7043C128915E2F006A9E34 /* UpdatePetViewController.swift */,
+			);
+			path = SettingView;
 			sourceTree = "<group>";
 		};
 		2C93A762288F8F86005A0CA8 /* heavenView */ = {
@@ -677,6 +694,7 @@
 				66ACBF112890DF10006D0B39 /* FlowerView.storyboard in Resources */,
 				C56CDACD287EE41F00C1F5F9 /* Assets.xcassets in Resources */,
 				2C93A766288F8FA4005A0CA8 /* HeavenView.storyboard in Resources */,
+				2C7043BE28915DF1006A9E34 /* SettingView.storyboard in Resources */,
 				C56CDACB287EE41E00C1F5F9 /* MainView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -786,6 +804,7 @@
 				A88E887B289773D900A13ACF /* RealmPreset.swift in Sources */,
 				C5345AF8288649C9007CF796 /* MainViewController.swift in Sources */,
 				C554EA1B288E603200954E11 /* TestHeavenViewController.swift in Sources */,
+				2C7043C028915E05006A9E34 /* SettingViewController.swift in Sources */,
 				C554EA1A288E603200954E11 /* NavigationControllerDelegate.swift in Sources */,
 				A8509B8E2888D9D600CD88C1 /* DateConveter.swift in Sources */,
 				A8509B4C28878EA000CD88C1 /* Letter.swift in Sources */,
@@ -804,6 +823,7 @@
 				C54B1DCD289148600095F8E1 /* WritingLetterViewController.swift in Sources */,
 				C54B1DCE289148600095F8E1 /* WrittenLetterListViewController.swift in Sources */,
 				A8509B792888066F00CD88C1 /* RealmConfig.swift in Sources */,
+				2C7043C228915E2F006A9E34 /* UpdatePetViewController.swift in Sources */,
 				A8509B832888326800CD88C1 /* RealmError.swift in Sources */,
 				A8509B892888D0E400CD88C1 /* FlowerLogStatus.swift in Sources */,
 				C56CDAC6287EE41E00C1F5F9 /* SceneDelegate.swift in Sources */,
