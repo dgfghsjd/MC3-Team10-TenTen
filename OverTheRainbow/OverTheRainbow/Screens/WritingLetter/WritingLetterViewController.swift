@@ -77,6 +77,7 @@ class WritingLetterViewController: UIViewController {
         showActionSheet()
     }
     
+    
     @IBAction func doneWritingLetter(_ sender: UIBarButtonItem) {
         if openGallery.image == nil {
             let alret = UIAlertController(title: "오류", message: "사진을 입력하지 않으셨습니다.", preferredStyle: .alert)

@@ -98,7 +98,11 @@
                                                 <action selector="callingActionSheet:" destination="9G4-a1-YfW" id="vCB-L3-fff"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="완료" id="FJa-ok-aqM"/>
+                                        <barButtonItem key="rightBarButtonItem" title="완료" id="FJa-ok-aqM">
+                                            <connections>
+                                                <action selector="doneWritingLetter:" destination="9G4-a1-YfW" id="pCe-IS-Rvg"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
