@@ -44,15 +44,14 @@ class EditingLetterViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        parentVC?.letterHasChanged = checkLetterChanged()
         updateLetter()
     }
     
     @IBAction func doneEditingLetter(_ sender: UIBarButtonItem) {
-        if chekCorrectlyEditted() {
+        if checkCorrectlyEditted() {
             parentVC?.letterHasChanged = checkLetterChanged()
-            let letter = LetterUpdateDto(id: self.letterID, title: letterTitle.text!, content: letterContent.text, image: galleryImageView.image)
-            try? service.updateLetter(petId: petID, dto: letter)
-            try? service.saveLetters(letter.id)
+            updateLetter()
             dismiss(animated: true)
         }
     }
@@ -98,7 +97,7 @@ class EditingLetterViewController: UIViewController {
         let attributes: [NSAttributedString.Key: Any] = [ .font: UIFont.boldSystemFont(ofSize: 18) ]
         navBarRightItem.setTitleTextAttributes(attributes, for: .normal)
     }
-    
+
     private func imageViewAndGalleryBtnSetting(){
         galleryImageView.layer.cornerRadius = 10
         galleryImageView.contentMode = .scaleAspectFill
@@ -111,7 +110,7 @@ class EditingLetterViewController: UIViewController {
         btnChangeImage.addTarget(self, action: #selector(changeImage), for: .touchUpInside)
     }
     
-    func chekCorrectlyEditted() -> Bool {
+    func checkCorrectlyEditted() -> Bool {
         if letterTitle.text!.isEmpty || letterContent.text.isEmpty {
             let alret = UIAlertController(title: "오류", message: "빈 편지는 저장할 수 없습니다.", preferredStyle: .alert)
             let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)

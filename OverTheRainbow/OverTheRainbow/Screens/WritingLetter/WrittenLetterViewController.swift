@@ -15,6 +15,7 @@ class WrittenLetterViewController: UIViewController {
     @IBOutlet weak var selectedLetterContent: UITextView!
     @IBOutlet weak var selectedLetterDate: UILabel!
     
+    let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
     var letterID: String! = ""
     var letterHasChanged: Bool = false
@@ -35,7 +36,7 @@ class WrittenLetterViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if letterHasChanged {
-            print(self.letterHasChanged)
+            try? service.updateLetter(petId: petID, dto: LetterUpdateDto(id: letterID, title: selectedLetterTitle.text!, content: selectedLetterContent.text, image: selectedLetterImage.image))
         }
     }
     

@@ -108,7 +108,7 @@ final class LetterCollectionViewCell: UICollectionViewCell {
                 }
             }
         }
-        print(data.status)
+//        print(data.status)
         if data.status == .saved {
             isSavedLabel.image = ImageLiterals.savedIcon
             isSavedLabel.tintColor = UIColor(named: "textColor")
