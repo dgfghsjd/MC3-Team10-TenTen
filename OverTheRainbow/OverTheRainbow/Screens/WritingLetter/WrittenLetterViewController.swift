@@ -15,11 +15,11 @@ class WrittenLetterViewController: UIViewController {
     @IBOutlet weak var selectedLetterContent: UITextView!
     @IBOutlet weak var selectedLetterDate: UILabel!
     
+    let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
     var letterID: String! = ""
-    
-    var childVC: UIViewController?
-    var letterHasChanged: Bool?
+    var letterHasChanged: Bool = false
+    var parentVC: LetterLitstMainViewController?
     
     override func viewDidLoad() {
         let letter = try! service.findLetter(letterID)
@@ -32,13 +32,13 @@ class WrittenLetterViewController: UIViewController {
         selectedLetterImage.contentMode = .scaleAspectFill
         load(url: letter.imgUrl!)
         selectedLetterDate.text = letter.date
-        print(self)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if letterHasChanged == true {
-            print(self.letterHasChanged)
+        if letterHasChanged {
+            try? service.updateLetter(petId: petID, dto: LetterUpdateDto(id: letterID, title: selectedLetterTitle.text!, content: selectedLetterContent.text, image: selectedLetterImage.image))
+            try? service.saveLetters(letterID)
         }
     }
     

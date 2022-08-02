@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WV9-tH-4pG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -8,44 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Written Letter List View Controller-->
-        <scene sceneID="Z76-fi-h0a">
-            <objects>
-                <viewController id="4nk-XX-fa4" customClass="WrittenLetterListViewController" customModule="OverTheRainbow" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cdz-Ex-lzJ">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rsb-c3-rY6">
-                                <rect key="frame" x="90" y="326" width="210" height="118"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="편지 상세뷰 버튼"/>
-                                <connections>
-                                    <action selector="callLetter:" destination="4nk-XX-fa4" eventType="touchUpInside" id="2be-Dk-IxA"/>
-                                    <segue destination="uHt-fA-QB2" kind="show" id="FeV-qr-T0h"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="oGB-QU-fah"/>
-                        <color key="backgroundColor" red="0.95934301609999995" green="0.95799666640000003" blue="0.91491341589999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="C7h-JO-XKA">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.pencil" catalog="system" id="mIh-0K-kcE">
-                            <color key="tintColor" red="0.29332616929999999" green="0.25663542750000001" blue="0.25579723720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <segue destination="QLB-ge-IDc" kind="presentation" id="Ctm-54-oxZ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="listNavBar" destination="C7h-JO-XKA" id="42l-NV-xtE"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XYO-eN-l5D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="980" y="112.32227488151658"/>
-        </scene>
         <!--Writing Letter View Controller-->
         <scene sceneID="l4Y-gD-fGQ">
             <objects>
@@ -93,14 +55,16 @@
                                 <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                                 <items>
                                     <navigationItem title="편지 작성" id="f58-Du-JTY">
-                                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="Sdl-DO-85r">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="Sdl-DO-85r">
+                                            <color key="tintColor" red="0.29332616929999999" green="0.25663542750000001" blue="0.25579723720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="callingActionSheet:" destination="9G4-a1-YfW" id="vCB-L3-fff"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="완료" id="FJa-ok-aqM">
+                                            <color key="tintColor" red="0.29332616929999999" green="0.25663542750000001" blue="0.25579723720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <action selector="doneWritingLetter:" destination="9G4-a1-YfW" id="pCe-IS-Rvg"/>
+                                                <action selector="doneWritingLetter:" destination="9G4-a1-YfW" id="Ukl-MM-mo0"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -132,71 +96,25 @@
                             <constraint firstItem="jmA-xX-huu" firstAttribute="leading" secondItem="GgM-C5-S3H" secondAttribute="leading" id="zXB-yV-DjY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="lbF-m8-5ek">
-                        <barButtonItem key="rightBarButtonItem" title="완료" style="plain" id="8LX-Ta-h94">
-                            <color key="tintColor" red="0.29332616929999999" green="0.25663542750000001" blue="0.25579723720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="doneWritingLetter:" destination="9G4-a1-YfW" id="ZYs-bl-6uc"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="letterContent" destination="jdv-ai-LNP" id="yg0-zc-19t"/>
                         <outlet property="letterTitle" destination="K2o-bq-xzv" id="aXa-pr-zvQ"/>
                         <outlet property="navBarLeftButton" destination="Sdl-DO-85r" id="Igy-fd-pBj"/>
                         <outlet property="navBarRightButton" destination="FJa-ok-aqM" id="q7q-V5-0eB"/>
-                        <outlet property="navBarRightItem" destination="8LX-Ta-h94" id="FRo-mN-Z5l"/>
                         <outlet property="openGallery" destination="jtG-3a-geC" id="K3a-GH-HLE"/>
                         <outlet property="selectPicture" destination="GWg-NO-y3b" id="OPX-Ty-CBO"/>
                         <outlet property="writingDate" destination="9yl-8g-29F" id="n2g-4l-vyn"/>
-                        <outlet property="writingLetterNavBar" destination="lbF-m8-5ek" id="yCN-Tk-HCc"/>
                         <outlet property="writingLetterNavigationBar" destination="jmA-xX-huu" id="4vz-3i-2DW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQK-NF-g6T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="980" y="815.40284360189571"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="n5W-NR-9Hg">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QLB-ge-IDc" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ef-u9-yIH">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.94034463170000004" green="0.94226723909999999" blue="0.90213716030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.94358682630000001" green="0.94232851269999995" blue="0.90213125940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fIf-8U-UgV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-294" y="816"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Ibw-9C-0xw">
-            <objects>
-                <navigationController storyboardIdentifier="navigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WV9-tH-4pG" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="48s-7R-nhx">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.94034463170000004" green="0.94226723909999999" blue="0.90213716030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="4nk-XX-fa4" kind="relationship" relationship="rootViewController" id="dcl-cp-Fng"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Hs-lf-qbV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-294" y="113"/>
+            <point key="canvasLocation" x="1714" y="-736"/>
         </scene>
         <!--Written Letter View Controller-->
         <scene sceneID="o7P-IV-C8Y">
             <objects>
-                <viewController storyboardIdentifier="letterList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uHt-fA-QB2" customClass="WrittenLetterViewController" customModule="OverTheRainbow" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="writtenLetter" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uHt-fA-QB2" customClass="WrittenLetterViewController" customModule="OverTheRainbow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1X0-kh-RaT">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -365,7 +283,7 @@
                         <barButtonItem key="rightBarButtonItem" title="완료" id="Cpq-nQ-Qt0">
                             <color key="tintColor" red="0.28621885180000001" green="0.25491994620000002" blue="0.25490090250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <action selector="doneeditingLetter:" destination="rjd-Mf-sdI" id="5kQ-h8-fRY"/>
+                                <action selector="doneEditingLetter:" destination="rjd-Mf-sdI" id="JNH-tt-XNV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -375,7 +293,7 @@
                         <outlet property="galleryImageView" destination="oCd-h1-seR" id="sb4-B8-Q22"/>
                         <outlet property="letterContent" destination="TiR-2L-hiZ" id="6SW-Ki-OTj"/>
                         <outlet property="letterTitle" destination="qhZ-uV-tDR" id="clC-XD-p2Q"/>
-                        <outlet property="naavBarRightItem" destination="Cpq-nQ-Qt0" id="R3m-Wx-4Zt"/>
+                        <outlet property="navBarRightItem" destination="Cpq-nQ-Qt0" id="QNh-an-b9T"/>
                         <outlet property="writtenDate" destination="mFv-Er-Wds" id="CIj-tc-C7H"/>
                     </connections>
                 </viewController>
@@ -402,14 +320,9 @@
             <point key="canvasLocation" x="2782" y="815"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="FeV-qr-T0h"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.29332616929999999" green="0.25663542750000001" blue="0.25579723720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
-        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
-        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

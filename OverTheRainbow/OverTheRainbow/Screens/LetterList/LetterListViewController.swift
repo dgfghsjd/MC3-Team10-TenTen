@@ -8,15 +8,14 @@
 import UIKit
 
 class LetterLitstMainViewController: BaseViewController {
+    let petID = UserDefaults.standard.string(forKey: "petID")
     let service = DataAccessProvider.dataAccessConfig.getService()
+    var lists: [LetterResultDto] = []
     
-    private var lists: [LetterResultDto] {
-        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
-        // swiftlint:disable:next force_try
-        return (try? service.findUnsentLetters(UserDefaults.standard.string(forKey: "petID") ?? "err")) ?? []
-        
-        
+    func setLists() {
+        self.lists = (try? service.findUnsentLetters(petID ?? "err")) ?? []
     }
+    
     var letterID: String = ""
     
     private enum Size {
@@ -48,34 +47,25 @@ class LetterLitstMainViewController: BaseViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(LetterCollectionViewCell.self,
                                 forCellWithReuseIdentifier: LetterCollectionViewCell.className)
-        collectionView.reloadData()
         return collectionView
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
-        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
+        setLists()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("편지 리스트 뷰")
-        let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
-        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
-        if viewController.letterHasChanged == true{
-            listCollectionView.reloadData()
-        }
-        else {
-            print("바뀐 것이 없음")
-            print(viewController.letterHasChanged)
-        }
-        
+        setLists()
         setupButtonAction()
-        
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.prefersLargeTitles = false
     }
+    
     override func render () {
         view.addSubview(listCollectionView)
         listCollectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -86,56 +76,41 @@ class LetterLitstMainViewController: BaseViewController {
             listCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 3),
         ]
         NSLayoutConstraint.activate(listCollectionViewConstraints)
-        //        let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
-        //        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
-        //        if viewController.letterHasChanged == true{
-        listCollectionView.reloadData()
-        //        }
     }
+    
     override func configUI() {
         super.configUI()
     }
+    
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        
         let writingButtonView = makeBarButtonItem(with: writingButton)
         navigationItem.rightBarButtonItem = writingButtonView
         navigationItem.title = "리스트"
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "writeLetter" {
-            // swiftlint:disable:next force_cast
-            let destinationVC = segue.destination as! WritingLetterViewController
-            //            destinationVC.bmiValue = "0.0"
-        }
-    }
+
     private func setupButtonAction() {
         let presentSendButtonAction = UIAction { _ in
             let storyboard = UIStoryboard(name: "WritingLetter", bundle: nil)
             guard let viewController = storyboard.instantiateViewController(withIdentifier: "writeLetter") as? WritingLetterViewController else { return }
-            
+            viewController.parentVC = self
             self.navigationController?.modalPresentationStyle = .automatic
-
             self.present(viewController, animated: true, completion: nil)
-            
         }
-        writingButton.addAction(presentSendButtonAction,for: .touchUpInside)
+        writingButton.addAction(presentSendButtonAction, for: .touchUpInside)
     }
+    
     private func pushDetailView(_ letterID: String) {
         let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
-        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
+        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "writtenLetter") as?  WrittenLetterViewController else { return }
         self.navigationController?.pushViewController(viewController, animated: true)
         viewController.letterID = letterID
-    }
-    private func showPopUp() {
-        
+        viewController.parentVC = self
     }
 }
 
 // MARK: - UICollectionViewDataSource
 extension LetterLitstMainViewController: UICollectionViewDataSource {
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return lists.count
     }
@@ -148,13 +123,9 @@ extension LetterLitstMainViewController: UICollectionViewDataSource {
         cell.layer.shadowOpacity = 1
         cell.layer.masksToBounds = false
         cell.setLetterData(with: lists[indexPath.item])
-        cell.updateLetterData(with: lists[indexPath.item].id)
+        collectionView.reloadData()
         return cell
     }
-    //    func reloads(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-    //        let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
-    //        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
-    //    }
 }
 
 // MARK: - UICollectionViewDelegate

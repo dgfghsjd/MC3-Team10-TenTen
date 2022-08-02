@@ -108,7 +108,7 @@ final class LetterCollectionViewCell: UICollectionViewCell {
                 }
             }
         }
-        print(data.status)
+//        print(data.status)
         if data.status == .saved {
             isSavedLabel.image = ImageLiterals.savedIcon
             isSavedLabel.tintColor = UIColor(named: "textColor")
@@ -117,11 +117,10 @@ final class LetterCollectionViewCell: UICollectionViewCell {
         }
     }
     func updateLetterData(with letterID: String) {
-        print("called")
         let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
         let letter = try! service.findLetter(letterID)
         let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
-        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
+        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "writtenLetter") as?  WrittenLetterViewController else { return }
         if viewController.letterHasChanged == true {
             dateLabel.text = letter.date
             titleLabel.text = letter.title
@@ -132,7 +131,7 @@ final class LetterCollectionViewCell: UICollectionViewCell {
                 photoStampView.image?.withTintColor(UIColor(named: "textColor") ?? .black)
     //            photoStampView.heightAnchor.constraint(equalToConstant: 204)
             }
-            print(letter.status)
+//            print(letter.status)
             if letter.status == .saved {
                 isSavedLabel.image = ImageLiterals.savedIcon
                 isSavedLabel.tintColor = UIColor(named: "textColor")
