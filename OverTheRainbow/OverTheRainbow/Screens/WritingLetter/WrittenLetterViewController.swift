@@ -20,6 +20,7 @@ class WrittenLetterViewController: UIViewController {
     var letterID: String! = ""
     var letterHasChanged: Bool = false
     var parentVC: LetterLitstMainViewController?
+    var isDeleted: Bool = false
     
     override func viewDidLoad() {
         let letter = try! service.findLetter(letterID)
@@ -36,11 +37,13 @@ class WrittenLetterViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if letterHasChanged {
+        if letterHasChanged && !isDeleted {
             try? service.updateLetter(petId: petID, dto: LetterUpdateDto(id: letterID, title: selectedLetterTitle.text!, content: selectedLetterContent.text, image: selectedLetterImage.image))
             try? service.saveLetters(letterID)
             parentVC?.setLists(petID)
         }
+        parentVC?.setLists(petID)
+//        parentVC?.listCollectionView.reloadData()
     }
     
     func load(url: URL) {
@@ -52,6 +55,13 @@ class WrittenLetterViewController: UIViewController {
                     }
                 }
             }
+        }
+    }
+    
+    func popWrittenLetterView() {
+        print(isDeleted)
+        if isDeleted == true {
+            self.navigationController?.popViewController(animated: true)
         }
     }
     

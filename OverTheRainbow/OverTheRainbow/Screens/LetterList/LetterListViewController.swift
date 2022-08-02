@@ -52,6 +52,7 @@ class LetterLitstMainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        listCollectionView.reloadData()
         setLists(petID!)
     }
     
