@@ -143,7 +143,7 @@ class RealmService: DataAccessService {
         }
         
         try! realm.write {
-            guard let letter = pet.letters.filter { $0.id == dto.id }.first else{
+            guard let letter = pet.letters.filter { $0.id == dto.id }.first else {
                 throw RealmError.letterNotFound
             }
             

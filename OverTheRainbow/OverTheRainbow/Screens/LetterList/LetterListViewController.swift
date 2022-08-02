@@ -12,8 +12,8 @@ class LetterLitstMainViewController: BaseViewController {
     let service = DataAccessProvider.dataAccessConfig.getService()
     var lists: [LetterResultDto] = []
     
-    func setLists() {
-        self.lists = (try? service.findUnsentLetters(petID ?? "err")) ?? []
+    func setLists(_ petID:String) {
+        self.lists = (try? service.findUnsentLetters(petID)) ?? []
     }
     
     var letterID: String = ""
@@ -31,7 +31,7 @@ class LetterLitstMainViewController: BaseViewController {
     }
     private let writingButton = WritingButton()
     
-    private let collectionViewFlowLayout: UICollectionViewFlowLayout = {
+    let collectionViewFlowLayout: UICollectionViewFlowLayout = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         flowLayout.sectionInset = Size.collectionInset
@@ -39,7 +39,7 @@ class LetterLitstMainViewController: BaseViewController {
         flowLayout.minimumLineSpacing = 33
         return flowLayout
     }()
-    private lazy var listCollectionView: UICollectionView = {
+    lazy var listCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
@@ -52,12 +52,13 @@ class LetterLitstMainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLists()
+//        listCollectionView.reloadData()
+        setLists(petID!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setLists()
+        listCollectionView.reloadData()
         setupButtonAction()
     }
     
@@ -123,7 +124,6 @@ extension LetterLitstMainViewController: UICollectionViewDataSource {
         cell.layer.shadowOpacity = 1
         cell.layer.masksToBounds = false
         cell.setLetterData(with: lists[indexPath.item])
-        collectionView.reloadData()
         return cell
     }
 }

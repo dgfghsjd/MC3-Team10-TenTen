@@ -116,28 +116,4 @@ final class LetterCollectionViewCell: UICollectionViewCell {
 //            UIColor(named: "textColor")
         }
     }
-    func updateLetterData(with letterID: String) {
-        let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
-        let letter = try! service.findLetter(letterID)
-        let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
-        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "writtenLetter") as?  WrittenLetterViewController else { return }
-        if viewController.letterHasChanged == true {
-            dateLabel.text = letter.date
-            titleLabel.text = letter.title
-            
-            if let image = letter.imgUrl {
-                // FIXME: - 현재는 더미
-                photoStampView.image = UIImage(systemName: "heart.fill")
-                photoStampView.image?.withTintColor(UIColor(named: "textColor") ?? .black)
-    //            photoStampView.heightAnchor.constraint(equalToConstant: 204)
-            }
-//            print(letter.status)
-            if letter.status == .saved {
-                isSavedLabel.image = ImageLiterals.savedIcon
-                isSavedLabel.tintColor = UIColor(named: "textColor")
-    //            self.tintColor
-    //            UIColor(named: "textColor")
-            }
-        }
-    }
 }

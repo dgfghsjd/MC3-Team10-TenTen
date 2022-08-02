@@ -23,19 +23,20 @@ class EditingLetterViewController: UIViewController {
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
     let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
     var letterID: String! = ""
-    
+    var referenceImage: UIImage?
     var parentController: UINavigationController?
     var parentVC: WrittenLetterViewController?
+    var editingLetter: LetterResultDto?
     
+
     override func viewDidLoad() {
-        let editingLetter = try! service.findLetter(letterID)
-        
         super.viewDidLoad()
+        self.editingLetter = try? service.findLetter(letterID)
+        print(editingLetter?.status)
         rightNavBarButtonSetting()
         leftNavBarButtonSetting()
         imageViewAndGalleryBtnSetting()
         
-        load(url: editingLetter.imgUrl!)
         letterTitle.returnKeyType = .done
         galleryImageView.image = parentVC?.selectedLetterImage.image
         letterTitle.text = parentVC?.selectedLetterTitle.text
@@ -45,23 +46,28 @@ class EditingLetterViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        parentVC?.letterHasChanged = checkLetterChanged()
-        updateLetter()
+        if checkCorrectlyEditted() && checkLetterChanged(editingLetter!){
+            parentVC?.letterHasChanged = checkLetterChanged(editingLetter!)
+            updateLetter()
+        }
     }
     
     @IBAction func doneEditingLetter(_ sender: UIBarButtonItem) {
-        if checkCorrectlyEditted() {
-            parentVC?.letterHasChanged = checkLetterChanged()
+        if checkCorrectlyEditted() && checkLetterChanged(editingLetter!) {
+            parentVC?.letterHasChanged = checkLetterChanged(editingLetter!)
             updateLetter()
-            dismiss(animated: true)
         }
+        dismiss(animated: true)
     }
     
     @objc func showActionSheet() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let first = UIAlertAction(title: "삭제하기", style: .destructive) { [self]_ in
             try? service.deleteLetter(petId: petID, letterId: letterID)
+            parentVC?.isDeleted = true
             self.dismiss(animated: true)
+            parentVC?.popWrittenLetterView()
+//            parentVC?.navigationController?.pushViewController(parentVC!.parentVC!, animated: true)
         }
         
         let cancel = UIAlertAction(title: "돌아가기", style: .cancel){_ in}
@@ -69,18 +75,6 @@ class EditingLetterViewController: UIViewController {
         actionSheet.addAction(first)
         actionSheet.addAction(cancel)
         present(actionSheet, animated: true, completion: nil)
-    }
-    
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.galleryImageView.image = image
-                    }
-                }
-            }
-        }
     }
     
     private func leftNavBarButtonSetting() {
@@ -128,8 +122,8 @@ class EditingLetterViewController: UIViewController {
         parentVC?.selectedLetterImage.image = galleryImageView.image
     }
     
-    func checkLetterChanged() -> Bool {
-        if parentVC?.selectedLetterTitle.text != letterTitle.text || parentVC?.selectedLetterContent.text != letterContent.text || parentVC?.selectedLetterImage.image != galleryImageView.image {
+    func checkLetterChanged(_ editingLetter: LetterResultDto) -> Bool {
+        if editingLetter.title != letterTitle.text || editingLetter.content != letterContent.text {
             return true
         }
         return false
