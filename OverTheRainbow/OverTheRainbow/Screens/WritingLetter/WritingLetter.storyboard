@@ -51,16 +51,16 @@
             <objects>
                 <viewController storyboardIdentifier="writeLetter" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9G4-a1-YfW" customClass="WritingLetterViewController" customModule="OverTheRainbow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GgM-C5-S3H">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jtG-3a-geC">
-                                <rect key="frame" x="20" y="81" width="350" height="310.33333333333331"/>
+                                <rect key="frame" x="20" y="102.99999999999997" width="350" height="308.33333333333326"/>
                                 <color key="backgroundColor" red="0.92443710570000004" green="0.92525351050000004" blue="0.84697872399999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.92443710570000004" green="0.92525351050000004" blue="0.84697872399999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K2o-bq-xzv">
-                                <rect key="frame" x="20" y="411.33333333333331" width="350" height="49"/>
+                                <rect key="frame" x="20" y="431.33333333333331" width="350" height="49"/>
                                 <color key="backgroundColor" red="0.95934301609999995" green="0.95799666640000003" blue="0.91491341589999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="2dt-fu-sEb"/>
@@ -69,7 +69,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jdv-ai-LNP">
-                                <rect key="frame" x="20" y="470.33333333333326" width="350" height="254"/>
+                                <rect key="frame" x="20" y="490.33333333333326" width="350" height="254"/>
                                 <color key="backgroundColor" red="0.95934301609999995" green="0.95799666640000003" blue="0.91491341589999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="254" id="J1z-CO-3ef"/>
@@ -79,16 +79,29 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yl-8g-29F">
-                                <rect key="frame" x="260" y="746.33333333333337" width="110" height="21.666666666666629"/>
+                                <rect key="frame" x="260" y="766.33333333333337" width="110" height="21.666666666666629"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWg-NO-y3b">
-                                <rect key="frame" x="20" y="81" width="350" height="310.33333333333331"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWg-NO-y3b">
+                                <rect key="frame" x="20" y="102.99999999999997" width="350" height="308.33333333333326"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
                             </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jmA-xX-huu">
+                                <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                                <items>
+                                    <navigationItem title="편지 작성" id="f58-Du-JTY">
+                                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="Sdl-DO-85r">
+                                            <connections>
+                                                <action selector="callingActionSheet:" destination="9G4-a1-YfW" id="vCB-L3-fff"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="완료" id="FJa-ok-aqM"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HeR-2X-SYb"/>
                         <color key="backgroundColor" red="0.95934301609999995" green="0.95799666640000003" blue="0.91491341589999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -96,20 +109,23 @@
                             <constraint firstItem="jtG-3a-geC" firstAttribute="leading" secondItem="jdv-ai-LNP" secondAttribute="leading" id="331-28-eON"/>
                             <constraint firstItem="jtG-3a-geC" firstAttribute="leading" secondItem="K2o-bq-xzv" secondAttribute="leading" id="4gT-gE-TMs"/>
                             <constraint firstItem="HeR-2X-SYb" firstAttribute="trailing" secondItem="jtG-3a-geC" secondAttribute="trailing" constant="20" id="5PH-9L-sRP"/>
-                            <constraint firstItem="jtG-3a-geC" firstAttribute="top" secondItem="HeR-2X-SYb" secondAttribute="top" constant="25" id="5UF-7K-23g"/>
-                            <constraint firstItem="GWg-NO-y3b" firstAttribute="top" secondItem="HeR-2X-SYb" secondAttribute="top" constant="25" id="7ve-mv-xhT"/>
                             <constraint firstItem="K2o-bq-xzv" firstAttribute="top" secondItem="jtG-3a-geC" secondAttribute="bottom" constant="20" id="FGC-lT-MDV"/>
                             <constraint firstItem="K2o-bq-xzv" firstAttribute="top" secondItem="GWg-NO-y3b" secondAttribute="bottom" constant="20" id="J6Z-X2-r9y"/>
+                            <constraint firstItem="jmA-xX-huu" firstAttribute="top" secondItem="HeR-2X-SYb" secondAttribute="top" id="KM9-l4-mdJ"/>
                             <constraint firstItem="jtG-3a-geC" firstAttribute="trailing" secondItem="jdv-ai-LNP" secondAttribute="trailing" id="OGk-vH-j57"/>
                             <constraint firstItem="jdv-ai-LNP" firstAttribute="top" secondItem="K2o-bq-xzv" secondAttribute="bottom" constant="10" id="QID-SI-G4e"/>
+                            <constraint firstItem="jtG-3a-geC" firstAttribute="top" secondItem="jmA-xX-huu" secondAttribute="bottom" constant="15" id="R49-BG-DKB"/>
                             <constraint firstItem="HeR-2X-SYb" firstAttribute="bottom" secondItem="9yl-8g-29F" secondAttribute="bottom" constant="22" id="SR0-kL-OBz"/>
                             <constraint firstItem="9yl-8g-29F" firstAttribute="top" secondItem="jdv-ai-LNP" secondAttribute="bottom" constant="22" id="SSC-2G-hvK"/>
+                            <constraint firstItem="jmA-xX-huu" firstAttribute="centerX" secondItem="GWg-NO-y3b" secondAttribute="centerX" id="TBw-V1-JuU"/>
                             <constraint firstItem="jtG-3a-geC" firstAttribute="leading" secondItem="HeR-2X-SYb" secondAttribute="leading" constant="20" id="VFn-MJ-5I3"/>
                             <constraint firstItem="9yl-8g-29F" firstAttribute="leading" secondItem="HeR-2X-SYb" secondAttribute="leading" constant="260" id="XjN-p3-DFO"/>
                             <constraint firstItem="HeR-2X-SYb" firstAttribute="trailing" secondItem="GWg-NO-y3b" secondAttribute="trailing" constant="20" id="Xl5-m9-5Py"/>
                             <constraint firstItem="jtG-3a-geC" firstAttribute="trailing" secondItem="9yl-8g-29F" secondAttribute="trailing" id="bIW-Oe-jNt"/>
                             <constraint firstItem="GWg-NO-y3b" firstAttribute="leading" secondItem="HeR-2X-SYb" secondAttribute="leading" constant="20" id="eLP-h6-MV5"/>
                             <constraint firstItem="jtG-3a-geC" firstAttribute="trailing" secondItem="K2o-bq-xzv" secondAttribute="trailing" id="npp-Nj-Xis"/>
+                            <constraint firstItem="GWg-NO-y3b" firstAttribute="top" secondItem="jmA-xX-huu" secondAttribute="bottom" constant="15" id="usr-mb-uWf"/>
+                            <constraint firstItem="jmA-xX-huu" firstAttribute="leading" secondItem="GgM-C5-S3H" secondAttribute="leading" id="zXB-yV-DjY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lbF-m8-5ek">
@@ -123,11 +139,14 @@
                     <connections>
                         <outlet property="letterContent" destination="jdv-ai-LNP" id="yg0-zc-19t"/>
                         <outlet property="letterTitle" destination="K2o-bq-xzv" id="aXa-pr-zvQ"/>
+                        <outlet property="navBarLeftButton" destination="Sdl-DO-85r" id="Igy-fd-pBj"/>
+                        <outlet property="navBarRightButton" destination="FJa-ok-aqM" id="q7q-V5-0eB"/>
                         <outlet property="navBarRightItem" destination="8LX-Ta-h94" id="FRo-mN-Z5l"/>
                         <outlet property="openGallery" destination="jtG-3a-geC" id="K3a-GH-HLE"/>
                         <outlet property="selectPicture" destination="GWg-NO-y3b" id="OPX-Ty-CBO"/>
                         <outlet property="writingDate" destination="9yl-8g-29F" id="n2g-4l-vyn"/>
                         <outlet property="writingLetterNavBar" destination="lbF-m8-5ek" id="yCN-Tk-HCc"/>
+                        <outlet property="writingLetterNavigationBar" destination="jmA-xX-huu" id="4vz-3i-2DW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQK-NF-g6T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -146,9 +165,6 @@
                         <color key="barTintColor" red="0.94358682630000001" green="0.94232851269999995" blue="0.90213125940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="9G4-a1-YfW" kind="relationship" relationship="rootViewController" id="0qs-ye-q1y"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fIf-8U-UgV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -387,6 +403,7 @@
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.29332616929999999" green="0.25663542750000001" blue="0.25579723720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="labelColor">
