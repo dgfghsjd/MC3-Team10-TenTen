@@ -21,8 +21,8 @@ class WritingLetterViewController: UIViewController {
     var button = UIButton(type: .system)
     let date = Date()
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
-    let petID = "62e7ddbc686583a6c967db26"
-    //        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
+    //    let petID = "62e7ddbc686583a6c967db26"
+    let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
     
     
     
@@ -128,7 +128,7 @@ class WritingLetterViewController: UIViewController {
             self.dismiss(animated: true)
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel){_ in}
-
+        
         actionSheet.addAction(first)
         actionSheet.addAction(second)
         actionSheet.addAction(cancel)

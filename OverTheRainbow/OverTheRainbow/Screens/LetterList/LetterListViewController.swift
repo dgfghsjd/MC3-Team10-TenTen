@@ -11,14 +11,11 @@ class LetterLitstMainViewController: BaseViewController {
     let service = DataAccessProvider.dataAccessConfig.getService()
     
     private var lists: [LetterResultDto] {
-        let petID = "62e7ddbc686583a6c967db26"
-        //        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
+        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
         // swiftlint:disable:next force_try
-
-//        return try! service.findUnsentLetters("62e7cbc3bbe204e79551bc56")
         return (try? service.findUnsentLetters(UserDefaults.standard.string(forKey: "petID") ?? "err")) ?? []
-
-
+        
+        
     }
     var letterID: String = ""
     
@@ -71,9 +68,9 @@ class LetterLitstMainViewController: BaseViewController {
             print("바뀐 것이 없음")
             print(viewController.letterHasChanged)
         }
-
+        
         setupButtonAction()
-
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -89,11 +86,11 @@ class LetterLitstMainViewController: BaseViewController {
             listCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 3),
         ]
         NSLayoutConstraint.activate(listCollectionViewConstraints)
-//        let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
-//        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
-//        if viewController.letterHasChanged == true{
+        //        let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
+        //        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
+        //        if viewController.letterHasChanged == true{
         listCollectionView.reloadData()
-//        }
+        //        }
     }
     override func configUI() {
         super.configUI()
@@ -109,7 +106,7 @@ class LetterLitstMainViewController: BaseViewController {
         if segue.identifier == "writeLetter" {
             // swiftlint:disable:next force_cast
             let destinationVC = segue.destination as! WritingLetterViewController
-//            destinationVC.bmiValue = "0.0"
+            //            destinationVC.bmiValue = "0.0"
         }
     }
     private func setupButtonAction() {
@@ -119,7 +116,7 @@ class LetterLitstMainViewController: BaseViewController {
             self.navigationController?.pushViewController(viewController, animated: true)
         }
         writingButton.addAction(presentSendButtonAction,
-                                                  for: .touchUpInside)
+                                for: .touchUpInside)
     }
     private func pushDetailView(_ letterID: String) {
         let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
@@ -141,17 +138,17 @@ extension LetterLitstMainViewController: UICollectionViewDataSource {
         let cell: LetterCollectionViewCell =  collectionView.dequeueReusableCell(forIndexPath: indexPath)
         cell.layer.shadowColor = UIColor.black.cgColor
         cell.layer.shadowOffset = CGSize(width: 0, height: 0)
-//        cell.layer.shadowRadius = 1.0
+        //        cell.layer.shadowRadius = 1.0
         cell.layer.shadowOpacity = 1
         cell.layer.masksToBounds = false
         cell.setLetterData(with: lists[indexPath.item])
         cell.updateLetterData(with: lists[indexPath.item].id)
         return cell
     }
-//    func reloads(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-//        let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
-//        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
-//    }
+    //    func reloads(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+    //        let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
+    //        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
+    //    }
 }
 
 // MARK: - UICollectionViewDelegate
