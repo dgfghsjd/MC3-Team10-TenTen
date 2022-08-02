@@ -74,11 +74,11 @@ class HeavenViewController: UIViewController {
                 if let imageURL = currentPet.imgUrl {
                     let data = try Data(contentsOf: imageURL)
                     petImageView.image = UIImage(data: data)
-                    navigationController?.setNavigationBarHidden(true, animated: animated)
                 }
             } catch {
                 print("Error finding pet : \(error)")
             }
+            navigationController?.setNavigationBarHidden(true, animated: animated)
         }
     }
     
