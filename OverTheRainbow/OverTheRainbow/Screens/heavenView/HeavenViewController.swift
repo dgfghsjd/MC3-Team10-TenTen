@@ -97,7 +97,6 @@ class HeavenViewController: UIViewController {
     
     @IBAction func letterButtonPressed(_ sender: UIButton) {
         // TODO: 편지 리스트뷰로 이동
-        navigationController?.pushViewController(HeavenViewLetterListCollectionViewController(), animated: true)
     }
     
     @objc func mainTransition() {
