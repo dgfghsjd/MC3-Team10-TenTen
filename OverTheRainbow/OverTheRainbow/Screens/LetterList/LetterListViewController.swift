@@ -16,13 +16,6 @@ class LetterLitstMainViewController: BaseViewController {
         self.lists = (try? service.findUnsentLetters(petID ?? "err")) ?? []
     }
     
-    func updateLetterList() {
-        var updatedLists: [LetterResultDto] {
-            let petID = UserDefaults.standard.string(forKey: "petID")
-            return (try? service.findUnsentLetters(petID ?? "err")) ?? []
-        }
-        lists = updatedLists
-    }
     var letterID: String = ""
     
     private enum Size {
@@ -56,20 +49,23 @@ class LetterLitstMainViewController: BaseViewController {
                                 forCellWithReuseIdentifier: LetterCollectionViewCell.className)
         return collectionView
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setLists()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setLists()
         setupButtonAction()
-        
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.prefersLargeTitles = false
     }
+    
     override func render () {
         view.addSubview(listCollectionView)
         listCollectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -81,9 +77,11 @@ class LetterLitstMainViewController: BaseViewController {
         ]
         NSLayoutConstraint.activate(listCollectionViewConstraints)
     }
+    
     override func configUI() {
         super.configUI()
     }
+    
     override func setupNavigationBar() {
         super.setupNavigationBar()
         let writingButtonView = makeBarButtonItem(with: writingButton)
@@ -108,7 +106,6 @@ class LetterLitstMainViewController: BaseViewController {
         self.navigationController?.pushViewController(viewController, animated: true)
         viewController.letterID = letterID
         viewController.parentVC = self
-        print(self)
     }
 }
 
@@ -129,10 +126,6 @@ extension LetterLitstMainViewController: UICollectionViewDataSource {
         collectionView.reloadData()
         return cell
     }
-    //    func reloads(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-    //        let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
-    //        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "writtenLetter") as?  WrittenLetterViewController else { return }
-    //    }
 }
 
 // MARK: - UICollectionViewDelegate
