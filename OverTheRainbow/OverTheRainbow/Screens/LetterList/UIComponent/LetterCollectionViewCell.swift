@@ -121,7 +121,7 @@ final class LetterCollectionViewCell: UICollectionViewCell {
         let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
         let letter = try! service.findLetter(letterID)
         let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
-        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
+        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "writtenLetter") as?  WrittenLetterViewController else { return }
         if viewController.letterHasChanged == true {
             dateLabel.text = letter.date
             titleLabel.text = letter.title

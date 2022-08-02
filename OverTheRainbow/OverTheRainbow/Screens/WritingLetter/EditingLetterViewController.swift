@@ -37,9 +37,10 @@ class EditingLetterViewController: UIViewController {
         
         load(url: editingLetter.imgUrl!)
         letterTitle.returnKeyType = .done
-        letterTitle.text = editingLetter.title
-        letterContent.text = editingLetter.content
-        writtenDate.text = editingLetter.date
+        galleryImageView.image = parentVC?.selectedLetterImage.image
+        letterTitle.text = parentVC?.selectedLetterTitle.text
+        letterContent.text = parentVC?.selectedLetterContent.text
+        writtenDate.text = parentVC?.selectedLetterDate.text
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -128,9 +129,7 @@ class EditingLetterViewController: UIViewController {
     }
     
     func checkLetterChanged() -> Bool {
-        if parentVC?.selectedLetterTitle.text != letterTitle.text ||
-            parentVC?.selectedLetterContent.text != letterContent.text ||
-            parentVC?.selectedLetterImage.image != galleryImageView.image {
+        if parentVC?.selectedLetterTitle.text != letterTitle.text || parentVC?.selectedLetterContent.text != letterContent.text || parentVC?.selectedLetterImage.image != galleryImageView.image {
             return true
         }
         return false

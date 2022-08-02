@@ -24,6 +24,7 @@ class WritingLetterViewController: UIViewController {
     let date = Date()
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
     let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
+    var parentVC: LetterLitstMainViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +58,7 @@ class WritingLetterViewController: UIViewController {
             let letter = LetterInput(title: letterTitle.text!, content: letterContent.text, image: openGallery.image)
             let letterID = try? service.addLetter(LetterInputDto(petId: petID, letter: letter))
             try? service.saveLetters(letterID!)
+            parentVC?.setLists()
             dismiss(animated: true)
         }
     }

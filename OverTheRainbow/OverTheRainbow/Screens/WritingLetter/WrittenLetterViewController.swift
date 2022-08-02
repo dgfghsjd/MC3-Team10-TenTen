@@ -19,6 +19,7 @@ class WrittenLetterViewController: UIViewController {
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
     var letterID: String! = ""
     var letterHasChanged: Bool = false
+    var parentVC: LetterLitstMainViewController?
     
     override func viewDidLoad() {
         let letter = try! service.findLetter(letterID)
@@ -37,6 +38,7 @@ class WrittenLetterViewController: UIViewController {
         super.viewWillDisappear(animated)
         if letterHasChanged {
             try? service.updateLetter(petId: petID, dto: LetterUpdateDto(id: letterID, title: selectedLetterTitle.text!, content: selectedLetterContent.text, image: selectedLetterImage.image))
+            try? service.saveLetters(letterID)
         }
     }
     
