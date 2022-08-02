@@ -10,8 +10,9 @@ import SwiftUI
 
 class LetterLitstMainViewController: BaseViewController {
     let service = DataAccessProvider.dataAccessConfig.getService()
+    
     private var lists: [LetterResultDto] {
-        let petID = "62e73c3f30516fbf94f3fe77"
+        let petID = "62e7ddbc686583a6c967db26"
         //        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
         // swiftlint:disable:next force_try
         return try! service.findUnsentLetters(petID)
@@ -19,6 +20,7 @@ class LetterLitstMainViewController: BaseViewController {
 
     }
     var letterID: String = ""
+    
     private enum Size {
         static let collectionHorizontalSpacing: CGFloat = 16.0
         static let collectionVerticalSpacing: CGFloat = 17.0
@@ -47,10 +49,27 @@ class LetterLitstMainViewController: BaseViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(LetterCollectionViewCell.self,
                                 forCellWithReuseIdentifier: LetterCollectionViewCell.className)
+        collectionView.reloadData()
         return collectionView
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
+        let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
+        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("편지 리스트 뷰")
+        let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
+        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
+        if viewController.letterHasChanged == true{
+            listCollectionView.reloadData()
+        }
+        else {
+            print("바뀐 것이 없음")
+            print(viewController.letterHasChanged)
+        }
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -67,6 +86,11 @@ class LetterLitstMainViewController: BaseViewController {
             //            listCollectionView.heightAnchor.constraint(equalToConstant: 10000)
         ]
         NSLayoutConstraint.activate(listCollectionViewConstraints)
+//        let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
+//        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
+//        if viewController.letterHasChanged == true{
+        listCollectionView.reloadData()
+//        }
     }
     override func configUI() {
         super.configUI()
@@ -84,6 +108,8 @@ class LetterLitstMainViewController: BaseViewController {
 
 // MARK: - UICollectionViewDataSource
 extension LetterLitstMainViewController: UICollectionViewDataSource {
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return lists.count
     }
@@ -96,8 +122,13 @@ extension LetterLitstMainViewController: UICollectionViewDataSource {
         cell.layer.shadowOpacity = 1
         cell.layer.masksToBounds = false
         cell.setLetterData(with: lists[indexPath.item])
+        cell.updateLetterData(with: lists[indexPath.item].id)
         return cell
     }
+//    func reloads(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+//        let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
+//        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
+//    }
 }
 
 // MARK: - UICollectionViewDelegate

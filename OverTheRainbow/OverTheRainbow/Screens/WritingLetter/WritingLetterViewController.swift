@@ -21,7 +21,7 @@ class WritingLetterViewController: UIViewController {
     var button = UIButton(type: .system)
     let date = Date()
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
-    let petID = "62e73c3f30516fbf94f3fe77"
+    let petID = "62e7ddbc686583a6c967db26"
     //        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
     
     
@@ -67,7 +67,13 @@ class WritingLetterViewController: UIViewController {
     }
     
     @IBAction func doneWritingLetter(_ sender: UIBarButtonItem) {
-        if letterTitle.text!.isEmpty {
+        if openGallery.image == nil {
+            let alret = UIAlertController(title: "오류", message: "사진을 입력하지 않으셨습니다.", preferredStyle: .alert)
+            let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alret.addAction(confirm)
+            present(alret, animated: true, completion: nil)
+        }
+        else if letterTitle.text!.isEmpty {
             let alret = UIAlertController(title: "오류", message: "제목을 입력하지 않으셨습니다.", preferredStyle: .alert)
             let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
             alret.addAction(confirm)
@@ -94,8 +100,13 @@ class WritingLetterViewController: UIViewController {
     @objc func showActionSheet() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let first = UIAlertAction(title: "임시 저장", style: .default) { [self]_ in
-            let letter = LetterInput(title: letterTitle.text!, content: letterContent.text, image: openGallery.image)
-            if letterTitle.text!.isEmpty {
+            if openGallery.image == nil {
+                let alret = UIAlertController(title: "오류", message: "사진을 입력하지 않으셨습니다.", preferredStyle: .alert)
+                let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alret.addAction(confirm)
+                present(alret, animated: true, completion: nil)
+            }
+            else if letterTitle.text!.isEmpty {
                 let alret = UIAlertController(title: "오류", message: "제목을 입력하지 않으셨습니다.", preferredStyle: .alert)
                 let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
                 alret.addAction(confirm)
@@ -108,6 +119,7 @@ class WritingLetterViewController: UIViewController {
                 present(alret, animated: true, completion: nil)
             }
             else {
+                let letter = LetterInput(title: letterTitle.text!, content: letterContent.text, image: openGallery.image)
                 try? service.addLetter(LetterInputDto(petId: petID, letter: letter))
                 self.dismiss(animated: true)
             }
