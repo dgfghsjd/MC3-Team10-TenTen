@@ -17,9 +17,7 @@ class WrittenLetterViewController: UIViewController {
     
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
     var letterID: String! = ""
-    
-    var childVC: UIViewController?
-    var letterHasChanged: Bool?
+    var letterHasChanged: Bool = false
     
     override func viewDidLoad() {
         let letter = try! service.findLetter(letterID)
@@ -32,12 +30,11 @@ class WrittenLetterViewController: UIViewController {
         selectedLetterImage.contentMode = .scaleAspectFill
         load(url: letter.imgUrl!)
         selectedLetterDate.text = letter.date
-        print(self)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if letterHasChanged == true {
+        if letterHasChanged {
             print(self.letterHasChanged)
         }
     }

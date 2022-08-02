@@ -9,19 +9,18 @@ import UIKit
 import PhotosUI
 
 
+
 class EditingLetterViewController: UIViewController {
     @IBOutlet weak var editingLetterNavBar: UINavigationItem!
-    @IBOutlet weak var naavBarRightItem: UIBarButtonItem!
+    @IBOutlet weak var navBarRightItem: UIBarButtonItem!
     @IBOutlet weak var galleryImageView: UIImageView!
     @IBOutlet weak var btnChangeImage: UIButton!
     @IBOutlet weak var letterTitle: UITextField!
     @IBOutlet weak var letterContent: UITextView!
     @IBOutlet weak var writtenDate: UILabel!
+    
     var button = UIButton(type: .system)
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
-    
-    //    let petID = "62e7ddbc686583a6c967db26"
-    
     let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
     var letterID: String! = ""
     
@@ -30,18 +29,13 @@ class EditingLetterViewController: UIViewController {
     
     override func viewDidLoad() {
         let editingLetter = try! service.findLetter(letterID)
-        try! service.unsaveLetters(letterID)
+        
         super.viewDidLoad()
+        rightNavBarButtonSetting()
         
-        let attributes: [NSAttributedString.Key: Any] = [ .font: UIFont.boldSystemFont(ofSize: 18) ]
-        naavBarRightItem.setTitleTextAttributes(attributes, for: .normal)
         
-        button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-        button.tintColor = UIColor(named: "textColor")
-        button.addTarget(self, action: #selector(showActionSheet), for: .touchUpInside)
-        editingLetterNavBar.leftBarButtonItem = UIBarButtonItem(customView: button)
-        
+//        editingLetterNavBar.leftBarButtonItem = UIBarButtonItem(customView: button)
+        leftNavBarButtonSetting()
         galleryImageView.layer.cornerRadius = 10
         galleryImageView.contentMode = .scaleAspectFill
         load(url: editingLetter.imgUrl!)
@@ -98,14 +92,8 @@ class EditingLetterViewController: UIViewController {
             self.dismiss(animated: true)
         }
         
-        let second = UIAlertAction(title: "돌아가기", style: .default) { [self]_ in
-            try? service.saveLetters(letterID)
-            self.dismiss(animated: true)
-        }
+        let cancel = UIAlertAction(title: "돌아가기", style: .cancel){_ in}
         
-        let cancel = UIAlertAction(title: "취소", style: .cancel){_ in}
-        
-        actionSheet.addAction(second)
         actionSheet.addAction(first)
         actionSheet.addAction(cancel)
         present(actionSheet, animated: true, completion: nil)
@@ -135,6 +123,22 @@ class EditingLetterViewController: UIViewController {
             return true
         }
         return false
+    }
+    
+    private func leftNavBarButtonSetting() {
+        let customButton = UIButton()
+        customButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        customButton.setTitle(" 취소", for: .normal)
+        customButton.setTitleColor(UIColor(named: "textColor"), for: .normal)
+        customButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        customButton.tintColor = UIColor(named: "textColor")
+        customButton.addTarget(self, action: #selector(showActionSheet), for: .touchUpInside)
+        editingLetterNavBar.leftBarButtonItem = UIBarButtonItem(customView: customButton)
+    }
+    
+    private func rightNavBarButtonSetting() {
+        let attributes: [NSAttributedString.Key: Any] = [ .font: UIFont.boldSystemFont(ofSize: 18) ]
+        navBarRightItem.setTitleTextAttributes(attributes, for: .normal)
     }
 }
 
