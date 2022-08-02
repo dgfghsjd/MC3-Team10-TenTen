@@ -32,27 +32,13 @@ class EditingLetterViewController: UIViewController {
         
         super.viewDidLoad()
         rightNavBarButtonSetting()
-        
-        
-//        editingLetterNavBar.leftBarButtonItem = UIBarButtonItem(customView: button)
         leftNavBarButtonSetting()
-        galleryImageView.layer.cornerRadius = 10
-        galleryImageView.contentMode = .scaleAspectFill
+        imageViewAndGalleryBtnSetting()
+        
         load(url: editingLetter.imgUrl!)
-        
-        let largeSymbol = UIImage.SymbolConfiguration(pointSize: 50, weight: .bold, scale: .large)
-        let largeBoldButton = UIImage(systemName: "plus.square.dashed", withConfiguration: largeSymbol)
-        
-        btnChangeImage.setImage(largeBoldButton, for: .normal)
-        btnChangeImage.tintColor = UIColor(named: "textColor")
-        btnChangeImage.alpha = 0.2
-        btnChangeImage.addTarget(self, action: #selector(changeImage), for: .touchUpInside)
-        
         letterTitle.returnKeyType = .done
         letterTitle.text = editingLetter.title
-        
         letterContent.text = editingLetter.content
-        
         writtenDate.text = editingLetter.date
     }
     
@@ -61,22 +47,8 @@ class EditingLetterViewController: UIViewController {
         updateLetter()
     }
     
-    @IBAction func doneeditingLetter(_ sender: UIBarButtonItem) {
-        if letterTitle.text!.isEmpty {
-            print("제목을 입력하지 않으셨습니다.")
-            let alret = UIAlertController(title: "오류", message: "제목을 입력하지 않으셨습니다.", preferredStyle: .alert)
-            let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
-            alret.addAction(confirm)
-            present(alret, animated: true, completion: nil)
-        }
-        else if letterContent.textColor == UIColor.lightGray {
-            print("내용을 입력하지 않으셨습니다.")
-            let alret = UIAlertController(title: "오류", message: "내용을 입력하지 않으셨습니다.", preferredStyle: .alert)
-            let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
-            alret.addAction(confirm)
-            present(alret, animated: true, completion: nil)
-        }
-        else {
+    @IBAction func doneEditingLetter(_ sender: UIBarButtonItem) {
+        if chekCorrectlyEditted() {
             parentVC?.letterHasChanged = checkLetterChanged()
             let letter = LetterUpdateDto(id: self.letterID, title: letterTitle.text!, content: letterContent.text, image: galleryImageView.image)
             try? service.updateLetter(petId: petID, dto: letter)
@@ -104,25 +76,11 @@ class EditingLetterViewController: UIViewController {
             if let data = try? Data(contentsOf: url) {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
-                        self?.galleryImageView.image = image                    }
+                        self?.galleryImageView.image = image
+                    }
                 }
             }
         }
-    }
-    
-    func updateLetter() {
-        parentVC?.selectedLetterTitle.text = letterTitle.text
-        parentVC?.selectedLetterContent.text = letterContent.text
-        parentVC?.selectedLetterImage.image = galleryImageView.image
-    }
-    
-    func checkLetterChanged() -> Bool {
-        if parentVC?.selectedLetterTitle.text != letterTitle.text ||
-            parentVC?.selectedLetterContent.text != letterContent.text ||
-            parentVC?.selectedLetterImage.image != galleryImageView.image {
-            return true
-        }
-        return false
     }
     
     private func leftNavBarButtonSetting() {
@@ -140,6 +98,45 @@ class EditingLetterViewController: UIViewController {
         let attributes: [NSAttributedString.Key: Any] = [ .font: UIFont.boldSystemFont(ofSize: 18) ]
         navBarRightItem.setTitleTextAttributes(attributes, for: .normal)
     }
+    
+    private func imageViewAndGalleryBtnSetting(){
+        galleryImageView.layer.cornerRadius = 10
+        galleryImageView.contentMode = .scaleAspectFill
+        
+        let largeSymbol = UIImage.SymbolConfiguration(pointSize: 50, weight: .bold, scale: .large)
+        let largeBoldButton = UIImage(systemName: "plus.square.dashed", withConfiguration: largeSymbol)
+        btnChangeImage.setImage(largeBoldButton, for: .normal)
+        btnChangeImage.tintColor = UIColor(named: "textColor")
+        btnChangeImage.alpha = 0.2
+        btnChangeImage.addTarget(self, action: #selector(changeImage), for: .touchUpInside)
+    }
+    
+    func chekCorrectlyEditted() -> Bool {
+        if letterTitle.text!.isEmpty || letterContent.text.isEmpty {
+            let alret = UIAlertController(title: "오류", message: "빈 편지는 저장할 수 없습니다.", preferredStyle: .alert)
+            let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alret.addAction(confirm)
+            present(alret, animated: true, completion: nil)
+            return false
+        }
+        return true
+    }
+    
+    func updateLetter() {
+        parentVC?.selectedLetterTitle.text = letterTitle.text
+        parentVC?.selectedLetterContent.text = letterContent.text
+        parentVC?.selectedLetterImage.image = galleryImageView.image
+    }
+    
+    func checkLetterChanged() -> Bool {
+        if parentVC?.selectedLetterTitle.text != letterTitle.text ||
+            parentVC?.selectedLetterContent.text != letterContent.text ||
+            parentVC?.selectedLetterImage.image != galleryImageView.image {
+            return true
+        }
+        return false
+    }
+    
 }
 
 @available(iOS 14, *)
@@ -153,7 +150,7 @@ extension EditingLetterViewController: PHPickerViewControllerDelegate {
         let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = self
         self.present(picker, animated: true, completion: nil)
-        //        dismissKeyboard() // 편지 작성하다가도 사진 불러오기 버튼 누르면 키보드 사라지도록 변경
+        view.endEditing(true) // 편지 작성하다가도 사진 불러오기 버튼 누르면 키보드 사라지도록 변경
     }
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {

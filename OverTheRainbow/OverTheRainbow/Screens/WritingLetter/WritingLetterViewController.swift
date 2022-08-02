@@ -32,7 +32,7 @@ class WritingLetterViewController: UIViewController {
         leftNavBarButtonSetting()
         rightNavBarButtonSetting()
         
-        imageViewAndGallerySetting()
+        imageViewAndGalleryBtnSetting()
         
         letterTitle.placeholder = "제목을 작성해주세요"
         letterTitle.delegate = self
@@ -105,7 +105,7 @@ class WritingLetterViewController: UIViewController {
         writingDate.text = dateFormatter.string(from: date)
     }
 
-    private func imageViewAndGallerySetting(){
+    private func imageViewAndGalleryBtnSetting(){
         let largeSymbol = UIImage.SymbolConfiguration(pointSize: 86, weight: .bold, scale: .large)
         let largeBoldButton = UIImage(systemName: "plus.square.dashed", withConfiguration: largeSymbol)
         selectPicture.setImage(largeBoldButton, for: .normal)

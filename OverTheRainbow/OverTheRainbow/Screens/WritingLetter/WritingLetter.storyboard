@@ -283,7 +283,7 @@
                         <barButtonItem key="rightBarButtonItem" title="완료" id="Cpq-nQ-Qt0">
                             <color key="tintColor" red="0.28621885180000001" green="0.25491994620000002" blue="0.25490090250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <action selector="doneeditingLetter:" destination="rjd-Mf-sdI" id="5kQ-h8-fRY"/>
+                                <action selector="doneEditingLetter:" destination="rjd-Mf-sdI" id="JNH-tt-XNV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
