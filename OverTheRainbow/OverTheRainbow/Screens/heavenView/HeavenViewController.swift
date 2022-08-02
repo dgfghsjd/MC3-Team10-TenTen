@@ -74,11 +74,11 @@ class HeavenViewController: UIViewController {
                 if let imageURL = currentPet.imgUrl {
                     let data = try Data(contentsOf: imageURL)
                     petImageView.image = UIImage(data: data)
-                    navigationController?.setNavigationBarHidden(true, animated: animated)
                 }
             } catch {
                 print("Error finding pet : \(error)")
             }
+            navigationController?.setNavigationBarHidden(true, animated: animated)
         }
     }
     
@@ -97,6 +97,7 @@ class HeavenViewController: UIViewController {
     
     @IBAction func letterButtonPressed(_ sender: UIButton) {
         // TODO: 편지 리스트뷰로 이동
+        navigationController?.pushViewController(HeavenViewLetterListCollectionViewController(), animated: true)
     }
     
     @objc func mainTransition() {
