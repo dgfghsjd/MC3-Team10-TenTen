@@ -19,15 +19,19 @@ class EditingLetterViewController: UIViewController {
     @IBOutlet weak var writtenDate: UILabel!
     var button = UIButton(type: .system)
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
-    let petID = "62e7cbc3bbe204e79551bc56"
+
+    let petID = "62e7ddbc686583a6c967db26"
+
     //        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
     var letterID: String! = ""
+    
+    var parentController: UINavigationController?
+    var parentVC: WrittenLetterViewController?
     
     override func viewDidLoad() {
         let editingLetter = try! service.findLetter(letterID)
         try! service.unsaveLetters(letterID)
         super.viewDidLoad()
-        print(editingLetter.status)
         
         let attributes: [NSAttributedString.Key: Any] = [ .font: UIFont.boldSystemFont(ofSize: 18) ]
         naavBarRightItem.setTitleTextAttributes(attributes, for: .normal)
@@ -58,6 +62,11 @@ class EditingLetterViewController: UIViewController {
         writtenDate.text = editingLetter.date
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        updateLetter()
+    }
+    
     @IBAction func doneeditingLetter(_ sender: UIBarButtonItem) {
         if letterTitle.text!.isEmpty {
             print("제목을 입력하지 않으셨습니다.")
@@ -74,11 +83,11 @@ class EditingLetterViewController: UIViewController {
             present(alret, animated: true, completion: nil)
         }
         else {
+            parentVC?.letterHasChanged = checkLetterChanged()
             let letter = LetterUpdateDto(id: self.letterID, title: letterTitle.text!, content: letterContent.text, image: galleryImageView.image)
             try? service.updateLetter(petId: petID, dto: letter)
             try? service.saveLetters(letter.id)
             dismiss(animated: true)
-            print("작성을 완료했습니다.")
         }
     }
     
@@ -102,10 +111,6 @@ class EditingLetterViewController: UIViewController {
         present(actionSheet, animated: true, completion: nil)
     }
     
-    func setID(letterID: String){
-        self.letterID = letterID
-    }
-    
     func load(url: URL) {
         DispatchQueue.global().async { [weak self] in
             if let data = try? Data(contentsOf: url) {
@@ -117,6 +122,20 @@ class EditingLetterViewController: UIViewController {
         }
     }
     
+    func updateLetter() {
+        parentVC?.selectedLetterTitle.text = letterTitle.text
+        parentVC?.selectedLetterContent.text = letterContent.text
+        parentVC?.selectedLetterImage.image = galleryImageView.image
+    }
+    
+    func checkLetterChanged() -> Bool {
+        if parentVC?.selectedLetterTitle.text != letterTitle.text ||
+            parentVC?.selectedLetterContent.text != letterContent.text ||
+            parentVC?.selectedLetterImage.image != galleryImageView.image {
+            return true
+        }
+        return false
+    }
 }
 
 @available(iOS 14, *)
