@@ -19,7 +19,9 @@ class EditingLetterViewController: UIViewController {
     @IBOutlet weak var writtenDate: UILabel!
     var button = UIButton(type: .system)
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
+
     let petID = "62e7ddbc686583a6c967db26"
+
     //        let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
     var letterID: String! = ""
     
