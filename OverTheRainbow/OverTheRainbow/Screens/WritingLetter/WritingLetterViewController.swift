@@ -53,6 +53,7 @@ class WritingLetterViewController: UIViewController {
         showActionSheet()
     }
     
+    
     @IBAction func doneWritingLetter(_ sender: UIBarButtonItem) {
         if checkWrittenCorrectly() {
             let letter = LetterInput(title: letterTitle.text!, content: letterContent.text, image: openGallery.image)
