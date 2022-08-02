@@ -3,7 +3,7 @@
 //  OverTheRainbow
 //
 //  Created by SeungHwanKim on 2022/07/25.
-//
+//  swiftlint:disable force_try
 
 import UIKit
 import Photos
@@ -48,6 +48,11 @@ class WritingLetterViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        parentVC?.setLists(petID)
+        parentVC?.listCollectionView.reloadData()
+    }
     
     @IBAction func callingActionSheet(_ sender: UIBarButtonItem) {
         showActionSheet()
@@ -59,7 +64,6 @@ class WritingLetterViewController: UIViewController {
             let letter = LetterInput(title: letterTitle.text!, content: letterContent.text, image: openGallery.image)
             let letterID = try? service.addLetter(LetterInputDto(petId: petID, letter: letter))
             try? service.saveLetters(letterID!)
-            parentVC?.setLists()
             dismiss(animated: true)
         }
     }
@@ -132,7 +136,7 @@ class WritingLetterViewController: UIViewController {
             present(alret, animated: true, completion: nil)
             return false
         }
-        else if letterContent.textColor == UIColor.lightGray {
+        else if letterContent.text.isEmpty || (letterContent.text == "어떤 말을 전하고 싶나요?") {
             let alret = UIAlertController(title: "오류", message: "내용을 입력하지 않으셨습니다.", preferredStyle: .alert)
             let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
             alret.addAction(confirm)

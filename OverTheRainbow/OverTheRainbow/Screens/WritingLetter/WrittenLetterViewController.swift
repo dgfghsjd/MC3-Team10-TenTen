@@ -39,6 +39,7 @@ class WrittenLetterViewController: UIViewController {
         if letterHasChanged {
             try? service.updateLetter(petId: petID, dto: LetterUpdateDto(id: letterID, title: selectedLetterTitle.text!, content: selectedLetterContent.text, image: selectedLetterImage.image))
             try? service.saveLetters(letterID)
+            parentVC?.setLists(petID)
         }
     }
     

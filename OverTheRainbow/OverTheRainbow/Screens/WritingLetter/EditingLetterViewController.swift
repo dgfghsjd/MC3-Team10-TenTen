@@ -23,34 +23,36 @@ class EditingLetterViewController: UIViewController {
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
     let petID = UserDefaults.standard.string(forKey: "petID") ?? "없음"
     var letterID: String! = ""
-    
+    var referenceImage: UIImage?
     var parentController: UINavigationController?
     var parentVC: WrittenLetterViewController?
     
+
     override func viewDidLoad() {
-        let editingLetter = try! service.findLetter(letterID)
-        
         super.viewDidLoad()
         rightNavBarButtonSetting()
         leftNavBarButtonSetting()
         imageViewAndGalleryBtnSetting()
         
-        load(url: editingLetter.imgUrl!)
         letterTitle.returnKeyType = .done
         galleryImageView.image = parentVC?.selectedLetterImage.image
         letterTitle.text = parentVC?.selectedLetterTitle.text
         letterContent.text = parentVC?.selectedLetterContent.text
         writtenDate.text = parentVC?.selectedLetterDate.text
+        
+        print(parentVC?.letterHasChanged)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        parentVC?.letterHasChanged = checkLetterChanged()
-        updateLetter()
+        if checkCorrectlyEditted() && checkLetterChanged(){
+            parentVC?.letterHasChanged = checkLetterChanged()
+            updateLetter()
+        }
     }
     
     @IBAction func doneEditingLetter(_ sender: UIBarButtonItem) {
-        if checkCorrectlyEditted() {
+        if checkCorrectlyEditted() && checkLetterChanged() {
             parentVC?.letterHasChanged = checkLetterChanged()
             updateLetter()
             dismiss(animated: true)
@@ -62,6 +64,8 @@ class EditingLetterViewController: UIViewController {
         let first = UIAlertAction(title: "삭제하기", style: .destructive) { [self]_ in
             try? service.deleteLetter(petId: petID, letterId: letterID)
             self.dismiss(animated: true)
+            dismiss(animated: true)
+//            parentVC?.navigationController?.pushViewController(parentVC!.parentVC!, animated: true)
         }
         
         let cancel = UIAlertAction(title: "돌아가기", style: .cancel){_ in}
@@ -76,7 +80,7 @@ class EditingLetterViewController: UIViewController {
             if let data = try? Data(contentsOf: url) {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
-                        self?.galleryImageView.image = image
+                        self?.referenceImage = image
                     }
                 }
             }
@@ -129,7 +133,8 @@ class EditingLetterViewController: UIViewController {
     }
     
     func checkLetterChanged() -> Bool {
-        if parentVC?.selectedLetterTitle.text != letterTitle.text || parentVC?.selectedLetterContent.text != letterContent.text || parentVC?.selectedLetterImage.image != galleryImageView.image {
+        let editingLetter = try! service.findLetter(letterID)
+        if editingLetter.title != letterTitle.text || editingLetter.content != letterContent.text {
             return true
         }
         return false
