@@ -113,16 +113,22 @@ class LetterLitstMainViewController: BaseViewController {
         let presentSendButtonAction = UIAction { _ in
             let storyboard = UIStoryboard(name: "WritingLetter", bundle: nil)
             guard let viewController = storyboard.instantiateViewController(withIdentifier: "writeLetter") as? WritingLetterViewController else { return }
-            self.navigationController?.pushViewController(viewController, animated: true)
+            
+            self.navigationController?.modalPresentationStyle = .automatic
+
+            self.present(viewController, animated: true, completion: nil)
+            
         }
-        writingButton.addAction(presentSendButtonAction,
-                                for: .touchUpInside)
+        writingButton.addAction(presentSendButtonAction,for: .touchUpInside)
     }
     private func pushDetailView(_ letterID: String) {
         let storyBoard = UIStoryboard(name: "WritingLetter", bundle: nil)
         guard let viewController = storyBoard.instantiateViewController(withIdentifier: "letterList") as?  WrittenLetterViewController else { return }
         self.navigationController?.pushViewController(viewController, animated: true)
         viewController.letterID = letterID
+    }
+    private func showPopUp() {
+        
     }
 }
 

@@ -13,12 +13,16 @@ class WritingLetterViewController: UIViewController {
     
     @IBOutlet weak var writingLetterNavBar: UINavigationItem!
     @IBOutlet weak var navBarRightItem: UIBarButtonItem!
+    
+    @IBOutlet weak var writingLetterNavigationBar: UINavigationBar!
+    @IBOutlet var navBarRightButton: UIBarButtonItem!
+    @IBOutlet var navBarLeftButton: UIBarButtonItem!
+    
     @IBOutlet weak var openGallery: UIImageView!
     @IBOutlet weak var letterTitle: UITextField!
     @IBOutlet weak var letterContent: UITextView!
     @IBOutlet weak var writingDate: UILabel!
     @IBOutlet weak var selectPicture: UIButton!
-    var button = UIButton(type: .system)
     let date = Date()
     let service: DataAccessService = DataAccessProvider.dataAccessConfig.getService()
     //    let petID = "62e7ddbc686583a6c967db26"
@@ -27,18 +31,22 @@ class WritingLetterViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        let customButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
         super.viewDidLoad()
         writingLetterNavBar.title = "편지 작성"
-        
+
         let attributes: [NSAttributedString.Key: Any] = [ .font: UIFont.boldSystemFont(ofSize: 18) ]
-        navBarRightItem.setTitleTextAttributes(attributes, for: .normal)
+        navBarRightButton.setTitleTextAttributes(attributes, for: .normal)
         
-        button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        button.setTitle("취소", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-        button.tintColor = UIColor(named: "textColor")
-        writingLetterNavBar.leftBarButtonItem = UIBarButtonItem(customView: button)
-        button.addTarget(self, action: #selector(showActionSheet), for: .touchUpInside)
+        customButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        customButton.setTitle("취소", for: .normal)
+        customButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        customButton.tintColor = UIColor(named: "textColor")
+        customButton.sizeToFit()
+//        writingLetterNavBar.leftBarButtonItem = UIBarButtonItem(customView: button)
+        navBarLeftButton = UIBarButtonItem(customView: customButton)
+        customButton.addTarget(self, action: #selector(showActionSheet), for: .touchUpInside)
+        
         openGallery.layer.cornerRadius = 10
         
         let largeSymbol = UIImage.SymbolConfiguration(pointSize: 86, weight: .bold, scale: .large)
@@ -64,6 +72,9 @@ class WritingLetterViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         
         view.addGestureRecognizer(tap)
+    }
+    @IBAction func callingActionSheet(_ sender: UIBarButtonItem) {
+        showActionSheet()
     }
     
     @IBAction func doneWritingLetter(_ sender: UIBarButtonItem) {
