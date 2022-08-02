@@ -14,7 +14,6 @@ class MainViewController: UIViewController {
     var petID: String?
     let service = DataAccessProvider.dataAccessConfig.getService()
     var userData: MainViewResultDto?
-    let realm = try! Realm()
 
 
     @IBOutlet weak var flowerBoxView: FlowerBoxView!
@@ -25,7 +24,6 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "홈"
-        print("Realm is located at:", realm.configuration.fileURL!)
         quoteLabel.text = (try? service.getWord().content) ?? "DEBUG word 없음"
 
         [guideLabel, quoteLabel].forEach {
