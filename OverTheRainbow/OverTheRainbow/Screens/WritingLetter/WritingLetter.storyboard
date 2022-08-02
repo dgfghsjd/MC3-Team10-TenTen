@@ -33,9 +33,6 @@
                     <navigationItem key="navigationItem" id="C7h-JO-XKA">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.pencil" catalog="system" id="mIh-0K-kcE">
                             <color key="tintColor" red="0.29332616929999999" green="0.25663542750000001" blue="0.25579723720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <segue destination="QLB-ge-IDc" kind="presentation" id="Ctm-54-oxZ"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -93,12 +90,18 @@
                                 <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                                 <items>
                                     <navigationItem title="편지 작성" id="f58-Du-JTY">
-                                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="Sdl-DO-85r">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="Sdl-DO-85r">
+                                            <color key="tintColor" red="0.29332616929999999" green="0.25663542750000001" blue="0.25579723720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="callingActionSheet:" destination="9G4-a1-YfW" id="vCB-L3-fff"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="완료" id="FJa-ok-aqM"/>
+                                        <barButtonItem key="rightBarButtonItem" title="완료" id="FJa-ok-aqM">
+                                            <color key="tintColor" red="0.29332616929999999" green="0.25663542750000001" blue="0.25579723720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="doneWritingLetter:" destination="9G4-a1-YfW" id="Ukl-MM-mo0"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -128,47 +131,20 @@
                             <constraint firstItem="jmA-xX-huu" firstAttribute="leading" secondItem="GgM-C5-S3H" secondAttribute="leading" id="zXB-yV-DjY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="lbF-m8-5ek">
-                        <barButtonItem key="rightBarButtonItem" title="완료" style="plain" id="8LX-Ta-h94">
-                            <color key="tintColor" red="0.29332616929999999" green="0.25663542750000001" blue="0.25579723720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="doneWritingLetter:" destination="9G4-a1-YfW" id="ZYs-bl-6uc"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="letterContent" destination="jdv-ai-LNP" id="yg0-zc-19t"/>
                         <outlet property="letterTitle" destination="K2o-bq-xzv" id="aXa-pr-zvQ"/>
                         <outlet property="navBarLeftButton" destination="Sdl-DO-85r" id="Igy-fd-pBj"/>
                         <outlet property="navBarRightButton" destination="FJa-ok-aqM" id="q7q-V5-0eB"/>
-                        <outlet property="navBarRightItem" destination="8LX-Ta-h94" id="FRo-mN-Z5l"/>
                         <outlet property="openGallery" destination="jtG-3a-geC" id="K3a-GH-HLE"/>
                         <outlet property="selectPicture" destination="GWg-NO-y3b" id="OPX-Ty-CBO"/>
                         <outlet property="writingDate" destination="9yl-8g-29F" id="n2g-4l-vyn"/>
-                        <outlet property="writingLetterNavBar" destination="lbF-m8-5ek" id="yCN-Tk-HCc"/>
                         <outlet property="writingLetterNavigationBar" destination="jmA-xX-huu" id="4vz-3i-2DW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQK-NF-g6T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="980" y="815.40284360189571"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="n5W-NR-9Hg">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QLB-ge-IDc" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ef-u9-yIH">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.94034463170000004" green="0.94226723909999999" blue="0.90213716030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.94358682630000001" green="0.94232851269999995" blue="0.90213125940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fIf-8U-UgV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-294" y="816"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ibw-9C-0xw">
@@ -403,7 +379,6 @@
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.29332616929999999" green="0.25663542750000001" blue="0.25579723720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
-        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="labelColor">
